@@ -3,13 +3,14 @@ import React, { ReactNode } from "react";
 
 interface CardProps {
   children: ReactNode;
-  className: string;
+  className?: string;
+  gradientClass?: string;
 }
 
 
-export function Card({ children, className = "" }: CardProps) {
+export function Card({ children, className = "", gradientClass = "" }: CardProps) {
   return (
-    <div className={`rounded-lg border bg-white text-black shadow-sm ${className}`}>
+    <div className={`rounded-lg  text-black  ${gradientClass} ${className}`}>
       {children}
     </div>
   );
@@ -41,5 +42,7 @@ export function CardDescription({ children, className = "" }: CardProps) {
     </p>
   );
 }
+
+
 
 
