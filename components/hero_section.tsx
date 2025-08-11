@@ -31,12 +31,8 @@ export default function HeroSection() {
       </p>
 
       {/* Buttons */}
-<<<<<<< Updated upstream
-      <div className="flex flex-wrap gap-6">
-=======
       <div className="flex flex-wrap gap-4">
->>>>>>> Stashed changes
-        <Button variant="CurvedRedOutline">
+        <Button variant="Outline">
           Explore All Services →
         </Button>
         <Button variant="default">
