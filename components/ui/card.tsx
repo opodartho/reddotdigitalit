@@ -43,19 +43,3 @@ export function CardDescription({ children, className = "" }: CardProps) {
 }
 
 
-export function CardContent({ children, className = "" }: CardProps) {
-  return (
-    <div className={`p-6 pt-0 ${className}`}>
-      {children}
-    </div>
-  );
-}
-
-
-export function CardFooter({ children, className = "" }: CardProps) {
-  return (
-    <div className={`flex items-center p-6 pt-0 ${className}`}>
-      {children}
-    </div>
-  );
-}
