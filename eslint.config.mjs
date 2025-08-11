@@ -18,4 +18,10 @@ const eslintConfig = [
   ),
 ];
 
+export const settings = {
+  tailwindcss: {
+    config: "./tailwind.config.ts",
+  },
+};
+
 export default eslintConfig;
