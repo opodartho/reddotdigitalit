@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
-import Achievement from '../Achievement';
-import About from '../About';
+import Achievement from '@/components/home/_who_we_are/Achievement';
+import About from '@/components/home/_who_we_are//About';
 
 export const TabButtons = () => {
   const [activeTab, setActiveTab] = useState<'about' | 'achievement'>('about');
@@ -10,15 +10,14 @@ export const TabButtons = () => {
     <div className="mt-6">
       {/* Tab Buttons */}
       <div className="flex justify-center">
-        <div className="border rounded-xl overflow-hidden">
+        <div className="overflow-hidden rounded-xl border">
           {/* About Us Tab */}
           <button
             onClick={() => setActiveTab('about')}
-            className={`px-6 py-2 font-semibold border-r ${
-             activeTab === 'about'
-           ? 'text-red-600 bg-red-50 border-red-500 border-t-2 border-l-2 rounded-2xl border-b-2'
-           : 'text-gray-500 bg-white border border-gray-300'
-            }`}
+            className={`border-r px-6 py-2 font-semibold ${activeTab === 'about'
+              ? 'rounded-2xl border-t-2 border-b-2 border-l-2 border-red-500 bg-red-50 text-red-600'
+              : 'border border-gray-300 bg-white text-gray-500'
+              }`}
           >
             About Us
           </button>
@@ -26,11 +25,10 @@ export const TabButtons = () => {
           {/* Achievement Tab */}
           <button
             onClick={() => setActiveTab('achievement')}
-            className={`px-6 py-2 font-semibold ${
-              activeTab === 'achievement'
-                ? 'text-red-600 bg-red-50 border-red-500 border-t-2 border-r-2 rounded-2xl border-b-2 rounded-l-0'
-                : 'text-gray-500 bg-white border-gray-300'
-            }`}
+            className={`px-6 py-2 font-semibold ${activeTab === 'achievement'
+              ? 'rounded-2xl border-t-2 border-r-2 border-b-2 border-red-500 bg-red-50 text-red-600'
+              : 'border-gray-300 bg-white text-gray-500'
+              }`}
           >
             Achievement
           </button>
