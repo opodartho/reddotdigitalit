@@ -9,9 +9,8 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        curvedRedOutline:
+        Outlined:
           "rounded-md border border-red-600 bg-white text-red-600 hover:bg-red-200 dark:bg-transparent",
-
       },
       size: {
         default: "h-9 px-4 py-2 has-[>svg]:px-3",
@@ -21,7 +20,7 @@ const buttonVariants = cva(
       },
     },
     defaultVariants: {
-      variant: "curvedRedOutline",
+      variant: "Outlined",
       size: "default",
     },
   }

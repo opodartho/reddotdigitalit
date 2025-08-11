@@ -50,7 +50,7 @@ const products = [
 const gradients = [
   "bg-gradient-to-r from-pink-100 to-indigo-200",
   "bg-gradient-to-r from-orange-50 via-blue-100",
-  "bg-gradient-to-r from-indigo-100 to-orange-50",
+  "bg-gradient-to-r from-pink-100 to-orange-50",
   "bg-gradient-to-r from-fuchsia-100 to-pink-100",
   "bg-gradient-to-r from-cyan-50 to-green-100",
   "bg-gradient-to-r from-blue-100 to-orange-50",
