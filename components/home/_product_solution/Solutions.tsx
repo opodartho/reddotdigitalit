@@ -1,3 +1,4 @@
+import Image from "next/image";
 import {
   Card,
   CardHeader,
@@ -9,42 +10,43 @@ const products = [
   {
     title: "MFS",
     description: "Unlock secure, fast, and convenient mobile transactions",
-    icon: "📱",
+    image: "/image/smartphone 1.png"
+
   },
   {
     title: "DFS",
     description: "Unlock secure, fast, and convenient mobile transactions",
-    icon: "🏦",
+    image: "/image/online-banking 1.png",
   },
   {
     title: "Human Resources",
-    description: "Manage employees and payroll easily",
-    icon: "👔",
+    description: "Unlock secure, fast, and convenient mobile transactions",
+    image: "/image/human-resources 2.png",
   },
   {
     title: "ERP & eCommerce",
-    description: "Streamline business and online sales",
-    icon: "🛒",
+    description: "Unlock secure, fast, and convenient mobile transactions",
+    image: "/image/online-shop 1.png",
   },
   {
     title: "IOT Backend",
-    description: "Connect and control smart devices",
-    icon: "🌐",
+    description: "Unlock secure, fast, and convenient mobile transactions",
+    image: "/image/Group.png",
   },
   {
     title: "Streaming Solution App",
-    description: "Deliver videos and live streams",
-    icon: "🎥",
+    description: "Unlock secure, fast, and convenient mobile transactions",
+    image: "/image/streaming-tv-app 1.png",
   },
   {
     title: "Customer Experience",
-    description: "Enhance client satisfaction",
-    icon: "⭐",
+    description: "Unlock secure, fast, and convenient mobile transactions",
+    image: "/image/performance 1.png",
   },
   {
     title: "Sales & Distribution",
-    description: "Expand market reach effectively",
-    icon: "📦",
+    description: "Unlock secure, fast, and convenient mobile transactions",
+    image: "/image/Group (1).png",
   },
 ];
 const gradients = [
@@ -63,21 +65,31 @@ export default function Solutions() {
   return (
     <section className="px-4 py-12 md:px-8">
       <div className="mx-auto mb-10 max-w-2xl text-center">
-        <h2 className="mb-4 text-3xl font-bold">Our Product Solution</h2>
-        <p className="text-muted-foreground">
-          Our cutting-edge Modular Data Center solutions enable protection of
-          mission-critical data.
+        <h2 className="text-size-32px font-poppins mb-4 text-4xl font-semibold">Our Product Solution</h2>
+        <p className="font-poppins text-black">
+          Our cutting-edge Modular Data Center solutions enable to <br />
+          protect mission-critical data.
         </p>
       </div>
 
 
-      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-4">
+      <div className="grid auto-rows-fr grid-cols-1 items-stretch gap-6 sm:grid-cols-2 md:grid-cols-4">
         {products.map((product, idx) => (
-          <Card key={idx} className="transition hover:shadow-lg"
+          <Card key={idx} className="flex h-full flex-col transition hover:shadow-lg"
             gradientClass={gradients[idx]}
           >
-            <CardHeader>
-              <div className="mb-2 text-3xl">{product.icon}</div>
+            <CardHeader className="flex-grow">
+              {product.image ? (
+                <Image
+                  src={product.image}
+                  alt={product.title}
+                  width={48}
+                  height={48}
+                  className="mb-2 object-contain"
+                />
+              ) : (
+                <div className="mb-2 text-3xl">{product.icon}</div>
+              )}
               <CardTitle>{product.title}</CardTitle>
               <CardDescription>{product.description}</CardDescription>
             </CardHeader>
