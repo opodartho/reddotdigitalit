@@ -1,9 +1,6 @@
 'use client';
 import { useState } from 'react';
-import Achievement from '@/components/home/_who_we_are/Achievement';
-import About from '@/components/home/_who_we_are//About';
-
-export const TabButtons = () => {
+export const TabButtons = ({about, achievement}) => {
   const [activeTab, setActiveTab] = useState<'about' | 'achievement'>('about');
 
   return (
@@ -34,9 +31,9 @@ export const TabButtons = () => {
           </button>
         </div>
       </div>
-      {activeTab === 'about' && <About activeTab={activeTab} />}
+      {activeTab === 'about' && about}
       {/* Achievement Tab Content */}
-      {activeTab === 'achievement' && <Achievement activeTab={activeTab} />}
+      {activeTab === 'achievement' && achievement}
     </div>
   );
 };

@@ -25,13 +25,7 @@ const AchievementCard: React.FC<AchievementCardProps> = ({
   </div>
 );
 
-interface AchievementProps {
-  activeTab: "about" | "achievement";
-}
-
-const Achievement: React.FC<AchievementProps> = ({ activeTab }) => {
-  if (activeTab !== "achievement") return null; // Don't render unless active
-
+const Achievement = () => {
   return (
     <div className="mt-8 mr-10 ml-10 grid grid-cols-1 gap-6 p-4 md:grid-cols-4">
       <AchievementCard
