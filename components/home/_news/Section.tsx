@@ -7,29 +7,31 @@ const newsData = [
         title: "Cloud Migration",
         description:
             "Our cutting-edge Modular Data Center solutions enable to protect mission-critical data.",
-        imageUrl:
-            "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=500&q=80",
+        imageUrl: "/images/latestNews-cloudMigration-image.jpg",
     },
     {
         id: 2,
         title: "DevOps",
         description:
             "We provide DevOps consultation to our clients that helps in automation and standardization.",
-        imageUrl: "https://placehold.co/400x300/E2E8F0/4A5568?text=News+2",
+        imageUrl: "/images/latestNews-devops.jpg",
     },
     {
         id: 3,
         title: "Resources",
         description:
             "Our Resource as a Service solution's offer seamless access to top-tier IT professionals, precisely.",
-        imageUrl: "https://placehold.co/400x300/E2E8F0/4A5568?text=News+3",
+
+        imageUrl: "/images/latestNews-resources.jpg",
+
     },
     {
         id: 4,
         title: "QA as a Service",
         description:
             "Our QA as a Service offerings provide comprehensive testing solutions.",
-        imageUrl: "https://placehold.co/400x300/E2E8F0/4A5568?text=News+4",
+        imageUrl: "/images/latestNews-QA.jpg",
+
     },
 ];
 
@@ -41,7 +43,7 @@ const News = () => {
                     Latest News
                 </h2>
 
-                <div className="grid grid-cols-1 gap-6 bg-gray-50 sm:grid-cols-2 lg:grid-cols-4">
+                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
                     {newsData.map((item) => (
                         <NewsCard
                             key={item.id}

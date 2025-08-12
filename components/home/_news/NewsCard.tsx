@@ -10,7 +10,7 @@ type NewsCardProps = {
 
 export function NewsCard({ imageUrl, title, description }: NewsCardProps) {
   return (
-    <div className="flex flex-col overflow-hidden rounded-lg bg-white shadow-md">
+    <div className="flex flex-col overflow-hidden rounded-lg bg-white shadow-xl">
       <div className="p-2">
         <div className="relative aspect-[16/9] w-full">
           <Image
