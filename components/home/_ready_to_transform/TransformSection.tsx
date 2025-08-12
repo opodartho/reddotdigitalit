@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import { Button } from "@/components/ui/button";
 
 const TransformSection = () => {
   return (
@@ -18,10 +19,10 @@ const TransformSection = () => {
               technology domains, ensuring we meet and exceed client
               expectations.
             </p>
-            <button className="inline-flex items-center rounded-lg bg-red-500 px-8 py-3 text-white shadow-md transition hover:bg-red-600">
+            <Button className="px-8 py-3">
               Get Started
               <span className="ml-2 text-lg">→</span>
-            </button>
+            </Button>
           </div>
 
           {/* Right Images */}

@@ -88,7 +88,7 @@ export default function Solutions() {
                   className="mb-2 object-contain"
                 />
               ) : (
-                <div className="mb-2 text-3xl">{product.icon}</div>
+                <div className="mb-2 text-3xl">{product.image}</div>
               )}
               <CardTitle>{product.title}</CardTitle>
               <CardDescription>{product.description}</CardDescription>

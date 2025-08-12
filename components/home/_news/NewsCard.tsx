@@ -23,9 +23,7 @@ export function NewsCard({ imageUrl, title, description }: NewsCardProps) {
         <h3 className="pb-2 text-xl font-semibold">{title}</h3>
         <p className="mt-2 pb-6 text-sm text-gray-600">{description}</p>
         <div className="mt-auto self-start pt-4">
-          <Button variant="ghost" className="h-auto p-0 text-red-500">
-            Read More »
-          </Button>
+          <Button variant="link">Read More »</Button>
         </div>
       </div>
     </div>

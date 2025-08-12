@@ -5,12 +5,14 @@ import { getLatestNews } from "@/lib/api/fetchNews";
 import ProductSolution from "@/components/home/_product_solution/Section";
 import ReadyToTransform from "@/components/home/_ready_to_transform/Section";
 import TestimonialSection from "@/components/home/_testimonial/Section";
+import HeroSection from "@/components/home/_hero_section/Section";
 
 export const Landing = async () => {
   const newsData = await getLatestNews();
 
   return (
     <>
+      <HeroSection />
       <ProductSolution />
       <News newsData={newsData} />
       <WhoWeAre />
