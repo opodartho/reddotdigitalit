@@ -1,13 +1,8 @@
 import React from "react";
 import Image from "next/image";
 
-interface AboutProps {
-  activeTab: "about" | "achievement";
-}
 
-const About: React.FC<AboutProps> = ({ activeTab }) => {
-  if (activeTab !== "about") return null;
-
+const About = () => {
   return (
     <div className="mt-15 grid grid-cols-1 items-start gap-8 px-10 md:grid-cols-2">
       {/* Left text section */}
