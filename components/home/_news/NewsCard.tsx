@@ -3,11 +3,6 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { NewsItem } from "@/lib/data/newsData";
 
-/*type NewsCardProps = {
-imageUrl: string;
-title: string;
-description: string;
-};*/
 type NewsCardProps = Omit<NewsItem, "id">;
 
 export function NewsCard({ imageUrl, title, description }: NewsCardProps) {
