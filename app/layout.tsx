@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Poppins } from "next/font/google";
+import { Geist, Geist_Mono, Poppins, Inter } from "next/font/google";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -18,6 +18,12 @@ const poppins = Poppins({
   variable: '--font-poppins'
 });
 
+const inter = Inter({
+  weight: ['400', '600'],
+  subsets: ['latin'],
+  variable: '--font-inter'
+});
+
 export const metadata: Metadata = {
   title: "RedDot Digital Limited - Your Digital Transformation Partner",
   description: "RedDot Digital Limited is a 100% Robi Axiata PLC owned subsidiary offering IT & Digital solutions. RedDot Digital Limited is currently setting up its own office in Government’s IT Park in Kaliakoir, Gazipur, Dhaka. We aim to support the Government of Bangladesh in meeting its digital goals in the country by offering cutting-edge, home-grown, cost-optimized IT applications, Cloud DC, IoT solutions among others.",
@@ -31,7 +37,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${poppins.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${poppins.variable} ${inter.variable} antialiased`}
       >
         {children}
       </body>
