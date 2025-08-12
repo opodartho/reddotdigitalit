@@ -4,13 +4,12 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center whitespace-nowrap font-medium transition-colors " +
+  "cursor-pointer inline-flex items-center justify-center whitespace-nowrap font-medium transition-colors " +
     "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 " +
     "disabled:pointer-events-none disabled:opacity-50",
   {
     variants: {
       variant: {
-<<<<<<< HEAD
         default: "bg-primary text-primary-foreground hover:bg-primary/90",
         outline:
           "border-input bg-background hover:bg-accent hover:text-accent-foreground border",
@@ -48,26 +47,6 @@ const buttonVariants = cva(
       lg: "h-10 px-10 has-[>svg]:px-8",
       icon: "size-9",
     },
-=======
-        roundedRedOutline:
-          "border border-[#E52445] text-[#E52445] bg-white hover:bg-red-200 dark:bg-transparent rounded-full",
-        Outline:
-          "border border-[#E52445] text-[#E52445] bg-white hover:bg-red-200 dark:bg-transparent rounded-md",
-        default:
-          "text-white bg-[#E52445] hover:bg-primary/40 dark:bg-transparent rounded-md"
-      },
-      size: {
-        default: "h-9 px-8 py-2 has-[>svg]:px-7",
-        sm: "h-8 gap-1.5 px-7 has-[>svg]:px-6",
-        lg: "h-10 px-10 has-[>svg]:px-8",
-        icon: "size-9"
-      }
-    },
-    defaultVariants: {
-      variant: "roundedRedOutline",
-      size: "default"
-    }
->>>>>>> 72e13ef (hero_section update)
   }
 );
 

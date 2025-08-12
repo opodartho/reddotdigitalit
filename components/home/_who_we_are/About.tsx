@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-
+import { Button } from "@/components/ui/button";
 
 const About = () => {
   return (
@@ -20,9 +20,7 @@ const About = () => {
           home-grown, cost-optimized IT applications, Cloud DC, IoT solutions
           among others.
         </p>
-        <button className="rounded-lg bg-red-600 px-8 py-2 font-semibold text-white hover:bg-red-700">
-          Read More →
-        </button>
+        <Button className="px-8 py-2 font-semibold">Read More →</Button>
       </div>
 
       {/* Right images section */}
