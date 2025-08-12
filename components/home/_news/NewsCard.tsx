@@ -1,16 +1,18 @@
 import React from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
+import { NewsItem } from "@/lib/data/newsData";
 
-type NewsCardProps = {
-  imageUrl: string;
-  title: string;
-  description: string;
-};
+/*type NewsCardProps = {
+imageUrl: string;
+title: string;
+description: string;
+};*/
+type NewsCardProps = Omit<NewsItem, "id">;
 
 export function NewsCard({ imageUrl, title, description }: NewsCardProps) {
   return (
-    <div className="flex flex-col overflow-hidden rounded-lg bg-white shadow-xl">
+    <div className="flex flex-col overflow-hidden rounded-lg bg-white shadow-md">
       <div className="p-2">
         <div className="relative aspect-[16/9] w-full">
           <Image
@@ -19,7 +21,6 @@ export function NewsCard({ imageUrl, title, description }: NewsCardProps) {
             layout="fill"
             objectFit="cover"
             className="rounded-md"
-            unoptimized
           />
         </div>
       </div>
@@ -28,7 +29,7 @@ export function NewsCard({ imageUrl, title, description }: NewsCardProps) {
         <p className="mt-2 pb-6 text-sm text-gray-600">{description}</p>
         <div className="mt-auto self-start pt-4">
           <Button variant="ghost" className="h-auto p-0 text-red-500">
-            Read More &raquo;
+            Read More »
           </Button>
         </div>
       </div>
