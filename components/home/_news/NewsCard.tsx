@@ -22,7 +22,7 @@ export function NewsCard({ imageUrl, title, description }: NewsCardProps) {
       <div className="flex flex-grow flex-col px-6 py-4">
         <h3 className="pb-2 text-xl font-semibold">{title}</h3>
         <p className="mt-2 pb-6 text-sm text-gray-600">{description}</p>
-        <div className="mt-auto self-start pt-4">
+        <div className="mt-auto self-start">
           <Button variant="link">Read More »</Button>
         </div>
       </div>
