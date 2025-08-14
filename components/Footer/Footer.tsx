@@ -9,7 +9,7 @@ const Footer = async () => {
   const { logoUrl, columns, brochure, legalLinks, copyright } = footerData;
 
   return (
-    <footer className="bg-[#E9E8F8]">
+    <footer className="bg-[#E9E8F8] font-poppins">
       {/* Top Section of Footer */}
       <div className="container mx-auto px-6 py-12">
         <div className="flex justify-center mb-12">
@@ -44,14 +44,20 @@ const Footer = async () => {
                 <span className="font-semibold block text-gray-800 underline underline-offset-2 group-hover:text-red-600 transition-colors">
                   {brochure.text}
                 </span>
-                <span className="text-sm text-gray-600">{brochure.details}</span>
+                <span className="text-sm text-gray-600">
+                  {brochure.details}
+                </span>
               </div>
             </a>
           </div>
 
           <div className="flex gap-6 text-gray-600 mb-4 md:mb-0">
             {legalLinks.map((link) => (
-              <a key={link.text} href={link.href} className="hover:text-red-600 transition-colors">
+              <a
+                key={link.text}
+                href={link.href}
+                className="hover:text-red-600 transition-colors"
+              >
                 {link.text}
               </a>
             ))}
