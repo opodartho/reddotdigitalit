@@ -8,7 +8,7 @@ import ProductSolution from "@/components/home/_product_solution/Section";
 import ReadyToTransform from "@/components/home/_ready_to_transform/Section";
 import TestimonialSection from "@/components/home/_testimonial/Section";
 import HeroSection from "@/components/home/_hero_section/Section";
-import BackToTop from "./_back_to_top/BackToTopButton";
+import BackToTop from "@/components/home/_back_to_top/BackToTopButton";
 
 export const Landing = async () => {
   const newsData = await getLatestNews();
@@ -22,7 +22,6 @@ export const Landing = async () => {
       <WhoWeAre />
       <Blogs blogsData={blogsData} />
       <News newsData={newsData} />
-
       <TestimonialSection />
       <ReadyToTransform />
     </>

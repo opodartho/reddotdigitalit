@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Poppins, Inter } from "next/font/google";
 import "./globals.css";
-import BackToTop from "@/components/home/_back_to_top/BackToTopButton"; // Add this import
+import BackToTop from "@/components/home/_back_to_top/BackToTopButton";
+import Footer from "@/components/Footer/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,7 +32,7 @@ export const metadata: Metadata = {
     "RedDot Digital Limited is a 100% Robi Axiata PLC owned subsidiary offering IT & Digital solutions. RedDot Digital Limited is currently setting up its own office in Government’s IT Park in Kaliakoir, Gazipur, Dhaka. We aim to support the Government of Bangladesh in meeting its digital goals in the country by offering cutting-edge, home-grown, cost-optimized IT applications, Cloud DC, IoT solutions among others.",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
@@ -41,7 +42,8 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${poppins.variable} ${inter.variable} antialiased`}
       >
-        {children}
+        <main>{children}</main>
+        <Footer />
         <BackToTop />
       </body>
     </html>
