@@ -31,9 +31,8 @@ export const Landing = async () => {
       <ServicesCarousel services={servicesData} />
       <BackToTop />
       <ProductSolution />
-      <CaseStudies caseStudiesData={caseStudiesData} />
-      <News newsData={newsData} />
       <WhoWeAre />
+      <CaseStudies caseStudiesData={caseStudiesData} />
       <Blogs blogsData={blogsData} />
       <News newsData={newsData} />
       <TestimonialSection testimonials={testimonialsData} />
