@@ -9,7 +9,6 @@ import ReadyToTransform from "@/components/home/_ready_to_transform/Section";
 import TestimonialSection from "@/components/home/_testimonial/Section";
 import HeroSection from "@/components/home/_hero_section/Section";
 import BackToTop from "@/components/home/_back_to_top/BackToTopButton";
-import Footer from "@/components/home/Footer";
 
 export const Landing = async () => {
   const newsData = await getLatestNews();
@@ -25,7 +24,6 @@ export const Landing = async () => {
       <News newsData={newsData} />
       <TestimonialSection />
       <ReadyToTransform />
-      <Footer />
     </>
   );
 };
