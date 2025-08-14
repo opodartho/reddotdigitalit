@@ -32,14 +32,6 @@ export const staticCaseStudiesData: CaseStudyItem[] = [
     title: "DFS Solution",
     description:
       "Our cutting-edge Modular Data Center solutions enable to protect mission-critical data.",
-    imageUrl: "/images/case-study-HRMS.jpg",
-  },
-
-  {
-    id: 5,
-    title: "Another Solution",
-    description:
-      "Our cutting-edge Modular Data Center solutions enable to protect mission-critical data.",
-    imageUrl: "/images/case-study-another.png",
+    imageUrl: "/images/case-study-my-robi-app.jpg",
   },
 ];

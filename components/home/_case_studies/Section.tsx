@@ -1,14 +1,7 @@
 import * as React from "react";
-import { CaseStudyCard } from "./CaseStudyCard";
 import { CaseStudyItem } from "@/lib/data/caseStudiesData";
 import { Button } from "@/components/ui/button";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
+import { CaseStudiesCarousel } from "./CaseStudiesCarousel";
 
 type CaseStudiesSectionProps = {
   caseStudiesData: CaseStudyItem[];
@@ -34,32 +27,7 @@ const CaseStudies = ({ caseStudiesData }: CaseStudiesSectionProps) => {
         </div>
 
         <div className="mt-12">
-          <Carousel
-            opts={{
-              align: "start",
-              loop: true,
-            }}
-            className="w-full"
-          >
-            <CarouselContent className="-ml-4">
-              {caseStudiesData.map((item) => (
-                <CarouselItem
-                  key={item.id}
-                  className="pl-4 md:basis-1/2 lg:basis-1/3"
-                >
-                  <div className="p-1">
-                    <CaseStudyCard
-                      title={item.title}
-                      description={item.description}
-                      imageUrl={item.imageUrl}
-                    />
-                  </div>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <CarouselPrevious className="hidden sm:flex" />
-            <CarouselNext className="hidden sm:flex" />
-          </Carousel>
+          <CaseStudiesCarousel caseStudiesData={caseStudiesData} />
         </div>
       </div>
     </section>
