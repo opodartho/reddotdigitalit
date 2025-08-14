@@ -25,7 +25,7 @@ const BackToTop = () => {
         <button
           onClick={scrollToTop}
           aria-label="Back to top"
-          className="flex items-center gap-2  rounded-full border border-gray-200 bg-white py-0.5 pr-4 pl-3 text-black shadow-lg  transition-all hover:shadow-xl "
+          className="flex items-center gap-2  rounded-full border border-gray-200 bg-white py-0.5 pr-4 pl-0.5 text-black shadow-lg  transition-all hover:shadow-xl "
         >
           <div className="flex h-9 w-9 items-center justify-center rounded-full bg-[#3B3060]">
             {" "}
@@ -42,7 +42,7 @@ const BackToTop = () => {
               <path d="M12 19V5M5 12l7-7 7 7" />
             </svg>
           </div>
-          <span className="ml-1 text-base font-semibold text-gray-800">
+          <span className="ml-1 pl-0.25 text-base font-semibold text-gray-800">
             Back to Top
           </span>
         </button>

@@ -10,6 +10,7 @@ import TestimonialSection from "@/components/home/_testimonial/Section";
 import HeroSection from "@/components/home/_hero_section/Section";
 import BackToTop from "@/components/home/_back_to_top/BackToTopButton";
 import { getTestimonials } from "@/lib/api/fetchTestimonials";
+import { ServicesCarousel } from "@/components/home/_services_carousel/Carousel";
 
 export const Landing = async () => {
   const blogsData = await getLatestBlogs();
@@ -19,6 +20,7 @@ export const Landing = async () => {
   return (
     <>
       <HeroSection />
+      <ServicesCarousel />
       <BackToTop />
       <ProductSolution />
       <WhoWeAre />
