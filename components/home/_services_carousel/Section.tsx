@@ -1,10 +1,10 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
-import { services } from "./servicesData";
 import Link from "next/link";
+import { Service } from "@/lib/data/servicesData";
 // import { Infinity } from "lucide-react";
 
-export const ServicesCarousel = () => {
+export const ServicesCarousel = ({ services }: { services: Service[] }) => {
   const [isPaused, setIsPaused] = useState(false);
   const carouselRef = useRef<HTMLDivElement>(null);
   const [isDragging, setIsDragging] = useState(false);
@@ -62,7 +62,7 @@ export const ServicesCarousel = () => {
         onMouseUp={handleMouseUp}
         onMouseLeave={handleMouseUp}
       >
-        {services.concat(services).map((service, index) => (
+        {services.map((service, index) => (
           <Link
             key={`${service.id}-${index}`}
             href={service.href}
