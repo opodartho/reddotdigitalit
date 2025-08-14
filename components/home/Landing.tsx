@@ -9,10 +9,12 @@ import ReadyToTransform from "@/components/home/_ready_to_transform/Section";
 import TestimonialSection from "@/components/home/_testimonial/Section";
 import HeroSection from "@/components/home/_hero_section/Section";
 import BackToTop from "@/components/home/_back_to_top/BackToTopButton";
+import { getTestimonials } from "@/lib/api/fetchTestimonials";
 
 export const Landing = async () => {
-  const newsData = await getLatestNews();
   const blogsData = await getLatestBlogs();
+  const newsData = await getLatestNews();
+  const testimonialsData = await getTestimonials();
 
   return (
     <>
@@ -22,7 +24,7 @@ export const Landing = async () => {
       <WhoWeAre />
       <Blogs blogsData={blogsData} />
       <News newsData={newsData} />
-      <TestimonialSection />
+      <TestimonialSection testimonials={testimonialsData} />
       <ReadyToTransform />
     </>
   );
