@@ -12,12 +12,18 @@ import BackToTop from "@/components/home/_back_to_top/BackToTopButton";
 import { getTestimonials } from "@/lib/api/fetchTestimonials";
 import { ServicesCarousel } from "@/components/home/_services_carousel/Section";
 import { getServices } from "@/lib/api/fetchServices";
+import { getCaseStudies } from "@/lib/api/fetchCaseStudies";
+import CaseStudies from "@/components/home/_case_studies/Section";
 
 export const Landing = async () => {
-  const blogsData = await getLatestBlogs();
-  const newsData = await getLatestNews();
-  const testimonialsData = await getTestimonials();
-  const servicesData = await getServices();
+  const [newsData, caseStudiesData, blogsData, testimonialsData, servicesData] =
+    await Promise.all([
+      getLatestNews(),
+      getCaseStudies(),
+      getLatestBlogs(),
+      getTestimonials(),
+      getServices(),
+    ]);
 
   return (
     <>
@@ -26,6 +32,7 @@ export const Landing = async () => {
       <BackToTop />
       <ProductSolution />
       <WhoWeAre />
+      <CaseStudies caseStudiesData={caseStudiesData} />
       <Blogs blogsData={blogsData} />
       <News newsData={newsData} />
       <TestimonialSection testimonials={testimonialsData} />

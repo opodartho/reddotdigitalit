@@ -10,13 +10,16 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary/90",
+        default:
+          "text-white bg-[#E52445] hover:bg-primary/40 dark:bg-transparent rounded-md",
         outline:
-          "border-input bg-background hover:bg-accent hover:text-accent-foreground border",
+          "border border-[#E52445] text-[#E52445] bg-white hover:bg-red-200 dark:bg-transparent rounded-md",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         destructive:
           "bg-destructive text-destructive-foreground hover:bg-destructive/90",
-        link: "text-primary rounded-none underline-offset-4 hover:underline",
+        roundedOutline:
+          "border border-[#E52445] text-[#E52445] bg-white hover:bg-red-200 dark:bg-transparent rounded-full",
+        link: "text-primary rounded-none underline-offset-4 hover:underline h-auto p-0 text-[#E52445]",
       },
       shape: {
         default: "rounded-md",
@@ -24,10 +27,10 @@ const buttonVariants = cva(
         pill: "rounded-full",
       },
       size: {
-        default: "h-10 px-4",
-        sm: "h-9 px-3",
-        lg: "h-11 px-8",
-        icon: "h-10 w-10 p-0",
+        default: "h-9 px-8 py-2 has-[>svg]:px-7",
+        sm: "h-8 gap-1.5 px-7 has-[>svg]:px-6",
+        lg: "h-10 px-10 has-[>svg]:px-8",
+        icon: "size-9",
       },
     },
     compoundVariants: [
@@ -35,17 +38,15 @@ const buttonVariants = cva(
       { shape: "pill", size: "default", class: "px-6" },
       { shape: "pill", size: "lg", class: "px-8" },
       { shape: "pill", size: "icon", class: "h-10 w-10 p-0" },
+      {
+        variant: "link",
+        class: "p-0",
+      },
     ],
     defaultVariants: {
       variant: "default",
       shape: "default",
       size: "default",
-    },
-    size: {
-      default: "h-9 px-8 py-2 has-[>svg]:px-7",
-      sm: "h-8 gap-1.5 px-7 has-[>svg]:px-6",
-      lg: "h-10 px-10 has-[>svg]:px-8",
-      icon: "size-9",
     },
   }
 );
