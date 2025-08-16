@@ -73,7 +73,7 @@ export default function HeroSection() {
             Delivering <span className="text-[#E52445]">Excellence</span>
           </h1>
 
-          <p className="text-[#70738F] text-lg leading-relaxed">
+          <p className="text-[#121926] text-lg leading-relaxed">
             We turn ideas into innovative tech solutions with custom software
             that boosts efficiency and growth.
           </p>
