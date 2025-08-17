@@ -6,7 +6,7 @@ import ProductSolution from "@/components/home/_product_solution/Section";
 import ReadyToTransform from "@/components/home/_ready_to_transform/Section";
 import TestimonialSection from "@/components/home/_testimonial/Section";
 import HeroSection from "@/components/home/_hero_section/Section";
-
+import AreaOfOperations from "@/components/home/AreaOfOperations/Section";
 export const Landing = async () => {
   const newsData = await getLatestNews();
 
@@ -14,6 +14,7 @@ export const Landing = async () => {
     <>
       <HeroSection />
       <ProductSolution />
+      <AreaOfOperations />
       <News newsData={newsData} />
       <WhoWeAre />
       <TestimonialSection />
