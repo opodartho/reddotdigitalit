@@ -2,14 +2,9 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { Button } from "@/components/ui/button";
-import { OperationSection } from "@/lib/data/AreaOfOperation"; // Import the type
+import { Button } from "../ui/button"; // Assuming your button component path
 
-// Define the type for the component's props
-type AreaOfOperationsProps = {
-  sections: OperationSection[];
-};
-
+// Data can remain outside the component
 const sections = [
   {
     id: "fintech",
@@ -83,8 +78,9 @@ const sections = [
   },
 ];
 
-export default function AreaOfOperations({ sections }: AreaOfOperationsProps) {
-  const gapInRem = 2.5;
+export default function AreaOfOperations() {
+  // --- CONTROL THE GAP SIZE HERE ---
+  const gapInRem = 2.5; // e.g., 2.5rem = 40px
 
   const [visited, setVisited] = useState<string[]>([sections[0].id]);
   const rightContentRef = useRef<HTMLDivElement>(null);
@@ -122,25 +118,28 @@ export default function AreaOfOperations({ sections }: AreaOfOperationsProps) {
   return (
     <section className="py-16 bg-gradient-to-r from-pink-50 via-white to-orange-50">
       <div className="max-w-6xl mx-auto px-4">
+        {/* Heading */}
         <div className="text-center mb-12">
-          <h2 className="text-3xl text-poppins font-bold mb-2">
-            Area of Operations
-          </h2>
-          <p className="text-gray-700  text-poppins text-base max-w-xl mx-auto">
+          <h2 className="text-3xl font-bold mb-2">Area of Operations</h2>
+          <p className="text-gray-700 text-base max-w-xl mx-auto">
             Our cutting-edge Modular Data Center solutions enable to <br />
             protect mission-critical data.
           </p>
         </div>
 
         <div className="grid grid-cols-[200px_1fr] gap-12 h-[600px]">
+          {/* --- FINAL CORRECTED LEFT INDICATOR --- */}
           <div className="relative pt-1.5">
+            {/* 1. Gray Background Line (height is now calculated) */}
             <div
               className="absolute left-[5px] top-0 w-0.5 bg-gray-300"
               style={{
+                // THIS IS THE FIX: Calculate height to stop at the center of the last dot
                 height: `${(sections.length - 1) * (gapInRem * 28) + 6}px`,
               }}
             />
 
+            {/* 2. Red Foreground Line (height changes on scroll) */}
             <div
               className="absolute left-[5px] top-0 w-0.5 bg-red-500 transition-all duration-300"
               style={{
@@ -152,6 +151,7 @@ export default function AreaOfOperations({ sections }: AreaOfOperationsProps) {
               }}
             />
 
+            {/* Dots and Text (rendered on top of the lines) */}
             {sections.map((section, index) => {
               const isVisited = visited.includes(section.id);
               const isLastItem = index === sections.length - 1;
@@ -183,7 +183,9 @@ export default function AreaOfOperations({ sections }: AreaOfOperationsProps) {
               );
             })}
           </div>
+          {/* --- END OF CORRECTED SECTION --- */}
 
+          {/* Right scrollable content */}
           <div
             ref={rightContentRef}
             className="pr-6 overflow-y-auto relative"
@@ -197,9 +199,7 @@ export default function AreaOfOperations({ sections }: AreaOfOperationsProps) {
             {sections.map((section) => (
               <section
                 key={section.id}
-                ref={(el) => {
-                  sectionRefs.current[section.id] = el;
-                }}
+                ref={(el) => (sectionRefs.current[section.id] = el ?? null)}
                 className="mb-20"
                 style={{ minHeight: "500px" }}
               >
@@ -231,7 +231,7 @@ export default function AreaOfOperations({ sections }: AreaOfOperationsProps) {
                         className="flex items-center gap-2 text-gray-700"
                       >
                         <Image
-                          src="/checkmark (1) 1.png"
+                          src="/checkmark (1) 1.png" // Make sure this path is correct
                           alt="Checkmark icon"
                           width={18}
                           height={18}
@@ -242,6 +242,7 @@ export default function AreaOfOperations({ sections }: AreaOfOperationsProps) {
                   </ul>
                 </div>
 
+                {/* Corrected button margin to a valid Tailwind class */}
                 <Button variant="default" size="lg" className="mt-20">
                   Read More
                 </Button>
