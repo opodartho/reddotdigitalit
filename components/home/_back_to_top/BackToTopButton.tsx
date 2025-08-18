@@ -19,7 +19,7 @@ const BackToTop = () => {
   };
 
   return (
-    <div className="fixed right-6 z-50 opacity-30 hover:opacity-100">
+    <div className="fixed top-0 right-6 flex h-screen w-screen items-center justify-end opacity-30 hover:opacity-100">
       {" "}
       {isVisible && (
         <button
