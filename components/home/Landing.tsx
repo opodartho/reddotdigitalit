@@ -14,17 +14,24 @@ import { ServicesCarousel } from "@/components/home/_services_carousel/Section";
 import { getServices } from "@/lib/api/fetchServices";
 import { getCaseStudies } from "@/lib/api/fetchCaseStudies";
 import CaseStudies from "@/components/home/_case_studies/Section";
+import { getTransformData } from "@/lib/api/fetchTransform";
 
 export const Landing = async () => {
-  const [newsData, caseStudiesData, blogsData, testimonialsData, servicesData] =
-    await Promise.all([
-      getLatestNews(),
-      getCaseStudies(),
-      getLatestBlogs(),
-      getTestimonials(),
-      getServices(),
-    ]);
-
+  const [
+    newsData,
+    caseStudiesData,
+    blogsData,
+    testimonialsData,
+    servicesData,
+    transformData,
+  ] = await Promise.all([
+    getLatestNews(),
+    getCaseStudies(),
+    getLatestBlogs(),
+    getTestimonials(),
+    getServices(),
+    getTransformData(),
+  ]);
   return (
     <>
       <HeroSection />
@@ -36,7 +43,7 @@ export const Landing = async () => {
       <Blogs blogsData={blogsData} />
       <News newsData={newsData} />
       <TestimonialSection testimonials={testimonialsData} />
-      <ReadyToTransform />
+      <ReadyToTransform transformData={transformData} />
     </>
   );
 };
