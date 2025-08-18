@@ -1,12 +1,26 @@
-import React from 'react'
-import TransformSection from '@/components/home/_ready_to_transform/TransformSection'
+import React from "react";
+import { TransformCard } from "./TransformCard";
+import { TransformItem } from "@/lib/data/transformData";
 
-const ReadyToTransform = () => {
+type TransformSectionProps = {
+  transformData: TransformItem[];
+};
+
+const ReadyToTransform = ({ transformData }: TransformSectionProps) => {
   return (
-    <div className='pt-50'>
-      <TransformSection />
-    </div>
-  )
-}
+    <>
+      {transformData.map((item) => (
+        <TransformCard
+          key={item.id}
+          heading={item.heading}
+          description={item.description}
+          buttonText={item.buttonText}
+          buttonLink={item.buttonLink}
+          imageUrl={item.imageUrl}
+        />
+      ))}
+    </>
+  );
+};
 
-export default ReadyToTransform
+export default ReadyToTransform;

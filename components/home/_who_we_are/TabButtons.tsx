@@ -1,6 +1,6 @@
 'use client';
 import { useState } from 'react';
-export const TabButtons = ({about, achievement}) => {
+export const TabButtons = ({ about, achievement }) => {
   const [activeTab, setActiveTab] = useState<'about' | 'achievement'>('about');
 
   return (
