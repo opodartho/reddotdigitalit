@@ -1,4 +1,5 @@
 import React from "react";
+import { getAboutData, getAchievementData } from "@/lib/api/fetchWhoWeAre";
 import WhoWeAre from "@/components/home/_who_we_are/Section";
 import News from "@/components/home/_news/Section";
 import Blogs from "@/components/home/_blogs/Section";
@@ -24,6 +25,8 @@ export const Landing = async () => {
     testimonialsData,
     servicesData,
     transformData,
+    aboutData,
+    achievementData,
   ] = await Promise.all([
     getLatestNews(),
     getCaseStudies(),
@@ -31,18 +34,22 @@ export const Landing = async () => {
     getTestimonials(),
     getServices(),
     getTransformData(),
+    getAboutData(),
+    getAchievementData(),
   ]);
+
   return (
     <>
       <HeroSection />
       <ServicesCarousel services={servicesData} />
       <BackToTop />
       <ProductSolution />
-      <WhoWeAre />
+      <WhoWeAre aboutData={aboutData} achievementData={achievementData} />
       <CaseStudies caseStudiesData={caseStudiesData} />
       <Blogs blogsData={blogsData} />
       <News newsData={newsData} />
       <TestimonialSection testimonials={testimonialsData} />
+      <News newsData={newsData} />
       <ReadyToTransform transformData={transformData} />
     </>
   );

@@ -3,20 +3,22 @@ import { AchievementData } from "@/lib/data/whoWeAreData";
 
 interface AchievementCardProps extends AchievementData {}
 
-const AchievementCard: React.FC<AchievementCardProps> = ({
-  title,
-  value,
-  description,
-  icon,
-  bgGradient,
-}) => (
-  <div className={`flex flex-col rounded-xl p-6 text-center shadow-md ${bgGradient}`}>
-    <div className="mb-4 text-left text-3xl">{icon}</div>
-    <h3 className="mb-2 text-left text-2xl">{title}</h3>
-    <p className="mb-20 text-left text-5xl">{value}</p>
-    <p className="text-gray-600">{description}</p>
-  </div>
-);
+const AchievementCard = ({ 
+  title, 
+  value, 
+  description, 
+  icon, 
+  bgGradient 
+}: AchievementCardProps) => {
+  return (
+    <div className={`flex flex-col rounded-xl p-6 text-center shadow-md ${bgGradient}`}>
+      <div className="mb-4 text-left text-3xl">{icon}</div>
+      <h3 className="mb-2 text-left text-2xl">{title}</h3>
+      <p className="mb-20 text-left text-5xl">{value}</p>
+      <p className="text-gray-600">{description}</p>
+    </div>
+  );
+};
 
 const Achievement = ({ data }: { data: AchievementData[] }) => {
   return (
