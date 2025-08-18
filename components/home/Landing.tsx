@@ -16,6 +16,7 @@ import { getServices } from "@/lib/api/fetchServices";
 import { getCaseStudies } from "@/lib/api/fetchCaseStudies";
 import CaseStudies from "@/components/home/_case_studies/Section";
 import { getTransformData } from "@/lib/api/fetchTransform";
+import { NavBar } from "@/components/NavBar/NavBar";
 
 export const Landing = async () => {
   const [
