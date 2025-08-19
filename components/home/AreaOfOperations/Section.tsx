@@ -10,79 +10,6 @@ type AreaOfOperationsProps = {
   sections: OperationSection[];
 };
 
-const sections = [
-  {
-    id: "fintech",
-    title: "Fintech Solution",
-    description:
-      "We foster seamless collaboration through open communication and transparency. Our flexible partnership model adapts,",
-    images: ["/Rectangle 21475.png", "/Rectangle.png"],
-    coverage: [
-      "Team Augmentation",
-      "Product Start to Finish Development",
-      "MVP Services",
-      "DevOps as a Service",
-      "Cloud Migration",
-      "Remote Development",
-    ],
-  },
-  {
-    id: "software",
-    title: "Customized Software Solution",
-    description:
-      "Tailored software designed to meet your unique business needs effectively.",
-    images: ["/Rectangle 21475.png", "/Rectangle.png"],
-    coverage: [
-      "Custom Development",
-      "Integration Services",
-      "API Design",
-      "Quality Assurance",
-      "Maintenance & Support",
-    ],
-  },
-  {
-    id: "ai",
-    title: "AI & Machine Learning",
-    description:
-      "Harness the power of AI for automation, prediction, and actionable insights.",
-    images: ["/Rectangle 21475.png", "/Rectangle.png"],
-    coverage: [
-      "Predictive Analytics",
-      "Natural Language Processing",
-      "Computer Vision",
-      "Automated Workflows",
-    ],
-  },
-  {
-    id: "rpa",
-    title: "RPA & Automation",
-    description:
-      "Automate repetitive tasks to save time and reduce errors across business processes.",
-    images: ["/Rectangle 21475.png", "/Rectangle.png"],
-    coverage: [
-      "Automation Scripts",
-      "Process Optimization",
-      "Monitoring Tools",
-    ],
-  },
-  {
-    id: "telco",
-    title: "Telco Service",
-    description:
-      "High-quality telecom solutions designed to ensure seamless communication.",
-    images: ["/Rectangle 21475.png", "/Rectangle.png"],
-    coverage: ["Network Setup", "Maintenance", "Monitoring"],
-  },
-  {
-    id: "DevOps",
-    title: "DevOps",
-    description:
-      "High-quality telecom solutions designed to ensure seamless communication.",
-    images: ["/Rectangle 21475.png", "/Rectangle.png"],
-    coverage: ["Network Setup", "Maintenance", "Monitoring"],
-  },
-];
-
 export default function AreaOfOperations({ sections }: AreaOfOperationsProps) {
   const gapInRem = 2.5;
 
@@ -90,29 +17,31 @@ export default function AreaOfOperations({ sections }: AreaOfOperationsProps) {
   const rightContentRef = useRef<HTMLDivElement>(null);
   const sectionRefs = useRef<Record<string, HTMLElement | null>>({});
 
+  const handleScroll = () => {
+    const rightEl = rightContentRef.current;
+    if (!rightEl) return;
+    const threshold = rightEl.scrollTop + rightEl.offsetHeight / 2;
+    const newVisited: string[] = [];
+
+    for (const section of sections) {
+      const el = sectionRefs.current[section.id];
+      if (el && el.offsetTop < threshold) {
+        newVisited.push(section.id);
+      }
+    }
+
+    if (newVisited.length === 0) {
+      newVisited.push(sections[0].id);
+    }
+
+    if (JSON.stringify(newVisited) !== JSON.stringify(visited)) {
+      setVisited(newVisited);
+    }
+  };
+
   useEffect(() => {
     const rightEl = rightContentRef.current;
     if (!rightEl) return;
-
-    const handleScroll = () => {
-      const threshold = rightEl.scrollTop + rightEl.offsetHeight / 2;
-      const newVisited: string[] = [];
-
-      for (const section of sections) {
-        const el = sectionRefs.current[section.id];
-        if (el && el.offsetTop < threshold) {
-          newVisited.push(section.id);
-        }
-      }
-
-      if (newVisited.length === 0) {
-        newVisited.push(sections[0].id);
-      }
-
-      if (JSON.stringify(newVisited) !== JSON.stringify(visited)) {
-        setVisited(newVisited);
-      }
-    };
 
     handleScroll();
     rightEl.addEventListener("scroll", handleScroll, { passive: true });
