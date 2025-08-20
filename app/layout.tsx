@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Poppins, Inter } from "next/font/google";
 import "./globals.css";
 import BackToTop from "@/components/home/_back_to_top/BackToTopButton";
+import { NavBar } from "@/components/NavBar/NavBar";
 import Footer from "@/components/Footer/Footer";
 
 const geistSans = Geist({
@@ -43,6 +44,7 @@ export default async function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} ${poppins.variable} ${inter.variable} antialiased`}
         suppressHydrationWarning
       >
+        <NavBar />
         <main>{children}</main>
         <Footer />
         <BackToTop />

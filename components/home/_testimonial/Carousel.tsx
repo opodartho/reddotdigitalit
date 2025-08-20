@@ -10,7 +10,6 @@ type CarouselProps = {
   testimonials: Testimonial[];
 };
 
-//ACCEPT PROPS
 export const TestimonialCarousel: React.FC<CarouselProps> = ({
   testimonials,
 }) => {
@@ -25,7 +24,7 @@ export const TestimonialCarousel: React.FC<CarouselProps> = ({
   }, [emblaApi]);
 
   return (
-    <>
+    <div>
       <div className="flex justify-between items-start mb-8">
         <div>
           <h2 className="font-semibold text-[32px] leading-[40px] tracking-[0.03px] text-gray-800">
@@ -58,9 +57,8 @@ export const TestimonialCarousel: React.FC<CarouselProps> = ({
         <div className="embla__container">
           {testimonials.map((testimonial) => (
             <div className="embla__slide" key={testimonial.id}>
-              {/* This is the inner card content */}
               <div className="flex flex-col md:flex-row items-center">
-                <div className="w-full md:w-1/3 flex-shrink-0 mb-8 md:mb-0 md:mr-12">
+                <div className="w-full md:w-1/3 flex-shrink-0 mb-6 md:mb-0 md:mr-8">
                   <Image
                     src={testimonial.imageSrc}
                     alt={testimonial.name}
@@ -73,7 +71,7 @@ export const TestimonialCarousel: React.FC<CarouselProps> = ({
                   <blockquote className="text-gray-600 text-lg leading-relaxed">
                     "{testimonial.quote}"
                   </blockquote>
-                  <div className="mt-8">
+                  <div className="mt-6">
                     <Image
                       src={testimonial.logoSrc}
                       alt={`${testimonial.company} Logo`}
@@ -93,6 +91,6 @@ export const TestimonialCarousel: React.FC<CarouselProps> = ({
           ))}
         </div>
       </div>
-    </>
+    </div>
   );
 };
