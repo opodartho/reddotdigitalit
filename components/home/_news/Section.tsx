@@ -10,7 +10,7 @@ const News = ({ newsData }: NewsSectionProps) => {
   return (
     <section className="px-8 py-16">
       <div className="mx-auto max-w-7xl">
-        <h2 className="mb-12 pb-6 text-center text-3xl font-bold">
+        <h2 className="mb-[54px] text-center font-poppins text-[32px] font-semibold leading-[40px] tracking-[0.03px]">
           Latest News
         </h2>
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
