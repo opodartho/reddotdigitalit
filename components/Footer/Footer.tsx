@@ -63,7 +63,7 @@ const Footer = async () => {
             ))}
           </div>
 
-          <div className="text-sm text-gray-600">
+          <div className="text-sm text-gray-600 mr-10">
             <p>{copyright}</p>
           </div>
         </div>
