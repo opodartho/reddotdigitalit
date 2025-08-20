@@ -9,14 +9,14 @@ const Footer = async () => {
   const { logoUrl, columns, brochure, legalLinks, copyright } = footerData;
 
   return (
-    <footer className="bg-[#E9E8F8] font-poppins">
+    <footer className="bg-gradient-to-b from-slate-100 via-violet-100 to-violet-100 font-poppins mt-20 pl-10">
       {/* Top Section of Footer */}
       <div className="container mx-auto px-6 py-12">
         <div className="flex justify-center mb-12">
           <Image
             src={logoUrl}
             alt="RedDot Digital - Your Digital Transformation Partner"
-            width={110}
+            width={136.25}
             height={37.72}
             priority
           />
@@ -29,7 +29,7 @@ const Footer = async () => {
       </div>
 
       {/* Bottom Bar of Footer */}
-      <div className="bg-[#E0DFF5] py-6">
+      <div className="py-6 border-t border-slate-800/10">
         <div className="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-center md:text-left">
           <div className="mb-4 md:mb-0">
             <a href={brochure.href} className="flex items-center gap-3 group">
