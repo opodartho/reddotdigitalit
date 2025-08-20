@@ -1,3 +1,5 @@
+// tailwind.config.ts
+
 import type { Config } from "tailwindcss";
 
 const config: Config = {
@@ -41,8 +43,8 @@ const config: Config = {
         DEFAULT: "var(--radius)",
       },
       animation: {
-        "marquee-left": "marquee-left 20s linear infinite",
-        "marquee-right": "marquee-right 20s linear infinite",
+        "marquee-left": "marquee-left 40s linear infinite",
+        "marquee-right": "marquee-right 40s linear infinite",
       },
       keyframes: {
         "marquee-left": {
