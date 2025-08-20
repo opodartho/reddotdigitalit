@@ -4,7 +4,7 @@ export const TabButtons = ({ about, achievement }) => {
   const [activeTab, setActiveTab] = useState<'about' | 'achievement'>('about');
 
   return (
-    <div className="mt-6">
+    <div className="mt-[41px]">
       {/* Tab Buttons */}
       <div className="flex justify-center">
         <div className="overflow-hidden rounded-xl border">

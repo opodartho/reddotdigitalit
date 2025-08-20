@@ -12,8 +12,10 @@ interface WhoWeAreProps {
 const WhoWeAre = ({ aboutData, achievementData }: WhoWeAreProps) => {
   return (
     <section>
-      <h1 className="pt-7 text-center text-2xl font-bold">Who We Are</h1>
-      <p className="pt-2 text-center">
+      <h1 className="--font-poppins font-semibold text-[32px] leading-[40px] tracking-[0.03px] text-center align-middle mt-[106px]">
+        Who We Are
+      </h1>
+      <p className="--font-poppins font-normal text-[14px] leading-[22px] tracking-[0] text-center align-middle mt-[16px]">
         Our cutting-edge Modular Data Center solutions enable to
         <br /> protect mission-critical data
       </p>

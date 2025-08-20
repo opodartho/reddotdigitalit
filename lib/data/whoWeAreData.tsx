@@ -22,40 +22,40 @@ export const aboutData: AboutData = {
   support the Government of Bangladesh in meeting its digital goals in the country
   by offering cutting-edge, home-grown, cost-optimized IT applications, Cloud DC,
   IoT solutions among others.`,
-  images: [
-    "/group2.jpg",
-    "/speaker.jpg",
-    "/discussion.jpg"
-  ]
+  images: ["/images/group3.png", "/images/speaker (2).png", "/images/discussion.png"],
 };
 
 export const achievementData: AchievementData[] = [
   {
-    icon: "❄️",
+    icon: "/images/professionals.png",
     title: "Professionals",
     value: "200+",
-    description: "Our cutting-edge Modular Data Center solutions enable to protect mission-critical data.",
-    bgGradient: "bg-gradient-to-r from-cyan-300 to-blue-500 to-cyan-100"
+    description:
+      "Our cutting-edge Modular Data Center solutions enable to protect mission-critical data.",
+    bgGradient: "bg-gradient-to-r from-cyan-300 to-blue-500 to-cyan-100",
   },
   {
-    icon: "⚙️",
+    icon: "/images/techstack.png",
     title: "Tech Stack",
     value: "80+",
-    description: "Our cutting-edge Modular Data Center solutions enable to protect mission-critical data.",
-    bgGradient: "bg-gradient-to-r from-pink-200 to-pink-100"
+    description:
+      "Our cutting-edge Modular Data Center solutions enable to protect mission-critical data.",
+    bgGradient: "bg-gradient-to-r from-pink-200 to-pink-100",
   },
   {
-    icon: "📋",
+    icon: "/images/project.png",
     title: "Projects",
     value: "30+",
-    description: "Our cutting-edge Modular Data Center solutions enable to protect mission-critical data.",
-    bgGradient: "bg-gradient-to-r from-violet-300 to-indigo-200"
+    description:
+      "Our cutting-edge Modular Data Center solutions enable to protect mission-critical data.",
+    bgGradient: "bg-gradient-to-r from-violet-300 to-indigo-200",
   },
   {
-    icon: "⭐",
+    icon: "/images/experience.png",
     title: "Experience",
     value: "7 Years",
-    description: "Our cutting-edge Modular Data Center solutions enable to protect mission-critical data.",
-    bgGradient: "bg-gradient-to-r from-emerald-200 to-yellow-100"
-  }
+    description:
+      "Our cutting-edge Modular Data Center solutions enable to protect mission-critical data.",
+    bgGradient: "bg-gradient-to-r from-emerald-200 to-yellow-100",
+  },
 ];
