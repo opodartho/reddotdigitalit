@@ -3,6 +3,7 @@
 import React, { useCallback } from "react";
 import Image from "next/image";
 import useEmblaCarousel from "embla-carousel-react";
+import Autoplay from "embla-carousel-autoplay";
 import "./embla.css";
 import { Testimonial } from "@/lib/data/testimonialData";
 
@@ -13,7 +14,9 @@ type CarouselProps = {
 export const TestimonialCarousel: React.FC<CarouselProps> = ({
   testimonials,
 }) => {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, [
+    Autoplay({ delay: 3000, stopOnInteraction: false }),
+  ]);
 
   const scrollPrev = useCallback(() => {
     if (emblaApi) emblaApi.scrollPrev();
