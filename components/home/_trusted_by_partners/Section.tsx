@@ -11,11 +11,16 @@ type PartnersSectionProps = {
 };
 
 const PartnersSection = ({ partnersData }: PartnersSectionProps) => {
+  if (!partnersData || partnersData.length === 0) {
+    return null;
+  }
+
   const partnersPerRow = Math.ceil(partnersData.length / 3);
   const row1Partners = partnersData.slice(0, partnersPerRow);
   const row2Partners = partnersData.slice(partnersPerRow, partnersPerRow * 2);
   const row3Partners = partnersData.slice(partnersPerRow * 2);
 
+  // The duplication is essential for a seamless loop
   const duplicatedRow1 = [...row1Partners, ...row1Partners];
   const duplicatedRow2 = [...row2Partners, ...row2Partners];
   const duplicatedRow3 = [...row3Partners, ...row3Partners];
@@ -36,7 +41,7 @@ const PartnersSection = ({ partnersData }: PartnersSectionProps) => {
           className="relative my-4 overflow-hidden"
           style={{
             maskImage:
-              "linear-gradient(to right, transparent 0%, black 0%, black 90%, transparent 100%)",
+              "linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)",
             WebkitMaskImage:
               "linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)",
           }}
@@ -73,7 +78,6 @@ const PartnersSection = ({ partnersData }: PartnersSectionProps) => {
           </div>
         </div>
 
-        {/* Row 3 - Left to Right */}
         <div
           className="relative my-4 overflow-hidden"
           style={{
