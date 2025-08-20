@@ -7,25 +7,33 @@ const BackToTop = () => {
 
   useEffect(() => {
     const toggleVisibility = () => {
-      if (window.scrollY > 300) setIsVisible(true);
-      else setIsVisible(false);
+      if (window.scrollY > 300) {
+        setIsVisible(true);
+      } else {
+        setIsVisible(false);
+      }
     };
+
     window.addEventListener("scroll", toggleVisibility);
+
     return () => window.removeEventListener("scroll", toggleVisibility);
   }, []);
 
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
   };
 
   return (
-    <div className="fixed top-0 right-6 flex h-screen w-screen items-center justify-end opacity-30 hover:opacity-100">
+    <div className="pointer-events-none fixed top-0 right-6 flex h-screen items-center justify-end">
       {" "}
       {isVisible && (
         <button
           onClick={scrollToTop}
           aria-label="Back to top"
-          className="flex items-center gap-2  rounded-full border border-gray-200 bg-white py-0.5 pr-4 pl-0.5 text-black shadow-lg  transition-all hover:shadow-xl "
+          className="pointer-events-auto flex items-center gap-2 rounded-full border border-gray-200 bg-white py-0.5 pr-4 pl-0.5 text-black opacity-30 shadow-lg transition-all hover:bg-gray-100 hover:opacity-100 hover:shadow-xl"
         >
           <div className="flex h-9 w-9 items-center justify-center rounded-full bg-[#3B3060]">
             {" "}
