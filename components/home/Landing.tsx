@@ -50,7 +50,6 @@ export const Landing = async () => {
       <Blogs blogsData={blogsData} />
       <News newsData={newsData} />
       <TestimonialSection testimonials={testimonialsData} />
-      <News newsData={newsData} />
       <ReadyToTransform transformData={transformData} />
     </>
   );
