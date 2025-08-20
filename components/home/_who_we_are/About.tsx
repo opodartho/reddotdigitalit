@@ -9,7 +9,7 @@ type AboutProps = {
 
 const About = ({ data }: AboutProps) => {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-[84px] gap-y-8 px-10">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-[84px] gap-y-8 px-10 mt-[81px]">
       <div className="flex flex-col justify-start space-y-4">
         <h2 className="--font-poppins font-normal text-[25px] leading-[40px] tracking-[0.03px]">
           {data.title}
