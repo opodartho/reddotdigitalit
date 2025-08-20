@@ -53,15 +53,11 @@ export const Landing = async () => {
       <BackToTop />
       <ProductSolution solutions={productSolutionsData} />
       <AreaOfOperations sections={operationsData} />
-      <News newsData={newsData} />
-      <WhoWeAre aboutData={aboutData} achievementData={achievementData} />
-
       <WhoWeAre aboutData={aboutData} achievementData={achievementData} />
       <CaseStudies caseStudiesData={caseStudiesData} />
       <Blogs blogsData={blogsData} />
       <News newsData={newsData} />
       <TestimonialSection testimonials={testimonialsData} />
-      <News newsData={newsData} />
       <ReadyToTransform transformData={transformData} />
     </>
   );
