@@ -59,8 +59,20 @@ export default function AreaOfOperations({ sections }: AreaOfOperationsProps) {
             protect mission-critical data.
           </p>
         </div>
+<<<<<<< Updated upstream
+=======
+
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 342029278d7388c40183507a47dc1f6707047ce2
+>>>>>>> Stashed changes
         <div className="grid md:grid-cols-[200px_1fr] gap-8 md:gap-16 lg:gap-26 h-auto md:h-[600px]">
+          <div className="relative pt-1.5">
+=======
+        <div className="grid grid-cols-[200px_1fr] gap-26 h-[600px]">
           <div className="relative pt-1.5 -ml-6">
+>>>>>>> 763ba6296eb50cf2aafd0a788e97c1e6527b7738
             <div
               className="absolute left-[5px] top-0 w-0.5 bg-gray-300"
               style={{
