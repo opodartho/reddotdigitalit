@@ -18,7 +18,10 @@ export function CaseStudiesCarousel({
   caseStudiesData,
 }: CaseStudiesCarouselProps) {
   const plugin = React.useRef(
-    Autoplay({ delay: 1000, stopOnInteraction: true, stopOnMouseEnter: false })
+    Autoplay({
+      delay: 1800,
+      stopOnInteraction: false,
+    })
   );
 
   return (
