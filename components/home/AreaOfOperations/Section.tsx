@@ -61,7 +61,7 @@ export default function AreaOfOperations({ sections }: AreaOfOperationsProps) {
           </p>
         </div>
 
-        <div className="grid grid-cols-[200px_1fr] gap-12 h-[600px]">
+        <div className="grid md:grid-cols-[200px_1fr] gap-8 md:gap-16 lg:gap-26 h-auto md:h-[600px]">
           <div className="relative pt-1.5">
             <div
               className="absolute left-[5px] top-0 w-0.5 bg-gray-300"
