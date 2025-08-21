@@ -19,8 +19,9 @@ import CaseStudies from "@/components/home/_case_studies/Section";
 import { getOperationSections } from "@/lib/api/fetchAreaOfOperation";
 import { getProductSolutions } from "@/lib/api/fetchProductSolutions";
 import { getTransformData } from "@/lib/api/fetchTransform";
-import { NavBar } from "@/components/NavBar/NavBar";
 import { ServiceWeServeTabs } from "@/components/home/_service_we_serve/ServiceWeServe";
+import { getPartners } from "@/lib/api/fetchPartners";
+import PartnersSection from "@/components/home/_trusted_by_partners/Section";
 
 export const Landing = async () => {
   const [
@@ -34,6 +35,7 @@ export const Landing = async () => {
     transformData,
     aboutData,
     achievementData,
+    partnersData, // এই লাইনটি যোগ করুন
   ] = await Promise.all([
     getLatestNews(),
     getCaseStudies(),
@@ -45,6 +47,7 @@ export const Landing = async () => {
     getTransformData(),
     getAboutData(),
     getAchievementData(),
+    getPartners(), // এই লাইনটি যোগ করুন
   ]);
 
   return (
@@ -57,6 +60,7 @@ export const Landing = async () => {
       <WhoWeAre aboutData={aboutData} achievementData={achievementData} />
       <CaseStudies caseStudiesData={caseStudiesData} />
       <ServiceWeServeTabs />
+      <PartnersSection partnersData={partnersData} /> {/* এই লাইনটি যোগ করুন */}
       <Blogs blogsData={blogsData} />
       <News newsData={newsData} />
       <TestimonialSection testimonials={testimonialsData} />
