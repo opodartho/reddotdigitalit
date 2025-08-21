@@ -62,11 +62,10 @@ export const Landing = async () => {
       <WhoWeAre aboutData={aboutData} achievementData={achievementData} />
       <CaseStudies caseStudiesData={caseStudiesData} />
       <ServiceWeServeTabs />
-      <PartnersSection partnersData={partnersData} /> {/* এই লাইনটি যোগ করুন */}
       <TrustedPartners />
       <Blogs blogsData={blogsData} />
       <News newsData={newsData} />
-      {/* <TestimonialSection testimonials={testimonialsData} /> */}
+      <TestimonialSection testimonials={testimonialsData} />
       <ReadyToTransform transformData={transformData} />
     </>
   );
