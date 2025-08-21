@@ -3,9 +3,8 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { OperationSection } from "@/lib/data/AreaOfOperation"; // Import the type
+import { OperationSection } from "@/lib/data/AreaOfOperation";
 
-// Define the type for the component's props
 type AreaOfOperationsProps = {
   sections: OperationSection[];
 };
@@ -112,7 +111,6 @@ export default function AreaOfOperations({ sections }: AreaOfOperationsProps) {
               );
             })}
           </div>
-
           <div
             ref={rightContentRef}
             className="relative overflow-y-auto pr-6"
