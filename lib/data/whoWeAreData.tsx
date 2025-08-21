@@ -22,12 +22,16 @@ export const aboutData: AboutData = {
   support the Government of Bangladesh in meeting its digital goals in the country
   by offering cutting-edge, home-grown, cost-optimized IT applications, Cloud DC,
   IoT solutions among others.`,
-  images: ["/images/group3.png", "/images/speaker (2).png", "/images/discussion.png"],
+  images: [
+    "/images/group3.png",
+    "/images/speaker (2).png",
+    "/images/discussion.png",
+  ],
 };
 
 export const achievementData: AchievementData[] = [
   {
-    icon: "/images/professionals.png",
+    icon: "/image/professionals.png",
     title: "Professionals",
     value: "200+",
     description:
@@ -35,7 +39,7 @@ export const achievementData: AchievementData[] = [
     bgGradient: "bg-gradient-to-r from-cyan-300 to-blue-500 to-cyan-100",
   },
   {
-    icon: "/images/techstack.png",
+    icon: "/image/techstack.png",
     title: "Tech Stack",
     value: "80+",
     description:
@@ -43,7 +47,7 @@ export const achievementData: AchievementData[] = [
     bgGradient: "bg-gradient-to-r from-pink-200 to-pink-100",
   },
   {
-    icon: "/images/project.png",
+    icon: "/image/project.png",
     title: "Projects",
     value: "30+",
     description:
@@ -51,7 +55,7 @@ export const achievementData: AchievementData[] = [
     bgGradient: "bg-gradient-to-r from-violet-300 to-indigo-200",
   },
   {
-    icon: "/images/experience.png",
+    icon: "/image/experience.png",
     title: "Experience",
     value: "7 Years",
     description:

@@ -1,6 +1,4 @@
-// lib/data/operationsData.ts
 
-// First, we define a TypeScript "type" for our data. This helps prevent bugs.
 export type OperationSection = {
   id: string;
   title: string;
@@ -8,8 +6,6 @@ export type OperationSection = {
   images: string[];
   coverage: string[];
 };
-
-// Now, we export your data array.
 export const staticOperationsData: OperationSection[] = [
   {
     id: "fintech",

@@ -6,6 +6,7 @@ type TabButtonsProps = {
 };
 
 import { useState } from "react";
+
 export const TabButtons = ({ about, achievement }: TabButtonsProps) => {
   const [activeTab, setActiveTab] = useState<"about" | "achievement">("about");
 
