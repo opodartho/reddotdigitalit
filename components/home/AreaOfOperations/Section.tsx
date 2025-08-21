@@ -59,8 +59,9 @@ export default function AreaOfOperations({ sections }: AreaOfOperationsProps) {
             protect mission-critical data.
           </p>
         </div>
+
         <div className="grid h-auto gap-8 md:h-[600px] md:grid-cols-[200px_1fr] md:gap-16 lg:gap-26">
-          <div className="relative pt-1.5">
+          <div className="relative -ml-6 pt-1.5">
             <div
               className="absolute top-0 left-[5px] w-0.5 bg-gray-300"
               style={{
