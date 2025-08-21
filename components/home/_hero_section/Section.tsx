@@ -30,7 +30,6 @@ export default function HeroSection() {
     fetchSlides();
   }, []);
 
-  // Update current slide index when carousel changes
   useEffect(() => {
     if (!api) return;
 
@@ -43,10 +42,12 @@ export default function HeroSection() {
 
   return (
     <section
-      className="relative flex flex-col md:flex-row items-center justify-center min-h-screen w-full px-14 py-14 gap-20 overflow-hidden"
+      className="relative flex flex-col md:flex-row items-center justify-start w-full px-14 py-16 gap-10 overflow-hidden"
       style={{
-        background:
-          "radial-gradient(circle at 85% 15%, #F0E8FF 0%, #F3F3F3 50%)",
+        background: `
+    radial-gradient(circle at 85% 15%, #F0E8FF 0%, #FFFFFF 20%),
+    radial-gradient(45.32% 45.32% at 10% 50%, rgba(240, 80, 54, 0.15) 0%, rgba(229, 36, 69, 0) 100%)
+  `,
       }}
     >
       <div className="relative z-10 flex flex-col md:flex-row items-center justify-start gap-30 w-full">
@@ -73,9 +74,9 @@ export default function HeroSection() {
             Delivering <span className="text-[#E52445]">Excellence</span>
           </h1>
 
-          <p className="text-[#121926] text-lg leading-relaxed">
-            We turn ideas into innovative tech solutions with custom software
-            that boosts efficiency and growth.
+          <p className="text-[#121926] w-[515px] h-[60px]text-lg leading-relaxed">
+            We turn ideas into innovative tech solutions with custom <br />
+            software that boosts efficiency and growth.
           </p>
 
           <div className="flex flex-wrap justify-center md:justify-start gap-4">
@@ -105,7 +106,7 @@ export default function HeroSection() {
             <CarouselContent className="ml-0">
               {slides.map((slide) => (
                 <CarouselItem key={slide.id}>
-                  <div className="bg-white rounded-lg w-[85%] shadow-[0_10px_30px_rgba(240,232,255,0.7)]">
+                  <div className="bg-white rounded-lg w-[85%] shadow-[0_12px_48px_0px_rgba(49,1,139,0.07)] mb-8">
                     <div className="rounded-lg h-[250px] flex items-center justify-center relative overflow-hidden px-2 pt-2">
                       <img
                         src={slide.imageUrl}
@@ -127,7 +128,7 @@ export default function HeroSection() {
                         {slide.tags.map((tag) => (
                           <span
                             key={tag}
-                            className="bg-[#EAE8F1] text-xs px-3 py-1 rounded-full text-[#70738F]"
+                            className="bg-[#F5F5FA] text-xs px-3 py-1 rounded-full text-[#70738F]"
                           >
                             {tag}
                           </span>
