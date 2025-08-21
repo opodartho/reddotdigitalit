@@ -18,16 +18,12 @@ import CaseStudies from "@/components/home/_case_studies/Section";
 import { getOperationSections } from "@/lib/api/fetchAreaOfOperation";
 import { getProductSolutions } from "@/lib/api/fetchProductSolutions";
 import { getTransformData } from "@/lib/api/fetchTransform";
-<<<<<<< HEAD
 import { ServiceWeServeTabs } from "@/components/home/_service_we_serve/ServiceWeServe";
 import { getPartners } from "@/lib/api/fetchPartners";
 import PartnersSection from "@/components/home/_trusted_by_partners/Section";
 import TestimonialSection from "@/components/home/_testimonial/Section";
 import TrustedPartners from "./TrustedPartner/sections";
-=======
 import { NavBar } from "@/components/NavBar/NavBar";
-import TrustedPartners from "./TrustedPartner/sections";
->>>>>>> 7cac1e1 (trustedpartners)
 
 export const Landing = async () => {
   const [
