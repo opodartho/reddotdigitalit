@@ -8,6 +8,7 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      // Your existing configurations
       fontFamily: {
         poppins: ["var(--font-poppins)", "sans-serif"],
       },
@@ -42,6 +43,19 @@ const config: Config = {
       borderRadius: {
         DEFAULT: "var(--radius)",
       },
+
+      // --- THIS IS THE FIX ---
+      // This block defines the animation that the component uses.
+      animation: {
+        "scrolling-logos": "scroll 60s linear infinite",
+      },
+      keyframes: {
+        scroll: {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-50%)" },
+        },
+      },
+      // --- End of the fix ---
     },
   },
   plugins: [],
