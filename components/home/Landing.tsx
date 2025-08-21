@@ -20,6 +20,7 @@ import { getOperationSections } from "@/lib/api/fetchAreaOfOperation";
 import { getProductSolutions } from "@/lib/api/fetchProductSolutions";
 import { getTransformData } from "@/lib/api/fetchTransform";
 import { NavBar } from "@/components/NavBar/NavBar";
+import { ServiceWeServeTabs } from "@/components/home/_service_we_serve/ServiceWeServe";
 
 export const Landing = async () => {
   const [
@@ -55,6 +56,7 @@ export const Landing = async () => {
       <AreaOfOperations sections={operationsData} />
       <WhoWeAre aboutData={aboutData} achievementData={achievementData} />
       <CaseStudies caseStudiesData={caseStudiesData} />
+      <ServiceWeServeTabs />
       <Blogs blogsData={blogsData} />
       <News newsData={newsData} />
       <TestimonialSection testimonials={testimonialsData} />
