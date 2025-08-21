@@ -49,37 +49,29 @@ export default function AreaOfOperations({ sections }: AreaOfOperationsProps) {
   }, [visited]);
 
   return (
-    <section className="py-16 bg-gradient-to-r from-pink-50 via-white to-orange-50">
-      <div className="max-w-6xl mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl text-poppins font-bold mb-2">
+    <section className="bg-gradient-to-r from-pink-50 via-white to-orange-50 py-16">
+      <div className="mx-auto max-w-6xl px-4">
+        <div className="mb-12 text-center">
+          <h2 className="text-poppins mb-2 text-3xl font-bold">
             Area of Operations
           </h2>
-          <p className="text-gray-700  text-poppins text-base max-w-xl mx-auto">
+          <p className="text-poppins  mx-auto max-w-xl text-base text-gray-700">
             Our cutting-edge Modular Data Center solutions enable to <br />
             protect mission-critical data.
           </p>
         </div>
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 342029278d7388c40183507a47dc1f6707047ce2
-        <div className="grid md:grid-cols-[200px_1fr] gap-8 md:gap-16 lg:gap-26 h-auto md:h-[600px]">
-          <div className="relative pt-1.5">
-=======
-        <div className="grid grid-cols-[200px_1fr] gap-26 h-[600px]">
-          <div className="relative pt-1.5 -ml-6">
->>>>>>> 763ba6296eb50cf2aafd0a788e97c1e6527b7738
+        <div className="grid h-[600px] grid-cols-[200px_1fr] gap-26">
+          <div className="relative -ml-6 pt-1.5">
             <div
-              className="absolute left-[5px] top-0 w-0.5 bg-gray-300"
+              className="absolute top-0 left-[5px] w-0.5 bg-gray-300"
               style={{
                 height: `${(sections.length - 1) * (gapInRem * 28) + 6}px`,
               }}
             />
 
             <div
-              className="absolute left-[5px] top-0 w-0.5 bg-red-500 transition-all duration-300"
+              className="absolute top-0 left-[5px] w-0.5 bg-red-500 transition-all duration-300"
               style={{
                 height: `${
                   visited.length > 1
@@ -102,14 +94,14 @@ export default function AreaOfOperations({ sections }: AreaOfOperationsProps) {
                 >
                   <div className="flex items-center">
                     <div
-                      className={`w-3 h-3 rounded-full mr-3 transition-colors duration-300 ${
+                      className={`mr-3 h-3 w-3 rounded-full transition-colors duration-300 ${
                         isVisited ? "bg-red-500" : "bg-gray-300"
                       }`}
                     />
                     <span
                       className={`transition-colors duration-300 ${
                         isVisited
-                          ? "text-red-500 font-semibold"
+                          ? "font-semibold text-red-500"
                           : "text-gray-400"
                       }`}
                     >
@@ -123,7 +115,7 @@ export default function AreaOfOperations({ sections }: AreaOfOperationsProps) {
 
           <div
             ref={rightContentRef}
-            className="pr-6 overflow-y-auto relative"
+            className="relative overflow-y-auto pr-6"
             style={{
               height: "600px",
               scrollbarWidth: "none",
@@ -140,11 +132,11 @@ export default function AreaOfOperations({ sections }: AreaOfOperationsProps) {
                 className="mb-20"
                 style={{ minHeight: "500px" }}
               >
-                <div className="flex gap-6 mb-6">
+                <div className="mb-6 flex gap-6">
                   {section.images.slice(0, 2).map((src, idx) => (
                     <div
                       key={idx}
-                      className="relative flex-1 h-40 rounded-lg overflow-hidden shadow-md"
+                      className="relative h-40 flex-1 overflow-hidden rounded-lg shadow-md"
                       style={{ width: "367px", height: "219px" }}
                     >
                       <Image
@@ -156,13 +148,13 @@ export default function AreaOfOperations({ sections }: AreaOfOperationsProps) {
                     </div>
                   ))}
                 </div>
-                <h3 className="text-xl font-poppins font-semibold mb-2">
+                <h3 className="font-poppins mb-2 text-xl font-semibold">
                   {section.title}
                 </h3>
-                <p className="text-gray-700 mb-8">{section.description}</p>
+                <p className="mb-8 text-gray-700">{section.description}</p>
                 <div>
-                  <h4 className="font-semibold mb-3">Coverage</h4>
-                  <ul className="grid grid-cols-2 gap-y-2 gap-x-8">
+                  <h4 className="mb-3 font-semibold">Coverage</h4>
+                  <ul className="grid grid-cols-2 gap-x-8 gap-y-2">
                     {section.coverage.map((item, i) => (
                       <li
                         key={i}
