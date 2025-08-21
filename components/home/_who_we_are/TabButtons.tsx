@@ -1,8 +1,8 @@
 "use client";
 
 type TabButtonsProps = {
-  about: React.ReactNode; // or string / JSX depending on what you pass
-  achievement: React.ReactNode; // same here
+  about: React.ReactNode;
+  achievement: React.ReactNode;
 };
 
 import { useState } from "react";
@@ -10,7 +10,7 @@ export const TabButtons = ({ about, achievement }: TabButtonsProps) => {
   const [activeTab, setActiveTab] = useState<"about" | "achievement">("about");
 
   return (
-    <div className="mt-[41px]">
+    <div className="mt-6">
       {/* Tab Buttons */}
       <div className="flex justify-center">
         <div className="overflow-hidden rounded-xl border">
