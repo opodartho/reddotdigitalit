@@ -36,6 +36,8 @@ const config: Config = {
         border: "oklch(var(--border))",
         input: "oklch(var(--input))",
         ring: "oklch(var(--ring))",
+        "pink-100": "#FFD1E3",
+        "blue-50": "#E6F0FF",
       },
       borderRadius: {
         DEFAULT: "var(--radius)",

@@ -24,31 +24,41 @@ export const TestimonialCarousel: React.FC<CarouselProps> = ({
   }, [emblaApi]);
 
   return (
-    <div>
-      <div className="flex justify-between items-start mb-8">
+    <>
+      <div className="mb-20 flex items-start justify-between">
         <div>
-          <h2 className="font-semibold text-[32px] leading-[40px] tracking-[0.03px] text-gray-800">
-            What Our Client Say
+          <h2 className="text-[32px] leading-[40px] font-semibold tracking-[0.03px] text-gray-950">
+            Whats Our Client Say
           </h2>
-          <p className="mt-2 font-normal text-[14px] leading-[22px] tracking-[0.0px] text-gray-600">
+          <p className="mt-2 text-[14px] leading-[22px] font-normal tracking-[0.0px] text-zinc-800">
             Our cutting-edge Modular Data Center solutions enable to protect
-            mission-critical data.
+            mission-critical data .
           </p>
         </div>
-        <div className="flex space-x-3 mt-2">
+        <div className="mt-2 flex space-x-3">
           <button
             onClick={scrollPrev}
             aria-label="Previous testimonial"
-            className="p-2 w-10 h-10 flex items-center justify-center rounded-md border border-gray-300 text-gray-400 hover:bg-gray-100 transition-colors"
+            className="flex items-center justify-center duration-300"
           >
-            &larr;
+            <Image
+              src="/icons/arrow-left.png"
+              alt="Previous"
+              width={48}
+              height={48}
+            />
           </button>
           <button
             onClick={scrollNext}
             aria-label="Next testimonial"
-            className="p-2 w-10 h-10 flex items-center justify-center rounded-md border border-pink-500 text-pink-500 hover:bg-pink-50 transition-colors"
+            className="flex items-center justify-center duration-300"
           >
-            &rarr;
+            <Image
+              src="/icons/arrow-right.png"
+              alt="Next"
+              width={48}
+              height={48}
+            />
           </button>
         </div>
       </div>
@@ -57,33 +67,37 @@ export const TestimonialCarousel: React.FC<CarouselProps> = ({
         <div className="embla__container">
           {testimonials.map((testimonial) => (
             <div className="embla__slide" key={testimonial.id}>
-              <div className="flex flex-col md:flex-row items-center">
-                <div className="w-full md:w-1/3 flex-shrink-0 mb-6 md:mb-0 md:mr-8">
+              <div className="flex flex-col items-center md:flex-row">
+                <div className="mb-6 w-full flex-shrink-0 md:mr-8 md:mb-0 md:w-1/3">
                   <Image
                     src={testimonial.imageSrc}
                     alt={testimonial.name}
-                    width={250}
-                    height={250}
-                    className="rounded-lg object-cover shadow-md mx-auto"
+                    width={296}
+                    height={296}
+                    className="mx-auto rounded-lg object-cover shadow-md"
                   />
                 </div>
                 <div className="w-full md:w-2/3">
-                  <blockquote className="text-gray-600 text-lg leading-relaxed">
-                    "{testimonial.quote}"
+                  <blockquote className="font-poppins text-[18px] leading-[34px] font-normal tracking-[0px] text-black">
+                    {testimonial.quote}
                   </blockquote>
                   <div className="mt-6">
                     <Image
                       src={testimonial.logoSrc}
                       alt={`${testimonial.company} Logo`}
-                      width={80}
-                      height={30}
+                      width={59}
+                      height={48}
                       className="mb-4 object-contain"
                     />
-                    <p className="font-normal text-[18px] leading-[34px] tracking-[0.0px] text-gray-900">
+                    <p className="font-poppins text-[13px] leading-[18px] font-semibold tracking-[0px] text-zinc-800">
                       {testimonial.name}
                     </p>
-                    <p className="text-gray-500">{testimonial.company}</p>
-                    <p className="text-gray-500 text-sm">{testimonial.title}</p>
+                    <p className="font-poppins text-[10px] leading-[16px] font-normal tracking-[0px] text-black">
+                      {testimonial.company}
+                    </p>
+                    <p className="font-poppins text-[10px] leading-[16px] font-normal tracking-[0px] text-black">
+                      {testimonial.title}
+                    </p>
                   </div>
                 </div>
               </div>
@@ -91,6 +105,6 @@ export const TestimonialCarousel: React.FC<CarouselProps> = ({
           ))}
         </div>
       </div>
-    </div>
+    </>
   );
 };
