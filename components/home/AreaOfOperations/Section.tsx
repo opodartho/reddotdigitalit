@@ -49,7 +49,7 @@ export default function AreaOfOperations({ sections }: AreaOfOperationsProps) {
 
   return (
     <section className="bg-gradient-to-r from-pink-50 via-white to-orange-50 py-16">
-      <div className="mx-auto max-w-6xl px-4">
+      <div className="mx-auto max-w-6xl px-6 lg:px-4">
         <div className="mb-12 text-center">
           <h2 className="text-poppins mb-2 text-3xl font-bold">
             Area of Operations
@@ -61,7 +61,7 @@ export default function AreaOfOperations({ sections }: AreaOfOperationsProps) {
         </div>
 
         <div className="grid h-auto gap-8 md:h-[600px] md:grid-cols-[200px_1fr] md:gap-16 lg:gap-26">
-          <div className="relative -ml-6 pt-1.5">
+          <div className="relative md:-ml-6 pt-1.5">
             <div
               className="absolute top-0 left-[5px] w-0.5 bg-gray-300"
               style={{
@@ -113,7 +113,7 @@ export default function AreaOfOperations({ sections }: AreaOfOperationsProps) {
           </div>
           <div
             ref={rightContentRef}
-            className="relative overflow-y-auto pr-6"
+            className="relative overflow-y-auto md:pr-6"
             style={{
               height: "600px",
               scrollbarWidth: "none",

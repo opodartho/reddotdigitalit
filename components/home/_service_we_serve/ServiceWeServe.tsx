@@ -11,7 +11,7 @@ export function ServiceWeServeTabs() {
 
   return (
     <section
-      className="w-full flex flex-col items-center mb-10 px-4 sm:px-6"
+      className="w-full flex flex-col items-center mb-10 px-6 sm:px-6"
       style={{
         background: `
       radial-gradient(39.81% 39.81% at 92.12% 9.17%, #FFFFF0 0%, rgba(163, 17, 203, 0.01) 100%),
@@ -23,7 +23,7 @@ export function ServiceWeServeTabs() {
       }}
     >
       {/* Title */}
-      <h2 className="mt-12 text-xl sm:text-2xl font-normal max-w-xs sm:max-w-md leading-snug font-poppins text-center text-[#060414]">
+      <h2 className="mt-12 text-xl font-semibold sm:text-2xl font-normal max-w-xs sm:max-w-md leading-snug font-poppins text-center text-[#060414]">
         Service We Serve
       </h2>
 

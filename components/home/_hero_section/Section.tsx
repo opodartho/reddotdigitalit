@@ -42,7 +42,7 @@ export default function HeroSection() {
 
   return (
     <section
-      className="relative flex flex-col md:flex-row items-center justify-start w-full px-14 py-16 gap-10 overflow-hidden"
+      className="relative flex flex-col md:flex-row items-center justify-start w-full px-6 md:px-14 py-12 md:py-16 gap-8 md:gap-10 overflow-hidden"
       style={{
         background: `
     radial-gradient(circle at 85% 15%, #F0E8FF 0%, #FFFFFF 20%),
@@ -51,7 +51,6 @@ export default function HeroSection() {
       }}
     >
       <div className="relative z-10 flex flex-col md:flex-row items-center justify-start gap-30 w-full">
-        {/* Left Side Content */}
         <div className="flex flex-col gap-6 max-w-xl text-center md:text-left md:w-[55%]">
           <div className="flex flex-wrap justify-center md:justify-start gap-2">
             {[
@@ -68,34 +67,33 @@ export default function HeroSection() {
             ))}
           </div>
 
-          <h1 className="text-5xl font-medium leading-tight text-[#121926]">
+          <h1 className="text-4xl md:text-5xl font-medium leading-tight text-[#121926]">
             Crafting <span className="text-[#E52445]">Innovation,</span>
-            <br />
+            <br className="hidden md:block" />
             Delivering <span className="text-[#E52445]">Excellence</span>
           </h1>
 
-          <p className="text-[#121926] w-[515px] h-[60px]text-lg leading-relaxed">
-            We turn ideas into innovative tech solutions with custom <br />
-            software that boosts efficiency and growth.
+          <p className="text-base md:text-lg leading-relaxed text-[#121926]">
+            We turn ideas into innovative tech solutions with custom software
+            that boosts efficiency and growth.
           </p>
 
           <div className="flex flex-wrap justify-center md:justify-start gap-4">
             <Button
               variant="outline"
-              className="border border-[#E52445] text-[#E52445] bg-white hover:bg-red-100 dark:bg-transparent rounded-md py-6 px-6"
+              className="border border-[#E52445] text-[#E52445] bg-white hover:bg-red-100 dark:bg-transparent rounded-md py-3 px-4 md:py-6 md:px-6"
             >
               Explore All Services →
             </Button>
             <Button
               variant="default"
-              className="text-white bg-[#E52445] hover:bg-primary/40 dark:bg-transparent rounded-md py-6 px-10"
+              className="text-white bg-[#E52445] hover:bg-primary/40 dark:bg-transparent rounded-md py-3 px-6 md:py-6 md:px-10"
             >
               Let's work with us
             </Button>
           </div>
         </div>
 
-        {/* Right Side Carousel */}
         <div className="relative z-10 w-full md:w-[45%] md:ml-12">
           <Carousel
             className="w-full"
@@ -106,7 +104,7 @@ export default function HeroSection() {
             <CarouselContent className="ml-0">
               {slides.map((slide) => (
                 <CarouselItem key={slide.id}>
-                  <div className="bg-white rounded-lg w-[85%] shadow-[0_12px_48px_0px_rgba(49,1,139,0.07)] mb-8">
+                  <div className="bg-white rounded-lg w-full md:w-[85%] shadow-[0_12px_48px_0px_rgba(49,1,139,0.07)] mb-8">
                     <div className="rounded-lg h-[250px] flex items-center justify-center relative overflow-hidden px-2 pt-2">
                       <img
                         src={slide.imageUrl}
@@ -140,7 +138,6 @@ export default function HeroSection() {
               ))}
             </CarouselContent>
 
-            {/* Carousel bullets */}
             <div className="absolute bottom-[-40px] left-1/2 -translate-x-1/2 flex gap-2">
               {slides.map((_, index) => (
                 <span
