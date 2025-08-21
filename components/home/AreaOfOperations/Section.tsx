@@ -3,9 +3,8 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { OperationSection } from "@/lib/data/AreaOfOperation"; // Import the type
+import { OperationSection } from "@/lib/data/AreaOfOperation";
 
-// Define the type for the component's props
 type AreaOfOperationsProps = {
   sections: OperationSection[];
 };
@@ -60,9 +59,8 @@ export default function AreaOfOperations({ sections }: AreaOfOperationsProps) {
             protect mission-critical data.
           </p>
         </div>
-
-        <div className="grid h-[600px] grid-cols-[200px_1fr] gap-26">
-          <div className="relative -ml-6 pt-1.5">
+        <div className="grid h-auto gap-8 md:h-[600px] md:grid-cols-[200px_1fr] md:gap-16 lg:gap-26">
+          <div className="relative pt-1.5">
             <div
               className="absolute top-0 left-[5px] w-0.5 bg-gray-300"
               style={{
@@ -112,7 +110,6 @@ export default function AreaOfOperations({ sections }: AreaOfOperationsProps) {
               );
             })}
           </div>
-
           <div
             ref={rightContentRef}
             className="relative overflow-y-auto pr-6"

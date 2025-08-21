@@ -12,6 +12,7 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      // Your existing configurations
       fontFamily: {
         poppins: ["var(--font-poppins)", "sans-serif"],
       },
@@ -46,22 +47,19 @@ const config: Config = {
       borderRadius: {
         DEFAULT: "var(--radius)",
       },
-      // --- START: UPDATED ANIMATION LOGIC FOR SEAMLESS LOOP ---
+
+      // --- THIS IS THE FIX ---
+      // This block defines the animation that the component uses.
       animation: {
-        "marquee-ltr": "marquee-ltr 60s linear infinite", // Left to Right
-        "marquee-rtl": "marquee-rtl 60s linear infinite", // Right to Left
+        "scrolling-logos": "scroll 60s linear infinite",
       },
       keyframes: {
-        "marquee-ltr": {
-          "0%": { transform: "translateX(-50%)" },
-          "100%": { transform: "translateX(0%)" },
-        },
-        "marquee-rtl": {
-          "0%": { transform: "translateX(0%)" },
+        scroll: {
+          "0%": { transform: "translateX(0)" },
           "100%": { transform: "translateX(-50%)" },
         },
       },
-      // --- END: UPDATED ANIMATION LOGIC ---
+      // --- End of the fix ---
     },
   },
   plugins: [],

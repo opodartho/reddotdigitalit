@@ -22,6 +22,8 @@ import { ServiceWeServeTabs } from "@/components/home/_service_we_serve/ServiceW
 import { getPartners } from "@/lib/api/fetchPartners";
 import PartnersSection from "@/components/home/_trusted_by_partners/Section";
 import TestimonialSection from "@/components/home/_testimonial/Section";
+import TrustedPartners from "./TrustedPartner/sections";
+import { NavBar } from "@/components/NavBar/NavBar";
 
 export const Landing = async () => {
   const [
@@ -61,6 +63,7 @@ export const Landing = async () => {
       <CaseStudies caseStudiesData={caseStudiesData} />
       <ServiceWeServeTabs />
       <PartnersSection partnersData={partnersData} /> {/* এই লাইনটি যোগ করুন */}
+      <TrustedPartners />
       <Blogs blogsData={blogsData} />
       <News newsData={newsData} />
       {/* <TestimonialSection testimonials={testimonialsData} /> */}
