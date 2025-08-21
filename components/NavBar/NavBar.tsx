@@ -52,14 +52,14 @@ export function NavBar() {
   return (
     <>
       <nav
-        className="sticky top-0 z-50 w-full backdrop-blur-sm h-[76px] shadow-[0_4px_29px_rgba(0,0,0,0.05)]"
+        className="sticky top-0 z-50 h-[76px] w-full shadow-[0_4px_29px_rgba(0,0,0,0.05)] backdrop-blur-sm"
         style={{
           background:
             "radial-gradient(circle at 85% 15%, #F0E8FF 0%, #FFFFFF 50%)",
         }}
       >
         {/* --- RESPONSIVE CHANGE: Adjusted padding for different screen sizes --- */}
-        <div className="flex items-center justify-between h-full px-4 md:px-10 lg:px-[80px]">
+        <div className="flex h-full items-center justify-between px-4 md:px-10 lg:px-[80px]">
           {/* Logo and Home link */}
           <Link href="/" onClick={scrollToTop} className="flex-shrink-0">
             <Image
@@ -72,20 +72,20 @@ export function NavBar() {
           </Link>
 
           {/* --- RESPONSIVE CHANGE: Desktop Navigation Menu (hidden on mobile) --- */}
-          <NavigationMenu className="hidden md:flex justify-center h-full">
-            <NavigationMenuList className="space-x-10 h-full">
+          <NavigationMenu className="hidden h-full justify-center md:flex">
+            <NavigationMenuList className="h-full space-x-10">
               {navLinks.map((link) => (
                 <NavigationMenuItem key={link.title}>
                   {/* Simplified logic for single links vs. dropdowns */}
                   {!link.items || link.items.length === 0 ? (
                     <Link href={link.href || "#"} legacyBehavior passHref>
-                      <NavigationMenuLink className="bg-transparent px-0 hover:bg-transparent focus:bg-transparent font-poppins font-normal text-xl h-full flex items-center">
+                      <NavigationMenuLink className="font-poppins flex h-full items-center bg-transparent px-0 text-xl font-normal hover:bg-transparent focus:bg-transparent">
                         {link.title}
                       </NavigationMenuLink>
                     </Link>
                   ) : (
                     <>
-                      <NavigationMenuTrigger className="bg-transparent px-0 hover:bg-transparent focus:bg-transparent font-poppins font-normal text-xl h-full">
+                      <NavigationMenuTrigger className="font-poppins h-full bg-transparent px-0 text-xl font-normal hover:bg-transparent focus:bg-transparent">
                         {link.title}
                       </NavigationMenuTrigger>
                       <NavigationMenuContent>
@@ -109,17 +109,17 @@ export function NavBar() {
           </NavigationMenu>
 
           {/* --- RESPONSIVE CHANGE: Right side container (hidden on mobile) --- */}
-          <div className="hidden md:flex items-center gap-5 h-full">
+          <div className="hidden h-full items-center gap-5 md:flex">
             <button
               aria-label="apps"
-              className="rounded-full hover:bg-gray-100 p-2"
+              className="rounded-full p-2 hover:bg-gray-100"
               title="More"
             >
               <LayoutGrid size={20} className="text-gray-600" />
             </button>
             <Link
               href="/contact"
-              className="border border-[#E52445] text-[#E52445] bg-white hover:bg-red-100 dark:bg-transparent rounded-[25px] px-7 h-[42px] text-lg flex items-center justify-center whitespace-nowrap"
+              className="flex h-[42px] items-center justify-center rounded-[25px] border border-[#E52445] bg-white px-7 text-lg whitespace-nowrap text-[#E52445] hover:bg-red-100 dark:bg-transparent"
             >
               Contact Us
             </Link>
@@ -136,13 +136,13 @@ export function NavBar() {
 
       {/* --- RESPONSIVE CHANGE: Mobile Menu Panel --- */}
       {isMobileMenuOpen && (
-        <div className="md:hidden absolute top-[76px] left-0 w-full h-[calc(100vh-76px)] bg-white z-40 flex flex-col items-center p-8 space-y-6 overflow-y-auto">
+        <div className="absolute top-[76px] left-0 z-40 flex h-[calc(100vh-76px)] w-full flex-col items-center space-y-6 overflow-y-auto bg-white p-8 md:hidden">
           {navLinks.map((link) => (
             <div key={link.title} className="text-center">
               {/* If it's a dropdown, show title as a non-clickable header */}
               {link.items && link.items.length > 0 ? (
                 <>
-                  <h3 className="text-2xl font-bold font-poppins text-gray-800 mb-2">
+                  <h3 className="font-poppins mb-2 text-2xl font-bold text-gray-800">
                     {link.title}
                   </h3>
                   <div className="flex flex-col space-y-4">
@@ -163,7 +163,7 @@ export function NavBar() {
                 <Link
                   href={link.href || "#"}
                   onClick={handleMobileLinkClick}
-                  className="text-2xl font-bold font-poppins text-gray-800 hover:text-[#E52445]"
+                  className="font-poppins text-2xl font-bold text-gray-800 hover:text-[#E52445]"
                 >
                   {link.title}
                 </Link>
@@ -175,7 +175,7 @@ export function NavBar() {
           <Link
             href="/contact"
             onClick={handleMobileLinkClick}
-            className="border border-[#E52445] text-[#E52445] bg-white hover:bg-red-100 rounded-[25px] px-10 py-3 text-lg flex items-center justify-center w-full max-w-xs"
+            className="flex w-full max-w-xs items-center justify-center rounded-[25px] border border-[#E52445] bg-white px-10 py-3 text-lg text-[#E52445] hover:bg-red-100"
           >
             Contact Us
           </Link>
@@ -197,8 +197,8 @@ const ListItem = ({ className, title, children, ...props }: any) => {
           )}
           {...props}
         >
-          <div className="text-sm font-medium leading-none">{title}</div>
-          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+          <div className="text-sm leading-none font-medium">{title}</div>
+          <p className="text-muted-foreground line-clamp-2 text-sm leading-snug">
             {children}
           </p>
         </a>
