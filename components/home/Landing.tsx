@@ -20,7 +20,7 @@ import { getProductSolutions } from "@/lib/api/fetchProductSolutions";
 import { getTransformData } from "@/lib/api/fetchTransform";
 import { ServiceWeServeTabs } from "@/components/home/_service_we_serve/ServiceWeServe";
 import { getPartners } from "@/lib/api/fetchPartners";
-import PartnersSection from "@/components/home/_trusted_by_partners/Section";
+// import PartnersSection from "@/components/home/_trusted_by_partners/Section";
 import TestimonialSection from "@/components/home/_testimonial/Section";
 import TrustedPartners from "./TrustedPartner/sections";
 import { NavBar } from "@/components/NavBar/NavBar";
@@ -37,7 +37,7 @@ export const Landing = async () => {
     transformData,
     aboutData,
     achievementData,
-    partnersData, // এই লাইনটি যোগ করুন
+    partnersData,
   ] = await Promise.all([
     getLatestNews(),
     getCaseStudies(),
@@ -49,7 +49,7 @@ export const Landing = async () => {
     getTransformData(),
     getAboutData(),
     getAchievementData(),
-    getPartners(), // এই লাইনটি যোগ করুন
+    getPartners(),
   ]);
 
   return (
