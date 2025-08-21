@@ -15,7 +15,7 @@ export const staticTestimonialsData: Testimonial[] = [
     title: "Vice President, Digital Service, IoT & VAS, IT",
     company: "Robi Axiata Limited",
     quote:
-      "This is to certify that RedDot Digital has successfully completed projects for our Digital Customer Management and Enterprise Customer Management Solutions. The work was completed in September 2020 and they continue to maintain the platforms.",
+      "“This is to certify that RedDot Digital Limited has successfully completed the following projects for Robi Axiata Limited Digital Customer Management Solution (dCRM). Enterprise Customer Management Solution (eCRM). The work is completed in September 2020. It is to note that RedDot Digital Limited is also currently developing, managing, and maintaining the platform operations of the above-mentioned solutions.”",
     imageSrc: "/clients/client-1.png",
     logoSrc: "/clients/logos/logo-1.png",
   },
@@ -25,7 +25,7 @@ export const staticTestimonialsData: Testimonial[] = [
     title: "Chief Technology Officer",
     company: "Innovate Inc.",
     quote:
-      "Working with the team has been a transformative experience. Their expertise and dedication are unmatched, delivering results that exceeded all our expectations. We look forward to our continued partnership and future innovations together.",
+      "“This is to certify that RedDot Digital Limited has successfully completed the following projects for Robi Axiata Limited Digital Customer Management Solution (dCRM). Enterprise Customer Management Solution (eCRM). The work is completed in September 2020. It is to note that RedDot Digital Limited is also currently developing, managing, and maintaining the platform operations of the above-mentioned solutions.”",
     imageSrc: "/clients/client-1.png",
     logoSrc: "/clients/logos/logo-2.png",
   },
@@ -35,7 +35,7 @@ export const staticTestimonialsData: Testimonial[] = [
     title: "Head of Operations",
     company: "Logistics Pro",
     quote:
-      "The modular data center solution they provided was a game-changer for our logistics network. It was deployed faster than we thought possible and has given us the reliability we need for our mission-critical operations. Highly recommended.",
+      "“This is to certify that RedDot Digital Limited has successfully completed the following projects for Robi Axiata Limited Digital Customer Management Solution (dCRM). Enterprise Customer Management Solution (eCRM). The work is completed in September 2020. It is to note that RedDot Digital Limited is also currently developing, managing, and maintaining the platform operations of the above-mentioned solutions.”",
     imageSrc: "/clients/client-1.png",
     logoSrc: "/clients/logos/logo-3.png",
   },
@@ -45,7 +45,7 @@ export const staticTestimonialsData: Testimonial[] = [
     title: "Founder & CEO",
     company: "Creative Solutions",
     quote:
-      "As a startup, we needed a partner who was both flexible and powerful. Their platform scaled with us from day one. The support has been phenomenal, and their insights have been invaluable to our growth and success.",
+      "“This is to certify that RedDot Digital Limited has successfully completed the following projects for Robi Axiata Limited Digital Customer Management Solution (dCRM). Enterprise Customer Management Solution (eCRM). The work is completed in September 2020. It is to note that RedDot Digital Limited is also currently developing, managing, and maintaining the platform operations of the above-mentioned solutions.”",
     imageSrc: "/clients/client-1.png",
     logoSrc: "/clients/logos/logo-4.png",
   },

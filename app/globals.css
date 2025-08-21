@@ -128,3 +128,6 @@
 .hide-scrollbar::-webkit-scrollbar {
   display: none;
 }
+.custom-card-shadow {
+  box-shadow: 0 12px 48px 0 rgb(49 1 139 / 0.07);
+}
