@@ -7,12 +7,9 @@ const config: Config = {
     "./app/**/*.{ts,tsx}",
     "./components/**/*.{ts,tsx}",
     "./pages/**/*.{ts,tsx}",
-    // আপনার Section.tsx ফাইলের পাথ এখানে যোগ করতে পারেন, যেমন:
-    // "./components/home/_trusted_by_partners/Section.tsx"
   ],
   theme: {
     extend: {
-      // Your existing configurations
       fontFamily: {
         poppins: ["var(--font-poppins)", "sans-serif"],
       },
@@ -48,8 +45,6 @@ const config: Config = {
         DEFAULT: "var(--radius)",
       },
 
-      // --- THIS IS THE FIX ---
-      // This block defines the animation that the component uses.
       animation: {
         "scrolling-logos": "scroll 60s linear infinite",
       },
@@ -59,7 +54,6 @@ const config: Config = {
           "100%": { transform: "translateX(-50%)" },
         },
       },
-      // --- End of the fix ---
     },
   },
   plugins: [],
