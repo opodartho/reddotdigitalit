@@ -7,6 +7,8 @@ const config: Config = {
     "./app/**/*.{ts,tsx}",
     "./components/**/*.{ts,tsx}",
     "./pages/**/*.{ts,tsx}",
+    // আপনার Section.tsx ফাইলের পাথ এখানে যোগ করতে পারেন, যেমন:
+    // "./components/home/_trusted_by_partners/Section.tsx"
   ],
   theme: {
     extend: {
@@ -44,20 +46,22 @@ const config: Config = {
       borderRadius: {
         DEFAULT: "var(--radius)",
       },
+      // --- START: UPDATED ANIMATION LOGIC FOR SEAMLESS LOOP ---
       animation: {
-        "marquee-left": "marquee-left 40s linear infinite",
-        "marquee-right": "marquee-right 40s linear infinite",
+        "marquee-ltr": "marquee-ltr 60s linear infinite", // Left to Right
+        "marquee-rtl": "marquee-rtl 60s linear infinite", // Right to Left
       },
       keyframes: {
-        "marquee-left": {
-          "0%": { transform: "translateX(0%)" },
-          "100%": { transform: "translateX(-100%)" },
-        },
-        "marquee-right": {
-          "0%": { transform: "translateX(-100%)" },
+        "marquee-ltr": {
+          "0%": { transform: "translateX(-50%)" },
           "100%": { transform: "translateX(0%)" },
         },
+        "marquee-rtl": {
+          "0%": { transform: "translateX(0%)" },
+          "100%": { transform: "translateX(-50%)" },
+        },
       },
+      // --- END: UPDATED ANIMATION LOGIC ---
     },
   },
   plugins: [],

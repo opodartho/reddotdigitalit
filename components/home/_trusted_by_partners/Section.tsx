@@ -15,7 +15,8 @@ const PartnersSection = ({ partnersData }: PartnersSectionProps) => {
     return null;
   }
 
-  const partnersPerRow = Math.ceil(partnersData.length / 3);
+  // Ensure there are enough partners to split into 3 rows, or handle gracefully
+  const partnersPerRow = Math.max(1, Math.ceil(partnersData.length / 3));
   const row1Partners = partnersData.slice(0, partnersPerRow);
   const row2Partners = partnersData.slice(partnersPerRow, partnersPerRow * 2);
   const row3Partners = partnersData.slice(partnersPerRow * 2);
@@ -24,6 +25,13 @@ const PartnersSection = ({ partnersData }: PartnersSectionProps) => {
   const duplicatedRow1 = [...row1Partners, ...row1Partners];
   const duplicatedRow2 = [...row2Partners, ...row2Partners];
   const duplicatedRow3 = [...row3Partners, ...row3Partners];
+
+  const maskStyle = {
+    maskImage:
+      "linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)",
+    WebkitMaskImage:
+      "linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)",
+  };
 
   return (
     <section className="bg-white px-8 py-16">
@@ -37,16 +45,8 @@ const PartnersSection = ({ partnersData }: PartnersSectionProps) => {
         </p>
 
         {/* Row 1 - Left to Right */}
-        <div
-          className="relative my-4 overflow-hidden"
-          style={{
-            maskImage:
-              "linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)",
-            WebkitMaskImage:
-              "linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)",
-          }}
-        >
-          <div className="animate-marquee-left flex whitespace-nowrap">
+        <div className="relative my-4 overflow-hidden" style={maskStyle}>
+          <div className="animate-marquee-ltr flex whitespace-nowrap">
             {duplicatedRow1.map((partner, index) => (
               <PartnerCard
                 key={`row1-${partner.id}-${index}`}
@@ -58,16 +58,8 @@ const PartnersSection = ({ partnersData }: PartnersSectionProps) => {
         </div>
 
         {/* Row 2 - Right to Left */}
-        <div
-          className="relative my-4 overflow-hidden"
-          style={{
-            maskImage:
-              "linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)",
-            WebkitMaskImage:
-              "linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)",
-          }}
-        >
-          <div className="animate-marquee-right flex whitespace-nowrap">
+        <div className="relative my-4 overflow-hidden" style={maskStyle}>
+          <div className="animate-marquee-rtl flex whitespace-nowrap">
             {duplicatedRow2.map((partner, index) => (
               <PartnerCard
                 key={`row2-${partner.id}-${index}`}
@@ -78,16 +70,9 @@ const PartnersSection = ({ partnersData }: PartnersSectionProps) => {
           </div>
         </div>
 
-        <div
-          className="relative my-4 overflow-hidden"
-          style={{
-            maskImage:
-              "linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)",
-            WebkitMaskImage:
-              "linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)",
-          }}
-        >
-          <div className="animate-marquee-left flex whitespace-nowrap">
+        {/* Row 3 - Left to Right */}
+        <div className="relative my-4 overflow-hidden" style={maskStyle}>
+          <div className="animate-marquee-ltr flex whitespace-nowrap">
             {duplicatedRow3.map((partner, index) => (
               <PartnerCard
                 key={`row3-${partner.id}-${index}`}
