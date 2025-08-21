@@ -61,8 +61,8 @@ export default function AreaOfOperations({ sections }: AreaOfOperationsProps) {
           </p>
         </div>
 
-        <div className="grid grid-cols-[200px_1fr] gap-12 h-[600px]">
-          <div className="relative pt-1.5">
+        <div className="grid grid-cols-[200px_1fr] gap-26 h-[600px]">
+          <div className="relative pt-1.5 -ml-6">
             <div
               className="absolute left-[5px] top-0 w-0.5 bg-gray-300"
               style={{
@@ -137,6 +137,7 @@ export default function AreaOfOperations({ sections }: AreaOfOperationsProps) {
                     <div
                       key={idx}
                       className="relative flex-1 h-40 rounded-lg overflow-hidden shadow-md"
+                      style={{ width: "367px", height: "219px" }}
                     >
                       <Image
                         src={src}
@@ -171,7 +172,7 @@ export default function AreaOfOperations({ sections }: AreaOfOperationsProps) {
                   </ul>
                 </div>
 
-                <Button variant="default" size="lg" className="mt-20">
+                <Button variant="default" size="lg" className="mt-18">
                   Read More
                 </Button>
               </section>
