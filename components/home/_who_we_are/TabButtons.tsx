@@ -1,11 +1,11 @@
 "use client";
+
+type TabButtonsProps = {
+  about: React.ReactNode; // or string / JSX depending on what you pass
+  achievement: React.ReactNode; // same here
+};
+
 import { useState } from "react";
-
-interface TabButtonsProps {
-  about: any;
-  achievement: any;
-}
-
 export const TabButtons = ({ about, achievement }: TabButtonsProps) => {
   const [activeTab, setActiveTab] = useState<"about" | "achievement">("about");
 
