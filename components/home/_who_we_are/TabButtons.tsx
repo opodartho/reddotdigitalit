@@ -1,8 +1,8 @@
 "use client";
 
 type TabButtonsProps = {
-  about: React.ReactNode; // or string / JSX depending on what you pass
-  achievement: React.ReactNode; // same here
+  about: React.ReactNode;
+  achievement: React.ReactNode;
 };
 
 import { useState } from "react";

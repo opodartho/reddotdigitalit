@@ -14,20 +14,20 @@ export function TransformCard({
 }: TransformCardProps) {
   return (
     <section className="relative mx-auto max-w-7xl px-4 sm:px-6 py-12 sm:py-30">
-      <div className="relative rounded-3xl bg-gradient-to-r from-[#f5f9f6] via-[#f8f5f9] to-[#fdf5f8] px-6 sm:px-8 pt-12 sm:pt-20 pb-8 sm:pb-14 overflow-visible">
+      <div className="relative rounded-3xl bg-gradient-to-r from-[#f5f9f6] via-[#f8f5f9] to-[#fdf5f8] px-4 sm:px-8 pt-12 sm:pt-20 pb-8 sm:pb-14 overflow-visible">
         <div className="grid grid-cols-1 items-center gap-8 md:grid-cols-2">
           {/* Left Content */}
           <div className="text-center md:text-left">
-            <h2 className="mb-4 text-2xl sm:text-3xl font-semibold text-gray-900 md:text-4xl">
+            <h2 className="--font-inter font-semibold text-[40px] leading-[141%] tracking-[0]">
               {heading}
             </h2>
-            <p className="mt-6 sm:mt-10 mb-6 leading-relaxed text-gray-600 text-sm sm:text-base">
+            <p className="--font-poppins font-normal text-[16px] leading-[28px] tracking-[0] mt-[23.82px]">
               {description}
             </p>
-            <Button asChild className="px-6 py-2 sm:px-8 sm:py-3">
+            <Button asChild className="px-6 py-2 sm:px-8 sm:py-3 mt-[52px]">
               <a href={buttonLink}>
                 {buttonText}
-                <span className="ml-2 text-lg">→</span>
+                <span className="--font-poppins font-medium text-[16px] leading-[100%] tracking-[0] text-center">→</span>
               </a>
             </Button>
           </div>
@@ -42,7 +42,8 @@ export function TransformCard({
               <Image
                 src={imageUrl}
                 alt="Transform Image"
-                fill
+                width={681}
+                height={629}
                 style={{ objectFit: "contain" }}
                 priority
               />
