@@ -42,6 +42,20 @@ const config: Config = {
       borderRadius: {
         DEFAULT: "var(--radius)",
       },
+      animation: {
+        "marquee-left": "marquee-left 20s linear infinite",
+        "marquee-right": "marquee-right 20s linear infinite",
+      },
+      keyframes: {
+        "marquee-left": {
+          "0%": { transform: "translateX(0%)" },
+          "100%": { transform: "translateX(-100%)" },
+        },
+        "marquee-right": {
+          "0%": { transform: "translateX(-100%)" },
+          "100%": { transform: "translateX(0%)" },
+        },
+      },
     },
   },
   plugins: [],
