@@ -9,17 +9,26 @@ type FooterColumnProps = {
 const FooterColumn = ({ column }: FooterColumnProps) => {
   return (
     <div>
-      <h3 className="text-xl font-bold mb-4">{column.title}</h3>
+      <h3 className="font-medium text-[18px] leading-[28px] tracking-[0px] text-gray-950 mb-4">
+        {column.title}
+      </h3>
 
       {/* Render simple text content */}
-      {column.content && <p className="text-gray-600 leading-relaxed">{column.content}</p>}
+      {column.content && (
+        <p className="text-gray-950 font-normal text-[14px] leading-[22px] tracking-[0px] w-[300px]">
+          {column.content}
+        </p>
+      )}
 
       {/* Render a list of links */}
       {column.links && (
-        <ul className="space-y-3 text-gray-600">
+        <ul className="space-y-3 text-gray-950 font-normal text-[14px] leading-[16px] tracking-[0px]">
           {column.links.map((link) => (
             <li key={link.text}>
-              <a href={link.href} className="hover:text-red-600 transition-colors">
+              <a
+                href={link.href}
+                className="hover:text-red-600 transition-colors"
+              >
                 {link.text}
               </a>
             </li>
@@ -31,7 +40,9 @@ const FooterColumn = ({ column }: FooterColumnProps) => {
       {column.address && (
         <address
           className="not-italic text-gray-600 leading-relaxed"
-          dangerouslySetInnerHTML={{ __html: column.address.replace(/\n/g, "<br />") }}
+          dangerouslySetInnerHTML={{
+            __html: column.address.replace(/\n/g, "<br />"),
+          }}
         />
       )}
       {column.socials && (
@@ -45,7 +56,12 @@ const FooterColumn = ({ column }: FooterColumnProps) => {
               aria-label={social.alt}
               className="transition-transform hover:scale-110"
             >
-              <Image src={social.iconUrl} alt={social.alt} width={36} height={36} />
+              <Image
+                src={social.iconUrl}
+                alt={social.alt}
+                width={36}
+                height={36}
+              />
             </a>
           ))}
         </div>
