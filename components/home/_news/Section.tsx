@@ -8,7 +8,7 @@ type NewsSectionProps = {
 
 const News = ({ newsData }: NewsSectionProps) => {
   return (
-    <section className="px-8 py-16">
+    <section className="px-8 py-16 mb-25">
       <div className="mx-auto max-w-7xl">
         <h2 className="mb-[54px] text-center font-poppins text-[32px] font-semibold leading-[40px] tracking-[0.03px]">
           Latest News

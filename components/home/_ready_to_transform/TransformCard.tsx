@@ -13,7 +13,7 @@ export function TransformCard({
   imageUrl,
 }: TransformCardProps) {
   return (
-    <section className="relative mx-auto max-w-7xl px-4 sm:px-6 py-12 sm:py-30">
+    <section className="relative mx-auto max-w-7xl mt-25 px-4 sm:px-6 py-12 sm:py-30">
       <div className="relative rounded-3xl bg-gradient-to-r from-[#f5f9f6] via-[#f8f5f9] to-[#fdf5f8] px-4 sm:px-8 pt-12 sm:pt-20 pb-8 sm:pb-14 overflow-visible">
         <div className="grid grid-cols-1 items-center gap-8 md:grid-cols-2">
           {/* Left Content */}
@@ -27,7 +27,9 @@ export function TransformCard({
             <Button asChild className="px-6 py-2 sm:px-8 sm:py-3 mt-[52px]">
               <a href={buttonLink}>
                 {buttonText}
-                <span className="--font-poppins font-medium text-[16px] leading-[100%] tracking-[0] text-center">→</span>
+                <span className="--font-poppins font-medium text-[16px] leading-[100%] tracking-[0] text-center">
+                  →
+                </span>
               </a>
             </Button>
           </div>

@@ -13,7 +13,7 @@ import {
 } from "@/components/ui/navigation-menu";
 import { getNavLinks, NavLink } from "@/lib/api/fetchNavData";
 import { cn } from "@/lib/utils";
-import { LayoutGrid, Menu, X } from "lucide-react"; // Import Menu and X icons
+import { Menu, X } from "lucide-react";
 
 export function NavBar() {
   const [navLinks, setNavLinks] = useState<NavLink[]>([]);
@@ -115,7 +115,27 @@ export function NavBar() {
               className="rounded-full p-2 hover:bg-gray-100"
               title="More"
             >
-              <LayoutGrid size={20} className="text-gray-600" />
+              {/* 3x3 dots icon */}
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                aria-hidden
+                className="text-gray-600"
+              >
+                <g fill="currentColor">
+                  <circle cx="5" cy="5" r="1.6" />
+                  <circle cx="12" cy="5" r="1.6" />
+                  <circle cx="19" cy="5" r="1.6" />
+                  <circle cx="5" cy="12" r="1.6" />
+                  <circle cx="12" cy="12" r="1.6" />
+                  <circle cx="19" cy="12" r="1.6" />
+                  <circle cx="5" cy="19" r="1.6" />
+                  <circle cx="12" cy="19" r="1.6" />
+                  <circle cx="19" cy="19" r="1.6" />
+                </g>
+              </svg>
             </button>
             <Link
               href="/contact"

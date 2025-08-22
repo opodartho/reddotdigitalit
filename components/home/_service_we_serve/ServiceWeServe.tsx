@@ -23,7 +23,7 @@ export function ServiceWeServeTabs() {
       }}
     >
       {/* Title */}
-      <h2 className="mt-12 text-xl font-semibold sm:text-2xl font-normal max-w-xs sm:max-w-md leading-snug font-poppins text-center text-[#060414]">
+      <h2 className="mt-16 text-xl sm:text-3xl font-poppins font-regular max-w-xs sm:max-w-md text-center text-[#060414]">
         Service We Serve
       </h2>
 
@@ -40,12 +40,12 @@ export function ServiceWeServeTabs() {
         onValueChange={setActiveTab}
         className="mt-10 w-full flex flex-col items-center"
       >
-        <TabsList className="flex overflow-x-auto sm:overflow-visible justify-start sm:justify-center bg-white rounded-md w-full sm:w-auto max-w-full sm:max-w-[714px] h-[56px] sm:h-[64px] px-2 py-2 gap-3 sm:gap-6 shadow-md">
+        <TabsList className="flex overflow-x-auto sm:overflow-visible justify-start sm:justify-center bg-white rounded-md w-full sm:w-auto max-w-full sm:max-w-[900px] h-[74px] px-3 py-4 gap-4 sm:gap-8 shadow-md">
           {staticServiceWeServeData.map((service) => (
             <TabsTrigger
               key={service.id}
               value={service.tab}
-              className="whitespace-nowrap rounded-md px-3 sm:px-4 py-2 text-sm sm:text-base font-medium text-[#6D658B] data-[state=active]:bg-[#E52445] data-[state=active]:text-white"
+              className="whitespace-nowrap rounded-md px-4 sm:px-6 h-[54px] text-sm sm:text-base font-medium text-[#6D658B] data-[state=active]:bg-[#E52445] data-[state=active]:text-white"
             >
               {service.tab}
             </TabsTrigger>
@@ -74,7 +74,7 @@ export function ServiceWeServeTabs() {
 
                 {/* Right Content */}
                 <div className="flex flex-col w-full text-center md:text-left">
-                  <h3 className="text-lg sm:text-2xl font-medium font-poppins text-[#060414]">
+                  <h3 className="text-lg sm:text-3xl font-regular font-poppins text-[#060414]">
                     {service.title}
                   </h3>
                   <p className="mt-3 text-sm sm:text-base font-normal leading-relaxed font-poppins text-[#060414]/70">
