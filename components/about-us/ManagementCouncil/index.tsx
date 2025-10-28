@@ -18,10 +18,19 @@ export default function ManagementCouncil() {
                     <p className="max-w-[444px]  lg:pl-[80px] max-h-[179px] text-[14px]">Our cutting-edge Modular Data Center solutions enable to protect mission-critical data.</p>
                 </div>
 
-                <div className="lg:grid lg:grid-cols-4 flex flex-col items-center lg:pl-[80px] gap-[21px]">
+                <div className="flex flex-row overflow-x-auto lg:overflow-x-visible lg:grid lg:grid-cols-4 lg:pl-[80px] gap-[21px] px-[15px] lg:px-0 pb-[10px] scrollbar-hide">
+                    <style>{`
+                        .scrollbar-hide::-webkit-scrollbar {
+                            display: none;
+                        }
+                        .scrollbar-hide {
+                            -ms-overflow-style: none;
+                            scrollbar-width: none;
+                        }
+                    `}</style>
 
                     {images.map((image, index) => (
-                        <div key={index} className="rounded-lg mb-[40px] flex flex-col items-center text-center w-[304px] h-[339px] bg-[#ffffff] shadow-md ">
+                        <div key={index} className="rounded-lg mb-[40px] flex flex-col items-center text-center w-[304px] h-[339px] bg-[#ffffff] shadow-md flex-shrink-0">
                             <Image
                                 src={image.image}
                                 height={206}
