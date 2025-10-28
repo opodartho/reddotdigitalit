@@ -22,7 +22,7 @@ export default function AboutUs() {
                 <Empowerment />
             </div>
             <div>
-                <div className="w-full pt-[109px] pb-[38px] flex flex-col justify-center text-center">
+                <div className="lg:block hidden w-full pt-[109px] pb-[38px] flex flex-col justify-center text-center">
                     <p className="font-semibold text-[32px]">Achievement</p>
                     <p className="text-[14px] line-clamp-2 pt-[17px] w-[444px] mx-auto"> {/* Added mx-auto */}
                         Our cutting-edge Modular Data Center solutions enable to protect mission-critical data.

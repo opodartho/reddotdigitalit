@@ -9,11 +9,11 @@ export default function Empowerment() {
     ]
     return (
         <>
-            <div className="w-full h-[869px] relative" style={{ backgroundImage: "url('/images/Background.png')" }}>
-                <p className="relative top-[75px] text-[32px] max-w-[1276px] pl-[80px]">Empowering businesses with smart, scalable digital solutions. Empowering businesses with smart, scalable digital solutions.</p>
+            <div className="w-full lg:h-[869px] h-auto lg:relative" style={{ backgroundImage: "url('/images/Background.png')" }}>
+                <p className="lg:pb-[68px]  lg:pt-[75px] pt-[15px] text-[32px] max-w-[1276px] lg:pl-[80px] pl-[15px]">Empowering businesses with smart, scalable digital solutions. Empowering businesses with smart, scalable digital solutions.</p>
 
-                <div className="flex pl-[80px] gap-[88px] relative top-[214px]">
-                    <div className="flex flex-col gap-[12px]">
+                <div className="lg:flex lg:pl-[80px]  pl-[15px] pr-[15px] gap-[88px] pt-[58px]">
+                    <div className="flex flex-col gap-[12px] flex-shrink-0">
                         <div className="flex gap-[12px]">
                             <Image src="/images/img1.png" alt="" height={236} width={212} className="rounded-lg" />
                             <Image src="/images/img2.png" alt="" height={236} width={212} className="rounded-lg" />
@@ -21,7 +21,7 @@ export default function Empowerment() {
                         <Image src="/images/coxsbazar.png" alt="" height={237} width={436} className="rounded-lg" />
                     </div>
 
-                    <div>
+                    <div className="lg:block pt-[15px]">
                         {
                             missions.map((p, index)=>(
                                 

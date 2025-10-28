@@ -12,7 +12,7 @@ export default function ManagementCouncil() {
 
     return (
         <>
-            <div className="pb-[117px]">
+            <div className="pb-[117px] lg:block hidden">
                 <div className="flex flex-col items-center text-center pb-[54px]">
                     <p className="font-semibold text-[32px] pl-[80px] pb-[14px]">Management Council</p>
                     <p className="max-w-[444px]  pl-[80px] max-h-[179px] text-[14px]">Our cutting-edge Modular Data Center solutions enable to protect mission-critical data.</p>
