@@ -12,13 +12,13 @@ export default function ManagementCouncil() {
 
     return (
         <>
-            <div className="pb-[117px] lg:block hidden">
-                <div className="flex flex-col items-center text-center pb-[54px]">
-                    <p className="font-semibold text-[32px] pl-[80px] pb-[14px]">Management Council</p>
-                    <p className="max-w-[444px]  pl-[80px] max-h-[179px] text-[14px]">Our cutting-edge Modular Data Center solutions enable to protect mission-critical data.</p>
+            <div className="pb-[117px] lg:block pt-[15px]">
+                <div className="lg:flex lg:flex-col flex flex-col lg:items-center lg:text-center text-left pl-[15px] pb-[54px]">
+                    <p className="font-semibold text-[32px] lg:pl-[80px] pb-[14px]">Management Council</p>
+                    <p className="max-w-[444px]  lg:pl-[80px] max-h-[179px] text-[14px]">Our cutting-edge Modular Data Center solutions enable to protect mission-critical data.</p>
                 </div>
 
-                <div className="grid grid-cols-4 pl-[80px] gap-[21px]">
+                <div className="lg:grid lg:grid-cols-4 flex flex-col items-center lg:pl-[80px] gap-[21px]">
 
                     {images.map((image, index) => (
                         <div key={index} className="rounded-lg mb-[40px] flex flex-col items-center text-center w-[304px] h-[339px] bg-[#ffffff] shadow-md ">
