@@ -72,7 +72,7 @@ export default function ProductDemo() {
                         </CarouselContent>
                     </Carousel>
 
-                    <div className="pt-[63px] justify-center flex gap-2">
+                    <div className="pt-[63px] justify-center pl-[80px] flex gap-2 pb-[62px]">
                         {slides.map((_, index) => (
                             <span
                                 key={index}
