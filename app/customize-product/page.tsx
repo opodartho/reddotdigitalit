@@ -1,4 +1,5 @@
 import AboutProject from "@/components/customize-product/AboutProject";
+import Conclusion from "@/components/customize-product/Conclusion";
 import CoreFeatures from "@/components/customize-product/CoreFeatures";
 import Section from "@/components/customize-product/CustomizeProduct";
 import DevelopmentProcess from "@/components/customize-product/DevelopmentProcess";
@@ -42,6 +43,9 @@ export default function CustomizeProduct(){
             </div>
             <div className="pt-[120px]">
                 <Section/>
+            </div>
+            <div className="pt-[173px]">
+                <Conclusion/>
             </div>
         </>
     )
