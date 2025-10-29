@@ -1,4 +1,3 @@
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import Image from "next/image";
 
 export default function DevelopmentProcess() {
@@ -15,7 +14,7 @@ export default function DevelopmentProcess() {
                     <p className="text-[30px] font-semibold">Development Process</p>
                     <p className="text-[14px] ">Our cutting-edge Modular Data Center solutions enable to protect mission-critical data.</p>
                 </div>
-                <div className="grid grid-cols-4 gap-[22px]">
+                <div className="grid grid-cols-4 gap-[28px] -ml-[100px]">
                     {
                         features.map((p, index) => (
                             <div key={index} className=" rounded-xl  h-[345px] w-[303px]" style={{backgroundImage:"url('/images/devp-bg.svg')"}}>

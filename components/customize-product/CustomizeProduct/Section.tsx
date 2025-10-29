@@ -1,0 +1,34 @@
+import * as React from "react";
+import { ProductItem} from "@/lib/data/productData";
+import { Button } from "@/components/ui/button";
+import { ProductCarousel } from "./ProductCarousel";
+
+type ProductProps = {
+  productData: ProductItem[];
+};
+
+const CustomizeProduct = ({ productData }: ProductProps) => {
+  return (
+    <section className="py-16 sm:py-24">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <div className="text-center mt-10">
+          <p className="mx-auto mt-4 max-w-2xl text-lg leading-8 text-gray-600">
+            Our cutting-edge Modular Data Center solutions enable to
+            <br /> protect mission-critical data.
+          </p>
+        </div>
+        <div className="mt-5 flex justify-center">
+          <Button variant="outline" size="lg">
+            View All
+          </Button>
+        </div>
+
+        <div className="mt-12">
+          <ProductCarousel productData={productData} />
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default CustomizeProduct;
