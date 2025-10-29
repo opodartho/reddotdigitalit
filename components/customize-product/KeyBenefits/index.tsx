@@ -11,7 +11,7 @@ export default function KeyBenefits() {
     ]
     return (
         <>
-            <div className="pl-[80px]">
+            <div className="pl-[80px] pb-[120px]">
                 <p className="text-[30px] font-semibold">Key Benefits</p>
                 <p className="w-[1091px] text-[14px] pt-[14px] pb-[44px]">RedDot Digital Limited is a 100% subsidiary of Robi Axiata Limited, the second-largest mobile network operator in Bangladesh, offering IT and digital solutions. Network operator in Bangladesh, offering IT and digital solutions.</p>
 
