@@ -1,6 +1,8 @@
 import AboutProject from "@/components/customize-product/AboutProject";
 import CoreFeatures from "@/components/customize-product/CoreFeatures";
 import Header from "@/components/customize-product/Header";
+import KeyBenefits from "@/components/customize-product/KeyBenefits";
+import ValuesProposition from "@/components/customize-product/ValuesProposition";
 
 
 export default function CustomizeProduct(){
@@ -14,6 +16,12 @@ export default function CustomizeProduct(){
             </div>
             <div className="pt-[90px]">
                 <CoreFeatures/>
+            </div>
+            <div className="pt-[90px]">
+                <ValuesProposition/>
+            </div>
+            <div className="pt-[90px]">
+                <KeyBenefits/>
             </div>
         </>
     )
