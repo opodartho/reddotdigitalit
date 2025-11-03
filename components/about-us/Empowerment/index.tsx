@@ -9,10 +9,10 @@ export default function Empowerment() {
     ]
     return (
         <>
-            <div className="w-full lg:h-[869px] h-auto lg:relative" style={{ backgroundImage: "url('/images/Background.png')" }}>
-                <p className="lg:pb-[68px]  lg:pt-[75px] pt-[15px] text-[32px] max-w-[1276px] lg:pl-[80px] pl-[15px]">Empowering businesses with smart, scalable digital solutions. Empowering businesses with smart, scalable digital solutions.</p>
+            <div className="lg:w-full w-[358px] ml-[16px] mr-[16px] lg:h-[869px] h-auto lg:relative mt-[114px]" style={{ backgroundImage: "url('/images/Background.png')" }}>
+                <p className="lg:pb-[68px]  lg:pt-[75px] pt-[15px] lg:text-[32px] text-[25px] font-medium max-w-[1276px] lg:pl-[80px] pl-[15px]">Empowering businesses with smart, scalable digital solutions. Empowering businesses with smart, scalable digital solutions.</p>
 
-                <div className="lg:flex lg:pl-[80px]  pl-[15px] pr-[15px] gap-[88px] pt-[58px]">
+                <div className="lg:flex lg:pl-[80px]  pl-[15px] pr-[15px] gap-[88px] lg:pt-[58px] pt-[111px]">
                     <div className="flex flex-col gap-[12px] flex-shrink-0">
                         <div className="flex gap-[12px]">
                             <Image src="/images/img1.png" alt="" height={236} width={212} className="rounded-lg" />
@@ -21,13 +21,13 @@ export default function Empowerment() {
                         <Image src="/images/coxsbazar.png" alt="" height={237} width={436} className="rounded-lg" />
                     </div>
 
-                    <div className="lg:block pt-[15px]">
+                    <div className="lg:block lg:pt-[15px] pt-[38.25px] pb-[75.77px]">
                         {
                             missions.map((p, index)=>(
                                 
-                                    <div key={index} className="h-[144px] pb-[39px] w-[752.61px] pr-24">
-                                        <p className="text-[25px] font-bold">{p.title}</p>
-                                        <p className="text-[16px] line-clamp-3">{p.description}</p>
+                                    <div key={index} className="lg:h-[144px] h-auto lg:pb-[39px] pb-[24px] w-[752.61px] pr-24">
+                                        <p className="text-[22px] font-medium">{p.title}</p>
+                                        <p className="text-[14px] w-[287px] ">{p.description}</p>
                                     </div>
                                 
                             ))

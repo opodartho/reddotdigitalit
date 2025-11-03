@@ -34,7 +34,7 @@ export default function AboutUs() {
                             Our cutting-edge Modular Data Center solutions enable to protect mission-critical data.
                         </p>
                     </div>
-                    <div className="pb-[109px]">
+                    <div className="pb-[109px] lg:pl-[40px]">
                         <Achievement data={achievementData} />
                     </div>
                 </div>
