@@ -11,19 +11,19 @@ export default function KeyBenefits() {
     ]
     return (
         <>
-            <div className="pl-[80px]">
+            <div className="lg:pl-[80px] pl-[16px]">
                 <p className="text-[30px] font-semibold">Key Benefits</p>
-                <p className="w-[1091px] text-[14px] pt-[14px] pb-[44px]">RedDot Digital Limited is a 100% subsidiary of Robi Axiata Limited, the second-largest mobile network operator in Bangladesh, offering IT and digital solutions. Network operator in Bangladesh, offering IT and digital solutions.</p>
+                <p className="lg:w-[1091px] w-[358px] h-[110px] text-[14px] pt-[14px] lg:pb-[44px] pb-[24px]">RedDot Digital Limited is a 100% subsidiary of Robi Axiata Limited, the second-largest mobile network operator in Bangladesh, offering IT and digital solutions. Network operator in Bangladesh, offering IT and digital solutions.</p>
 
-                <div className="flex flex-wrap gap-y-[44px]  gap-x-[59px]">
+                <div className="flex flex-wrap lg:gap-y-[44px]  lg:gap-x-[59px] gap-y-[16px]">
                     {
                         features.map((p, index) => (
-                            <div key={index} className="border-2 rounded-xl h-[137px] w-[610px]" style={{backgroundImage:"url('/images/benefits.svg')"}}>
+                            <div key={index} className="border-2 rounded-xl lg:h-[137px] lg:w-[610px] h-[108px]" style={{backgroundImage:"url('/images/benefits.svg')"}}>
                                 <div className="flex gap-0">
-                                    <Image src={p.icon} alt="" height={30} width={30} className="ml-[30px] mb-[55px]" />
+                                    <Image src={p.icon} alt="" height={30} width={30} className="lg:ml-[30px] ml-[12px] lg:mb-[55px] mb-[74px] mt-[12px] h-[22px] w-[22px] lg:h-[30px] lg:w-[30px]" />
                                     <div className="flex flex-col">
                                         <p className="mt-[12px] ml-[24px]">{p.title}</p>
-                                        <p className="mt-[10px] ml-[24px] w-[264px]">{p.description}</p>
+                                        <p className="lg:mt-[10px] mt-[4px] ml-[24px] lg:w-[264px]  text-[12px] line-clamp-3 ">{p.description}</p>
                                     </div>
                                 </div>
                             </div>

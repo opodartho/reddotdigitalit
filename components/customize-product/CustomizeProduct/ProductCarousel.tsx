@@ -69,7 +69,7 @@ export function ProductCarousel({ solutions }: SolutionsProps) {
         opts={{ loop: false, align: "start"}}
         plugins={[autoplay.current]}
       >
-        <CarouselContent className=" w-full gap-[20px] ">
+        <CarouselContent className=" w-full lg:gap-[20px] gap-[140px] lg:ml-0 ml-[16px]">
           {slides.map((slide, index) => (
             <CarouselItem
               key={index}

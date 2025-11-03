@@ -3,9 +3,11 @@
 export default function AboutProject(){
     return(
         <>
-            <div className="pl-[80px]">
-                <p className="text-[30px] font-semibold">About The Project</p>
-                <p className="w-[1212px] pt-[14px]">Our custom digital platform is built for businesses aiming to digitally transform. From improving efficiency with automation to scaling operations across regions, we deliver modular and agile solutions tailored to your use case—whether you are in logistics, healthcare, retail, finance, or beyond. Unlike off-the-shelf products, our platform evolves with your organization.</p>
+            <div className="lg:pl-[80px] pl-[16px]">
+                <p className="text-[30px] font-bold">About The Project</p>
+                <p className="lg:w-[1212px] w-[358px] h-auto pt-[14px] text-[14px]">RedDot MFS Solution is a powerful and flexible mobile financial services (MFS) platform designed to help banks, payment service providers, and financial institutions launch, scale, and operate secure digital wallets. With a proven track record of handling 8 million+ users and 100+ integrations, the platform enables seamless transaction experiences while complying with the highest security and regulatory standards.
+It’s more than a wallet—RedDot MFS powers digital banking, merchant ecosystems, government disbursements, and financial inclusion across all channels.
+</p>
             </div>
         </>
     )

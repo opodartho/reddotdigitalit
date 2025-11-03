@@ -17,16 +17,16 @@ export default function CustomizeProduct(){
             <div>
                 <Header/>
             </div>
-            <div className="pt-[90px]">
+            <div className="lg:pt-[90px] pt-[48px] pr-[80px]">
                 <AboutProject/>
             </div>
-            <div className="pt-[114px]">
+            <div className="lg:pt-[114px] pt-[48px] pr-[16px]">
                 <KeyBenefits/>
             </div>
-            <div className="pt-[114px]">
+            <div className="lg:pt-[114px] pt-[48px]">
                 <Section/>
             </div>
-            <div className="pt-[173px]">
+            <div className="pt-[173px] ">
                 <Conclusion/>
             </div>
         </>
