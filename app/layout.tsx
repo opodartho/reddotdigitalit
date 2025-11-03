@@ -45,7 +45,7 @@ export default async function RootLayout({
         suppressHydrationWarning
       >
         <NavBar />
-        <main className="lg:pr-[80px]">{children}</main>
+        <main>{children}</main>
         <Footer />
         <BackToTop />
       </body>

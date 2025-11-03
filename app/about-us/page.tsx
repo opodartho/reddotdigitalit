@@ -12,19 +12,19 @@ export default function AboutUs() {
     return (
         <>
             <div className="overflow-hidden">
-                <div className="">
+                <div className="lg:pr-80px">
                     <Header />
                 </div>
-                <div>
+                <div className="lg:pr-80px">
                     <AboutRedDot />
                 </div>
-                <div >
+                <div className="lg:pr-80px">
                     <OurRoots />
                 </div>
-                <div >
+                <div className="lg:pr-80px">
                     <OurJourney />
                 </div>
-                <div>
+                <div className="lg:pr-80px">
                     <Empowerment />
                 </div>
                 <div>
