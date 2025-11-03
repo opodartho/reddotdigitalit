@@ -1,10 +1,10 @@
 import * as React from "react";
-import { ProductItem} from "@/lib/data/productData";
+import { ProductSolutionItem} from "@/lib/data/productSolutionData";
 import { Button } from "@/components/ui/button";
 import { ProductCarousel } from "./ProductCarousel";
 
 type ProductProps = {
-  productData: ProductItem[];
+  productData: ProductSolutionItem[];
 };
 
 const CustomizeProduct = ({ productData }: ProductProps) => {
@@ -24,7 +24,7 @@ const CustomizeProduct = ({ productData }: ProductProps) => {
         </div>
 
         <div className="mt-12">
-          <ProductCarousel productData={productData} />
+          <ProductCarousel solutions={productData} />
         </div>
       </div>
     </section>

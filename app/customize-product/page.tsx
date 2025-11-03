@@ -20,28 +20,10 @@ export default function CustomizeProduct(){
             <div className="pt-[90px]">
                 <AboutProject/>
             </div>
-            <div className="pt-[90px]">
-                <CoreFeatures/>
-            </div>
-            <div className="pt-[90px]">
-                <ValuesProposition/>
-            </div>
-            <div className="pt-[90px]">
+            <div className="pt-[114px]">
                 <KeyBenefits/>
             </div>
-            <div className="pt-[90px]">
-                <ProductDemo/>
-            </div>
-            <div className="pt-[120px]">
-                <ProductFAQ/>
-            </div>
-            <div className="pt-[270px]">
-                <DevelopmentProcess/>
-            </div>
-            <div className="pt-[120px]">
-                <TechnologyUsed/>
-            </div>
-            <div className="pt-[120px]">
+            <div className="pt-[114px]">
                 <Section/>
             </div>
             <div className="pt-[173px]">

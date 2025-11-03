@@ -11,14 +11,14 @@ export default function KeyBenefits() {
     ]
     return (
         <>
-            <div className="pl-[80px] pb-[120px]">
+            <div className="pl-[80px]">
                 <p className="text-[30px] font-semibold">Key Benefits</p>
                 <p className="w-[1091px] text-[14px] pt-[14px] pb-[44px]">RedDot Digital Limited is a 100% subsidiary of Robi Axiata Limited, the second-largest mobile network operator in Bangladesh, offering IT and digital solutions. Network operator in Bangladesh, offering IT and digital solutions.</p>
 
-                <div className="grid grid-cols-2 gap-x-[79px] gap-y-[18px]  ">
+                <div className="flex flex-wrap gap-y-[44px]  gap-x-[59px]">
                     {
                         features.map((p, index) => (
-                            <div key={index} className="border-2 rounded-xl  h-[144px] w-full">
+                            <div key={index} className="border-2 rounded-xl h-[137px] w-[610px]" style={{backgroundImage:"url('/images/benefits.svg')"}}>
                                 <div className="flex gap-0">
                                     <Image src={p.icon} alt="" height={30} width={30} className="ml-[30px] mb-[55px]" />
                                     <div className="flex flex-col">
