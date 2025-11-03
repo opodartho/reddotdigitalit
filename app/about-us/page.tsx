@@ -2,6 +2,8 @@ import AboutRedDot from "@/components/about-us/AboutRedDot";
 import Empowerment from "@/components/about-us/Empowerment";
 import Header from "@/components/about-us/Header";
 import ManagementCouncil from "@/components/about-us/ManagementCouncil";
+import OurJourney from "@/components/about-us/OurJourney";
+import OurRoots from "@/components/about-us/OurRoots";
 import Achievement from "@/components/home/_who_we_are/Achievement";
 import { achievementData } from "@/lib/data/whoWeAreData";
 
@@ -17,7 +19,10 @@ export default function AboutUs() {
                     <AboutRedDot />
                 </div>
                 <div >
-                    <ManagementCouncil />
+                    <OurRoots />
+                </div>
+                <div >
+                    <OurJourney />
                 </div>
                 <div>
                     <Empowerment />
