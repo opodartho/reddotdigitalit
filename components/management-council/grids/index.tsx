@@ -4,14 +4,14 @@ import {
     CardTitle,
     CardDescription,
 } from "@/components/ui/card";
-import { directorsData } from "@/lib/data/directorsData";
+import { managementData } from "@/lib/data/managementData";
 export default function Grids() {
 
     return (
         <>
             <div className="lg:pt-[77px] pt-[68px] flex flex-wrap gap-[40px] justify-center lg:justify-start lg:pb-[144px]">
 
-                {directorsData.map((slide) => (
+                {managementData.map((slide) => (
 
                     <div key={slide.id}>
                         <Card
