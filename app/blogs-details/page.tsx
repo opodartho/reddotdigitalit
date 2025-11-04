@@ -12,7 +12,7 @@ export default function Blogs() {
             <div className="lg:pl-[80px] pl-[16px] lg:pr-[80px] pr-[16px] ">
                 <Header />
 
-                <div className="flex gap-[111px]">
+                <div className="flex lg:gap-[111px]">
                     <div>
                         <MetaData />
                     </div>
