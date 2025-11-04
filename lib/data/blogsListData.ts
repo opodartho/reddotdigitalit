@@ -1,4 +1,4 @@
-export type BlogItem = {
+export type BlogsListItem = {
     id: number;
     date:string;
     title: string;
@@ -6,7 +6,7 @@ export type BlogItem = {
     imageUrl: string;
   };
   
-  export const blogsListData: BlogItem[] = [
+  export const blogsListData: BlogsListItem[] = [
     {
         id:1,
         date: '7 Sep, 2024',
