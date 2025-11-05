@@ -17,7 +17,7 @@ export default function Header({headerData}: HeaderProps) {
                     <p className="font-semibold lg:text-[40px] text-[30px] lg:pt-[95px]  lg:w-[461px] pt-[51px]">{headerData.heading}</p>
                     <p className="pt-[26px]">{headerData.description}</p>
                 </div>
-                <img src={headerData.imageUrl} alt=""  className=" lg:pt-[95px] lg:w-[148.2px] lg:h-[117.62px]  w-[94.13px] h-[118px] lg:pl-[0px] pl-[16px]" />
+                <img src={headerData.imageUrl} alt=""  className=" w-[] h-[]  lg:pl-[0px] pl-[16px]" />
             </div>
         </>
     )
