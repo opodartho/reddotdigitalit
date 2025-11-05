@@ -1,17 +1,17 @@
+// MetaData.tsx - No changes needed
 import { blogsDetailsData } from "@/lib/data/blogDetailsData";
-
 
 export default function MetaData() {
     return (
         <>
-            <div className="lg:block hidden lg:flex lg:flex-col lg:pt-[64px] lg:pl-[24px] lg:w-[197px]">
+            <div className="lg:block hidden lg:flex-col lg:pt-[64px] lg:pl-[24px] lg:w-[197px]">
                 <div className="lg:flex lg:flex-col">
                     <p className="font-semibold text-[16px]">Date</p>
                     <p className="pt-[6px] text-[14px]">Last Update: {blogsDetailsData.date}</p>
                 </div>
 
                 <div className="lg:flex lg:flex-col pt-[44px]">
-                <p className="font-semibold text-[16px]">Authors</p>
+                    <p className="font-semibold text-[16px]">Authors</p>
                     <p className="pt-[6px] text-[14px]">
                         Published by:{' '}
                         {blogsDetailsData.authors.map((author, index) => (

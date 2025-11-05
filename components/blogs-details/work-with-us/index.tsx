@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 
 export default function WorkWithUs() {
     return (
-        <div className="bg-[#e52445] rounded-xl  lg:w-[922px] lg:h-[300px] w-[357px] h-[324px] lg:mt-[64px] mt-[62px]">
+        <div className="bg-[#e52445] rounded-xl  lg:w-full lg:h-[300px] w-[357px] h-[324px] lg:mt-[64px] mt-[62px]">
             <div className="lg:flex lg:justify-center">
             <p className=" text-white lg:pt-[60px] pt-[42px] lg:text-[24px] text-[24px] text-center pl-[23px]  lg:w-[577px]  w-[312px] flex justify-center">Ready to Revolutionize Your Financial Services?</p>
             </div>
