@@ -1,33 +1,34 @@
 import AboutProject from "@/components/customize-product/AboutProject";
 import Conclusion from "@/components/customize-product/Conclusion";
-import CoreFeatures from "@/components/customize-product/CoreFeatures";
 import Section from "@/components/customize-product/CustomizeProduct";
-import DevelopmentProcess from "@/components/customize-product/DevelopmentProcess";
 import Header from "@/components/customize-product/Header";
 import KeyBenefits from "@/components/customize-product/KeyBenefits";
-import ProductDemo from "@/components/customize-product/ProductDemo";
-import ProductFAQ from "@/components/customize-product/ProductFAQ";
-import TechnologyUsed from "@/components/customize-product/TechnologyUsed";
-import ValuesProposition from "@/components/customize-product/ValuesProposition";
+import { getAboutProject } from "@/lib/api/fetchAboutProject";
+import { getConclusion } from "@/lib/api/fetchConclusion";
+import { getCustomize } from "@/lib/api/fetchCustomizeItem";
+import { getHeader } from "@/lib/api/fetchHeaderData";
+import { getKeyBenefits } from "@/lib/api/fetchKeyBenefits";
 
 
-export default function CustomizeProduct(){
+export default async function CustomizeProduct(){
+
+    const [KeyBenefitsData, AboutProjectData, CustomizeData, HeaderData, ConclusionData]= await Promise.all([getKeyBenefits(), getAboutProject(), getCustomize(), getHeader(), getConclusion()])
     return(
         <>
             <div>
-                <Header/>
+                <Header headerData={HeaderData}/>
             </div>
-            <div className="lg:pt-[90px] pt-[48px] pr-[80px]">
-                <AboutProject/>
+            <div className="lg:pl-[240px] lg:pr-[240px] lg:flex-1 lg:flex-grow lg:pt-[90px] pt-[48px] pr-[80px]">
+                <AboutProject aboutProjectData={AboutProjectData}/>
             </div>
-            <div className="lg:pt-[114px] pt-[48px] pr-[16px]">
-                <KeyBenefits/>
+            <div className="lg:pl-[240px] lg:pr-[240px] lg:flex-1 lg:pt-[114px] pt-[48px] pr-[16px]">
+                <KeyBenefits keyBenefitsData={KeyBenefitsData}/>
             </div>
             <div className="lg:pt-[114px] pt-[48px]">
-                <Section/>
+                <Section customizeData={CustomizeData}/>
             </div>
-            <div className="pt-[173px] ">
-                <Conclusion/>
+            <div className="pt-[173px] lg:pl-[240px] lg:pr-[240px]">
+                <Conclusion conclusionData={ConclusionData}/>
             </div>
         </>
     )
