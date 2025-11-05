@@ -17,9 +17,9 @@ export default function CaseStudyTechnology() {
   ];
 
   return (
-    <section className="w-full flex flex-col items-center bg-[#FFFFFF] mt-[80px] ">
+    <section className="w-full flex flex-col items-center bg-[#FFFFFF] mt-[80px]  px-[18px] lg:px-20 ">
       {/* ✅ Container width = 1280px centered */}
-      <div className="w-full max-w-[1280px] mx-auto">
+      <div className="w-full ">
         {/* 🔹 Title */}
         <h3 className="text-[32px] font-[700] text-[#000000] mb-[16px] font-poppins">
           Technology Used

@@ -20,7 +20,7 @@ export default function CaseStudyPage() {
     <main
       className="
         flex flex-col items-center justify-center 
-        bg-[#FFFFFF] overflow-hidden 
+        bg-[#FFFFFF] overflow-hidden  
       "
     >
       {/* 1️⃣ Hero Section */}
@@ -84,3 +84,7 @@ export default function CaseStudyPage() {
     </main>
   );
 }
+
+
+
+/* removed all the max-w-[1280px] mx-auto and replace with  px-[18px] lg:px-20 */

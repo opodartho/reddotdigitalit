@@ -14,9 +14,10 @@ export default function CaseStudyHeroSection() {
   return (
     <section
       className="
-        w-full max-w-[1280px] mx-auto flex flex-col justify-center 
+        w-full flex flex-col justify-center 
         bg-[#FFFFFF] 
         pt-[120px] 
+        px-[18px] lg:px-20 
         
       "
     >
@@ -24,8 +25,7 @@ export default function CaseStudyHeroSection() {
       <div
         className="
          
-          border border-[#ECF1FE]
-          rounded-[17px]
+
           flex flex-col self-start
           mb-[54px]
           
@@ -63,7 +63,7 @@ export default function CaseStudyHeroSection() {
       {/* 🔹 Project Info Bar — Group 48098098 */}
       <div
         className="
-          w-[1280px]  h-[128px] bg-[#F6F9FE]
+          h-[128px] bg-[#F6F9FE]
           rounded-[12px] flex items-center justify-between
           px-[40px] mb-[80px] py-[40px]
         "
@@ -93,7 +93,7 @@ export default function CaseStudyHeroSection() {
       {/* 🔹 Hero Image */}
       <div
         className="
-          relative w-full max-w-[1280px] h-[483px] 
+          relative w-full  h-[483px] 
     
         "
       >
@@ -108,3 +108,6 @@ export default function CaseStudyHeroSection() {
     </section>
   );
 }
+
+
+/*removed the extra border */

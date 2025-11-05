@@ -5,9 +5,9 @@ import Image from "next/image";
 
 export default function CaseStudyTestimonials() {
   return (
-    <section className="w-full flex justify-center bg-white mt-[120px]">
+    <section className="w-full flex justify-center bg-white mt-[120px]  px-[18px] lg:px-20 ">
       {/* 🟣 Centered container (1280px layout) */}
-      <div className="w-full max-w-[1280px] mx-auto flex flex-col">
+      <div className="w-full  flex flex-col">
         {/* 🔹 Title */}
         <h3 className="text-[32px] font-[700] text-[#000000] font-poppins mb-[14px]">
           Testimonials

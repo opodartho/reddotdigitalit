@@ -10,7 +10,7 @@ type MoreCaseStudiesCarouselProps = {
 
 const MoreCaseStudiesCarousel = ({ caseStudiesData }: MoreCaseStudiesCarouselProps) => {
   return (
-    <section className="w-full py-[156px] bg-white">
+    <section className="w-full py-[156px] bg-white  px-[18px] lg:px-20 ">
       <h2 className="text-center text-[32px] font-poppins font-[600] mb-[66px] text-[#000000]">
         More Case Studies
       </h2>

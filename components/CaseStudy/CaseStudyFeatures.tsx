@@ -10,7 +10,7 @@ export default function CaseStudyFeatures() {
   ];
 
   return (
-    <section className="w-full max-w-[1280px] mx-auto mt-[60px]">
+    <section className="w-full  mt-[60px]  px-[18px] lg:px-20 ">
       {/* 🔹 Section Heading */}
       <h3 className="text-[32px] font-[700] mb-[16px] font-poppins">
         Key Features Delivered

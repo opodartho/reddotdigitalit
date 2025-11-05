@@ -4,8 +4,9 @@ import { Button } from "@/components/ui/button";
 
 export default function CaseStudyCTA() {
   return (
-    <section className="w-full bg-[#E52445] flex flex-col items-center justify-center text-center  max-w-[1280px] mx-auto py-[207px] px-[246px] ">
-      <h2 className="text-[32px] font-[700] text-[#FFFFFF]  mb-[16px]">
+    <section className="w-full bg-[#E52445] flex flex-col items-center justify-center text-center md:py-[207px] md:px-[246px] sm:py-[60px] sm:px-[60px] ">
+
+     <h2 className="text-[32px] font-[700] text-[#FFFFFF]  mb-[16px]">
         Ready to Transform Your Business?
       </h2>
       <p className="max-w-[948px] text-[16px] leading-[30px] text-[#FFFFFF] mb-[40px]">
@@ -26,3 +27,6 @@ export default function CaseStudyCTA() {
     </section>
   );
 }
+
+
+/*need some changes*/

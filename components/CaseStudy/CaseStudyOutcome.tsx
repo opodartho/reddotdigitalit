@@ -12,9 +12,9 @@ export default function CaseStudyOutcome() {
   ];
 
   return (
-    <section className="w-full flex justify-center bg-white mt-[54px]">
+    <section className="w-full flex justify-center bg-white mt-[54px]  px-[18px] lg:px-20 ">
       {/* 🟣 Centered container */}
-      <div className="w-full max-w-[1280px] mx-auto flex flex-col max-h-[633px] ">
+      <div className="w-full  flex flex-col  ">
         {/* 🔹 Title */}
         <h3 className="text-[32px] font-[700] text-black font-poppins mb-[14px]">
           Outcome
@@ -81,3 +81,5 @@ export default function CaseStudyOutcome() {
     </section>
   );
 }
+
+/* need some changes */
