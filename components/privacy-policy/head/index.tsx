@@ -1,0 +1,24 @@
+import { Button } from "@/components/ui/button";
+import { PrivacyHead } from "@/lib/data/privacy-head";
+import Image from "next/image";
+
+type HeaderProps={
+    headerData: PrivacyHead
+}
+
+export default function Header({headerData}: HeaderProps) {
+    return (
+        <>
+            <div
+                className="lg:pl-[80px] lg:pt-[0px] lg:min-h-[279px] min-h-[382px] lg:flex lg:gap-[440px]"
+                style={{ backgroundImage: "url('/images/privacy-bg.svg')" }}
+            >
+                <div className="lg:w-[630px] lg:pl-[0px] pl-[16px] lg:pr-[0px] pr-[16px] lg:pb-[0px] pb-[68px]">
+                    <p className="font-semibold lg:text-[40px] text-[30px] lg:pt-[95px]  lg:w-[461px] pt-[51px]">{headerData.heading}</p>
+                    <p className="pt-[26px]">{headerData.description}</p>
+                </div>
+                <img src={headerData.imageUrl} alt=""  className=" lg:pt-[95px] lg:w-[148.2px] lg:h-[117.62px]  w-[94.13px] h-[118px] lg:pl-[0px] pl-[16px]" />
+            </div>
+        </>
+    )
+}
