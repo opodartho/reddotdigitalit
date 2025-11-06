@@ -17,6 +17,7 @@ import {
 } from "@/components/ui/card";
 import { getProductSolutions } from "@/lib/api/fetchProductSolutions";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 type SolutionsProps = {
   solutions: ProductSolutionItem[];
@@ -37,7 +38,7 @@ export function ProductCarousel({ solutions }: SolutionsProps) {
   const [api, setApi] = React.useState<CarouselApi>();
   const [current, setCurrent] = React.useState(0);
   const [slides, setSlides] = useState<ProductSolutionItem[]>([]);
-
+  const router = useRouter()
   const autoplay = React.useRef(
     Autoplay({ delay: 3000, stopOnInteraction: false })
   );
@@ -66,7 +67,7 @@ export function ProductCarousel({ solutions }: SolutionsProps) {
       <Carousel
         className="w-full"
         setApi={setApi}
-        opts={{ loop: false, align: "start"}}
+        opts={{ loop: false, align: "start" }}
         plugins={[autoplay.current]}
       >
         <CarouselContent className=" w-full lg:gap-[20px] gap-[140px] lg:ml-0 ml-[16px]">
@@ -75,29 +76,30 @@ export function ProductCarousel({ solutions }: SolutionsProps) {
               key={index}
               className=" basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/5 px-2"
             >
-              <Card
-                className={`flex h-[172px] w-[305px] ${index===0 ? '' : ''} flex-col transition hover:shadow-lg  ${
-                  gradients[index % gradients.length] 
-                }`}
-              >
-                <CardHeader className="">
-                  {slide.image ? (
-                    <Image
-                      src={slide.image}
-                      alt={slide.title}
-                      width={48}
-                      height={48}
-                      className="mb-2 object-contain"
-                    />
-                  ) : (
-                    <div className="mb-2 text-3xl">{slide.image}</div>
-                  )}
-                  <CardTitle className="text-base">{slide.title}</CardTitle>
-                  <CardDescription className="text-sm">
-                    {slide.description}
-                  </CardDescription>
-                </CardHeader>
-              </Card>
+              <div className="cursor-pointer" onClick={()=>router.push(`/customize-product/${index+1}`)}>
+                <Card
+                  className={`flex h-[172px] w-[305px] ${index === 0 ? '' : ''} flex-col transition hover:shadow-lg  ${gradients[index % gradients.length]
+                    }`}
+                >
+                  <CardHeader className="">
+                    {slide.image ? (
+                      <Image
+                        src={slide.image}
+                        alt={slide.title}
+                        width={48}
+                        height={48}
+                        className="mb-2 object-contain"
+                      />
+                    ) : (
+                      <div className="mb-2 text-3xl">{slide.image}</div>
+                    )}
+                    <CardTitle className="text-base">{slide.title}</CardTitle>
+                    <CardDescription className="text-sm">
+                      {slide.description}
+                    </CardDescription>
+                  </CardHeader>
+                </Card>
+              </div>
             </CarouselItem>
           ))}
         </CarouselContent>
@@ -106,9 +108,8 @@ export function ProductCarousel({ solutions }: SolutionsProps) {
           {slides.map((_, index) => (
             <span
               key={index}
-              className={`w-5 h-1 rounded-[2px] transition-colors duration-200 ${
-                index + 1 === current ? "bg-[#E52445]" : "bg-gray-300"
-              }`}
+              className={`w-5 h-1 rounded-[2px] transition-colors duration-200 ${index + 1 === current ? "bg-[#E52445]" : "bg-gray-300"
+                }`}
             ></span>
           ))}
         </div>

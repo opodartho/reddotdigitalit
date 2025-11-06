@@ -1,3 +1,4 @@
+"use client"
 import Image from "next/image";
 import {
   Card,
@@ -6,6 +7,7 @@ import {
   CardDescription,
 } from "@/components/ui/card";
 import { ProductSolutionItem } from "@/lib/data/productSolutionData";
+import { useRouter } from "next/navigation";
 
 type SolutionsProps = {
   solutions: ProductSolutionItem[];
@@ -65,6 +67,7 @@ const gradients = [
 ];
 
 export default function Solutions({ solutions }: SolutionsProps) {
+  const router= useRouter()
   return (
     <section className="px-4 py-4 md:px-8">
       <div className="mx-auto mb-10 max-w-2xl text-center">
@@ -79,8 +82,8 @@ export default function Solutions({ solutions }: SolutionsProps) {
 
       <div className="grid auto-rows-fr grid-cols-1 items-stretch gap-6 sm:grid-cols-2 md:grid-cols-4">
         {solutions.map((solution, idx) => (
+          <div className="cursor-pointer" key={idx} onClick={()=>router.push(`/customize-product/${idx+1}`)}>
           <Card
-            key={idx}
             className={`flex h-full flex-col transition hover:shadow-lg ${
               gradients[idx % gradients.length]
             }`}
@@ -101,6 +104,7 @@ export default function Solutions({ solutions }: SolutionsProps) {
               <CardDescription>{solution.description}</CardDescription>
             </CardHeader>
           </Card>
+          </div>
         ))}
       </div>
     </section>
