@@ -1,4 +1,4 @@
-export type BlogItem = {
+export type NewsDetailsItem = {
   id: number;
   date: string;
   title: string;
@@ -16,7 +16,7 @@ export type BlogItem = {
   subText2?: string;
 };
 
-export const newsDetailsData: BlogItem =
+export const newsDetailsData: NewsDetailsItem =
 {
   id: 1,
   date: '10 Jul, 2024',

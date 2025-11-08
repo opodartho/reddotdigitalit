@@ -5,9 +5,13 @@ import {
     CardTitle,
     CardDescription,
 } from "@/components/ui/card";
-import { newsListData } from "@/lib/data/newsListData";
+import { NewsListItem, newsListData } from "@/lib/data/news-list/newsListData";
 
-export default function Grids() {
+type NewsListProps={
+    newsListData: NewsListItem[]
+}
+
+export default function Grids({newsListData}: NewsListProps) {
 
     return (
         <>

@@ -1,6 +1,9 @@
-import { newsDetailsData } from "@/lib/data/newsDetailsData";
+import { NewsDetailsItem, newsDetailsData } from "@/lib/data/news-details/newsDetailsData";
 
-export default function Body() {
+type NewsDetailsProps={
+    newsDetailsData: NewsDetailsItem
+}
+export default function Body({newsDetailsData}: NewsDetailsProps) {
     return (
         <>
             <div className="lg:pt-[64px] w-full lg:w-auto pt-[185px]">

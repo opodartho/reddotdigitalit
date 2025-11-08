@@ -17,24 +17,24 @@ import {
 } from "@/components/ui/card";
 import { getProductSolutions } from "@/lib/api/fetchProductSolutions";
 import Image from "next/image";
-import { BlogsListItem, newsListData } from "@/lib/data/newsListData";
+import { NewsListItem, newsListData } from "@/lib/data/news-list/newsListData";
 import { Button } from "@/components/ui/button";
 
 type ProductCarouselProps = {
-    newsListData: BlogsListItem[];
+    newsListData: NewsListItem[];
 };
 
 
 export function BlogCarousel({ newsListData }: ProductCarouselProps) {
     const [api, setApi] = React.useState<CarouselApi>();
     const [current, setCurrent] = React.useState(0);
-    
+
 
     const autoplay = React.useRef(
         Autoplay({ delay: 3000, stopOnInteraction: false })
     );
 
-    
+
 
     React.useEffect(() => {
         if (!api) return;
@@ -48,7 +48,7 @@ export function BlogCarousel({ newsListData }: ProductCarouselProps) {
 
     return (
         <div className="relative z-10 w-full ">
-            
+
             <p className="text-[40px] lg:pl-[80px] pl-[41px] pt-[42px] lg:pr-[80px] lg:pt-[64px] font-bold">Related Blogs</p>
             <Carousel
                 className="w-full pt-[44px]"
