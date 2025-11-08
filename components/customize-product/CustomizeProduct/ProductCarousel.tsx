@@ -15,7 +15,7 @@ import {
   CardTitle,
   CardDescription,
 } from "@/components/ui/card";
-import { getProductSolutions } from "@/lib/api/customize-product/fetchProductSolutions";
+import { getProductSolutions } from "@/lib/api/fetchProductSolutions";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
