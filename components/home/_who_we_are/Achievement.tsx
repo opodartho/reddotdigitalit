@@ -13,15 +13,15 @@ const AchievementCard = ({
 }: AchievementCardProps) => {
   return (
     <div
-      className={`flex flex-col items-center rounded-xl p-6 text-center shadow-md ${bgGradient}`}
+      className={`flex flex-col items-left rounded-xl p-6 text-left shadow-md ${bgGradient}`}
     >
       <div className="mb-4">
         <Image
           src={icon}
           alt={title}
-          width={40}
-          height={40}
-          className="mx-auto"
+          width={26}
+          height={26}
+          className=""
         />
       </div>
 
