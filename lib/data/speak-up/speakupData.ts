@@ -1,14 +1,18 @@
 
-export type Speakup={
+export type SpeakupItem={
     id: number,
+    title: string,
+    subtitle: string,
     imageUrl: string,
     name: string,
     points: string[],
     description: string
 }
 
-export const SpeakupData: Speakup={
+export const SpeakupData: SpeakupItem={
     id: 1,
+    title:'RedDigital Speak Up (Whistleblowing Channel)',
+    subtitle:'From tech to strategy – meet the brilliant minds behind each department shaping the future of digital innovation.',
     imageUrl:'/images/speak.svg',
     name:'RedDigital Speak Up',
     points:['Bold & Impactful', 'Trust & Control', 'Benefit-Driven', ' Enterprise-Grade Security', 'Tech-Savvy', 'Seamless Integration'],

@@ -1,7 +1,9 @@
 import { Button } from "@/components/ui/button";
-import { SpeakupData } from "@/lib/data/speakupData";
-
-export default function Main() {
+import { SpeakupData, SpeakupItem } from "@/lib/data/speak-up/speakupData";
+type SpeakupProps={
+    SpeakupData: SpeakupItem
+}
+export default function Main({SpeakupData}: SpeakupProps) {
     return (
         <>
             <div className="lg:pt-[51px] lg:gap-[153px] pt-[141px] lg:flex lg:flex-row lg:pb-[32px] pb-[30px] lg:pl-[80px] pl-[16px] pr-[16px] flex flex-col ">
