@@ -1,7 +1,10 @@
+import { JourneyItem } from "@/lib/data/about-us/OurJourney";
 import Image from "next/image";
 
-
-export default function OurJourney() {
+type JourneyProps={
+    journeyData: JourneyItem
+}
+export default function OurJourney({journeyData}: JourneyProps) {
     return (
         <>
             <div className="lg:pt-[148.76px] pt-[58.95px] lg:block">

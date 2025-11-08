@@ -1,42 +1,41 @@
 import AboutRedDot from "@/components/about-us/AboutRedDot";
+import Achievements from "@/components/about-us/Achievements";
 import Empowerment from "@/components/about-us/Empowerment";
 import Header from "@/components/about-us/Header";
-import ManagementCouncil from "@/components/about-us/ManagementCouncil";
 import OurJourney from "@/components/about-us/OurJourney";
 import OurRoots from "@/components/about-us/OurRoots";
-import Achievement from "@/components/home/_who_we_are/Achievement";
-import { achievementData } from "@/lib/data/whoWeAreData";
+import { getAboutUs } from "@/lib/api/about-us/fetchAboutUs";
+import { getAchievements } from "@/lib/api/about-us/fetchAchievements";
+import { getEmpowerment } from "@/lib/api/about-us/fetchEmpowerment";
+import { getHeader } from "@/lib/api/about-us/fetchHeader";
+import { getManagement } from "@/lib/api/about-us/fetchManagementCouncil";
+import { getJourney } from "@/lib/api/about-us/fetchOurJourney";
+import { getRoots } from "@/lib/api/about-us/fetchRoots";
 
 
-export default function AboutUs() {
+
+export default async function AboutUs() {
+    const [AboutData, AchievementsData, ManageData, HeaderData, JourneyData, RootsData, EmpowermentData]= await Promise.all([getAboutUs(), getAchievements(), getManagement(), getHeader(),getJourney(), getRoots(), getEmpowerment()])
     return (
         <>
             <div className="overflow-hidden">
                 <div className="lg:pr-80px">
-                    <Header />
+                    <Header headerData={HeaderData}/>
                 </div>
                 <div className="lg:pr-80px">
-                    <AboutRedDot />
+                    <AboutRedDot aboutUs={AboutData}/>
                 </div>
                 <div className="lg:pr-80px">
-                    <OurRoots />
+                    <OurRoots rootsData={RootsData}/>
                 </div>
                 <div className="lg:pr-80px">
-                    <OurJourney />
+                    <OurJourney journeyData={JourneyData}/>
                 </div>
                 <div className="lg:pr-80px">
-                    <Empowerment />
+                    <Empowerment empowermentData={EmpowermentData}/>
                 </div>
                 <div>
-                    <div className="lg:block lg:w-full pt-[109px] pb-[38px] flex flex-col justify-center text-center">
-                        <p className="font-semibold text-[32px]">Achievement</p>
-                        <p className="text-[14px] line-clamp-2 pt-[17px] lg:w-[444px] w-[300px] mx-auto"> {/* Added mx-auto */}
-                            Our cutting-edge Modular Data Center solutions enable to protect mission-critical data.
-                        </p>
-                    </div>
-                    <div className="pb-[109px] lg:pl-[40px]">
-                        <Achievement data={achievementData} />
-                    </div>
+                    <Achievements achievements={AchievementsData}/>
                 </div>
             </div>
         </>
