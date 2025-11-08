@@ -17,7 +17,7 @@ import {
 } from "@/components/ui/card";
 import { getProductSolutions } from "@/lib/api/fetchProductSolutions";
 import Image from "next/image";
-import { BlogsListItem, blogsListData } from "@/lib/data/blogsListData";
+import { BlogsListItem, blogsListData } from "@/lib/data/blogs-list/blogsListData";
 import { Button } from "@/components/ui/button";
 
 type ProductCarouselProps = {
@@ -28,13 +28,13 @@ type ProductCarouselProps = {
 export function BlogCarousel({ blogsListData }: ProductCarouselProps) {
     const [api, setApi] = React.useState<CarouselApi>();
     const [current, setCurrent] = React.useState(0);
-    
+
 
     const autoplay = React.useRef(
         Autoplay({ delay: 3000, stopOnInteraction: false })
     );
 
-    
+
 
     React.useEffect(() => {
         if (!api) return;
@@ -48,7 +48,7 @@ export function BlogCarousel({ blogsListData }: ProductCarouselProps) {
 
     return (
         <div className="relative z-10 w-full ">
-            
+
             <p className="text-[40px] lg:pl-[80px] pl-[41px] pt-[42px] lg:pr-[80px] lg:pt-[64px] font-bold">Related Blogs</p>
             <Carousel
                 className="w-full pt-[44px]"

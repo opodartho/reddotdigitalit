@@ -1,7 +1,10 @@
 // MetaData.tsx - No changes needed
-import { blogsDetailsData } from "@/lib/data/blogDetailsData";
+import { BlogsDetailsItem, blogsDetailsData } from "@/lib/data/blogs-details/blogDetailsData";
 
-export default function MetaData() {
+type BlogsDetailsProps={
+    blogsDetailsData: BlogsDetailsItem
+}
+export default function MetaData({blogsDetailsData}: BlogsDetailsProps) {
     return (
         <>
             <div className="lg:block hidden lg:flex-col lg:pt-[64px] lg:pl-[24px] lg:w-[197px]">

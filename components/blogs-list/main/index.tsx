@@ -5,9 +5,12 @@ import {
     CardTitle,
     CardDescription,
 } from "@/components/ui/card";
-import { blogsListData } from "@/lib/data/blogsListData";
+import { BlogsListItem} from "@/lib/data/blogs-list/blogsListData";
 
-export default function Grids() {
+type BlogsListProps={
+    blogsListData: BlogsListItem[]
+}
+export default function Grids({blogsListData}:BlogsListProps) {
 
     return (
         <>

@@ -1,6 +1,10 @@
-import { blogsDetailsData } from "@/lib/data/blogDetailsData";
+import { BlogsDetailsItem, blogsDetailsData } from "@/lib/data/blogs-details/blogDetailsData";
 
-export default function Body() {
+
+type BlogsDetailsProps={
+    blogsDetailsData: BlogsDetailsItem
+}
+export default function Body({blogsDetailsData}: BlogsDetailsProps) {
     return (
         <>
             <div className="lg:pt-[64px] w-full lg:w-auto pt-[185px]">
@@ -19,7 +23,7 @@ export default function Body() {
 
                         {blogsDetailsData.keyPoints.map((p, index) => (
                             <div className="flex gap-[12px] lg:pl-[36px]" key={index}>
-                                <img src={'/images/bluetick.svg'} className="lg:pt-[0px] lg:-mt-[16px] -mt-[34px]"/>
+                                <img src={'/images/bluetick.svg'} className="lg:pt-[0px] lg:-mt-[16px] -mt-[34px]" />
                                 <p className="lg:pt-[0px] pt-[32px]">{p}</p>
                             </div>
                         ))}
