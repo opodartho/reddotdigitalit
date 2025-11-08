@@ -1,13 +1,21 @@
 
 export type Directors={
+    title: string,
+    subtitle: string,
+    information:{
     id: number,
     imageUrl: string,
     name: string,
     role: string,
     description: string
+    }[]
 }
 
-export const directorsData: Directors[]=[{
+export const directorsData: Directors={
+    title:'Board of Directors',
+    subtitle:'From tech to strategy – meet the brilliant minds behind each department shaping the future of digital innovation.',
+    information:[
+{
     id: 1,
     imageUrl:'/images/director1.svg',
     name:'Hasib Mustabsir',
@@ -42,4 +50,4 @@ export const directorsData: Directors[]=[{
     role:'Chief Platform Officer',
     description:'Hasib Mustabsir joined RedDot Digital Limited as Chief Executive Officer (CEO) in October 2021.'
 }
-]
+]}

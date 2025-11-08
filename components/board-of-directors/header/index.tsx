@@ -1,11 +1,14 @@
+import { Directors } from "@/lib/data/board-of-directors/directorsData"
 
-
-export default function Header(){
-    return(
+type DirectorsProps = {
+    directorsData: Directors
+}
+export default function Header({ directorsData }: DirectorsProps) {
+    return (
         <>
             <div className="lg:pt-[108px] pt-[68px]">
-                <p className="font-semibold lg:text-[40px] text-[30px]">Board of Directors</p>
-                <p className="lg:text-[18px] text-[14px] lg:pt-[19px] pt-[14px] lg:w-[675px] w-[358px] break-words text-wrap tracking-wider line-clamp-3">From tech to strategy – meet the brilliant minds behind each department shaping the future of digital innovation.</p>
+                <p className="font-semibold lg:text-[40px] text-[30px]">{directorsData.title}</p>
+                <p className="lg:text-[18px] text-[14px] lg:pt-[19px] pt-[14px] lg:w-[675px] w-[358px] break-words text-wrap tracking-wider line-clamp-3">{directorsData.subtitle}</p>
             </div>
         </>
     )

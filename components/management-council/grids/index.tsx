@@ -4,14 +4,17 @@ import {
     CardTitle,
     CardDescription,
 } from "@/components/ui/card";
-import { managementData } from "@/lib/data/managementData";
-export default function Grids() {
+import { Management, managementData } from "@/lib/data/management-council/managementData";
+type ManagementProps={
+    managementData: Management
+}
+export default function Grids({managementData}: ManagementProps) {
 
     return (
         <>
             <div className="lg:pt-[77px] pt-[68px] flex flex-wrap gap-[40px] justify-center lg:justify-start lg:pb-[144px]">
 
-                {managementData.map((slide) => (
+                {managementData.information.map((slide) => (
 
                     <div key={slide.id}>
                         <Card

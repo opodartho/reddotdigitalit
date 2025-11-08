@@ -1,5 +1,5 @@
 
-export type Leaders={
+export type LeadersItem={
     id: number,
     imageUrl: string,
     name: string,
@@ -7,7 +7,7 @@ export type Leaders={
     description: string
 }
 
-export const LeadersData: Leaders={
+export const LeadersData: LeadersItem={
     id: 1,
     imageUrl:'/images/leader.svg',
     name:'Hasib Mustabsir',

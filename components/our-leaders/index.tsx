@@ -1,7 +1,10 @@
-import { LeadersData } from "@/lib/data/leadersData";
 
+import {LeadersItem } from "@/lib/data/our-leaders/leadersData";
 
-export default function OurLeaders() {
+type LeadersDataProps={
+    LeadersData: LeadersItem 
+}
+export default function OurLeaders({LeadersData}: LeadersDataProps) {
     return (
         <div className="lg:pb-[52px] pb-[32px]">
             <div className="lg:pt-[30px] pt-[141px] lg:flex lg:flex-row lg:pb-[32px] pb-[30px] lg:justify-center flex flex-col items-center bg-[#f9f8fb]">
