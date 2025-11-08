@@ -1,20 +1,20 @@
 "use client"
-import { staticProductSolutions } from "@/lib/data/productSolutionData";
+import { staticProductSolutions } from "@/lib/data/customize-product/productSolutionData";
 import { ProductCarousel } from "./ProductCarousel";
-import { productData } from "@/lib/data/productData";
-import { CustomizeItem } from "@/lib/data/customize-product";
+import { productData } from "@/lib/data/customize-product/productData";
+import { CustomizeItem } from "@/lib/data/customize-product/customize-product";
 
-type CustomizeProps= {
+type CustomizeProps = {
     customizeData: CustomizeItem
 }
-export default function Section({customizeData}: CustomizeProps) {
+export default function Section({ customizeData }: CustomizeProps) {
     return (
         <>
             <div className="flex flex-col lg:items-center">
                 <p className="text-[32px] font-semibold  lg:pl-[80px] pl-[16px]">{customizeData.title}</p>
                 <p className="text-[14px]  lg:pl-[80px] pl-[16px]">{customizeData.description}</p>
                 <div className=" w-full pt-[64px]">
-                    <ProductCarousel solutions={staticProductSolutions}/>
+                    <ProductCarousel solutions={staticProductSolutions} />
                 </div>
             </div>
         </>

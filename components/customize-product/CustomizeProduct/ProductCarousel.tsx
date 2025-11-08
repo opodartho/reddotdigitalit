@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Autoplay from "embla-carousel-autoplay";
-import { ProductSolutionItem } from "@/lib/data/productSolutionData";
+import { ProductSolutionItem } from "@/lib/data/customize-product/productSolutionData";
 import {
   Carousel,
   CarouselContent,
@@ -15,7 +15,7 @@ import {
   CardTitle,
   CardDescription,
 } from "@/components/ui/card";
-import { getProductSolutions } from "@/lib/api/fetchProductSolutions";
+import { getProductSolutions } from "@/lib/api/customize-product/fetchProductSolutions";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
@@ -76,7 +76,7 @@ export function ProductCarousel({ solutions }: SolutionsProps) {
               key={index}
               className=" basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/5 px-2"
             >
-              <div className="cursor-pointer" onClick={()=>router.push(`/customize-product/${index+1}`)}>
+              <div className="cursor-pointer" onClick={() => router.push(`/customize-product/${index + 1}`)}>
                 <Card
                   className={`flex h-[172px] w-[305px] ${index === 0 ? '' : ''} flex-col transition hover:shadow-lg  ${gradients[index % gradients.length]
                     }`}

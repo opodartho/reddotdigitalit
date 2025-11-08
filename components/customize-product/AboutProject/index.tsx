@@ -1,13 +1,13 @@
-import { AboutProjectItem } from "@/lib/data/aboutProject"
+import { AboutProjectItem } from "@/lib/data/customize-product/aboutProject"
 
-type AboutProjectProps= {
+type AboutProjectProps = {
     aboutProjectData: AboutProjectItem[],
     Id: any
 }
 
-export default function AboutProject({aboutProjectData, Id}: AboutProjectProps){
-    const indexNumber= Number(Id)
-    return(
+export default function AboutProject({ aboutProjectData, Id }: AboutProjectProps) {
+    const indexNumber = Number(Id)
+    return (
         <>
             <div className="lg:pl-[80px] pl-[16px]">
                 <p className="text-[30px] font-bold">{aboutProjectData[indexNumber]?.title}</p>

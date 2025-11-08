@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { KeyBenefitItem } from "@/lib/data/keyBenefitsData";
+import { KeyBenefitItem } from "@/lib/data/customize-product/keyBenefitsData";
 
 type KeyBenefitsProps = {
   keyBenefitsData: KeyBenefitItem[][];

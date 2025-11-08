@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button'
 import { ArrowRight } from 'lucide-react'
-import { ConclusionItem } from "@/lib/data/conclusion";
+import { ConclusionItem } from "@/lib/data/customize-product/conclusion";
 import Image from "next/image";
 
 type ConclusionProps = {

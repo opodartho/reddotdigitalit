@@ -1,5 +1,5 @@
 import * as React from "react";
-import { ProductSolutionItem} from "@/lib/data/productSolutionData";
+import { ProductSolutionItem } from "@/lib/data/customize-product/productSolutionData";
 import { Button } from "@/components/ui/button";
 import { ProductCarousel } from "./ProductCarousel";
 

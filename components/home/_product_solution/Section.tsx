@@ -1,7 +1,7 @@
 import React from "react";
 import Solutions from "@/components/home/_product_solution/Solutions";
 import { Button } from "@/components/ui/button";
-import { ProductSolutionItem } from "@/lib/data/productSolutionData";
+import { ProductSolutionItem } from "@/lib/data/customize-product/productSolutionData";
 
 // Define the props this component will receive from the landing page
 type ProductSolutionSectionProps = {

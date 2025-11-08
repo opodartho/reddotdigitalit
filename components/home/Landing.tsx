@@ -16,7 +16,7 @@ import { getServices } from "@/lib/api/fetchServices";
 import { getCaseStudies } from "@/lib/api/fetchCaseStudies";
 import CaseStudies from "@/components/home/_case_studies/Section";
 import { getOperationSections } from "@/lib/api/fetchAreaOfOperation";
-import { getProductSolutions } from "@/lib/api/fetchProductSolutions";
+import { getProductSolutions } from "@/lib/api/customize-product/fetchProductSolutions";
 import { getTransformData } from "@/lib/api/fetchTransform";
 import { ServiceWeServeTabs } from "@/components/home/_service_we_serve/ServiceWeServe";
 import { getPartners } from "@/lib/api/fetchPartners";

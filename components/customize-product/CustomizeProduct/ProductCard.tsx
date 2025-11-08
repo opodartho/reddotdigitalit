@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { ProductItem } from "@/lib/data/productData";
+import { ProductItem } from "@/lib/data/customize-product/productData";
 
 type ProductProps = Omit<ProductItem, "id">;
 

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { SolutionCoverageForProduct, SolutionCoverageItem } from "@/lib/data/SolutionCoverageData";
+import { SolutionCoverageForProduct, SolutionCoverageItem } from "@/lib/data/customize-product/SolutionCoverageData";
 
 type SolutionCoverageProps = {
     coverage: SolutionCoverageItem[];

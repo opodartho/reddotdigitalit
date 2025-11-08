@@ -6,7 +6,7 @@ import {
   CardTitle,
   CardDescription,
 } from "@/components/ui/card";
-import { ProductSolutionItem } from "@/lib/data/productSolutionData";
+import { ProductSolutionItem } from "@/lib/data/customize-product/productSolutionData";
 import { useRouter } from "next/navigation";
 
 type SolutionsProps = {
@@ -67,7 +67,7 @@ const gradients = [
 ];
 
 export default function Solutions({ solutions }: SolutionsProps) {
-  const router= useRouter()
+  const router = useRouter()
   return (
     <section className="px-4 py-4 md:px-8">
       <div className="mx-auto mb-10 max-w-2xl text-center">
@@ -82,28 +82,27 @@ export default function Solutions({ solutions }: SolutionsProps) {
 
       <div className="grid auto-rows-fr grid-cols-1 items-stretch gap-6 sm:grid-cols-2 md:grid-cols-4">
         {solutions.map((solution, idx) => (
-          <div className="cursor-pointer" key={idx} onClick={()=>router.push(`/customize-product/${idx+1}`)}>
-          <Card
-            className={`flex h-full flex-col transition hover:shadow-lg ${
-              gradients[idx % gradients.length]
-            }`}
-          >
-            <CardHeader className="flex-grow">
-              {solution.image ? (
-                <Image
-                  src={solution.image}
-                  alt={solution.title}
-                  width={48}
-                  height={48}
-                  className="mb-2 object-contain"
-                />
-              ) : (
-                <div className="mb-2 text-3xl">{solution.image}</div>
-              )}
-              <CardTitle>{solution.title}</CardTitle>
-              <CardDescription>{solution.description}</CardDescription>
-            </CardHeader>
-          </Card>
+          <div className="cursor-pointer" key={idx} onClick={() => router.push(`/customize-product/${idx + 1}`)}>
+            <Card
+              className={`flex h-full flex-col transition hover:shadow-lg ${gradients[idx % gradients.length]
+                }`}
+            >
+              <CardHeader className="flex-grow">
+                {solution.image ? (
+                  <Image
+                    src={solution.image}
+                    alt={solution.title}
+                    width={48}
+                    height={48}
+                    className="mb-2 object-contain"
+                  />
+                ) : (
+                  <div className="mb-2 text-3xl">{solution.image}</div>
+                )}
+                <CardTitle>{solution.title}</CardTitle>
+                <CardDescription>{solution.description}</CardDescription>
+              </CardHeader>
+            </Card>
           </div>
         ))}
       </div>

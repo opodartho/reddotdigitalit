@@ -4,12 +4,12 @@ import Section from "@/components/customize-product/CustomizeProduct";
 import Header from "@/components/customize-product/Header";
 import KeyBenefits from "@/components/customize-product/KeyBenefits";
 import SolutionCoverage from "@/components/customize-product/SolutionCoverage";
-import { getAboutProject } from "@/lib/api/fetchAboutProject";
-import { getConclusion } from "@/lib/api/fetchConclusion";
-import { getCustomize } from "@/lib/api/fetchCustomizeItem";
-import { getHeader } from "@/lib/api/fetchHeaderData";
-import { getKeyBenefits } from "@/lib/api/fetchKeyBenefits";
-import { getSolutionCoverage } from "@/lib/api/fetchSolutionCoverage";
+import { getAboutProject } from "@/lib/api/customize-product/fetchAboutProject";
+import { getConclusion } from "@/lib/api/customize-product/fetchConclusion";
+import { getCustomize } from "@/lib/api/customize-product/fetchCustomizeItem";
+import { getHeader } from "@/lib/api/customize-product/fetchHeaderData";
+import { getKeyBenefits } from "@/lib/api/customize-product/fetchKeyBenefits";
+import { getSolutionCoverage } from "@/lib/api/customize-product/fetchSolutionCoverage";
 import { notFound } from "next/navigation";
 
 
