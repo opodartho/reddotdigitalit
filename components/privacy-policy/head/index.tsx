@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { PrivacyHead } from "@/lib/data/privacy-head";
+import { PrivacyHead } from "@/lib/data/privacy-policy/privacy-head";
 import Image from "next/image";
 
 type HeaderProps={

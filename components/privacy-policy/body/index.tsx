@@ -1,4 +1,4 @@
-import { PrivacyPolicy } from "@/lib/data/privacy-policy";
+import { PrivacyPolicy } from "@/lib/data/privacy-policy/privacy-policy";
 
 type PrivacyPolicyProps = {
   privacyData: PrivacyPolicy[];
