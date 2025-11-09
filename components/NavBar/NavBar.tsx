@@ -51,7 +51,7 @@ export function NavBar() {
 
   return (
     <>
-    <div className="sticky top-0 flex justify-center  z-100 pt-[22px]">
+    <div className="sticky  top-0 flex justify-center  z-100 pt-[22px]">
       {/* <nav
         className=" bg-white backdrop-blur-2xl   rounded-4xl top-0 z-50 h-[76px] w-[1440px] shadow-[0_4px_29px_rgba(0,0,0,0.05)] backdrop-blur-sm"
         // style={{
@@ -120,33 +120,16 @@ export function NavBar() {
               title="More"
             >
               {/* 3x3 dots icon */}
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                aria-hidden
-                className="text-gray-600"
-              >
-                <g fill="currentColor">
-                  <circle cx="5" cy="5" r="1.6" />
-                  <circle cx="12" cy="5" r="1.6" />
-                  <circle cx="19" cy="5" r="1.6" />
-                  <circle cx="5" cy="12" r="1.6" />
-                  <circle cx="12" cy="12" r="1.6" />
-                  <circle cx="19" cy="12" r="1.6" />
-                  <circle cx="5" cy="19" r="1.6" />
-                  <circle cx="12" cy="19" r="1.6" />
-                  <circle cx="19" cy="19" r="1.6" />
-                </g>
-              </svg>
+              
             </button>
+            <div className="relative left-16 ">
             <Link
               href="/contact"
-              className="flex h-[42px] items-center justify-center rounded-[25px] border border-[#E52445] bg-white px-7 text-lg whitespace-nowrap text-[#E52445] hover:bg-red-100 dark:bg-transparent"
+              className="flex bg-gradient-to-l from-red-700 via-red-600 via-red-500 to-red-400 text-white justify-end h-[42px] items-center  rounded-[25px] border border-[#E52445] bg-white px-7 text-lg whitespace-nowrap text-[#E52445] hover:bg-red-100 dark:bg-transparent"
             >
               Contact Us
             </Link>
+            </div>
           </div>
 
           {/* --- RESPONSIVE CHANGE: Hamburger Menu Button (visible on mobile only) --- */}
