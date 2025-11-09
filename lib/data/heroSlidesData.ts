@@ -17,26 +17,26 @@ export const staticHeroSlides: HeroSlide[] = [
   },
   {
     id: 2,
-    title: "Telecash App",
+    title: "Mobile Financial Service",
     description:
-      "Unlock secure, fast, and convenient mobile transactions. Unlock secure, fast, and convenient mobile transactions.",
-    imageUrl: "/images/HeroImage.png",
+      "Transferring Banking Experience",
+    imageUrl: "/images/mfsImage.svg",
     tags: ["MFS", "Digital Finance", "Customize Solution"],
   },
   {
     id: 3,
-    title: "Telecash App",
+    title: "Digital Financial Service",
     description:
-      "Unlock secure, fast, and convenient mobile transactions. Unlock secure, fast, and convenient mobile transactions.",
-    imageUrl: "/images/HeroImage.png",
+      "Transforming Banking for the Digital Age",
+    imageUrl: "/images/dfsImage.svg",
     tags: ["MFS", "Digital Finance", "Customize Solution"],
   },
   {
     id: 4,
-    title: "Telecash App",
+    title: "Human Resource Management Solution",
     description:
-      "Unlock secure, fast, and convenient mobile transactions. Unlock secure, fast, and convenient mobile transactions.",
-    imageUrl: "/images/HeroImage.png",
+      "HRMS is committed to providing end-to-end HR solutions for leaders through the times of growth and transformation (and uncertainty).",
+    imageUrl: "/images/hrmsImage.svg",
     tags: ["MFS", "Digital Finance", "Customize Solution"],
   },
   {
