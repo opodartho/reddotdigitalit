@@ -125,7 +125,7 @@ export function NavBar() {
             <div className="relative left-16 ">
             <Link
               href="/contact"
-              className="flex bg-gradient-to-l from-red-700 via-red-600 via-red-500 to-red-400 text-white justify-end h-[42px] items-center  rounded-[25px] border border-[#E52445] bg-white px-7 text-lg whitespace-nowrap text-[#E52445] hover:bg-red-100 dark:bg-transparent"
+              className="flex bg-gradient-to-l h-[56px] w-[153px] from-red-700 via-red-600 via-red-500 to-red-400 text-white justify-end  items-center  rounded-[25px] border border-[#E52445] bg-white px-7 text-lg whitespace-nowrap text-[#E52445] hover:bg-red-100 dark:bg-transparent"
             >
               Contact Us
             </Link>
@@ -183,7 +183,7 @@ export function NavBar() {
           <Link
             href="/contact"
             onClick={handleMobileLinkClick}
-            className="flex w-full max-w-xs items-center justify-center rounded-[25px] border border-[#E52445] bg-white px-10 py-3 text-lg text-[#E52445] hover:bg-red-100"
+            className="flex w-full  max-w-xs items-center justify-center rounded-[25px] border border-[#E52445] bg-white px-10 py-3 text-lg text-[#E52445]  hover:bg-red-100"
           >
             Contact Us
           </Link>

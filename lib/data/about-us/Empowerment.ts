@@ -15,7 +15,7 @@ export const EmpowermentData: EmpowermentItem={
     backgroundImage:'',
     image1:'',
     image2:'',
-    image3:'',
+    image3:'/images/coxsbazar.png',
     missions: [
         { title: 'Our Mission', description: 'We are dedicated to establish dynamic changes with quality products and services. Our efforts involve establishing a high level of customer benefits with unquestionable methods and ethical approaches.' },
         { title: 'Our Vision', description: 'To empower businesses with innovative software solutions that drive growth, efficiency, and success in a digital world.' },

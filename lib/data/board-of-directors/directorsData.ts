@@ -12,7 +12,7 @@ export type Directors={
 }
 
 export const directorsData: Directors={
-    title:'Board of Directors',
+    title:'Management Council',
     subtitle:'From tech to strategy – meet the brilliant minds behind each department shaping the future of digital innovation.',
     information:[
 {

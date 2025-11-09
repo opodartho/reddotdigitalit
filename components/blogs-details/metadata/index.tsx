@@ -7,7 +7,7 @@ type BlogsDetailsProps={
 export default function MetaData({blogsDetailsData}: BlogsDetailsProps) {
     return (
         <>
-            <div className="lg:block hidden lg:flex-col lg:pt-[64px] lg:pl-[24px] lg:w-[197px]">
+            <div className="lg:block hidden lg:flex-col  sticky top-30 lg:pt-[64px] lg:pl-[24px] lg:w-[197px]">
                 <div className="lg:flex lg:flex-col">
                     <p className="font-semibold text-[16px]">Date</p>
                     <p className="pt-[6px] text-[14px]">Last Update: {blogsDetailsData.date}</p>

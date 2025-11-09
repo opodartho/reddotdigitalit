@@ -60,7 +60,7 @@ export const Landing = async () => {
       <ProductSolution solutions={productSolutionsData} />
       <AreaOfOperations sections={operationsData} />
       <WhoWeAre aboutData={aboutData} achievementData={achievementData} />
-      <CaseStudies caseStudiesData={caseStudiesData} />
+      <CaseStudies caseStudiesData={caseStudiesData}/>
       <ServiceWeServeTabs />
       <TrustedPartners />
       <Blogs blogsData={blogsData} />

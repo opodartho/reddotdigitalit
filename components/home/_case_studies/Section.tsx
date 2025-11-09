@@ -9,7 +9,7 @@ type CaseStudiesSectionProps = {
 
 const CaseStudies = ({ caseStudiesData }: CaseStudiesSectionProps) => {
   return (
-    <section className="py-16 sm:py-24">
+    <section className="py-16 sm:py-24 hidden">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="text-center mt-10">
           <h2 className="text-3xl font-poppins font-semibold leading-[40px] tracking-tight text-gray-900 sm:text-4xl">
