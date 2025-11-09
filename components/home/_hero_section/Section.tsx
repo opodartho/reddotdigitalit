@@ -50,7 +50,7 @@ export default function HeroSection() {
   `,
       }}
     >
-      <div className="relative z-10 flex flex-col md:flex-row items-center justify-start gap-30 w-full">
+      <div className="relative z-1 flex flex-col md:flex-row items-center justify-start gap-30 w-full">
         <div className="flex flex-col gap-6 max-w-xl text-center md:text-left md:w-[55%]">
           <div className="flex flex-wrap justify-center md:justify-start gap-2">
             {[
@@ -94,7 +94,7 @@ export default function HeroSection() {
           </div>
         </div>
 
-        <div className="relative z-10 w-full md:w-[45%] md:ml-12">
+        <div className="relative z-1 w-full md:w-[45%] md:ml-12">
           <Carousel
             className="w-full"
             setApi={setApi}

@@ -51,13 +51,17 @@ export function NavBar() {
 
   return (
     <>
-      <nav
-        className="sticky top-0 z-50 h-[76px] w-full shadow-[0_4px_29px_rgba(0,0,0,0.05)] backdrop-blur-sm"
-        style={{
-          background:
-            "radial-gradient(circle at 85% 15%, #F0E8FF 0%, #FFFFFF 50%)",
-        }}
-      >
+    <div className="sticky top-0 flex justify-center  z-100 pt-[22px]">
+      {/* <nav
+        className=" bg-white backdrop-blur-2xl   rounded-4xl top-0 z-50 h-[76px] w-[1440px] shadow-[0_4px_29px_rgba(0,0,0,0.05)] backdrop-blur-sm"
+        // style={{
+        //   background:
+        //     "radial-gradient(circle at 85% 15%, #F0E8FF 0%, #FFFFFF 50%)",
+        // }}
+
+      > */}
+      <nav className="sticky top-0 w-[1440px] h-[76px] rounded-4xl bg-white/40 backdrop-blur-xl border-b border-white/20 shadow-[0_4px_29px_rgba(0,0,0,0.05)]">
+
         {/* --- RESPONSIVE CHANGE: Adjusted padding for different screen sizes --- */}
         <div className="flex h-full items-center justify-between px-4 md:px-10 lg:px-[80px]">
           {/* Logo and Home link */}
@@ -153,6 +157,7 @@ export function NavBar() {
           </div>
         </div>
       </nav>
+      </div>
 
       {/* --- RESPONSIVE CHANGE: Mobile Menu Panel --- */}
       {isMobileMenuOpen && (

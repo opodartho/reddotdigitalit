@@ -10,9 +10,9 @@ type ConclusionProps = {
 
 export default function Conclusion({ conclusionData }: ConclusionProps) {
     return (
-        <div className="flex justify-center w-full lg:pl-[0px] pl-[16px] lg:pr-[0px] pr-[16px]">
+        <div className="flex justify-center z-1  w-full lg:pl-[0px] pl-[16px] lg:pr-[0px] pr-[16px]">
             <div
-                className="relative flex justify-center items-center lg:h-[430px] h-[520px] lg:w-[1280px] w-full rounded-2xl bg-cover bg-center "
+                className="relative z-1  flex justify-center items-center lg:h-[430px] h-[520px] lg:w-[1280px] w-full rounded-2xl bg-cover bg-center "
                 style={{ backgroundImage: "url('/images/rect.svg')" }}
             >
                 {/* Phone Image */}
@@ -21,7 +21,7 @@ export default function Conclusion({ conclusionData }: ConclusionProps) {
                     alt="Phone mockup"
                     width={401}
                     height={469}
-                    className="absolute lg:mb-[0px]  mb-[160px] lg:bottom-0 bottom-[200px] lg:left-[49px] left-1/2 lg:translate-x-0 -translate-x-1/2 w-[219px] h-[257px] lg:w-[401px] lg:h-[469px]"
+                    className="absolute z-1 lg:mb-[0px]  mb-[160px] lg:bottom-0 bottom-[200px] lg:left-[49px] left-1/2 lg:translate-x-0 -translate-x-1/2 w-[219px] h-[257px] lg:w-[401px] lg:h-[469px]"
                 />
 
                 {/* Text + Button Section */}
