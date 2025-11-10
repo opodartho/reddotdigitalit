@@ -12,7 +12,7 @@ export default function Header({headerData, Id}: HeaderProps) {
     return (
         <>
             <div
-                className="lg:pl-[320px] lg:pr-[320px] lg:pt-[0px]   bg-cover bg-center bg-no-repeat lg:min-h-[532px] lg:flex lg:gap-[100px]"
+                className="lg:pl-[240px] lg:pr-[240px] lg:pt-[0px]   bg-cover bg-center bg-no-repeat lg:min-h-[532px] lg:flex lg:gap-[100px]"
                 style={{ backgroundImage: "url('/images/header-bg.svg')" }}
             >
                 <div className="flex justify-center lg:hidden">

@@ -14,7 +14,7 @@ export default function KeyBenefits({ keyBenefitsData, Id }: KeyBenefitsProps) {
   const benefitsGroup = keyBenefitsData[index] || [];
 
   return (
-    <div className="lg:pl-[80px] pl-[16px] lg:w-full">
+    <div className="lg:pl-[0px] pl-[16px] lg:w-full">
       <p className="text-[30px] font-semibold">Key Benefits</p>
       <p className="lg:w-full w-[358px] h-[110px] text-[14px] pt-[14px] lg:pb-[44px] pb-[24px]">
         RedDot Digital Limited is a 100% subsidiary of Robi Axiata Limited, the
