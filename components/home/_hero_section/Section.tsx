@@ -67,13 +67,13 @@ export default function HeroSection() {
             ))}
           </div>
 
-          <h1 className="text-4xl md:text-5xl font-medium leading-tight text-[#121926]">
+          <h1 className="text-4xl md:text-5xl font-medium leading-tight text-[#121926] text-title">
             Crafting <span className="text-[#E52445]">Innovation,</span>
             <br className="hidden md:block" />
             Delivering <span className="text-[#E52445]">Excellence</span>
           </h1>
 
-          <p className="text-base md:text-lg leading-relaxed text-[#121926]">
+          <p className="text-base md:text-lg leading-relaxed text-[#121926] text-subtitle">
             We turn ideas into innovative tech solutions with custom software
             that boosts efficiency and growth.
           </p>
@@ -113,13 +113,13 @@ export default function HeroSection() {
                       />
                     </div>
                     <div className="flex flex-col gap-2 mt-4 px-6 pb-4">
-                      <h3 className="text-lg font-semibold flex justify-between items-center text-[#121926]">
+                      <h3 className="text-lg font-semibold flex justify-between items-center text-[#121926] text-title">
                         {slide.title}
                         <span className="text-sm text-gray-500 flex items-center gap-1">
                           Case Study <ArrowUpRight size={14} />
                         </span>
                       </h3>
-                      <p className="text-sm text-[#70738F] mb-2">
+                      <p className="text-sm text-[#70738F] mb-2 text-subtitle">
                         {slide.description}
                       </p>
                       <div className="flex flex-wrap gap-2">
@@ -142,9 +142,8 @@ export default function HeroSection() {
               {slides.map((_, index) => (
                 <span
                   key={index}
-                  className={`w-5 h-1 rounded-[2px] transition-colors duration-200 ${
-                    index + 1 === current ? "bg-[#E52445]" : "bg-gray-300"
-                  }`}
+                  className={`w-5 h-1 rounded-[2px] transition-colors duration-200 ${index + 1 === current ? "bg-[#E52445]" : "bg-gray-300"
+                    }`}
                 ></span>
               ))}
             </div>

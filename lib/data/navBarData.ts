@@ -46,26 +46,6 @@ export const staticNavData: NavLink[] = [
     ],
   },
   {
-    title: "Services",
-    items: [
-      {
-        title: "Consulting",
-        href: "/services/consulting",
-        description: "Expert advice for your projects.",
-      },
-      {
-        title: "Development",
-        href: "/services/development",
-        description: "Custom software development.",
-      },
-      {
-        title: "Maintenance",
-        href: "/services/maintenance",
-        description: "Ongoing support and updates.",
-      },
-    ],
-  },
-  {
     title: "About RedDot",
     items: [
       {

@@ -10,20 +10,20 @@ export default function PrivacyPolicyComponent({ privacyData }: PrivacyPolicyPro
       {privacyData.map((section, sectionIndex) => (
         <div key={sectionIndex} className="mb-[40px]">
           {/* Heading */}
-          <p className="lg:text-[20px] text-[25px] font-semibold mb-[16px]">
+          <p className="lg:text-[20px] text-[25px] font-semibold mb-[16px] text-title">
             {section.heading}
           </p>
 
           {/* Description */}
           {section.description && (
-            <p className="text-[16px] leading-[22px] mb-[20px] whitespace-pre-line">
+            <p className="text-[16px] leading-[22px] mb-[20px] whitespace-pre-line text-subtitle">
               {section.description}
             </p>
           )}
 
           {/* Subdescription */}
           {section.subdescription && (
-            <p className="text-[16px] leading-[22px] mb-[16px]">
+            <p className="text-[16px] leading-[22px] mb-[16px] text-subtitle">
               {section.subdescription}
             </p>
           )}

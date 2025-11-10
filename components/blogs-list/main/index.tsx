@@ -5,12 +5,12 @@ import {
     CardTitle,
     CardDescription,
 } from "@/components/ui/card";
-import { BlogsListItem} from "@/lib/data/blogs-list/blogsListData";
+import { BlogsListItem } from "@/lib/data/blogs-list/blogsListData";
 
-type BlogsListProps={
+type BlogsListProps = {
     blogsListData: BlogsListItem[]
 }
-export default function Grids({blogsListData}:BlogsListProps) {
+export default function Grids({ blogsListData }: BlogsListProps) {
 
     return (
         <>
@@ -24,9 +24,9 @@ export default function Grids({blogsListData}:BlogsListProps) {
                         >
                             <CardHeader className="-m-4 space-y-0">
                                 <img src={slide.imageUrl} className="" />
-                                <CardTitle className="text-[14px] text-gray-400 pt-[13px] pl-[10px]">{slide.date}</CardTitle>
-                                <CardTitle className="text-[18px] pt-[22px] pl-[10px] tracking-wider">{slide.title}</CardTitle>
-                                <CardDescription className="text-[14px] pl-[10px] pr-[43px] pt-[20px]">
+                                <CardTitle className="text-[14px] text-gray-400 pt-[13px] pl-[10px] text-subtitle">{slide.date}</CardTitle>
+                                <CardTitle className="text-[18px] pt-[22px] pl-[10px] tracking-wider text-title">{slide.title}</CardTitle>
+                                <CardDescription className="text-[14px] pl-[10px] pr-[43px] pt-[20px] text-subtitle">
                                     {slide.description}
                                 </CardDescription>
                                 <Button variant={"link"} className="text-start w-[96.2px] pl-[3px]">Read More </Button>

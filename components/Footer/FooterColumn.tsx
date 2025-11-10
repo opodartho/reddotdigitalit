@@ -9,13 +9,13 @@ type FooterColumnProps = {
 const FooterColumn = ({ column }: FooterColumnProps) => {
   return (
     <div>
-      <h3 className="font-medium text-[18px] leading-[28px] tracking-[0px] text-gray-950 mb-4">
+      <h3 className="font-medium text-[18px] leading-[28px] tracking-[0px] text-gray-950 mb-4 text-title">
         {column.title}
       </h3>
 
       {/* Render simple text content */}
       {column.content && (
-        <p className="text-gray-950 font-normal text-[14px] leading-[22px] tracking-[0px] w-[300px]">
+        <p className="text-gray-950 font-normal text-[14px] leading-[22px] tracking-[0px] w-[300px] text-subtitle">
           {column.content}
         </p>
       )}

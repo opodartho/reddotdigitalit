@@ -23,9 +23,9 @@ export default function Grids({ directorsData }: DirectorsListProps) {
                         >
                             <CardHeader className="-m-4 space-y-0">
                                 <img src={slide.imageUrl} className="-mt-4" />
-                                <CardTitle className="text-[16px] pt-[13px] pl-[20px]">{slide.name}</CardTitle>
-                                <CardTitle className="text-[12px] pt-[16px] pl-[20px]">{slide.role}</CardTitle>
-                                <CardDescription className="text-[12px] pl-[20px] pr-[43px]">
+                                <CardTitle className="text-[16px] pt-[13px] pl-[20px] text-title">{slide.name}</CardTitle>
+                                <CardTitle className="text-[12px] pt-[16px] pl-[20px] text-subtitle">{slide.role}</CardTitle>
+                                <CardDescription className="text-[12px] pl-[20px] pr-[43px] text-subtitle">
                                     {slide.description}
                                 </CardDescription>
                             </CardHeader>

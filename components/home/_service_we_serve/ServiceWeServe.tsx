@@ -23,12 +23,12 @@ export function ServiceWeServeTabs() {
       }}
     >
       {/* Title */}
-      <h2 className="mt-16 text-xl sm:text-3xl font-poppins font-regular max-w-xs sm:max-w-md text-center text-[#060414]">
+      <h2 className="mt-16 text-xl sm:text-3xl font-poppins font-regular max-w-xs sm:max-w-md text-center text-[#060414] text-title">
         Service We Serve
       </h2>
 
       {/* Subtitle */}
-      <p className="mt-3 text-sm sm:text-base font-normal max-w-md sm:max-w-lg leading-relaxed text-center font-poppins text-[#060414]">
+      <p className="mt-3 text-sm sm:text-base font-normal max-w-md sm:max-w-lg leading-relaxed text-center font-poppins text-[#060414] text-subtitle">
         Our cutting-edge modular data center solution enabled to
         <br className="hidden sm:block" />
         protect mission-critical data.
@@ -74,10 +74,10 @@ export function ServiceWeServeTabs() {
 
                 {/* Right Content */}
                 <div className="flex flex-col w-full text-center md:text-left">
-                  <h3 className="text-lg sm:text-3xl font-regular font-poppins text-[#060414]">
+                  <h3 className="text-lg sm:text-3xl font-regular font-poppins text-[#060414] text-title">
                     {service.title}
                   </h3>
-                  <p className="mt-3 text-sm sm:text-base font-normal leading-relaxed font-poppins text-[#060414]/70">
+                  <p className="mt-3 text-sm sm:text-base font-normal leading-relaxed font-poppins text-[#060414]/70 text-subtitle">
                     {service.description}
                   </p>
 
@@ -94,7 +94,7 @@ export function ServiceWeServeTabs() {
                           width={18}
                           height={18}
                         />
-                        <span className="text-sm sm:text-base font-medium font-poppins text-[#060414]/85">
+                        <span className="text-sm sm:text-base font-medium font-poppins text-[#060414]/85 text-subtitle">
                           {point}
                         </span>
                       </div>

@@ -1,15 +1,15 @@
 import { BlogsDetailsItem, blogsDetailsData } from "@/lib/data/blogs-details/blogDetailsData";
 
 
-type BlogsDetailsProps={
+type BlogsDetailsProps = {
     blogsDetailsData: BlogsDetailsItem
 }
-export default function Body({blogsDetailsData}: BlogsDetailsProps) {
+export default function Body({ blogsDetailsData }: BlogsDetailsProps) {
     return (
         <>
             <div className="lg:pt-[64px] w-full lg:w-auto pt-[185px]">
                 {/* Description */}
-                <p className="text-[14px]">{blogsDetailsData.description}</p>
+                <p className="text-[14px] text-subtitle">{blogsDetailsData.description}</p>
 
                 {/* SubImage 1 */}
                 <div className="lg:pt-[24px] lg:pb-[50px] pt-[32px]">
@@ -37,22 +37,22 @@ export default function Body({blogsDetailsData}: BlogsDetailsProps) {
 
                 {/*SubTitle 1*/}
                 <div className="lg:pt-[44px] pt-[42px]">
-                    <p className="text-[24px] font-semibold">{blogsDetailsData.subtitle1}</p>
+                    <p className="text-[24px] font-semibold text-title">{blogsDetailsData.subtitle1}</p>
                 </div>
 
                 <div className="lg:pt-[24.56px] pt-[14px]">
-                    <p className="text-[14px]">{blogsDetailsData.subText1}</p>
+                    <p className="text-[14px] text-subtitle">{blogsDetailsData.subText1}</p>
                 </div>
 
                 {/*SubTitle 2*/}
                 {blogsDetailsData.subtitle2 && (
                     <>
                         <div className="lg:pt-[44px]">
-                            <p className="text-[24px] font-semibold">{blogsDetailsData.subtitle2}</p>
+                            <p className="text-[24px] font-semibold text-title">{blogsDetailsData.subtitle2}</p>
                         </div>
 
                         <div className="lg:pt-[24.56px]">
-                            <p className="text-[14px]">{blogsDetailsData.subText2}</p>
+                            <p className="text-[14px] text-subtitle">{blogsDetailsData.subText2}</p>
                         </div>
                     </>
                 )}

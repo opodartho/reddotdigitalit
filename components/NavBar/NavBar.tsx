@@ -51,8 +51,8 @@ export function NavBar() {
 
   return (
     <>
-    <div className="sticky lg:pl-[240px] lg:pr-[240px] top-0 flex justify-center  z-100 pt-[22px]">
-      {/* <nav
+      <div className="sticky lg:pl-[240px] lg:pr-[240px] top-0 flex justify-center  z-100 pt-[22px]">
+        {/* <nav
         className=" bg-white backdrop-blur-2xl   rounded-4xl top-0 z-50 h-[76px] w-[1440px] shadow-[0_4px_29px_rgba(0,0,0,0.05)] backdrop-blur-sm"
         // style={{
         //   background:
@@ -60,86 +60,86 @@ export function NavBar() {
         // }}
 
       > */}
-      <nav className="sticky top-0 w-[1440px] h-[76px] rounded-4xl bg-white/40 backdrop-blur-xl border-b border-white/20 shadow-[0_4px_29px_rgba(0,0,0,0.05)]">
+        <nav className="sticky top-0 w-[1440px] h-[76px] rounded-4xl bg-white/40 backdrop-blur-xl border-b border-white/20 shadow-[0_4px_29px_rgba(0,0,0,0.05)]">
 
-        {/* --- RESPONSIVE CHANGE: Adjusted padding for different screen sizes --- */}
-        <div className="flex h-full items-center justify-between px-4 md:px-10 lg:px-[80px]">
-          {/* Logo and Home link */}
-          <Link href="/" onClick={scrollToTop} className="flex-shrink-0">
-            <Image
-              src="/images/RedDotLogo.png"
-              alt="Red Dot Digital Logo"
-              width={120}
-              height={40}
-              className="cursor-pointer"
-            />
-          </Link>
-
-          {/* --- RESPONSIVE CHANGE: Desktop Navigation Menu (hidden on mobile) --- */}
-          <NavigationMenu className="hidden h-full justify-center md:flex">
-            <NavigationMenuList className="h-full space-x-10">
-              {navLinks.map((link) => (
-                <NavigationMenuItem key={link.title}>
-                  {/* Simplified logic for single links vs. dropdowns */}
-                  {!link.items || link.items.length === 0 ? (
-                    <Link href={link.href || "#"} legacyBehavior passHref>
-                      <NavigationMenuLink className="font-poppins flex h-full items-center bg-transparent px-0 text-[14px] font-normal hover:bg-transparent focus:bg-transparent">
-                        {link.title}
-                      </NavigationMenuLink>
-                    </Link>
-                  ) : (
-                    <>
-                      <NavigationMenuTrigger className="font-poppins h-full bg-transparent px-0 text-[14px] font-normal hover:bg-transparent focus:bg-transparent">
-                        {link.title}
-                      </NavigationMenuTrigger>
-                      <NavigationMenuContent>
-                        <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
-                          {link.items?.map((item) => (
-                            <ListItem
-                              key={item.title}
-                              title={item.title}
-                              href={item.href}
-                            >
-                              {item.description}
-                            </ListItem>
-                          ))}
-                        </ul>
-                      </NavigationMenuContent>
-                    </>
-                  )}
-                </NavigationMenuItem>
-              ))}
-            </NavigationMenuList>
-          </NavigationMenu>
-
-          {/* --- RESPONSIVE CHANGE: Right side container (hidden on mobile) --- */}
-          <div className="hidden h-full items-center gap-5 md:flex">
-            <button
-              aria-label="apps"
-              className="rounded-full p-2 hover:bg-gray-100"
-              title="More"
-            >
-              {/* 3x3 dots icon */}
-              
-            </button>
-            <div className="relative left-6 ">
-            <Link
-              href="/contact"
-              className="flex bg-gradient-to-l h-[56px] w-[153px] from-red-700 via-red-600 via-red-500 to-red-400 text-white justify-end  items-center  rounded-[25px] border border-[#E52445] bg-white px-7 text-lg whitespace-nowrap text-[#E52445] hover:bg-red-100 dark:bg-transparent"
-            >
-              Contact Us
+          {/* --- RESPONSIVE CHANGE: Adjusted padding for different screen sizes --- */}
+          <div className="flex h-full items-center justify-between px-4 md:px-10 lg:px-[80px]">
+            {/* Logo and Home link */}
+            <Link href="/" onClick={scrollToTop} className="flex-shrink-0 relative right-16">
+              <Image
+                src="/images/RedDotLogo.png"
+                alt="Red Dot Digital Logo"
+                width={120}
+                height={40}
+                className="cursor-pointer"
+              />
             </Link>
+
+            {/* --- RESPONSIVE CHANGE: Desktop Navigation Menu (hidden on mobile) --- */}
+            <NavigationMenu className="hidden h-full justify-center md:flex">
+              <NavigationMenuList className="h-full space-x-16">
+                {navLinks.map((link) => (
+                  <NavigationMenuItem key={link.title}>
+                    {/* Simplified logic for single links vs. dropdowns */}
+                    {!link.items || link.items.length === 0 ? (
+                      <Link href={link.href || "#"} legacyBehavior passHref>
+                        <NavigationMenuLink className="font-poppins flex h-full items-center bg-transparent px-0 text-[15px] font-normal hover:bg-transparent focus:bg-transparent text-title">
+                          {link.title}
+                        </NavigationMenuLink>
+                      </Link>
+                    ) : (
+                      <>
+                        <NavigationMenuTrigger className="font-poppins h-full bg-transparent px-0 text-[15px] font-normal hover:bg-transparent focus:bg-transparent text-title">
+                          {link.title}
+                        </NavigationMenuTrigger>
+                        <NavigationMenuContent>
+                          <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
+                            {link.items?.map((item) => (
+                              <ListItem
+                                key={item.title}
+                                title={<span className="text-title">{item.title}</span>}
+                                href={item.href}
+                              >
+                                <span className="text-subtitle">{item.description}</span>
+                              </ListItem>
+                            ))}
+                          </ul>
+                        </NavigationMenuContent>
+                      </>
+                    )}
+                  </NavigationMenuItem>
+                ))}
+              </NavigationMenuList>
+            </NavigationMenu>
+
+            {/* --- RESPONSIVE CHANGE: Right side container (hidden on mobile) --- */}
+            <div className="hidden h-full items-center gap-5 md:flex">
+              <button
+                aria-label="apps"
+                className="rounded-full p-2 hover:bg-gray-100"
+                title="More"
+              >
+                {/* 3x3 dots icon */}
+
+              </button>
+              <div className="relative left-16 ">
+                <Link
+                  href="/contact"
+                  className="flex bg-gradient-to-l h-[56px] w-[153px] from-red-700 via-red-600 via-red-500 to-red-400 text-white justify-end  items-center  rounded-[25px] border border-[#E52445] bg-white px-7 text-lg whitespace-nowrap text-[#E52445] hover:bg-red-100 dark:bg-transparent"
+                >
+                  Contact Us
+                </Link>
+              </div>
+            </div>
+
+            {/* --- RESPONSIVE CHANGE: Hamburger Menu Button (visible on mobile only) --- */}
+            <div className="md:hidden">
+              <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+                {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+              </button>
             </div>
           </div>
-
-          {/* --- RESPONSIVE CHANGE: Hamburger Menu Button (visible on mobile only) --- */}
-          <div className="md:hidden">
-            <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
-              {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
-            </button>
-          </div>
-        </div>
-      </nav>
+        </nav>
       </div>
 
       {/* --- RESPONSIVE CHANGE: Mobile Menu Panel --- */}
@@ -150,7 +150,7 @@ export function NavBar() {
               {/* If it's a dropdown, show title as a non-clickable header */}
               {link.items && link.items.length > 0 ? (
                 <>
-                  <h3 className="font-poppins mb-2 text-2xl font-bold text-gray-800">
+                  <h3 className="font-poppins mb-2 text-2xl font-bold text-gray-800 text-title">
                     {link.title}
                   </h3>
                   <div className="flex flex-col space-y-4">
@@ -159,7 +159,7 @@ export function NavBar() {
                         key={item.title}
                         href={item.href}
                         onClick={handleMobileLinkClick}
-                        className="text-lg text-gray-600 hover:text-[#E52445]"
+                        className="text-lg text-gray-600 hover:text-[#E52445] text-subtitle"
                       >
                         {item.title}
                       </Link>
@@ -171,7 +171,7 @@ export function NavBar() {
                 <Link
                   href={link.href || "#"}
                   onClick={handleMobileLinkClick}
-                  className="font-poppins text-2xl font-bold text-gray-800 hover:text-[#E52445]"
+                  className="font-poppins text-2xl font-bold text-gray-800 hover:text-[#E52445] text-title"
                 >
                   {link.title}
                 </Link>
@@ -205,8 +205,8 @@ const ListItem = ({ className, title, children, ...props }: any) => {
           )}
           {...props}
         >
-          <div className="text-sm leading-none font-medium">{title}</div>
-          <p className="text-muted-foreground line-clamp-2 text-sm leading-snug">
+          <div className="text-sm leading-none font-medium text-title">{title}</div>
+          <p className="text-muted-foreground line-clamp-2 text-sm leading-snug text-subtitle">
             {children}
           </p>
         </a>
