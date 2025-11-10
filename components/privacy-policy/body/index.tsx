@@ -6,7 +6,7 @@ type PrivacyPolicyProps = {
 
 export default function PrivacyPolicyComponent({ privacyData }: PrivacyPolicyProps) {
   return (
-    <div className="lg:pl-[80px] pl-[16px] lg:pr-[80px] pr-[16px] lg:pt-[67px] pt-[21px] lg:w-full">
+    <div className="lg:pl-[240px] pl-[16px] lg:pr-[240px] pr-[16px] lg:pt-[67px] pt-[21px] lg:w-full">
       {privacyData.map((section, sectionIndex) => (
         <div key={sectionIndex} className="mb-[40px]">
           {/* Heading */}
