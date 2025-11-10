@@ -26,7 +26,7 @@ export default function Conclusion({ conclusionData }: ConclusionProps) {
 
                 {/* Text + Button Section */}
                 <div className="flex flex-col text-white lg:items-start items-center lg:text-left text-center lg:ml-[550px]">
-                    <p className="text-[20px] font-semibold lg:w-[400px] w-[289px]">
+                    <p className="text-[20px] font-semibold lg:w-[400px] w-[289px] ">
                         {conclusionData.title}
                     </p>
                     <p className="text-[12px] lg:text-[14px] lg:w-[480px] w-[326px] mt-[12px] mb-[24px]">

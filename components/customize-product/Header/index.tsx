@@ -22,7 +22,7 @@ export default function Header({headerData, Id}: HeaderProps) {
                     <p className="font-semibold lg:text-[40px] text-[30px] lg:pt-[95px]  lg:w-[461px] pt-[51px]">{headerData[indexNumber]?.title || ''}</p>
                     <p className="pt-[26px]">{headerData[indexNumber]?.description || ''}</p>
                     <div className="pt-[61px]">
-                        <Button className="bg-red-500 text-white h-[56px] w-[229px]">
+                        <Button className="bg-red-500 h-[56px] w-[229px]">
                             {headerData[indexNumber]?.buttonText || ''}
                         </Button>
                     </div>

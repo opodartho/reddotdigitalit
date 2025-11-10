@@ -12,8 +12,8 @@ const config: Config = {
         poppins: ["var(--font-poppins)", "sans-serif"],
       },
       colors: {
-        background: "oklch(var(--background))",
-        foreground: "oklch(var(--foreground))",
+        background: "#000000",
+        foreground: "#121926",
         card: "oklch(var(--card))",
         "card-foreground": "oklch(var(--card-foreground))",
         primary: {

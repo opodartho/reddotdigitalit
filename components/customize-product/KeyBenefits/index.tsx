@@ -15,8 +15,8 @@ export default function KeyBenefits({ keyBenefitsData, Id }: KeyBenefitsProps) {
 
   return (
     <div className="lg:pl-[0px] pl-[16px] lg:w-full">
-      <p className="text-[30px] font-semibold">Key Benefits</p>
-      <p className="lg:w-full w-[358px] h-[110px] text-[14px] pt-[14px] lg:pb-[44px] pb-[24px]">
+      <p className="text-[30px] font-semibold text-title">Key Benefits</p>
+      <p className="lg:w-full w-[358px] h-[110px] text-subtitle text-[14px] pt-[14px] lg:pb-[44px] pb-[24px]">
         RedDot Digital Limited is a 100% subsidiary of Robi Axiata Limited, the
         second-largest mobile network operator in Bangladesh, offering IT and
         digital solutions.
@@ -38,8 +38,8 @@ export default function KeyBenefits({ keyBenefitsData, Id }: KeyBenefitsProps) {
                 className="lg:h-[30px] lg:w-[30px] h-[22px] w-[22px] mt-[6px]"
               />
               <div className="flex flex-col">
-                <p className="text-[16px] font-semibold">{benefit.title}</p>
-                <p className="lg:mt-[10px] mt-[4px] text-[12px] lg:w-[264px] line-clamp-3">
+                <p className="text-[16px] font-semibold text-title">{benefit.title}</p>
+                <p className="lg:mt-[10px] text-subtitle mt-[4px] text-[12px] lg:w-[264px] line-clamp-3">
                   {benefit.description}
                 </p>
               </div>
