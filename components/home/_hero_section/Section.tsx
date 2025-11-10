@@ -67,13 +67,13 @@ export default function HeroSection() {
             ))}
           </div>
 
-          <h1 className="text-4xl md:text-5xl font-medium leading-tight text-[#121926] text-title">
+          <h1 className="text-4xl md:text-5xl font-medium leading-tight w-[480px] text-title">
             Crafting <span className="text-[#E52445]">Innovation,</span>
             <br className="hidden md:block" />
             Delivering <span className="text-[#E52445]">Excellence</span>
           </h1>
 
-          <p className="text-base md:text-lg leading-relaxed text-[#121926] text-subtitle">
+          <p className="text-base md:text-lg leading-relaxed  text-subtitle">
             We turn ideas into innovative tech solutions with custom software
             that boosts efficiency and growth.
           </p>
@@ -94,7 +94,7 @@ export default function HeroSection() {
           </div>
         </div>
 
-        <div className="relative z-1 w-full md:w-[45%] md:ml-12">
+        <div className="relative z-1 w-full md:w-[45%] h-full ">
           <Carousel
             className="w-full"
             setApi={setApi}
@@ -105,7 +105,7 @@ export default function HeroSection() {
               {slides.map((slide) => (
                 <CarouselItem key={slide.id}>
                   <div className="bg-white rounded-lg w-full md:w-[85%] shadow-[0_12px_48px_0px_rgba(49,1,139,0.07)] mb-8">
-                    <div className="rounded-lg h-[250px] flex items-center justify-center relative overflow-hidden px-2 pt-2">
+                    <div className="rounded-lg h-[250px] flex items-center justify-center relative overflow-hidden px-2 ">
                       <img
                         src={slide.imageUrl}
                         alt={slide.title}

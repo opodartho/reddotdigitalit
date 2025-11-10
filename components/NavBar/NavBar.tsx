@@ -125,7 +125,7 @@ export function NavBar() {
               <div className="relative left-16 ">
                 <Link
                   href="/contact"
-                  className="flex bg-gradient-to-l h-[56px] w-[153px] from-red-700 via-red-600 via-red-500 to-red-400 text-white justify-end  items-center  rounded-[25px] border border-[#E52445] bg-white px-7 text-lg whitespace-nowrap text-[#E52445] hover:bg-red-100 dark:bg-transparent"
+                  className="flex bg-gradient-to-l h-[56px] w-[153px] from-red-700 via-red-600 via-red-500 to-red-400 text-white justify-end  items-center  rounded-[25px] border border-[#E52445] bg-white px-7 text-lg whitespace-nowrap  hover:bg-red-100 dark:bg-transparent"
                 >
                   Contact Us
                 </Link>
@@ -150,7 +150,7 @@ export function NavBar() {
               {/* If it's a dropdown, show title as a non-clickable header */}
               {link.items && link.items.length > 0 ? (
                 <>
-                  <h3 className="font-poppins mb-2 text-2xl font-bold text-gray-800 text-title">
+                  <h3 className="font-poppins mb-2 text-2xl font-bold  text-title">
                     {link.title}
                   </h3>
                   <div className="flex flex-col space-y-4">
@@ -159,7 +159,7 @@ export function NavBar() {
                         key={item.title}
                         href={item.href}
                         onClick={handleMobileLinkClick}
-                        className="text-lg text-gray-600 hover:text-[#E52445] text-subtitle"
+                        className="text-lg  hover:text-[#E52445] text-subtitle"
                       >
                         {item.title}
                       </Link>
@@ -171,7 +171,7 @@ export function NavBar() {
                 <Link
                   href={link.href || "#"}
                   onClick={handleMobileLinkClick}
-                  className="font-poppins text-2xl font-bold text-gray-800 hover:text-[#E52445] text-title"
+                  className="font-poppins text-2xl font-bold  hover:text-[#E52445] text-title"
                 >
                   {link.title}
                 </Link>
@@ -206,7 +206,7 @@ const ListItem = ({ className, title, children, ...props }: any) => {
           {...props}
         >
           <div className="text-sm leading-none font-medium text-title">{title}</div>
-          <p className="text-muted-foreground line-clamp-2 text-sm leading-snug text-subtitle">
+          <p className=" line-clamp-2 text-sm leading-snug text-subtitle">
             {children}
           </p>
         </a>
