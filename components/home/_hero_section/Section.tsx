@@ -101,11 +101,11 @@ export default function HeroSection() {
             opts={{ loop: true }}
             plugins={[autoplay.current]}
           >
-            <CarouselContent className="ml-0">
+            <CarouselContent className="ml-0 -mt-[30px]">
               {slides.map((slide) => (
                 <CarouselItem key={slide.id}>
                   <div className="bg-white rounded-lg w-full md:w-[85%] shadow-[0_12px_48px_0px_rgba(49,1,139,0.07)] mb-8">
-                    <div className="rounded-lg h-[250px] flex items-center justify-center relative overflow-hidden px-2 ">
+                    <div className="rounded-lg -mt-[6px] h-[250px]  flex items-center justify-center relative overflow-hidden px-2 ">
                       <img
                         src={slide.imageUrl}
                         alt={slide.title}
