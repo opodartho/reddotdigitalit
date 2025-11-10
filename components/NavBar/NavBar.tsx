@@ -51,7 +51,7 @@ export function NavBar() {
 
   return (
     <>
-    <div className="sticky  top-0 flex justify-center  z-100 pt-[22px]">
+    <div className="sticky lg:pl-[240px] lg:pr-[240px] top-0 flex justify-center  z-100 pt-[22px]">
       {/* <nav
         className=" bg-white backdrop-blur-2xl   rounded-4xl top-0 z-50 h-[76px] w-[1440px] shadow-[0_4px_29px_rgba(0,0,0,0.05)] backdrop-blur-sm"
         // style={{
@@ -83,13 +83,13 @@ export function NavBar() {
                   {/* Simplified logic for single links vs. dropdowns */}
                   {!link.items || link.items.length === 0 ? (
                     <Link href={link.href || "#"} legacyBehavior passHref>
-                      <NavigationMenuLink className="font-poppins flex h-full items-center bg-transparent px-0 text-xl font-normal hover:bg-transparent focus:bg-transparent">
+                      <NavigationMenuLink className="font-poppins flex h-full items-center bg-transparent px-0 text-[14px] font-normal hover:bg-transparent focus:bg-transparent">
                         {link.title}
                       </NavigationMenuLink>
                     </Link>
                   ) : (
                     <>
-                      <NavigationMenuTrigger className="font-poppins h-full bg-transparent px-0 text-xl font-normal hover:bg-transparent focus:bg-transparent">
+                      <NavigationMenuTrigger className="font-poppins h-full bg-transparent px-0 text-[14px] font-normal hover:bg-transparent focus:bg-transparent">
                         {link.title}
                       </NavigationMenuTrigger>
                       <NavigationMenuContent>
@@ -122,7 +122,7 @@ export function NavBar() {
               {/* 3x3 dots icon */}
               
             </button>
-            <div className="relative left-16 ">
+            <div className="relative left-6 ">
             <Link
               href="/contact"
               className="flex bg-gradient-to-l h-[56px] w-[153px] from-red-700 via-red-600 via-red-500 to-red-400 text-white justify-end  items-center  rounded-[25px] border border-[#E52445] bg-white px-7 text-lg whitespace-nowrap text-[#E52445] hover:bg-red-100 dark:bg-transparent"

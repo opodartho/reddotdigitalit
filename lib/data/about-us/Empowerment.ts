@@ -11,10 +11,10 @@ export type EmpowermentItem={
 }
 
 export const EmpowermentData: EmpowermentItem={
-    title:'Empowering businesses with smart, scalable digital solutions. Empowering businesses with smart, scalable digital solutions.',
+    title:'Empowering businesses with smart, scalable digital solutions.',
     backgroundImage:'',
-    image1:'',
-    image2:'',
+    image1:'/images/img1.png',
+    image2:'/images/img2.png',
     image3:'/images/coxsbazar.png',
     missions: [
         { title: 'Our Mission', description: 'We are dedicated to establish dynamic changes with quality products and services. Our efforts involve establishing a high level of customer benefits with unquestionable methods and ethical approaches.' },

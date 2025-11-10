@@ -30,9 +30,9 @@ export default function Empowerment({empowermentData}: EmpowermentProps) {
                             {
                                 empowermentData.missions.map((p, index) => (
 
-                                    <div key={index} className="lg:h-[144px] h-auto lg:pb-[39px] pb-[24px] lg:w-[756px] lg:line-clamp-3">
-                                        <p className="text-[22px] font-medium">{p.title}</p>
-                                        <p className="text-[16px]  lg:w-[752.61px]">{p.description}</p>
+                                    <div key={index} className="lg:h-[144px] h-auto lg:pb-[39px] pb-[24px]  lg:line-clamp-5 lg:break-words">
+                                        <p className="text-[22px] font-medium lg:line-clamp-5 lg:break-words">{p.title}</p>
+                                        <p className="text-[16px]  lg:w-full lg:line-clamp-5 lg:break-words">{p.description}</p>
                                     </div>
 
                                 ))

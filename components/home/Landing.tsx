@@ -54,19 +54,21 @@ export const Landing = async () => {
 
   return (
     <>
-      <HeroSection />
-      <ServicesCarousel services={servicesData} />
-      <BackToTop />
-      <ProductSolution solutions={productSolutionsData} />
-      <AreaOfOperations sections={operationsData} />
-      <WhoWeAre aboutData={aboutData} achievementData={achievementData} />
-      <CaseStudies caseStudiesData={caseStudiesData}/>
-      <ServiceWeServeTabs />
-      <TrustedPartners />
-      <Blogs blogsData={blogsData} />
-      <News newsData={newsData} />
-      <TestimonialSection testimonials={testimonialsData} />
-      <ReadyToTransform transformData={transformData} />
+      <div className="lg:pl-[240px] lg:pr-[240px]">
+        <HeroSection />
+        <ServicesCarousel services={servicesData} />
+        <BackToTop />
+        <ProductSolution solutions={productSolutionsData} />
+        <AreaOfOperations sections={operationsData} />
+        <WhoWeAre aboutData={aboutData} achievementData={achievementData} />
+        <CaseStudies caseStudiesData={caseStudiesData} />
+        <ServiceWeServeTabs />
+        <TrustedPartners />
+        <Blogs blogsData={blogsData} />
+        <News newsData={newsData} />
+        <TestimonialSection testimonials={testimonialsData} />
+        <ReadyToTransform transformData={transformData} />
+      </div>
     </>
   );
 };

@@ -18,7 +18,7 @@ export default async function AboutUs() {
     const [AboutData, AchievementsData, ManageData, HeaderData, JourneyData, RootsData, EmpowermentData]= await Promise.all([getAboutUs(), getAchievements(), getManagement(), getHeader(),getJourney(), getRoots(), getEmpowerment()])
     return (
         <>
-            <div className="overflow-hidden">
+            <div className="overflow-hidden lg:pl-[240px] lg:pr-[240px]">
                 <div className="lg:pr-80px">
                     <Header headerData={HeaderData}/>
                 </div>
