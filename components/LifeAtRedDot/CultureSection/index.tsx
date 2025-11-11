@@ -41,10 +41,10 @@ export default function CultureSection() {
       <div className="mx-auto max-w-[1280px] px-[20px] sm:px-[32px] lg:px-[40px] xl:px-0 text-center py-[90px] sm:py-[118px]">
         {/* 🌿 Header */}
         <div className="mb-[46px] sm:mb-[78px]">
-          <h2 className="text-[25px] sm:text-[30px] lg:text-[32px] font-bold text-[#211F1F]">
+          <h2 className="text-[25px] sm:text-[30px] lg:text-[32px] font-bold text-[#060414]">
             Our Culture
           </h2>
-          <p className="text-[14px] sm:text-[16px] text-[#211F1F] font-normal mt-2 text-left sm:text-center">
+          <p className="text-[14px] sm:text-[16px] text-[#121926] font-normal mt-2 text-left sm:text-center">
             360° Automated Sales & Distribution Management
           </p>
         </div>

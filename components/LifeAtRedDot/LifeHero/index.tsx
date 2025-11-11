@@ -10,7 +10,7 @@ export const LifeHero = () => {
      <div className="px-[16px] sm:px-[80px] pt-[23px] sm:pt-[44px]">
     
         <div className="flex items-center justify-center w-[88px] h-[22px] sm:w-[93px] sm:h-[26px] rounded-[18px] border border-[#ECF1FE] bg-white shadow-[0_12px_48px_rgba(49,1,139,0.05)]">
-          <span className="text-[#70738F] text-[12px] sm:text-[14px] font-normal leading-[18px] sm:leading-[21px] tracking-[0.032px]">
+          <span className="text-[#121926] text-[12px] sm:text-[14px] font-normal leading-[18px] sm:leading-[21px] tracking-[0.032px]">
             Our Culture
           </span>
         </div>
@@ -19,12 +19,12 @@ export const LifeHero = () => {
       {/* 🧠 Hero Content */}
       <div className="flex flex-col items-start justify-center max-w-[675px]  mt-[34px] sm:mt-[38px]">
         {/* 🟥 Title */}
-        <h1 className="font-poppins font-semibold text-[#211F1F] text-[30px] sm:text-[40px] leading-[45px] sm:leading-[48px] text-left">
+        <h1 className="font-poppins font-semibold text-[#060414] text-[30px] sm:text-[40px] leading-[45px] sm:leading-[48px] text-left">
           Life at RedDot
         </h1>
 
         {/* 🩶 Subtitle */}
-        <p className="text-[14px] sm:text-[18px] leading-[21px] sm:leading-[30px] text-[rgba(6,4,20,0.65)] text-left mt-[14px] sm:mt-[12px] max-w-[675px]">
+        <p className="text-[14px] sm:text-[18px] leading-[21px] sm:leading-[30px] text-[#121926] text-left mt-[14px] sm:mt-[12px] max-w-[675px]">
           We code, we create, we collaborate – and we love every bit of it.
         </p>
       </div>
@@ -47,7 +47,7 @@ export const LifeHero = () => {
       <div className="mt-[48px] sm:mt-[92px] text-center px-[16px] sm:px-[80px]">
         <div className="max-w-[918px] mx-auto">
           <h2
-            className="font-poppins font-bold text-[#211F1F]
+            className="font-poppins font-bold text-[#060414]
                        text-[25px] sm:text-[32px]
                        leading-[40px] tracking-[0.032px]
                        mb-[14px]"
@@ -56,7 +56,7 @@ export const LifeHero = () => {
           </h2>
 
           <p
-            className="font-poppins font-normal text-[#211F1F]
+            className="font-poppins font-normal text-[#121926]
                        text-[14px] sm:text-[16px]
                        leading-[21px] sm:leading-[30px]
                        mx-auto max-w-[918px]"

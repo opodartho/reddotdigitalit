@@ -5,33 +5,22 @@ import { Check } from "lucide-react";
 
 const benefits = [
   {
-    title: "Location",
-    desc: "Thanks to the cloud and the simplicity of remote access thus data can live virtually anywhere. Factors such as natural disaster vulnerability, proximity to fire departments, the building’s structural integrity and how easy it is for your staff to access the facility are all important considerations to ensure the actual integrity of the physical facility in which servers live.",
+    title: "Improved operational agility",
+    desc: "Cloud-based systems enable faster adaptation to changing business requirements. Teams can deploy, test, and scale applications on demand without infrastructure limitations.",
   },
   {
-    title: "Physical Security",
-    desc: "On-site security is just as crucial as the importance of data security. This includes making sure the facility utilizes 24/7 video surveillance, multi-layered access control, reinforced doors and walls and anything else that ensures no one is getting in who doesn’t need to be.",
+    title: "Reduced IT costs",
+    desc: "By moving to the cloud, organizations lower infrastructure expenses and maintenance overheads. Pay-as-you-go models bring financial flexibility and efficiency.",
   },
   {
-    title: "Network Redundancy",
-    desc: "Along with location and security, uptime is also an important factor. Choosing a data center with several levels of redundancy is a must, especially for those mission-critical servers.",
+    title: "Enhanced data security",
+    desc: "We ensure that data remains protected through advanced encryption, identity management, and compliance with international security standards.",
   },
   {
-    title: "Financial Stability",
-    desc: "The financial history of the data center provider also a crucial factor. Financial strength ensures the business sustainability of the data center provider.",
+    title: "Scalable business continuity",
+    desc: "With cloud redundancy and disaster recovery frameworks, businesses experience uninterrupted operations and reliable data accessibility anytime, anywhere.",
   },
-  {
-    title: "Scalibility",
-    desc: "Data center must have the capability to handle the changes and expansions based on business demand. It’s important that the data center is flexible enough to meet current and future requirements.",
-  },
-  {
-    title: "24/7 Support and Monitoring",
-    desc: "When it comes to business’s daily operations, technical difficulties may happen. If it’s inaccessible while needed, it could strike badly. Help and technical support services vary from service to service. The best services respond promptly by 24/7.",
-  },
-  {
-    title: "Operational Excellence",
-    desc: "Operational excellence is the key for data center. Good track record ensure the sustainability of the business.",
-  },
+
 ];
 
 export const KeyBenefitsGrid = () => {

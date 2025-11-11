@@ -40,10 +40,10 @@ export default function TeamGallery() {
     <section className="relative w-full pb-16 sm:pb-24 ">
       {/* 🧠 Section Title */}
       <div className="text-center mb-[46px] sm:mb-[58px]">
-        <h2 className="text-[30px] sm:text-[32px] font-semibold text-[#211F1F]">
+        <h2 className="text-[30px] sm:text-[32px] font-semibold text-[#060414]">
           Team Gallery
         </h2>
-        <p className="text-[14px] text-[#211F1F] font-medium mt-[14px] sm:mt-[4px]">
+        <p className="text-[14px] text-[#121926] font-medium mt-[14px] sm:mt-[4px]">
           360° Automated Sales & Distribution Management
         </p>
       </div>
