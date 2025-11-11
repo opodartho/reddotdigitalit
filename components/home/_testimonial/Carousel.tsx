@@ -31,7 +31,7 @@ export const TestimonialCarousel: React.FC<CarouselProps> = ({
       <div className="mb-20 flex items-start justify-between">
         <div>
           <h2 className="text-[32px] leading-[40px] font-semibold tracking-[0.03px] text-gray-950">
-            Whats Our Client Say
+            Hear From Our Clients!
           </h2>
           <p className="mt-2 text-[14px] leading-[22px] font-normal tracking-[0.0px] text-zinc-800">
             Our cutting-edge Modular Data Center solutions enable to protect

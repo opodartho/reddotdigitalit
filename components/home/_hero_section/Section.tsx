@@ -1,5 +1,5 @@
 "use client";
-
+import { InteractiveHoverButton } from "@/components/ui/interactive-hover-button"
 import React, { useState, useEffect, useRef } from "react";
 import {
   Carousel,
@@ -79,18 +79,16 @@ export default function HeroSection() {
           </p>
 
           <div className="flex flex-wrap justify-center md:justify-start gap-4">
-            <Button
-              variant="outline"
-              className="border border-[#E52445] text-[#E52445] bg-white hover:bg-red-100 dark:bg-transparent rounded-md py-3 px-4 md:py-6 md:px-6"
+            <InteractiveHoverButton
+              className="border border-[#E52445] text-[#E52445] bg-white  dark:bg-transparent py-3 px-4 md:py-6 md:px-6"
             >
-              Explore All Services →
-            </Button>
-            <Button
-              variant="default"
-              className="text-white bg-[#E52445] hover:bg-primary/40 dark:bg-transparent rounded-md py-3 px-6 md:py-6 md:px-10"
+              Explore Services
+            </InteractiveHoverButton>
+            <InteractiveHoverButton
+              className="text-white bg-[#E52445]  dark:bg-transparent rounded-full py-3 px-6 md:py-6 md:px-10"
             >
               Let's work with us
-            </Button>
+            </InteractiveHoverButton>
           </div>
         </div>
 

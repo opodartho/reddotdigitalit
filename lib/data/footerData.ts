@@ -80,7 +80,7 @@ export const staticFooterData: FooterData = {
     details: "PDF, 10mb",
   },
   legalLinks: [
-    { text: "Term & Conditions", href: "#" },
+    { text: "Terms & Conditions", href: "#" },
     { text: "Privacy Policy", href: "#" },
   ],
   copyright: "© 2024 All rights reserved | RedDot Digital Limited",
