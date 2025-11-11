@@ -8,6 +8,7 @@ import {
 } from "@/components/ui/card";
 import { ProductSolutionItem } from "@/lib/data/customize-product/productSolutionData";
 import { useRouter } from "next/navigation";
+import MagicBentoWrapper from "@/components/MagicBentoWrapper";
 
 type SolutionsProps = {
   solutions: ProductSolutionItem[];
@@ -82,28 +83,33 @@ export default function Solutions({ solutions }: SolutionsProps) {
 
       <div className="grid auto-rows-fr grid-cols-1 items-stretch gap-6 sm:grid-cols-2 md:grid-cols-4">
         {solutions.map((solution, idx) => (
-          <div className="cursor-pointer" key={idx} onClick={() => router.push(`/customize-product/${idx + 1}`)}>
-            <Card
-              className={`flex h-full flex-col transition hover:shadow-lg ${gradients[idx % gradients.length]
-                }`}
+          <MagicBentoWrapper key={idx}>
+            <div
+              className="cursor-pointer"
+              onClick={() => router.push(`/customize-product/${idx + 1}`)}
             >
-              <CardHeader className="flex-grow">
-                {solution.image ? (
-                  <Image
-                    src={solution.image}
-                    alt={solution.title}
-                    width={48}
-                    height={48}
-                    className="mb-2 object-contain"
-                  />
-                ) : (
-                  <div className="mb-2 text-3xl">{solution.image}</div>
-                )}
-                <CardTitle>{solution.title}</CardTitle>
-                <CardDescription>{solution.description}</CardDescription>
-              </CardHeader>
-            </Card>
-          </div>
+              <Card
+                className={`flex h-full flex-col transition hover:shadow-lg ${gradients[idx % gradients.length]
+                  }`}
+              >
+                <CardHeader className="flex-grow">
+                  {solution.image ? (
+                    <Image
+                      src={solution.image}
+                      alt={solution.title}
+                      width={48}
+                      height={48}
+                      className="mb-2 object-contain"
+                    />
+                  ) : (
+                    <div className="mb-2 text-3xl">{solution.image}</div>
+                  )}
+                  <CardTitle>{solution.title}</CardTitle>
+                  <CardDescription>{solution.description}</CardDescription>
+                </CardHeader>
+              </Card>
+            </div>
+          </MagicBentoWrapper>
         ))}
       </div>
     </section>
