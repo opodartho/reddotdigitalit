@@ -80,12 +80,12 @@ export default function HeroSection() {
 
           <div className="flex flex-wrap justify-center md:justify-start gap-4">
             <InteractiveHoverButton
-              className="border border-[#E52445] text-[#E52445]   bg-white rounded-md  dark:bg-transparent py-3 px-6 md:py-6 md:px-6"
+              className="border flex items-center justify-center border-[#E52445] text-[#E52445]   bg-white rounded-md  dark:bg-transparent py-3 px-6 md:py-6 md:px-6"
             >
               Explore Services
             </InteractiveHoverButton>
             <InteractiveHoverButton
-              className="text-white bg-[#E52445]  dark:bg-transparent rounded-md py-3 px-6 md:py-6 md:px-10"
+              className="text-white bg-[#E52445] flex items-center justify-center  dark:bg-transparent rounded-md py-3 px-6 md:py-6 md:px-10"
             >
               Let's work with us
             </InteractiveHoverButton>

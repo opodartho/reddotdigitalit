@@ -53,7 +53,7 @@ export const ServicesCarousel = ({ services }: { services: Service[] }) => {
   };
 
   return (
-    <div className="bg-white py-8">
+    <div className="bg-white py-8 hidden">
       <div
         ref={carouselRef}
         className="hide-scrollbar flex overflow-x-auto scroll-smooth py-4 whitespace-nowrap"
