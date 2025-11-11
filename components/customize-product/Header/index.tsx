@@ -1,3 +1,4 @@
+import WhiteButton from "@/components/buttons/WhiteHoverButton";
 import { Button } from "@/components/ui/button";
 import { HeaderItem } from "@/lib/data/header";
 import Image from "next/image";
@@ -22,9 +23,9 @@ export default function Header({ headerData, Id }: HeaderProps) {
                     <p className="font-semibold lg:text-[40px] text-[30px] lg:pt-[95px]  lg:w-[461px] pt-[51px] text-title">{headerData[indexNumber]?.title || ''}</p>
                     <p className="pt-[26px] text-subtitle">{headerData[indexNumber]?.description || ''}</p>
                     <div className="pt-[61px]">
-                        <Button className="bg-red-500 h-[56px] w-[229px]">
+                        <WhiteButton className="bg-red-500 h-[56px] w-[229px]">
                             {headerData[indexNumber]?.buttonText || ''}
-                        </Button>
+                        </WhiteButton>
                     </div>
                 </div>
                 <img src={headerData[indexNumber]?.imageUrl || 'ok.svg'} alt="" className=" lg:block hidden " />

@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { OperationSection } from "@/lib/data/AreaOfOperation";
+import WhiteButton from "@/components/buttons/WhiteHoverButton";
 
 type AreaOfOperationsProps = {
   sections: OperationSection[];
@@ -170,9 +171,9 @@ export default function AreaOfOperations({ sections }: AreaOfOperationsProps) {
                   </ul>
                 </div>
 
-                <Button variant="default" size="lg" className="mt-18">
+                <WhiteButton className="mt-8">
                   Read More
-                </Button>
+                </WhiteButton>
               </section>
             ))}
           </div>

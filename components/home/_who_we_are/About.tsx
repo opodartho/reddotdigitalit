@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { AboutData } from "@/lib/data/whoWeAreData";
+import WhiteButton from "@/components/buttons/WhiteHoverButton";
 
 type AboutProps = {
   data: AboutData;
@@ -20,9 +21,9 @@ const About = ({ data }: AboutProps) => {
         <p className="--font-poppins font-normal text-[16px] leading-[30px] tracking-[0] mt-[36px]">
           {data.description}
         </p>
-        <Button className="--font-poppins font-medium text-[16px] leading-[100%] tracking-[0] w-[207px] h-[56px] mt-[49px]">
+        <WhiteButton className="--font-poppins font-medium text-[16px] leading-[100%] tracking-[0] w-[207px] h-[56px] mt-[49px]">
           Read More →
-        </Button>
+        </WhiteButton>
       </div>
       <div className="grid gap-4">
         <div className="relative">

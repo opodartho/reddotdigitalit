@@ -24,7 +24,7 @@ export function TransformCard({
             <p className="--font-poppins text-white font-normal text-[16px] leading-[28px] tracking-[0] mt-[23.82px]">
               {description}
             </p>
-            <Button asChild className="px-6 py-2 bg-white sm:px-8 sm:py-3 mt-[52px]">
+            <Button asChild className="px-6 py-2 h-[56px] bg-white sm:px-8 sm:py-3 mt-[52px]">
               <a href={buttonLink} className="" style={{color:"red"}}>
                 {buttonText}
                 <span className="--font-poppins text-red-500 font-medium text-[16px] leading-[100%] tracking-[0] text-center">

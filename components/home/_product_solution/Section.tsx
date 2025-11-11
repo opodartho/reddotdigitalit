@@ -1,7 +1,7 @@
 import React from "react";
 import Solutions from "@/components/home/_product_solution/Solutions";
-import { Button } from "@/components/ui/button";
 import { ProductSolutionItem } from "@/lib/data/customize-product/productSolutionData";
+import RedButton from "@/components/buttons/RedHoverButton";
 
 // Define the props this component will receive from the landing page
 type ProductSolutionSectionProps = {
@@ -16,9 +16,9 @@ const ProductSolution = ({ solutions }: ProductSolutionSectionProps) => {
       <Solutions solutions={solutions} />
 
       <div className="mt-8 flex justify-center">
-        <Button variant="outline" size="lg">
+        <RedButton >
           View More
-        </Button>
+        </RedButton>
       </div>
     </main>
   );

@@ -12,6 +12,8 @@ import type { HeroSlide } from "@/lib/data/heroSlidesData";
 import { Button } from "@/components/ui/button";
 import Autoplay from "embla-carousel-autoplay";
 import { ArrowUpRight } from "lucide-react";
+import RedButton, { RedHoverButton } from "@/components/buttons/RedHoverButton";
+import WhiteButton, { WhiteHoverButton } from "@/components/buttons/WhiteHoverButton";
 
 export default function HeroSection() {
   const [api, setApi] = useState<CarouselApi>();
@@ -79,16 +81,13 @@ export default function HeroSection() {
           </p>
 
           <div className="flex flex-wrap justify-center md:justify-start gap-4">
-            <InteractiveHoverButton
-              className="border flex items-center justify-center border-[#E52445] text-[#E52445]   bg-white rounded-md  dark:bg-transparent py-3 px-6 md:py-6 md:px-6"
-            >
+            <RedButton>
               Explore Services
-            </InteractiveHoverButton>
-            <InteractiveHoverButton
-              className="text-white bg-[#E52445] flex items-center justify-center  dark:bg-transparent rounded-md py-3 px-6 md:py-6 md:px-10"
+            </RedButton>
+            <WhiteButton
             >
               Let's work with us
-            </InteractiveHoverButton>
+            </WhiteButton>
           </div>
         </div>
 
@@ -99,11 +98,11 @@ export default function HeroSection() {
             opts={{ loop: true }}
             plugins={[autoplay.current]}
           >
-            <CarouselContent className="ml-0 -mt-[30px]">
+            <CarouselContent className="ml-0 ">
               {slides.map((slide) => (
                 <CarouselItem key={slide.id}>
                   <div className="bg-white rounded-lg w-full md:w-[85%] shadow-[0_12px_48px_0px_rgba(49,1,139,0.07)] mb-8">
-                    <div className="rounded-lg -mt-[6px] h-[250px]  flex items-center justify-center relative overflow-hidden px-2 ">
+                    <div className="rounded-lg  h-[250px]  flex items-center justify-center relative overflow-hidden px-2 ">
                       <img
                         src={slide.imageUrl}
                         alt={slide.title}

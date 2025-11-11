@@ -2,7 +2,6 @@
 
 import React, { useState } from "react";
 import Autoplay from "embla-carousel-autoplay";
-import { ProductSolutionItem } from "@/lib/data/productSolutionData";
 import {
     Carousel,
     CarouselContent,
@@ -15,10 +14,9 @@ import {
     CardTitle,
     CardDescription,
 } from "@/components/ui/card";
-import { getProductSolutions } from "@/lib/api/fetchProductSolutions";
-import Image from "next/image";
 import { NewsListItem, newsListData } from "@/lib/data/news-list/newsListData";
 import { Button } from "@/components/ui/button";
+import RedButton from "@/components/buttons/RedHoverButton";
 
 type ProductCarouselProps = {
     newsListData: NewsListItem[];
@@ -72,7 +70,7 @@ export function BlogCarousel({ newsListData }: ProductCarouselProps) {
                                     <CardDescription className="text-[14px] pl-[10px] pr-[43px] pt-[20px]">
                                         {slide.description}
                                     </CardDescription>
-                                    <Button variant={"link"} className="text-start w-[96.2px] pl-[3px]">Read More </Button>
+                                    <RedButton variant={"link"} className="text-start w-[96.2px] pl-[3px]">Read More </RedButton>
                                 </CardHeader>
                             </Card>
                         </CarouselItem>
