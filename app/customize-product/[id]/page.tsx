@@ -36,14 +36,14 @@ export default async function CustomizeProduct({ params }: { params: { id: strin
             <div>
                 <Header headerData={HeaderData} Id={params.id} />
             </div>
-            <div className="lg:pl-[240px] lg:pr-[240px] lg:flex-1 lg:flex-grow lg:pt-[90px] pt-[48px] pr-[80px]">
+            <div className="lg:pl-[80px] lg:pr-[80px] lg:flex-1 lg:flex-grow lg:pt-[90px] pt-[48px] pr-[80px]">
                 <AboutProject aboutProjectData={AboutProjectData} Id={params.id} />
             </div>
-            <div className="lg:pl-[240px] lg:pr-[240px] lg:flex-1 lg:pt-[114px] pt-[48px] pr-[16px]">
+            <div className="lg:pl-[80px] lg:pr-[80px] lg:flex-1 lg:pt-[114px] pt-[48px] pr-[16px]">
                 <KeyBenefits keyBenefitsData={KeyBenefitsData} Id={params.id} />
             </div>
             {solutionCoverageForProduct && (
-                <div className="lg:pl-[240px] lg:pr-[240px] lg:flex-1 lg:pt-[114px] pt-[48px] pr-[16px]">
+                <div className="lg:pl-[80px] lg:pr-[80px] lg:flex-1 lg:pt-[114px] pt-[48px] pr-[16px]">
                     <SolutionCoverage
                         coverage={solutionCoverageForProduct.coverage}
                         Id={params.id}
@@ -54,9 +54,9 @@ export default async function CustomizeProduct({ params }: { params: { id: strin
             <div className="lg:pt-[114px] pt-[48px]">
                 <Section customizeData={CustomizeData} />
             </div>
-            <div className="lg:pt-[0px] pt-[173px] lg:pl-[240px] lg:pr-[240px]">
+            <div className="lg:pt-[0px] pt-[173px] lg:pl-[80px] lg:pr-[80px]">
                 {/* <Conclusion conclusionData={ConclusionData} /> */}
-                <ReadyToTransform transformData={transformData}/>
+                <ReadyToTransform transformData={transformData} />
             </div>
         </>
     )

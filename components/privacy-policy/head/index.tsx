@@ -10,7 +10,7 @@ export default function Header({ headerData }: HeaderProps) {
     return (
         <>
             <div
-                className="lg:pl-[240px] lg:pr-[240px] lg:pt-[0px] lg:min-h-[279px] min-h-[382px] lg:flex lg:gap-[440px]"
+                className="lg:pl-[80px] lg:pr-[80px] lg:pt-[0px] lg:min-h-[279px] min-h-[382px] lg:flex lg:gap-[440px]"
                 style={{ backgroundImage: "url('/images/privacy-bg.svg')" }}
             >
                 <div className="lg:w-[630px] lg:pl-[0px] pl-[16px] lg:pr-[0px] pr-[16px] lg:pb-[0px] pb-[68px]">

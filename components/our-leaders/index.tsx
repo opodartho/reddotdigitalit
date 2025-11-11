@@ -6,7 +6,7 @@ type LeadersDataProps = {
 }
 export default function OurLeaders({ LeadersData }: LeadersDataProps) {
     return (
-        <div className="lg:pb-[52px] pb-[32px] lg:pl-[240px] lg:pr-[240px]">
+        <div className="lg:pb-[52px] pb-[32px] lg:pl-[80px] lg:pr-[80px]">
             <div className="lg:pt-[30px] lg:w-full pt-[141px] lg:flex lg:flex-row lg:pb-[32px] pb-[30px] lg:justify-center flex flex-col items-center bg-[#f9f8fb]">
                 <div>
                     <img src={LeadersData.imageUrl} />

@@ -15,27 +15,27 @@ import { getRoots } from "@/lib/api/about-us/fetchRoots";
 
 
 export default async function AboutUs() {
-    const [AboutData, AchievementsData, ManageData, HeaderData, JourneyData, RootsData, EmpowermentData]= await Promise.all([getAboutUs(), getAchievements(), getManagement(), getHeader(),getJourney(), getRoots(), getEmpowerment()])
+    const [AboutData, AchievementsData, ManageData, HeaderData, JourneyData, RootsData, EmpowermentData] = await Promise.all([getAboutUs(), getAchievements(), getManagement(), getHeader(), getJourney(), getRoots(), getEmpowerment()])
     return (
         <>
-            <div className="overflow-hidden lg:pl-[240px] lg:pr-[240px]">
+            <div className="overflow-hidden lg:pl-[80px] lg:pr-[80px]">
                 <div className="lg:pr-80px">
-                    <Header headerData={HeaderData}/>
+                    <Header headerData={HeaderData} />
                 </div>
                 <div className="lg:pr-80px">
-                    <AboutRedDot aboutUs={AboutData}/>
+                    <AboutRedDot aboutUs={AboutData} />
                 </div>
                 <div className="lg:pr-80px">
-                    <OurRoots rootsData={RootsData}/>
+                    <OurRoots rootsData={RootsData} />
                 </div>
                 <div className="lg:pr-80px">
-                    <OurJourney journeyData={JourneyData}/>
+                    <OurJourney journeyData={JourneyData} />
                 </div>
                 <div className="lg:pr-80px">
-                    <Empowerment empowermentData={EmpowermentData}/>
+                    <Empowerment empowermentData={EmpowermentData} />
                 </div>
                 <div>
-                    <Achievements achievements={AchievementsData}/>
+                    <Achievements achievements={AchievementsData} />
                 </div>
             </div>
         </>

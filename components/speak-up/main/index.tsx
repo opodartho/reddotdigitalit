@@ -6,7 +6,7 @@ type SpeakupProps = {
 export default function Main({ SpeakupData }: SpeakupProps) {
     return (
         <>
-            <div className="lg:pt-[51px]   pt-[51px] lg:flex lg:flex-row lg:pb-[32px] pb-[30px] lg:pl-[240px] lg:pr-[240px] pl-[16px] pr-[16px] flex flex-col ">
+            <div className="lg:pt-[51px]   pt-[51px] lg:flex lg:flex-row lg:pb-[32px] pb-[30px] lg:pl-[80px] lg:pr-[80px] pl-[16px] pr-[16px] flex flex-col ">
                 <div className="lg:w-1/2 w-full flex justify-center items-center">
                     <img
                         src={SpeakupData.imageUrl}

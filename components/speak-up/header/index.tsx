@@ -7,7 +7,7 @@ type SpeakupProps = {
 export default function Header({ SpeakupData }: SpeakupProps) {
     return (
         <>
-            <div className="lg:pt-[108px] pt-[68px] lg:pl-[240px] lg:pr-[240px] pl-[16px]">
+            <div className="lg:pt-[108px] pt-[68px] lg:pl-[80px] lg:pr-[80px] pl-[16px]">
                 <p className="font-semibold lg:text-[40px] text-[30px] text-title">{SpeakupData.title}</p>
                 <p className="lg:text-[18px] text-[14px] lg:pt-[19px] pt-[14px] lg:w-[675px] w-[358px] break-words text-wrap tracking-wider line-clamp-3 text-subtitle">{SpeakupData.subtitle}</p>
             </div>
