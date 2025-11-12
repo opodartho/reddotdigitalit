@@ -45,7 +45,7 @@ export default function MagicBentoWrapper({
         left: ${x - maxDistance}px;
         top: ${y - maxDistance}px;
         pointer-events: none;
-        z-index: 20;
+        z-index: 50;
       `;
 
       el.appendChild(ripple);
@@ -55,7 +55,7 @@ export default function MagicBentoWrapper({
         {
           scale: 1,
           opacity: 0,
-          duration: 0.8,
+          duration: 2,
           ease: "power2.out",
           onComplete: () => ripple.remove(),
         }
@@ -89,7 +89,7 @@ timeline.to(
   { angle: 0 },
   {
     angle: 360,
-    duration: 4, // smoother slower spin
+    duration: 10, // smoother slower spin
     ease: "none",
     repeat: -1,
     onUpdate: function () {
@@ -123,7 +123,7 @@ timeline.to(
       }
       gsap.to(glow, {
         opacity: 0,
-        duration: 0.5,
+        duration: 10,
         ease: "power2.out",
       });
     };
@@ -176,7 +176,7 @@ timeline.to(
     )`,
     opacity: 0,
     borderRadius: "1rem",
-    filter: `blur(1px) drop-shadow(0 0 12px rgba(${glowColor}, 0.4)) drop-shadow(0 0 25px rgba(${glowColor}, 0.4))`,
+    filter: `blur(0px) drop-shadow(0 0 12px rgba(${glowColor}, 1)) drop-shadow(0 0 25px rgba(${glowColor}, 0))`,
     mixBlendMode: "screen", // brightens rather than overlays
     transition: "opacity 0.3s ease",
   }}
@@ -184,7 +184,7 @@ timeline.to(
 
 
       {/* Card content */}
-      <div className="relative z-10 h-full">{children}</div>
+      <div className="relative z-50 h-full">{children}</div>
     </div>
   );
 }

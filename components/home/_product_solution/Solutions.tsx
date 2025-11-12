@@ -111,7 +111,7 @@ export default function Solutions({ solutions }: SolutionsProps) {
               onClick={() => router.push(`/customize-product/${idx + 1}`)}
             >
               <Card
-                className="flex h-full flex-col transition hover:shadow-lg"
+                className="flex h-full flex-col transition"
               >
                 <div
                   className="h-full w-full rounded-xl"
