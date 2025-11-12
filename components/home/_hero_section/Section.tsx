@@ -44,7 +44,7 @@ export default function HeroSection() {
 
   return (
     <section
-      className="relative flex flex-col md:flex-row items-center justify-center w-full px-6 md:px-14 py-12 md:py-16 gap-8 md:gap-10"
+      className="relative flex flex-col md:flex-row items-center justify-center w-full px-6 md:px-14 py-12 md:py-16  md:gap-10"
       style={{
         background: `
         radial-gradient(circle at 85% 15%, #F0E8FF 0%, #FFFFFF 20%),
@@ -85,11 +85,11 @@ export default function HeroSection() {
       </div>
 
       {/* Carousel */}
-      <div className="relative z-1 md:w-[45%] h-full">
+      <div className="relative z-1 md:w-[50%] h-full">
         <Carousel className="w-full" setApi={setApi} opts={{ loop: true }} plugins={[autoplay.current]}>
-          <CarouselContent className="ml-0">
+          <CarouselContent className="lg:ml-0 lg:mr-0 lg:gap-180">
             {slides.map((slide) => (
-              <CarouselItem key={slide.id}>
+              <CarouselItem key={slide.id} >
                 <CardContainer className={`lg:w-[600px] mx-auto`}>
                   <CardBody className={`relative w-[600px] overflow-visible [transform-style:preserve-3d]`}>
 
@@ -115,7 +115,7 @@ export default function HeroSection() {
                           {/* Image handled by pop-out CardItem */}
                         </div>
                         <div className="flex flex-col gap-2 mt-4 px-6 pb-4">
-                          <h3 className="text-lg font-semibold flex justify-between items-center text-[#121926] text-title">
+                          <h3 className="text-lg font-semibold flex justify-between items-center text-title">
                             {slide.title}
                             
                           </h3>
