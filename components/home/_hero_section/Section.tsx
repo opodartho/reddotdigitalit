@@ -90,13 +90,13 @@ export default function HeroSection() {
           <CarouselContent className="ml-0">
             {slides.map((slide) => (
               <CarouselItem key={slide.id}>
-                <CardContainer className={`lg:w-[${CARD_WIDTH}px] mx-auto`}>
-                  <CardBody className={`relative w-[${CARD_WIDTH}px] overflow-visible [transform-style:preserve-3d]`}>
+                <CardContainer className={`lg:w-[600px] mx-auto`}>
+                  <CardBody className={`relative w-[600px] overflow-visible [transform-style:preserve-3d]`}>
 
                     {/* Pop-out image centered */}
                     <CardItem
                       translateZ={50}
-                      className={`absolute top-0 left-1/2 -translate-x-1/2 w-[${IMAGE_WIDTH}px] h-[250px] z-20 flex items-center justify-center`}
+                      className={`absolute top-0 left-1/2 -translate-x-1/2 w-[400px] h-[250px] z-20 flex items-center justify-center`}
                     >
                       <img
                         src={slide.imageUrl}
@@ -109,7 +109,7 @@ export default function HeroSection() {
                     {/* Card background with fixed width */}
                     <CardItem translateZ={0}>
                       <div
-                        className={`bg-white rounded-lg w-[${CARD_WIDTH}px] shadow-[0_12px_48px_0px_rgba(49,1,139,0.07)] mb-8 flex flex-col`}
+                        className={`bg-white rounded-lg w-[600px] shadow-[0_12px_48px_0px_rgba(49,1,139,0.07)] mb-8 flex flex-col`}
                       >
                         <div className="rounded-lg h-[250px] w-full flex items-center justify-center relative overflow-hidden px-2">
                           {/* Image handled by pop-out CardItem */}
@@ -117,9 +117,7 @@ export default function HeroSection() {
                         <div className="flex flex-col gap-2 mt-4 px-6 pb-4">
                           <h3 className="text-lg font-semibold flex justify-between items-center text-[#121926] text-title">
                             {slide.title}
-                            <span className="text-sm text-gray-500 flex items-center gap-1">
-                              Case Study <ArrowUpRight size={14} />
-                            </span>
+                            
                           </h3>
                           <p className="text-sm mb-2 text-subtitle">{slide.description}</p>
                           <div className="flex flex-wrap gap-2">

@@ -8,19 +8,22 @@ interface MagicBentoWrapperProps {
   enableTilt?: boolean;
   enableMagnetism?: boolean;
   clickEffect?: boolean;
-  spotlight?: boolean;
+  borderGlow?: boolean;
+  borderWidth?: number;
 }
 
 export default function MagicBentoWrapper({
   children,
   glowColor = "132, 0, 255", // purple-blue neon
-  enableTilt = true,
-  enableMagnetism = true,
+  enableTilt = false,
+  enableMagnetism = false,
   clickEffect = true,
-  spotlight = true,
+  borderGlow = true,
+  borderWidth = 2,
 }: MagicBentoWrapperProps) {
   const ref = useRef<HTMLDivElement>(null);
-  const edgeGlowRef = useRef<HTMLDivElement>(null);
+  const borderGlowRef = useRef<HTMLDivElement>(null);
+  const animationRef = useRef<gsap.core.Timeline | gsap.core.Tween | null>(null);
 
   // 💥 Ripple click animation
   const handleClick = useCallback(
@@ -42,7 +45,7 @@ export default function MagicBentoWrapper({
         left: ${x - maxDistance}px;
         top: ${y - maxDistance}px;
         pointer-events: none;
-        z-index: 40;
+        z-index: 20;
       `;
 
       el.appendChild(ripple);
@@ -61,65 +64,63 @@ export default function MagicBentoWrapper({
     [clickEffect, glowColor]
   );
 
-  // ⚡️ Mouse motion: tilt + magnetism + edge light
+  // ⚡️ Snake-like border glow animation
   useEffect(() => {
     const el = ref.current;
-    const glow = edgeGlowRef.current;
+    const glow = borderGlowRef.current;
     if (!el || !glow) return;
 
-    const handleMouseMove = (e: MouseEvent) => {
-      const rect = el.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      const centerX = rect.width / 2;
-      const centerY = rect.height / 2;
+    // Parse gradient colors if they contain commas (indicating multiple colors)
+    const colors = glowColor.split(',').map(c => c.trim());
+    const isGradient = colors.length > 3;
 
-      const relX = (x - centerX) / centerX;
-      const relY = (y - centerY) / centerY;
-
-      // Move sharp edge glow directionally
-      if (spotlight) {
-        const angle = Math.atan2(relY, relX) * (180 / Math.PI) + 90; // convert mouse direction into rotation
-        gsap.to(glow, {
-          background: `conic-gradient(from ${angle}deg, rgba(${glowColor},0.85), rgba(${glowColor},0.2) 40%, transparent 80%)`,
-          opacity: 1,
-          duration: 0.2,
-          ease: "power2.out",
-        });
+    const startSnakeGlow = () => {
+      if (animationRef.current) {
+        animationRef.current.kill();
       }
 
-      // Tilt & magnet effects
-      if (enableTilt) {
-        const rotateX = relY * -10;
-        const rotateY = relX * 10;
-        gsap.to(el, {
-          rotateX,
-          rotateY,
-          duration: 0.3,
-          ease: "power2.out",
-          transformPerspective: 1000,
-        });
-      }
+      // Set initial opacity
+      gsap.set(glow, { opacity: 1 });
 
-      if (enableMagnetism) {
-        gsap.to(el, {
-          x: relX * 10,
-          y: relY * 10,
-          duration: 0.3,
-          ease: "power2.out",
-        });
+      // Animate the angle of the conic gradient to create snake effect
+      const timeline = gsap.timeline({ repeat: -1 });
+
+timeline.to(
+  { angle: 0 },
+  {
+    angle: 360,
+    duration: 4, // smoother slower spin
+    ease: "none",
+    repeat: -1,
+    onUpdate: function () {
+      const angle = this.targets()[0].angle;
+      if (glow) {
+        const gradientString = `conic-gradient(
+          from ${angle - 90}deg,
+          rgba(${glowColor}, 1) 0%,
+          rgba(${glowColor}, 0.95) 5%,
+          rgba(${glowColor}, 0.85) 10%,
+          rgba(${glowColor}, 0.6) 20%,
+          rgba(${glowColor}, 0.4) 30%,
+          rgba(${glowColor}, 0.2) 40%,
+          transparent 55%,
+          transparent 100%
+        )`;
+        glow.style.background = gradientString;
       }
+    },
+  }
+);
+
+
+      animationRef.current = timeline;
     };
 
-    const handleMouseLeave = () => {
-      gsap.to(el, {
-        rotateX: 0,
-        rotateY: 0,
-        x: 0,
-        y: 0,
-        duration: 0.4,
-        ease: "power2.out",
-      });
+    const stopSnakeGlow = () => {
+      if (animationRef.current) {
+        animationRef.current.kill();
+        animationRef.current = null;
+      }
       gsap.to(glow, {
         opacity: 0,
         duration: 0.5,
@@ -127,41 +128,63 @@ export default function MagicBentoWrapper({
       });
     };
 
-    el.addEventListener("mousemove", handleMouseMove);
+    const handleMouseEnter = () => {
+      if (borderGlow) {
+        startSnakeGlow();
+      }
+    };
+
+    const handleMouseLeave = () => {
+      stopSnakeGlow();
+    };
+
+    el.addEventListener("mouseenter", handleMouseEnter);
     el.addEventListener("mouseleave", handleMouseLeave);
     el.addEventListener("click", handleClick);
 
     return () => {
-      el.removeEventListener("mousemove", handleMouseMove);
+      if (animationRef.current) {
+        animationRef.current.kill();
+      }
+      el.removeEventListener("mouseenter", handleMouseEnter);
       el.removeEventListener("mouseleave", handleMouseLeave);
       el.removeEventListener("click", handleClick);
     };
-  }, [enableTilt, enableMagnetism, handleClick, spotlight, glowColor]);
+  }, [handleClick, borderGlow, glowColor]);
 
   return (
     <div
       ref={ref}
-      className="relative z-10 overflow-visible"
+      className="relative z-50 h-full overflow-visible"
       style={{
         transformStyle: "preserve-3d",
-        transition: "transform 0.3s ease",
-        perspective: "1000px",
       }}
     >
-      {/* 💡 Edge Glow Layer */}
+      {/* 💡 Snake Border Glow Layer */}
       <div
-        ref={edgeGlowRef}
-        className="absolute inset-0 pointer-events-none rounded-xl mix-blend-screen"
-        style={{
-          background: `conic-gradient(from 90deg, rgba(${glowColor}, 0.8), rgba(${glowColor}, 0.1) 40%, transparent 80%)`,
-          opacity: 0,
-          filter: "blur(20px)",
-          transition: "opacity 0.2s ease",
-        }}
-      />
+  ref={borderGlowRef}
+  className="absolute inset-0 pointer-events-none rounded-xl"
+  style={{
+    background: `conic-gradient(
+      from -90deg,
+      rgba(${glowColor}, 1) 0%,
+      rgba(${glowColor}, 0.9) 5%,
+      rgba(${glowColor}, 0.6) 10%,
+      rgba(${glowColor}, 0.3) 15%,
+      transparent 20%,
+      transparent 100%
+    )`,
+    opacity: 0,
+    borderRadius: "1rem",
+    filter: `blur(0,1px) drop-shadow(0 0 12px rgba(${glowColor}, 1)) drop-shadow(0 0 25px rgba(${glowColor}, 0.1))`,
+    mixBlendMode: "screen", // brightens rather than overlays
+    transition: "opacity 0.3s ease",
+  }}
+/>
+
 
       {/* Card content */}
-      <div className="relative z-20">{children}</div>
+      <div className="relative z-10 h-full">{children}</div>
     </div>
   );
 }
