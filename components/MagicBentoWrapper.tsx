@@ -163,7 +163,7 @@ timeline.to(
       {/* 💡 Snake Border Glow Layer */}
       <div
   ref={borderGlowRef}
-  className="absolute inset-0 pointer-events-none rounded-xl"
+  className="absolute inset-0 pointer-events-none rounded-xl z-20"
   style={{
     background: `conic-gradient(
       from -90deg,
@@ -176,7 +176,7 @@ timeline.to(
     )`,
     opacity: 0,
     borderRadius: "1rem",
-    filter: `blur(0,1px) drop-shadow(0 0 12px rgba(${glowColor}, 1)) drop-shadow(0 0 25px rgba(${glowColor}, 0.1))`,
+    filter: `blur(1px) drop-shadow(0 0 12px rgba(${glowColor}, 1)) drop-shadow(0 0 25px rgba(${glowColor}, 0.1))`,
     mixBlendMode: "screen", // brightens rather than overlays
     transition: "opacity 0.3s ease",
   }}
