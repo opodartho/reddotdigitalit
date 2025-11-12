@@ -44,7 +44,7 @@ export default function HeroSection() {
 
   return (
     <section
-      className="relative flex flex-col md:flex-row items-center justify-center w-full px-6 md:px-14 py-12 md:py-16  md:gap-10"
+      className="relative flex flex-col h-full md:flex-row items-center justify-center w-full px-6 md:px-14 py-12 md:py-16  md:gap-10"
       style={{
         background: `
         radial-gradient(circle at 85% 15%, #F0E8FF 0%, #FFFFFF 20%),
@@ -96,12 +96,12 @@ export default function HeroSection() {
                     {/* Pop-out image centered */}
                     <CardItem
                       translateZ={50}
-                      className={`absolute top-0 left-1/2 -translate-x-1/2 w-[400px] h-[250px] z-20 flex items-center justify-center`}
+                      className={`absolute top-[6px] left-1/2 -translate-x-1/2 w-[585px] h-[280px] z-20 flex items-center justify-center`}
                     >
                       <img
                         src={slide.imageUrl}
                         alt={slide.title}
-                        className={`w-[${IMAGE_WIDTH}px] h-full object-contain`}
+                        className={`w-[800px]  object-contain`}
                         style={{ transformStyle: "preserve-3d" }}
                       />
                     </CardItem>
@@ -109,12 +109,12 @@ export default function HeroSection() {
                     {/* Card background with fixed width */}
                     <CardItem translateZ={0}>
                       <div
-                        className={`bg-white rounded-lg w-[600px] shadow-[0_12px_48px_0px_rgba(49,1,139,0.07)] mb-8 flex flex-col`}
+                        className={`bg-white rounded-lg w-[600px] h-[465px] shadow-[0_12px_48px_0px_rgba(49,1,139,0.07)] mb-1 flex flex-col`}
                       >
                         <div className="rounded-lg h-[250px] w-full flex items-center justify-center relative overflow-hidden px-2">
                           {/* Image handled by pop-out CardItem */}
                         </div>
-                        <div className="flex flex-col gap-2 mt-4 px-6 pb-4">
+                        <div className="flex flex-col gap-2 mt-14 px-6 pb-4">
                           <h3 className="text-lg font-semibold flex justify-between items-center text-title">
                             {slide.title}
                             
