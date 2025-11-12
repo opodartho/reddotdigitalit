@@ -14,7 +14,7 @@ export default function KeyBenefitsGrid({
   {benefits.map((item, index) => (
     <div
       key={index}
-      className="flex bg-[#F9F7FD] bg-gradient-to-t from-[#FFFFFF] to-[#FFFFFF] rounded-[8px] shadow-[0_12px_48px_rgba(49,1,139,0.09)] p-[20px] lg:h-[180px]"
+      className="flex bg-[#F9F7FD] bg-gradient-to-t from-[#FFFFFF] to-[#FFFFFF] rounded-[8px] shadow-[0_12px_48px_rgba(49,1,139,0.09)] p-[20px] lg:h-[150px]"
     >
       {/* Left column - icon */}
       <div className="flex items-start justify-start w-[30px] h-[30px]  mr-[24px] shrink-0">
