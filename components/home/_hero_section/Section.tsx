@@ -80,7 +80,7 @@ export default function HeroSection() {
 
         <div className="flex flex-wrap justify-center md:justify-start gap-4">
           <RedButton>Explore Services</RedButton>
-          <WhiteButton>Let's work with us</WhiteButton>
+          <WhiteButton>Let's Work With Us</WhiteButton>
         </div>
       </div>
 
