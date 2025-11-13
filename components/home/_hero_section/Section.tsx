@@ -44,7 +44,7 @@ export default function HeroSection() {
 
   return (
     <section
-      className="lg:relative lg:flex lg:flex-col lg:h-full lg:md:flex-row lg:items-center lg:justify-center lg:w-full lg:px-6 lg:md:px-14  lg:md:gap-10"
+      className="lg:relative lg:flex lg:flex-col lg:h-[600px] h-[] lg:md:flex-row lg:items-center lg:justify-center lg:w-full lg:px-6 lg:md:px-14  lg:md:gap-10"
       style={{
         background: `
         radial-gradient(circle at 85% 15%, #F0E8FF 0%, #FFFFFF 20%),
@@ -78,68 +78,65 @@ export default function HeroSection() {
           efficiency and growth.
         </p>
 
-        <div className="lg:flex lg:flex-row  flex flex-col flex-wrap   gap-4">
+        <div className="lg:flex lg:flex-row lg:flex-wrap  flex flex-col flex-wrap   gap-4">
           <RedButton className="">Explore Services</RedButton>
           <WhiteButton className="tracking-tightest">Let's Work With Us</WhiteButton>
         </div>
       </div>
 
       {/* Carousel */}
-      <div className="relative z-1 lg:h-full h-auto lg:overflow-hidden overflow-visible">
-        <Carousel className="lg:w-full w-[357px]" setApi={setApi} opts={{ loop: true }} plugins={[autoplay.current]}>
-          <CarouselContent className="lg:ml-0 lg:mr-0 lg:gap-180  gap-[10px] ">
+      <div className="relative z-1 lg:h-full h-[450px] lg:overflow-hidden overflow-visible">
+        <Carousel className="lg:w-full w-[357px] basis-[44.4%]" setApi={setApi} opts={{ loop: true,align: "center" }} plugins={[autoplay.current]}>
+          <CarouselContent className="lg:ml-0 -ml-4 lg:mr-0 lg:gap-180  gap-[10px] ">
             {slides.map((slide) => (
-              <CarouselItem key={slide.id} className="lg:pl-0 pl-4 lg:pr-0 pr-4 lg:pb-[0px] ">
-                <CardContainer className={`lg:w-[600px] mx-auto`}>
-                  <CardBody className={`relative w-[600px] overflow-visible [transform-style:preserve-3d]`}>
-
-                    {/* Pop-out image centered */}
-                    <CardItem
-                      translateZ={50}
-                      className={`absolute lg:top-[6px] top-[6px] lg:left-1/2 left-[6px] lg:right-[0px] right-[6px] lg:-translate-x-1/2 lg:w-[585px] lg:h-[280px] z-20 flex items-center justify-center`}
-                    >
-                      <img
-                        src={slide.imageUrl}
-                        alt={slide.title}
-                        className={`lg:w-[800px] w-[327px]  object-contain`}
-                        style={{ transformStyle: "preserve-3d" }}
-                      />
-                    </CardItem>
-
-                    {/* Card background with fixed width */}
-                    <CardItem translateZ={0}>
-                      <div
-                        className={`bg-white  rounded-lg lg:w-[600px] lg:h-[465px] h-[380px] shadow-lg mb-1 flex flex-col`}
-                      >
-                        
-                        <div className="flex flex-col gap-2 px-2  lg:pt-[291px] pt-[191px] lg:w-[548px] w-[336px]">
-                          <h3 className="text-lg  font-semibold flex justify-between items-center text-title">
-                            {slide.title}
-                            
-                          </h3>
-                          <p className="text-sm mb-2 text-subtitle lg:pt-[10px]">{slide.description}</p>
-                          <div className="flex flex-wrap gap-2 lg:pt-[30px]">
-                            {slide.tags.map((tag) => (
-                              <span
-                                key={tag}
-                                className="bg-[#F5F5FA] text-xs px-3 py-1 rounded-full text-[#70738F]"
-                              >
-                                {tag}
-                              </span>
-                            ))}
-                          </div>
+              <CarouselItem key={slide.id} className="basis-full lg:pl-0 pl-4 lg:pr-0 pr-4">
+              <CardContainer className="lg:w-[600px] w-[327px] mx-auto">
+                <CardBody className="relative lg:w-[600px] w-[327px] overflow-visible [transform-style:preserve-3d]">
+            
+                  {/* Pop-out image centered */}
+                  <CardItem
+                    translateZ={50}
+                    className="absolute lg:top-[6px] top-[6px] left-1/2 -translate-x-1/2 lg:w-[585px] w-[310px] lg:h-[280px] z-20 flex items-center justify-center"
+                  >
+                    <img
+                      src={slide.imageUrl}
+                      alt={slide.title}
+                      className="lg:w-[800px] w-full object-contain"
+                      style={{ transformStyle: "preserve-3d" }}
+                    />
+                  </CardItem>
+            
+                  {/* Card background with fixed width */}
+                  <CardItem translateZ={0}>
+                    <div className="bg-white rounded-lg lg:w-[600px] w-[327px] lg:h-[465px] h-[380px] shadow-lg mb-1 flex flex-col">
+                      
+                      <div className="flex flex-col gap-2 px-4 lg:pt-[291px] pt-[191px] w-full">
+                        <h3 className="text-lg font-semibold flex justify-between items-center text-title">
+                          {slide.title}
+                        </h3>
+                        <p className="text-sm mb-2 text-subtitle lg:pt-[10px]">{slide.description}</p>
+                        <div className="flex flex-wrap gap-2 lg:pt-[30px]">
+                          {slide.tags.map((tag) => (
+                            <span
+                              key={tag}
+                              className="bg-[#F5F5FA] text-xs px-3 py-1 rounded-full text-[#70738F]"
+                            >
+                              {tag}
+                            </span>
+                          ))}
                         </div>
                       </div>
-                    </CardItem>
-
-                  </CardBody>
-                </CardContainer>
-              </CarouselItem>
+                    </div>
+                  </CardItem>
+            
+                </CardBody>
+              </CardContainer>
+            </CarouselItem>
             ))}
           </CarouselContent>
 
           {/* Navigation dots */}
-          <div className="absolute lg:-bottom-[1px] bottom-[10px] left-1/2 -translate-x-1/2 flex gap-2">
+          <div className="absolute lg:-bottom-[35px] left-1/2 -translate-x-1/2 flex gap-2">
             {slides.map((_, index) => (
               <span
                 key={index}

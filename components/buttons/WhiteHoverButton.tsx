@@ -10,18 +10,18 @@ export function WhiteHoverButton({
   return (
     <button
       className={cn(
-        "group bg-background relative cursor-pointer overflow-hidden  border p-2 px-6 h-[56px] lg:w-[200px]  w-[358px] text-center font-semibold",
+        "group bg-background relative cursor-pointer overflow-hidden  border p-2 px-6 h-[56px] lg:max-w-[240px]  w-[358px] text-center font-semibold",
         className
       )}
       {...props}
     >
       <div className="flex items-center gap-2">
-        <div className="bg-white   h-2 w-2 rounded-full transition-all duration-1000 group-hover:scale-[300]"></div>
-        <span className="inline-block transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-0">
+        <div className="bg-white absolute left-0  h-2 w-2 rounded-full transition-all duration-1000 group-hover:scale-[300]"></div>
+        <span className=" w-full transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-0">
           {children}
         </span>
       </div>
-      <div className=" bg-white text-[#E52445] absolute top-0 z-10 flex h-full w-full translate-x-0 items-center justify-center gap-2 opacity-0 transition-all duration-800 group-hover:translate-x-0 group-hover:opacity-100">
+      <div className=" bg-white  text-[#E52445] absolute top-0 z-10 flex h-full  translate-x-0 items-center justify-center gap-2 opacity-0 transition-all duration-800 group-hover:translate-x-0 group-hover:opacity-100">
         <span>{children}</span>
         <ArrowRight />
       </div>
