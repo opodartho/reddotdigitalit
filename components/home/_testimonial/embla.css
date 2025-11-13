@@ -1,5 +1,8 @@
 .embla {
-  overflow: hidden;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 .embla__container {
@@ -8,6 +11,6 @@
 }
 
 .embla__slide {
-  flex: 0 0 100%;
+  flex: 0 0 44.44%;
   min-width: 0;
 }

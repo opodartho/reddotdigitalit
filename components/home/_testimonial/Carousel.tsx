@@ -14,30 +14,31 @@ type CarouselProps = {
 export const TestimonialCarousel: React.FC<CarouselProps> = ({
   testimonials,
 }) => {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, [
-    Autoplay({ delay: 3000, stopOnInteraction: false }),
-  ]);
+  const [emblaRef, emblaApi] = useEmblaCarousel(
+    {
+      loop: true,
+      align: "start",
+      slidesToScroll: 1,
+    },
+    [Autoplay({ delay: 3000, stopOnInteraction: false })]
+  );
 
-  const scrollPrev = useCallback(() => {
-    if (emblaApi) emblaApi.scrollPrev();
-  }, [emblaApi]);
-
-  const scrollNext = useCallback(() => {
-    if (emblaApi) emblaApi.scrollNext();
-  }, [emblaApi]);
+  const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
+  const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
 
   return (
     <>
-      <div className="mb-20 flex items-start justify-between">
+      <div className="mb-20 flex items-start justify-between w-full">
         <div>
           <h2 className="text-[32px] leading-[40px] font-semibold tracking-[0.03px] text-gray-950">
             Hear From Our Clients!
           </h2>
-          <p className="mt-2 text-[14px] leading-[22px] font-normal tracking-[0.0px] text-zinc-800">
+          <p className="mt-2 text-[14px] leading-[22px] font-normal text-zinc-800">
             Our cutting-edge Modular Data Center solutions enable to protect
-            mission-critical data .
+            mission-critical data.
           </p>
         </div>
+
         <div className="mt-2 flex space-x-3">
           <button
             onClick={scrollPrev}
@@ -66,42 +67,47 @@ export const TestimonialCarousel: React.FC<CarouselProps> = ({
         </div>
       </div>
 
-      <div className="embla" ref={emblaRef}>
+      {/* Carousel */}
+      <div
+        className="embla bg-gradient-to-r from-[#ffecf0] to-[#faf9fe] w-full h-[484px]"
+        ref={emblaRef}
+      >
         <div className="embla__container">
           {testimonials.map((testimonial) => (
-            <div className="embla__slide" key={testimonial.id}>
-              <div className="flex flex-col items-center md:flex-row">
-                <div className="mb-6 w-full flex-shrink-0 md:mr-8 md:mb-0 md:w-1/3">
+            <div
+              className="embla__slide basis-[44.44%] shrink-0 px-2"
+              key={testimonial.id}
+            >
+              <div className="bg-white rounded-2xl shadow p-6 h-[484px]">
+                <div className="pl-[10px] pt-[10px]">
                   <Image
                     src={testimonial.imageSrc}
                     alt={testimonial.name}
-                    width={296}
-                    height={296}
-                    className="mx-auto rounded-lg object-cover shadow-md"
+                    width={50}
+                    height={50}
+                    className="rounded-full"
                   />
                 </div>
-                <div className="w-full md:w-2/3">
-                  <blockquote className="font-poppins text-[18px] leading-[34px] font-normal tracking-[0px] text-black">
-                    {testimonial.quote}
-                  </blockquote>
-                  <div className="mt-6">
-                    <Image
-                      src={testimonial.logoSrc}
-                      alt={`${testimonial.company} Logo`}
-                      width={59}
-                      height={48}
-                      className="mb-4 object-contain"
-                    />
-                    <p className="font-poppins text-[13px] leading-[18px] font-semibold tracking-[0px] text-zinc-800">
-                      {testimonial.name}
-                    </p>
-                    <p className="font-poppins text-[10px] leading-[16px] font-normal tracking-[0px] text-black">
-                      {testimonial.company}
-                    </p>
-                    <p className="font-poppins text-[10px] leading-[16px] font-normal tracking-[0px] text-black">
-                      {testimonial.title}
-                    </p>
-                  </div>
+                <blockquote className="whitespace-pre-line font-poppins text-[16px] pl-[10px] pt-[16px] font-normal text-black">
+                  {testimonial.quote}
+                </blockquote>
+                <div className="mt-[34px] pl-[10px]">
+                  <Image
+                    src={testimonial.logoSrc}
+                    alt={`${testimonial.company} Logo`}
+                    width={59}
+                    height={48}
+                    className="mb-4 object-contain"
+                  />
+                  <p className="font-poppins text-[13px] font-semibold text-zinc-800">
+                    {testimonial.name}
+                  </p>
+                  <p className="font-poppins text-[10px] text-black">
+                    {testimonial.company}
+                  </p>
+                  <p className="font-poppins text-[10px] text-black">
+                    {testimonial.title}
+                  </p>
                 </div>
               </div>
             </div>

@@ -7,7 +7,7 @@ type TestimonialSectionProps = {
 
 const TestimonialSection = ({ testimonials }: TestimonialSectionProps) => {
   return (
-    <div className="font-poppins bg-gradient-to-r from-pink-100 to-blue-50 pt-12 pb-10">
+    <div className="font-poppins bg-gradient-to-r from-[#ffecf0] to-[#faf9fe] pt-12 pb-10">
       <div className="mx-auto max-w-[1400px] px-6">
         <TestimonialCarousel testimonials={testimonials} />
       </div>
