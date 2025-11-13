@@ -75,41 +75,47 @@ export const TestimonialCarousel: React.FC<CarouselProps> = ({
         <div className="embla__container">
           {testimonials.map((testimonial) => (
             <div
-              className="lg:embla__slide md:embla__slide_mobile basis-[44.44%]  px-2"
+              className="lg:embla__slide md:embla__slide_mobile basis-[44.44%]  px-2 "
               key={testimonial.id}
             >
-              <div className="bg-white rounded-2xl shadow p-6 lg:h-[484px] h-[714px] w-[308px] lg:w-[574px]">
-                <div className="pl-[10px] pt-[10px]">
-                  <Image
-                    src={testimonial.imageSrc}
-                    alt={testimonial.name}
-                    width={50}
-                    height={50}
-                    className="rounded-full"
-                  />
-                </div>
-                <blockquote className="whitespace-pre-line font-poppins text-[16px] lg:w-[490px] w-[256px] pl-[10px] pt-[16px] font-normal text-black">
-                  {testimonial.quote}
-                </blockquote>
-                <div className="mt-[34px] pl-[10px]">
-                  <Image
-                    src={testimonial.logoSrc}
-                    alt={`${testimonial.company} Logo`}
-                    width={59}
-                    height={48}
-                    className="mb-4 object-contain"
-                  />
-                  <p className="font-poppins text-[13px] font-semibold text-zinc-800">
-                    {testimonial.name}
-                  </p>
-                  <p className="font-poppins text-[10px] text-black">
-                    {testimonial.company}
-                  </p>
-                  <p className="font-poppins text-[10px] text-black">
-                    {testimonial.title}
-                  </p>
+              <div
+                className="lg:embla__slide md:embla__slide_mobile basis-[44.44%] px-2"
+                key={testimonial.id}
+              >
+                <div
+                  className="bg-white rounded-2xl shadow border border-transparent p-6 lg:h-[484px] h-[714px] w-[308px] lg:w-[574px] transition-all duration-300 hover:shadow-xl hover:border-red-600 hover:shadow-red-300 "
+                >
+                  <div className="pl-[10px] pt-[10px]">
+                    <Image
+                      src={testimonial.imageSrc}
+                      alt={testimonial.name}
+                      width={50}
+                      height={50}
+                      className="rounded-full"
+                    />
+                  </div>
+
+                  <blockquote className="whitespace-pre-line font-poppins text-[16px] lg:w-[490px] w-[256px] pl-[10px] pt-[16px] font-normal text-black">
+                    {testimonial.quote}
+                  </blockquote>
+
+                  <div className="mt-[34px] pl-[10px]">
+                    <Image
+                      src={testimonial.logoSrc}
+                      alt={`${testimonial.company} Logo`}
+                      width={59}
+                      height={48}
+                      className="mb-4 object-contain"
+                    />
+                    <p className="font-poppins text-[13px] font-semibold text-zinc-800">
+                      {testimonial.name}
+                    </p>
+                    <p className="font-poppins text-[10px] text-black">{testimonial.company}</p>
+                    <p className="font-poppins text-[10px] text-black">{testimonial.title}</p>
+                  </div>
                 </div>
               </div>
+
             </div>
           ))}
         </div>

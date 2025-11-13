@@ -1,92 +1,30 @@
-"use client"
+"use client";
 import Image from "next/image";
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardDescription,
-} from "@/components/ui/card";
 import { ProductSolutionItem } from "@/lib/data/customize-product/productSolutionData";
 import { useRouter } from "next/navigation";
-import MagicBentoWrapper from "@/components/MagicBentoWrapper";
 
 type SolutionsProps = {
   solutions: ProductSolutionItem[];
 };
 
-const products = [
-  {
-    title: "MFS",
-    description: "Unlock secure, fast, and convenient mobile transactions",
-    image: "/image/smartphone 1.png",
-  },
-  {
-    title: "DFS",
-    description: "Unlock secure, fast, and convenient mobile transactions",
-    image: "/image/online-banking 1.png",
-  },
-  {
-    title: "Human Resources",
-    description: "Unlock secure, fast, and convenient mobile transactions",
-    image: "/image/human-resources 2.png",
-  },
-  {
-    title: "ERP & eCommerce",
-    description: "Unlock secure, fast, and convenient mobile transactions",
-    image: "/image/online-shop 1.png",
-  },
-  {
-    title: "IOT Backend",
-    description: "Unlock secure, fast, and convenient mobile transactions",
-    image: "/image/Group.png",
-  },
-  {
-    title: "Streaming Solution App",
-    description: "Unlock secure, fast, and convenient mobile transactions",
-    image: "/image/streaming-tv-app 1.png",
-  },
-  {
-    title: "Customer Experience",
-    description: "Unlock secure, fast, and convenient mobile transactions",
-    image: "/image/performance 1.png",
-  },
-  {
-    title: "Sales & Distribution",
-    description: "Unlock secure, fast, and convenient mobile transactions",
-    image: "/image/Group (1).png",
-  },
-];
-
 const gradients = [
-  "linear-gradient(to right, #fce7f3, #e0e7ff)",
-  "linear-gradient(to right, #fff7ed, #dbeafe)",
-  "linear-gradient(to right, #fce7f3, #fff7ed)",
-  "linear-gradient(to right, #fae8ff, #fce7f3)",
-  "linear-gradient(to right, #ecfeff, #dcfce7)",
-  "linear-gradient(to right, #dbeafe, #fff7ed)",
-  "linear-gradient(to right, #f0f9ff, #ede9fe)",
-  "linear-gradient(to right, #eff6ff, #f5f3ff)",
-];
-
-
-// Different glow colors for each card to match gradients
-const glowColors = [
-  "139, 92, 246", // pink
-  "249, 115, 22", // orange
-  "236, 72, 153", // pink
-  "217, 70, 239", // fuchsia
-  "6, 182, 212", // cyan
-  "59, 130, 246", // blue
-  "139, 92, 246", // violet
-  "124, 58, 237", // violet
+  "bg-gradient-to-r from-pink-100 to-indigo-100",
+  "bg-gradient-to-r from-orange-100 to-blue-100",
+  "bg-gradient-to-r from-pink-100 to-yellow-100",
+  "bg-gradient-to-r from-fuchsia-100 to-pink-100",
+  "bg-gradient-to-r from-cyan-100 to-green-100",
+  "bg-gradient-to-r from-blue-100 to-indigo-100",
+  "bg-gradient-to-r from-violet-100 to-indigo-100",
+  "bg-gradient-to-r from-indigo-100 to-purple-100",
 ];
 
 export default function Solutions({ solutions }: SolutionsProps) {
-  const router = useRouter()
+  const router = useRouter();
+
   return (
     <section className="px-4 py-4 md:px-8">
       <div className="mx-auto mb-10 max-w-2xl text-center">
-        <h2 className="text-size-32px font-poppins mb-4 lg:mt-20 text-4xl font-semibold">
+        <h2 className="text-4xl font-poppins font-semibold mb-4 lg:mt-20">
           Our Product Solution
         </h2>
         <p className="font-poppins text-black">
@@ -95,43 +33,31 @@ export default function Solutions({ solutions }: SolutionsProps) {
         </p>
       </div>
 
-      <div className="grid auto-rows-fr grid-cols-1 items-stretch gap-6 sm:grid-cols-2 md:grid-cols-4">
+      <div className="grid auto-rows-fr grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-4">
         {solutions.map((solution, idx) => (
-          
+          <div
+            key={idx}
+            className="transition-all duration-300 ease-in-out cursor-pointer hover:scale-[1.02] hover:shadow-lg hover:shadow-red-300 hover:border-red-600 rounded-xl border border-transparent"
+            onClick={() => router.push(`/customize-product/${idx + 1}`)}
+          >
             <div
-              key={idx}
-              className="cursor-pointer h-full"
-              onClick={() => router.push(`/customize-product/${idx + 1}`)}
+              className={`flex flex-col items-start rounded-xl p-6 h-full ${gradients[idx % gradients.length]}`}
             >
-              <Card
-                className="flex h-full flex-col transition"
-              >
-                <div
-                  className="h-full w-full rounded-xl"
-                  style={{
-                    backgroundImage: gradients[idx % gradients.length],
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
-                  }}
-                >
-                  <CardHeader className="flex-grow">
-                    {solution.image ? (
-                      <Image
-                        src={solution.image}
-                        alt={solution.title}
-                        width={48}
-                        height={48}
-                        className="mb-2 object-contain"
-                      />
-                    ) : (
-                      <div className="mb-2 text-3xl">{solution.image}</div>
-                    )}
-                    <CardTitle>{solution.title}</CardTitle>
-                    <CardDescription>{solution.description}</CardDescription>
-                  </CardHeader>
+              {solution.image && (
+                <div className="mb-4">
+                  <Image
+                    src={solution.image}
+                    alt={solution.title}
+                    width={48}
+                    height={48}
+                    className="object-contain"
+                  />
                 </div>
-              </Card>
+              )}
+              <h3 className="mb-2 text-xl font-semibold">{solution.title}</h3>
+              <p className="mb-4 text-sm font-normal text-gray-700">{solution.description}</p>
             </div>
+          </div>
         ))}
       </div>
     </section>

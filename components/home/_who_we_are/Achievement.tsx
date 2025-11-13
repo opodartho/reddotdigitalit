@@ -13,7 +13,7 @@ const AchievementCard = ({
 }: AchievementCardProps) => {
   return (
     <div
-      className={`flex flex-col items-left rounded-xl p-6 text-left shadow-md ${bgGradient} transition-all duration-300 ease-in-out hover:scale-[1.02] hover:shadow-lg`}
+      className={`flex flex-col items-left rounded-xl p-6 text-left shadow-md ${bgGradient} transition-all duration-300 ease-in-out hover:scale-[1.25] hover:shadow-lg`}
     >
       <div className="mb-4">
         <Image
