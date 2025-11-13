@@ -14,3 +14,9 @@
   flex: 0 0 44.44%;
   min-width: 0;
 }
+
+
+.embla__slide_mobile {
+  flex: 0 0 54%;
+  min-width: 0;
+}

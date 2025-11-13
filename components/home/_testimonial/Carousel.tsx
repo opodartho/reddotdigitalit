@@ -69,16 +69,16 @@ export const TestimonialCarousel: React.FC<CarouselProps> = ({
 
       {/* Carousel */}
       <div
-        className="embla bg-gradient-to-r from-[#ffecf0] to-[#faf9fe] w-full h-[484px]"
+        className="embla bg-gradient-to-r from-[#ffecf0] to-[#faf9fe] w-full lg:h-[484px] h-[753px]"
         ref={emblaRef}
       >
         <div className="embla__container">
           {testimonials.map((testimonial) => (
             <div
-              className="embla__slide basis-[44.44%] shrink-0 px-2"
+              className="lg:embla__slide md:embla__slide_mobile basis-[44.44%]  px-2"
               key={testimonial.id}
             >
-              <div className="bg-white rounded-2xl shadow p-6 h-[484px]">
+              <div className="bg-white rounded-2xl shadow p-6 lg:h-[484px] h-[714px] w-[308px] lg:w-[574px]">
                 <div className="pl-[10px] pt-[10px]">
                   <Image
                     src={testimonial.imageSrc}
@@ -88,7 +88,7 @@ export const TestimonialCarousel: React.FC<CarouselProps> = ({
                     className="rounded-full"
                   />
                 </div>
-                <blockquote className="whitespace-pre-line font-poppins text-[16px] pl-[10px] pt-[16px] font-normal text-black">
+                <blockquote className="whitespace-pre-line font-poppins text-[16px] lg:w-[490px] w-[256px] pl-[10px] pt-[16px] font-normal text-black">
                   {testimonial.quote}
                 </blockquote>
                 <div className="mt-[34px] pl-[10px]">
