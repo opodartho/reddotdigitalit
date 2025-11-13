@@ -78,7 +78,7 @@ export default function HeroSection() {
           efficiency and growth.
         </p>
 
-        <div className="lg:flex lg:flex-row lg:flex-wrap  flex flex-col flex-wrap   gap-4">
+        <div className="lg:flex lg:flex-row  flex flex-col flex-wrap   gap-4">
           <RedButton className="">Explore Services</RedButton>
           <WhiteButton className="tracking-tightest">Let's Work With Us</WhiteButton>
         </div>

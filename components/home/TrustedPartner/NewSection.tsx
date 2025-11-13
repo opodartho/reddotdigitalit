@@ -153,7 +153,7 @@ export default function TrustedPartners() {
           {imagesToShow.map((imgSrc, idx) => (
             <div
               key={idx}
-              className="flex items-center justify-center hover:shadow-xl border border-gray-300"
+              className="flex items-center justify-center hover:shadow-xl border border-gray-200"
               style={{ aspectRatio: "0.5/ 0.5" }}
             >
               <Image

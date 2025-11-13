@@ -8,14 +8,14 @@ type SolutionsProps = {
 };
 
 const gradients = [
-  "bg-gradient-to-r from-pink-100 to-indigo-100",
-  "bg-gradient-to-r from-orange-100 to-blue-100",
-  "bg-gradient-to-r from-pink-100 to-yellow-100",
-  "bg-gradient-to-r from-fuchsia-100 to-pink-100",
-  "bg-gradient-to-r from-cyan-100 to-green-100",
-  "bg-gradient-to-r from-blue-100 to-indigo-100",
-  "bg-gradient-to-r from-violet-100 to-indigo-100",
-  "bg-gradient-to-r from-indigo-100 to-purple-100",
+  "from-pink-100 to-indigo-100",
+  "from-orange-100 to-blue-100",
+  "from-pink-100 to-yellow-100",
+  "from-fuchsia-100 to-pink-100",
+  "from-cyan-100 to-green-100",
+  "from-blue-100 to-indigo-100",
+  "from-violet-100 to-indigo-100",
+  "from-indigo-100 to-purple-100",
 ];
 
 export default function Solutions({ solutions }: SolutionsProps) {
@@ -37,25 +37,38 @@ export default function Solutions({ solutions }: SolutionsProps) {
         {solutions.map((solution, idx) => (
           <div
             key={idx}
-            className="transition-all duration-300 ease-in-out cursor-pointer hover:scale-[1.02] hover:shadow-lg hover:shadow-red-300 hover:border-red-600 rounded-xl border border-transparent"
+            className="group cursor-pointer transition-all duration-300 ease-in-out hover:scale-[1.02] hover:shadow-lg hover:shadow-red-300 hover:border-red-600 rounded-xl border border-transparent"
             onClick={() => router.push(`/customize-product/${idx + 1}`)}
           >
-            <div
-              className={`flex flex-col items-start rounded-xl p-6 h-full ${gradients[idx % gradients.length]}`}
-            >
-              {solution.image && (
-                <div className="mb-4">
-                  <Image
-                    src={solution.image}
-                    alt={solution.title}
-                    width={48}
-                    height={48}
-                    className="object-contain"
-                  />
-                </div>
-              )}
-              <h3 className="mb-2 text-xl font-semibold">{solution.title}</h3>
-              <p className="mb-4 text-sm font-normal text-gray-700">{solution.description}</p>
+            <div className="relative h-full flex flex-col items-start rounded-xl overflow-hidden">
+              {/* Gradient background only in normal state */}
+              <div
+                className={`absolute inset-0 bg-gradient-to-r ${gradients[idx % gradients.length]} transition-opacity duration-300 group-hover:opacity-0`}
+              ></div>
+
+              {/* Solid white background on hover */}
+              <div className="absolute inset-0 bg-white opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
+
+              {/* Content */}
+              <div className="relative z-10 flex flex-col items-start p-6 h-full">
+                {solution.image && (
+                  <div className="mb-4">
+                    <Image
+                      src={solution.image}
+                      alt={solution.title}
+                      width={48}
+                      height={48}
+                      className="object-contain"
+                    />
+                  </div>
+                )}
+                <h3 className="mb-2 text-xl font-semibold transition-colors duration-300 group-hover:text-[#E52445]">
+                  {solution.title}
+                </h3>
+                <p className="mb-4 text-sm font-normal transition-colors duration-300 group-hover:text-gray-800">
+                  {solution.description}
+                </p>
+              </div>
             </div>
           </div>
         ))}
