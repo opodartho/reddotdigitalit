@@ -38,65 +38,66 @@ const tabData: TabData[] = [
     ]
   },
 
-  {title: "Telecom", images: [
-    "/images/robi.svg",
-    "/images/smart.svg",
-  ]
-},
+  {
+    title: "Telecom", images: [
+      "/images/robi.svg",
+      "/images/smart.svg",
+    ]
+  },
 
-{
-  title: "Bank & Fintech", images: [
-    "/images/scb.svg",
-    "/images/tap.svg",
-    "/images/fsib.svg",
-    "/images/ucb.svg",
-    "/images/telecash.svg",
-    "/images/sebl.svg",
-    "/images/pbl.svg",
-    "/images/mbl.svg",
-    "/images/jamuna.svg",
-    "/images/citizens.svg",
-  ]
-},
+  {
+    title: "Bank & Fintech", images: [
+      "/images/scb.svg",
+      "/images/tap.svg",
+      "/images/fsib.svg",
+      "/images/ucb.svg",
+      "/images/telecash.svg",
+      "/images/sebl.svg",
+      "/images/pbl.svg",
+      "/images/mbl.svg",
+      "/images/jamuna.svg",
+      "/images/citizens.svg",
+    ]
+  },
 
-{
-  title: "FMCG", images: [
-    
+  {
+    title: "FMCG", images: [
+
       "/images/bat.svg",
       "/images/lpgas.svg",
       "/images/akash.svg",
       "/images/wateraid.svg",
-  ]
-},
+    ]
+  },
 
-{
-  title: "Government", images: [
-    
-      
-    "/images/bida.svg",
-    "/images/idcol.svg",
-    "/images/egcb.svg",
-  ]
-},
+  {
+    title: "Government", images: [
 
-{
-  title: "Media & Advertising", images: [
-    
-      
-    "/images/bashundhara.svg",
-  ]
-},
 
-{
-  title: "iNgo", images: [
-    
-      
-    "/images/ada.svg",
-    "/images/unicef.svg",
-    "/images/undp.svg",
+      "/images/bida.svg",
+      "/images/idcol.svg",
+      "/images/egcb.svg",
+    ]
+  },
 
-  ]
-},
+  {
+    title: "Media & Advertising", images: [
+
+
+      "/images/bashundhara.svg",
+    ]
+  },
+
+  {
+    title: "iNgo", images: [
+
+
+      "/images/ada.svg",
+      "/images/unicef.svg",
+      "/images/undp.svg",
+
+    ]
+  },
 
 
 ];
@@ -104,14 +105,13 @@ const tabData: TabData[] = [
 export default function TrustedPartners() {
   const [activeTab, setActiveTab] = useState<string>("All");
 
-  // get images for current tab
   const currentTab = tabData.find(tab => tab.title === activeTab);
   const imagesToShow = activeTab === "All"
-    ? tabData.flatMap(tab => tab.images)
+    ? Array.from(new Set(tabData.flatMap(tab => tab.images))) // remove duplicates
     : currentTab?.images || [];
 
   return (
-    <section className="pt-8 pb-auto  bg-white">
+    <section className="pt-8 pb-auto bg-white">
       <div className="max-w-7xl mx-auto px-2 sm:px-4">
         {/* Title */}
         <div className="text-center mb-12">
@@ -131,10 +131,11 @@ export default function TrustedPartners() {
               <button
                 key={tab.title}
                 onClick={() => setActiveTab(tab.title)}
-                className={`px-6 py-2 font-semibold rounded-xl border transition-colors ${activeTab === tab.title
+                className={`px-6 py-2 font-semibold rounded-xl border transition-colors ${
+                  activeTab === tab.title
                     ? "border-red-500 bg-red-50 text-red-600"
                     : "border-gray-300 bg-white text-gray-500 hover:bg-gray-50"
-                  }`}
+                }`}
               >
                 {tab.title}
               </button>
@@ -143,25 +144,28 @@ export default function TrustedPartners() {
         </div>
 
         {/* Logo Grid */}
-<div className="grid grid-cols-7 grid-rows-4  border-gray-300">
-  {imagesToShow.slice(0, 28).map((imgSrc, idx) => (
-    <div
-      key={idx}
-      className="flex items-center justify-center border border-gray-300"
-      style={{ aspectRatio: '1 / 1' }} // keeps each cell square
-    >
-      <Image
-        src={imgSrc}
-        alt={`Partner ${idx + 1}`}
-        width={80}
-        height={80}
-        className="object-contain"
-      />
-    </div>
-  ))}
-</div>
-
-
+        <div
+          className="grid grid-cols-7 border-gray-300 gap-0"
+          style={{
+            gridTemplateRows: `repeat(${Math.ceil(imagesToShow.length / 7)}, minmax(0, 1fr))`,
+          }}
+        >
+          {imagesToShow.map((imgSrc, idx) => (
+            <div
+              key={idx}
+              className="flex items-center justify-center border border-gray-300"
+              style={{ aspectRatio: "1 / 1" }}
+            >
+              <Image
+                src={imgSrc}
+                alt={`Partner ${idx + 1}`}
+                width={80}
+                height={80}
+                className="object-contain"
+              />
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );

@@ -45,5 +45,15 @@ export const staticTestimonialsData: Testimonial[] = [
     imageSrc: "/images/anon.svg",
     logoSrc: "/images/fsib.svg",
   },
+  {
+    id: 4,
+    name: "Md. Habibur Rahman Molla",
+    title: "First Assistant Vice President, ICT Division",
+    company: "First Security Islami Bank PLC",
+    quote:
+      `“This is to certify that the First Security Islami Bank PLC has implemented a Digital Financial Solutions (DFS) named “dCloud”. RedDot Digital Limited worked for design, Development, Supply, Implementation, Configuration, Support & Training of DFS for First Security Islami Bank PLC. The Phase -1 implementation has been completed on 24th December 2023 and the software is fully operational. “dCloud” provider RedDot Digital Limited has reached a level of support service which we may consider as acceptable.”`,
+    imageSrc: "/images/anon.svg",
+    logoSrc: "/images/fsib.svg",
+  },
   
 ];
