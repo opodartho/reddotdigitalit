@@ -145,7 +145,7 @@ export default function TrustedPartners() {
 
         {/* Logo Grid */}
         <div
-          className="grid grid-cols-7 border-gray-300 gap-0"
+          className="lg:grid lg:grid-cols-7 grid grid-cols-2 border-gray-300 gap-0"
           style={{
             gridTemplateRows: `repeat(${Math.ceil(imagesToShow.length / 7)}, minmax(0, 1fr))`,
           }}
