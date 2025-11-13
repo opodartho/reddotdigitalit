@@ -97,16 +97,9 @@ export default function Solutions({ solutions }: SolutionsProps) {
 
       <div className="grid auto-rows-fr grid-cols-1 items-stretch gap-6 sm:grid-cols-2 md:grid-cols-4">
         {solutions.map((solution, idx) => (
-          <MagicBentoWrapper
-            key={idx}
-            glowColor={glowColors[idx % glowColors.length]}
-            enableTilt={true}
-            enableMagnetism={false}
-            clickEffect={true}
-            borderGlow={true}
-            borderWidth={1}
-          >
+          
             <div
+              key={idx}
               className="cursor-pointer h-full"
               onClick={() => router.push(`/customize-product/${idx + 1}`)}
             >
@@ -139,8 +132,6 @@ export default function Solutions({ solutions }: SolutionsProps) {
                 </div>
               </Card>
             </div>
-          </MagicBentoWrapper>
-
         ))}
       </div>
     </section>

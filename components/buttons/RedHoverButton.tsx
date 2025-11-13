@@ -10,7 +10,7 @@ export function RedHoverButton({
   return (
     <button
       className={cn(
-        "group bg-background relative cursor-pointer overflow-hidden  border p-2 px-6 h-[56px] w-[233px] text-center font-semibold",
+        "group bg-background relative cursor-pointer overflow-hidden  border p-2 px-6 h-[56px] w-[200px] text-center font-semibold",
         className
       )}
       {...props}
@@ -21,7 +21,7 @@ export function RedHoverButton({
           {children}
         </span>
       </div>
-      <div className=" bg-[#E52445] text-primary-foreground absolute top-0 z-10 flex h-full w-full translate-x-14 items-center justify-center gap-2 opacity-0 transition-all duration-300 group-hover:-translate-x-5 group-hover:opacity-100">
+      <div className=" bg-[#E52445] text-primary-foreground absolute top-0 z-10 flex h-full w-full translate-x-0 items-center justify-center gap-2 opacity-0 transition-all duration-800 group-hover:translate-x-0 group-hover:opacity-100">
         <span>{children}</span>
         <ArrowRight />
       </div>

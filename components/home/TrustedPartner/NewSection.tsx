@@ -111,7 +111,7 @@ export default function TrustedPartners() {
     : currentTab?.images || [];
 
   return (
-    <section className="pt-8 pb-auto bg-white">
+    <section className="pt-[100px] pb-auto bg-white">
       <div className="max-w-7xl mx-auto px-2 sm:px-4">
         {/* Title */}
         <div className="text-center mb-12">

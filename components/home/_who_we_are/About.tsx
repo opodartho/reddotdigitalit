@@ -22,7 +22,7 @@ const About = ({ data }: AboutProps) => {
           {data.description}
         </p>
         <WhiteButton className="--font-poppins font-medium text-[16px] leading-[100%] tracking-[0] w-[207px] h-[56px] mt-[49px]">
-          Read More →
+          Read More
         </WhiteButton>
       </div>
       <div className="grid gap-4">
