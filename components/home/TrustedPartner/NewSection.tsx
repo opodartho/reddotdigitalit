@@ -145,7 +145,7 @@ export default function TrustedPartners() {
 
         {/* Logo Grid */}
         <div
-          className="lg:grid lg:grid-cols-7 grid grid-cols-2 border-[#E7E7E7] gap-0"
+          className="lg:grid lg:grid-cols-7 grid grid-cols-2  gap-0"
           style={{
             gridTemplateRows: `repeat(${Math.ceil(imagesToShow.length / 7)}, minmax(0, 1fr))`,
           }}
@@ -153,7 +153,7 @@ export default function TrustedPartners() {
           {imagesToShow.map((imgSrc, idx) => (
             <div
               key={idx}
-              className="flex items-center justify-center  border border-gray-300"
+              className="flex items-center justify-center hover:shadow-xl border border-gray-300"
               style={{ aspectRatio: "0.5/ 0.5" }}
             >
               <Image

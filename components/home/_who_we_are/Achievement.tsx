@@ -13,7 +13,7 @@ const AchievementCard = ({
 }: AchievementCardProps) => {
   return (
     <div
-      className={`flex flex-col items-left rounded-xl p-6 text-left shadow-md ${bgGradient}`}
+      className={`flex flex-col items-left rounded-xl p-6 text-left shadow-md ${bgGradient} transition-all duration-300 ease-in-out hover:scale-[1.02] hover:shadow-lg`}
     >
       <div className="mb-4">
         <Image
@@ -36,7 +36,9 @@ const Achievement = ({ data }: { data: AchievementData[] }) => {
   return (
     <div className="mt-8 mx-10 grid grid-cols-1 gap-6 p-4 md:grid-cols-4">
       {data.map((item, index) => (
-        <AchievementCard key={index} {...item} />
+        <div key={index} className="transition-all duration-300 ease-in-out hover:h-2xl">
+          <AchievementCard {...item} />
+        </div>
       ))}
     </div>
   );
