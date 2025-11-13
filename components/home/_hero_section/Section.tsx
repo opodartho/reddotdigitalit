@@ -89,7 +89,7 @@ export default function HeroSection() {
         <Carousel className="lg:w-full w-[357px]" setApi={setApi} opts={{ loop: true }} plugins={[autoplay.current]}>
           <CarouselContent className="lg:ml-0 lg:mr-0 lg:gap-180  gap-[10px] ">
             {slides.map((slide) => (
-              <CarouselItem key={slide.id} className="lg:pl-0 pl-4 lg:pr-0 pr-4 lg:pb-[0px] pb-[100px]">
+              <CarouselItem key={slide.id} className="lg:pl-0 pl-4 lg:pr-0 pr-4 lg:pb-[0px] ">
                 <CardContainer className={`lg:w-[600px] mx-auto`}>
                   <CardBody className={`relative w-[600px] overflow-visible [transform-style:preserve-3d]`}>
 

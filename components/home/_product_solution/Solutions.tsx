@@ -86,7 +86,7 @@ export default function Solutions({ solutions }: SolutionsProps) {
   return (
     <section className="px-4 py-4 md:px-8">
       <div className="mx-auto mb-10 max-w-2xl text-center">
-        <h2 className="text-size-32px font-poppins mb-4 lg:mt-0 mt-14 text-4xl font-semibold">
+        <h2 className="text-size-32px font-poppins mb-4 lg:mt-0 text-4xl font-semibold">
           Our Product Solution
         </h2>
         <p className="font-poppins text-black">

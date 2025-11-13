@@ -12,7 +12,7 @@ type ProductSolutionSectionProps = {
 const ProductSolution = ({ solutions }: ProductSolutionSectionProps) => {
   // ... and passes it down to the <Solutions /> component.
   return (
-    <main className="pt-[86px]">
+    <main className="">
       <Solutions solutions={solutions} />
 
       <div className="mt-8 flex justify-center">

@@ -51,7 +51,7 @@ export function NavBar() {
 
   return (
     <>
-      <div className="sticky lg:pl-[80px] lg:pr-[80px] top-0 flex justify-center  z-100 pt-[22px]">
+      <div className="sticky lg:pl-[80px] lg:pr-[80px] top-0 lg:flex lg:justify-center  z-100 pt-[22px]">
         {/* <nav
         className=" bg-white backdrop-blur-2xl   rounded-4xl top-0 z-50 h-[76px] w-[1440px] shadow-[0_4px_29px_rgba(0,0,0,0.05)] backdrop-blur-sm"
         // style={{
@@ -60,12 +60,12 @@ export function NavBar() {
         // }}
 
       > */}
-        <nav className="sticky top-0 w-[1440px] h-[76px] rounded-4xl bg-white/40 backdrop-blur-xl border-b border-white/20 shadow-[0_4px_29px_rgba(0,0,0,0.05)]">
+        <nav className="sticky top-0 lg:w-[1440px] w-[390px] h-[76px] rounded-4xl bg-white/40 backdrop-blur-xl border-b border-white/20 shadow-[0_4px_29px_rgba(0,0,0,0.05)]">
 
           {/* --- RESPONSIVE CHANGE: Adjusted padding for different screen sizes --- */}
           <div className="flex h-full items-center justify-between px-4 md:px-10 lg:px-[80px]">
             {/* Logo and Home link */}
-            <Link href="/" onClick={scrollToTop} className="flex-shrink-0 relative right-16">
+            <Link href="/" onClick={scrollToTop} className="flex-shrink-0 relative lg:right-16">
               <Image
                 src="/images/RedDotLogo.png"
                 alt="Red Dot Digital Logo"
