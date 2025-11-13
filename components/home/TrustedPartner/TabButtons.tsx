@@ -1,103 +1,86 @@
 "use client";
 
-type TabButtonsProps = {
-  about: React.ReactNode;
-  achievement: React.ReactNode;
-};
-
 import { useState } from "react";
 
-export const TabButtons = ({ about, achievement }: TabButtonsProps) => {
-  const [activeTab, setActiveTab] = useState<String>("about");
+type TabButtonsProps = {
+  All: React.ReactNode;
+  Telecom: React.ReactNode;
+  BankFintech: React.ReactNode;
+  FMCG: React.ReactNode;
+  MediaAdvertising: React.ReactNode;
+  Government: React.ReactNode;
+  iNgo: React.ReactNode;
+};
+
+export const TabButtons = ({
+  All,
+  Telecom,
+  BankFintech,
+  FMCG,
+  MediaAdvertising,
+  Government,
+  iNgo,
+}: TabButtonsProps) => {
+  const [activeTab, setActiveTab] = useState<string>("All");
+
+  const tabButtonStyle = (tabName: string) =>
+    `px-10 py-2 font-semibold transition-colors ${
+      activeTab === tabName
+        ? "rounded-2xl border-2 border-red-500 bg-red-50 text-red-600"
+        : "border border-gray-300 bg-white text-gray-500 hover:bg-gray-50"
+    }`;
 
   return (
     <div className="mt-6">
       {/* Tab Buttons */}
       <div className="flex justify-center">
-        <div className="overflow-hidden rounded-xl border">
-          {/* About Us Tab */}
-          <button
-            onClick={() => setActiveTab("All")}
-            className={` px-10 py-2 font-semibold ${
-              activeTab === "about"
-                ? "rounded-2xl border-t-2 border-b-2 border-l-2 border-r-2 border-red-500 bg-red-50 text-red-600"
-                : " border-gray-300 bg-white text-gray-500"
-            }`}
-          >
+        <div className="overflow-hidden rounded-xl border border-gray-300 flex flex-wrap">
+          <button onClick={() => setActiveTab("All")} className={tabButtonStyle("All")}>
             All
           </button>
 
-          {/* Achievement Tab */}
-          <button
-            onClick={() => setActiveTab("Telecom")}
-            className={`px-10 py-2 font-semibold ${
-              activeTab === "Telecom"
-                ? "rounded-2xl border-t-2 border-r-2 border-b-2 border-l-2 border-red-500 bg-red-50 text-red-600"
-                : " border-gray-300 bg-white text-gray-500"
-            }`}
-          >
+          <button onClick={() => setActiveTab("Telecom")} className={tabButtonStyle("Telecom")}>
             Telecom
           </button>
 
           <button
             onClick={() => setActiveTab("Bank & Fintech")}
-            className={`px-10 py-2 font-semibold ${
-              activeTab === "Bank & Fintech"
-                ? "rounded-2xl border-t-2 border-r-2 border-b-2 border-l-2 border-red-500 bg-red-50 text-red-600"
-                : " border-gray-300 bg-white text-gray-500"
-            }`}
+            className={tabButtonStyle("Bank & Fintech")}
           >
             Bank & Fintech
           </button>
 
-          <button
-            onClick={() => setActiveTab("FMCG")}
-            className={`px-10 py-2 font-semibold ${
-              activeTab === "FMCG"
-                ? "rounded-2xl border-t-2 border-r-2 border-b-2 border-l-2 border-red-500 bg-red-50 text-red-600"
-                : " border-gray-300 bg-white text-gray-500"
-            }`}
-          >
+          <button onClick={() => setActiveTab("FMCG")} className={tabButtonStyle("FMCG")}>
             FMCG
           </button>
 
           <button
             onClick={() => setActiveTab("Media & Advertising")}
-            className={`px-10 py-2 font-semibold ${
-              activeTab === "Media & Advertising"
-                ? "rounded-2xl border-t-2 border-r-2 border-b-2 border-l-2 border-red-500 bg-red-50 text-red-600"
-                : " border-gray-300 bg-white text-gray-500"
-            }`}
+            className={tabButtonStyle("Media & Advertising")}
           >
             Media & Advertising
           </button>
 
-          <button
-            onClick={() => setActiveTab("Government")}
-            className={`px-10 py-2 font-semibold ${
-              activeTab === "Government"
-                ? "rounded-2xl border-t-2 border-r-2 border-b-2 border-l-2 border-red-500 bg-red-50 text-red-600"
-                : " border-gray-300 bg-white text-gray-500"
-            }`}
-          >
+          <button onClick={() => setActiveTab("Government")} className={tabButtonStyle("Government")}>
             Government
           </button>
 
-          <button
-            onClick={() => setActiveTab("iNgo")}
-            className={`px-10 py-2 font-semibold ${
-              activeTab === "iNgo"
-                ? "rounded-2xl border-t-2 border-r-2 border-b-2 border-l-2 border-red-500 bg-red-50 text-red-600"
-                : " border-gray-300 bg-white text-gray-500"
-            }`}
-          >
+          <button onClick={() => setActiveTab("iNgo")} className={tabButtonStyle("iNgo")}>
             iNgo
           </button>
         </div>
       </div>
-      {activeTab === "about" && about}
-      {/* Achievement Tab Content */}
-      {activeTab === "achievement" && achievement}
+
+      {/* Tab Content */}
+      <div className="mt-6">
+        {activeTab === "All" && All}
+        {activeTab === "Telecom" && Telecom}
+        {activeTab === "Bank & Fintech" && BankFintech}
+        {activeTab === "FMCG" && FMCG}
+        {activeTab === "Media & Advertising" && MediaAdvertising}
+        {activeTab === "Government" && Government}
+        {activeTab === "iNgo" && iNgo}
+      </div>
     </div>
   );
 };

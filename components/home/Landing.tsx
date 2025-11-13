@@ -22,8 +22,8 @@ import { ServiceWeServeTabs } from "@/components/home/_service_we_serve/ServiceW
 import { getPartners } from "@/lib/api/fetchPartners";
 // import PartnersSection from "@/components/home/_trusted_by_partners/Section";
 import TestimonialSection from "@/components/home/_testimonial/Section";
-import TrustedPartners from "./TrustedPartner/sections";
 import { NavBar } from "@/components/NavBar/NavBar";
+import TrustedPartners from "./TrustedPartner/NewSection";
 
 export const Landing = async () => {
   const [
