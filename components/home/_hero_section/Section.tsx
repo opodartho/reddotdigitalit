@@ -44,7 +44,7 @@ export default function HeroSection() {
 
   return (
     <section
-      className="relative flex flex-col h-full md:flex-row items-center justify-center w-full px-6 md:px-14    md:gap-10"
+      className="lg:relative lg:flex lg:flex-col lg:h-full lg:md:flex-row lg:items-center lg:justify-center lg:w-full lg:px-6 lg:md:px-14  lg:md:gap-10"
       style={{
         background: `
         radial-gradient(circle at 85% 15%, #F0E8FF 0%, #FFFFFF 20%),
@@ -53,7 +53,7 @@ export default function HeroSection() {
       }}
     >
       {/* Left text column */}
-      <div className="flex flex-col gap-6 max-w-xl text-center md:text-left md:w-[55%]">
+      <div className="flex flex-col gap-6 max-w-xl lg:pl-[0px] pl-[16px] md:text-left md:w-[55%]">
         <div className="flex flex-wrap justify-center md:justify-start gap-2">
           {["15+ enterprise solutions", "ISO Certified", "5+ years of experience"].map(
             (text) => (
@@ -78,30 +78,30 @@ export default function HeroSection() {
           efficiency and growth.
         </p>
 
-        <div className="flex flex-wrap justify-center md:justify-start gap-4">
-          <RedButton>Explore Services</RedButton>
+        <div className="lg:flex lg:flex-row  flex flex-col flex-wrap   gap-4">
+          <RedButton className="">Explore Services</RedButton>
           <WhiteButton className="tracking-tightest">Let's Work With Us</WhiteButton>
         </div>
       </div>
 
       {/* Carousel */}
-      <div className="relative z-1 md:w-[50%] h-full">
-        <Carousel className="w-full" setApi={setApi} opts={{ loop: true }} plugins={[autoplay.current]}>
-          <CarouselContent className="lg:ml-0 lg:mr-0 lg:gap-180">
+      <div className="relative z-1 lg:h-full h-auto lg:overflow-hidden overflow-visible">
+        <Carousel className="lg:w-full w-[357px]" setApi={setApi} opts={{ loop: true }} plugins={[autoplay.current]}>
+          <CarouselContent className="lg:ml-0 lg:mr-0 lg:gap-180  gap-[10px] ">
             {slides.map((slide) => (
-              <CarouselItem key={slide.id} >
+              <CarouselItem key={slide.id} className="lg:pl-0 pl-4 lg:pr-0 pr-4 lg:pb-[0px] pb-[100px]">
                 <CardContainer className={`lg:w-[600px] mx-auto`}>
                   <CardBody className={`relative w-[600px] overflow-visible [transform-style:preserve-3d]`}>
 
                     {/* Pop-out image centered */}
                     <CardItem
                       translateZ={50}
-                      className={`absolute lg:top-[6px] left-1/2 -translate-x-1/2 lg:w-[585px] lg:h-[280px] z-20 flex items-center justify-center`}
+                      className={`absolute lg:top-[6px] top-[6px] lg:left-1/2 left-[6px] lg:right-[0px] right-[6px] lg:-translate-x-1/2 lg:w-[585px] lg:h-[280px] z-20 flex items-center justify-center`}
                     >
                       <img
                         src={slide.imageUrl}
                         alt={slide.title}
-                        className={`w-[800px]  object-contain`}
+                        className={`lg:w-[800px] w-[327px]  object-contain`}
                         style={{ transformStyle: "preserve-3d" }}
                       />
                     </CardItem>
@@ -109,18 +109,16 @@ export default function HeroSection() {
                     {/* Card background with fixed width */}
                     <CardItem translateZ={0}>
                       <div
-                        className={`bg-white rounded-lg lg:w-[600px] lg:h-[465px] shadow-[0_12px_48px_0px_rgba(49,1,139,0.07)] mb-1 flex flex-col`}
+                        className={`bg-white  rounded-lg lg:w-[600px] lg:h-[465px] h-[380px] shadow-lg mb-1 flex flex-col`}
                       >
-                        <div className="rounded-lg h-[250px] w-full flex items-center justify-center relative overflow-hidden px-2">
-                          {/* Image handled by pop-out CardItem */}
-                        </div>
-                        <div className="flex flex-col gap-2 mt-14 px-6 pb-4">
-                          <h3 className="text-lg font-semibold flex justify-between items-center text-title">
+                        
+                        <div className="flex flex-col gap-2 px-2  lg:pt-[291px] pt-[191px] lg:w-[548px] w-[336px]">
+                          <h3 className="text-lg  font-semibold flex justify-between items-center text-title">
                             {slide.title}
                             
                           </h3>
-                          <p className="text-sm mb-2 text-subtitle">{slide.description}</p>
-                          <div className="flex flex-wrap gap-2">
+                          <p className="text-sm mb-2 text-subtitle lg:pt-[10px]">{slide.description}</p>
+                          <div className="flex flex-wrap gap-2 lg:pt-[30px]">
                             {slide.tags.map((tag) => (
                               <span
                                 key={tag}
@@ -141,7 +139,7 @@ export default function HeroSection() {
           </CarouselContent>
 
           {/* Navigation dots */}
-          <div className="absolute bottom-[-40px] left-1/2 -translate-x-1/2 flex gap-2">
+          <div className="absolute lg:-bottom-[1px] bottom-[10px] left-1/2 -translate-x-1/2 flex gap-2">
             {slides.map((_, index) => (
               <span
                 key={index}

@@ -10,7 +10,7 @@ export function WhiteHoverButton({
   return (
     <button
       className={cn(
-        "group bg-background relative cursor-pointer overflow-hidden  border p-2 px-6 h-[56px] w-[200px] text-center font-semibold",
+        "group bg-background relative cursor-pointer overflow-hidden  border p-2 px-6 h-[56px] lg:w-[200px]  w-[358px] text-center font-semibold",
         className
       )}
       {...props}
