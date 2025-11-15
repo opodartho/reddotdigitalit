@@ -1,10 +1,58 @@
 "use client";
 
-import React from "react";
-import { CultureCard } from "./CultureCard";
+import React, { useEffect, useRef } from "react";
+import { motion, useAnimation, Variants } from "framer-motion";
+import { gsap, ScrollTrigger } from "@/lib/gsapConfig";
+import Image from "next/image";
 
+interface CultureCardProps {
+  icon: string;
+  title: string;
+  desc: string;
+}
+
+const fadeUp: Variants = {
+  hidden: { opacity: 0, y: 60 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
+};
+
+const CultureCard: React.FC<CultureCardProps> = ({ icon, title, desc }) => {
+  return (
+    <motion.div
+      variants={fadeUp}
+      className="
+        flex flex-col items-start justify-start text-left
+        bg-white rounded-[14px]
+        shadow-[0_4px_12px_rgba(49,1,139,0.05)]
+        w-[308px] h-[364px]
+        px-[26px] pt-[65px] pb-[42px]
+        hover:-translate-y-3 hover:shadow-[0_8px_24px_rgba(49,1,139,0.1)]
+        transition-transform duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]
+      "
+    >
+      <div className="w-[68px] h-[68px] mb-[43px] relative">
+        <Image
+          src={icon}
+          alt={title}
+          width={68}
+          height={68}
+          className="object-contain"
+        />
+      </div>
+      <h3 className="text-[18px] font-semibold text-[#060414] leading-[27px] mb-[23px]">
+        {title}
+      </h3>
+      <p className="text-[14px] font-normal text-[#121926] leading-[24px] w-[253px]">
+        {desc}
+      </p>
+    </motion.div>
+  );
+};
 
 export default function CultureSection() {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const controls = useAnimation();
+
   const cultureData = [
     {
       id: 1,
@@ -32,14 +80,26 @@ export default function CultureSection() {
     },
   ];
 
+  useEffect(() => {
+    if (!sectionRef.current) return;
+    const el = sectionRef.current;
+
+    // 👇 GSAP triggers Framer Motion control
+    ScrollTrigger.create({
+      trigger: el,
+      start: "top 80%",
+      onEnter: () => controls.start("visible"),
+      onLeaveBack: () => controls.start("hidden"),
+    });
+  }, [controls]);
+
   return (
     <section
-      className="relative w-full 
-                 bg-gradient-to-br from-[#F0F7FF] via-[#FFFAFE] to-[#FFEBEF] mt-[68px] sm:mt-[92px] mb-[81px] sm:mb-[113px]"
+      ref={sectionRef}
+      className="relative w-full bg-gradient-to-br from-[#F0F7FF] via-[#FFFAFE] to-[#FFEBEF]
+                 mt-[68px] sm:mt-[92px] mb-[81px] sm:mb-[113px]"
     >
-      {/* 🧭 Section Container */}
       <div className="mx-auto max-w-[1280px] px-[20px] sm:px-[32px] lg:px-[40px] xl:px-0 text-center py-[90px] sm:py-[118px]">
-        {/* 🌿 Header */}
         <div className="mb-[46px] sm:mb-[78px]">
           <h2 className="text-[25px] sm:text-[30px] lg:text-[32px] font-bold text-[#060414]">
             Our Culture
@@ -49,10 +109,19 @@ export default function CultureSection() {
           </p>
         </div>
 
-        {/* 🎴 Cards */}
-        <div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 
-                     gap-[24px] justify-items-center"
+        {/* 🎴 Cards Grid */}
+        <motion.div
+          variants={{
+            hidden: {},
+            visible: {
+              transition: {
+                staggerChildren: 0.2,
+              },
+            },
+          }}
+          initial="hidden"
+          animate={controls}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-[24px] justify-items-center"
         >
           {cultureData.map((item) => (
             <CultureCard
@@ -62,7 +131,7 @@ export default function CultureSection() {
               desc={item.desc}
             />
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

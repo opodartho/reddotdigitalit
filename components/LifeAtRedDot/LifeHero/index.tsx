@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import React from "react";
+import { motion } from "framer-motion";
 
 export const LifeHero = () => {
   return (
@@ -32,7 +33,13 @@ export const LifeHero = () => {
 
       {/* 🖼️ Hero Image */}
       <div className="mx-auto mt-[45px] lg:mt-[92px] flex justify-center">
-        <div className="relative w-[358px] h-[131px] md:w-[720px] md:h-[265px] lg:w-[948px] lg:h-[348px] rounded-[8px] overflow-hidden">
+               <motion.div
+          initial={{ opacity: 0, scale: 0.9, y: 60 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          transition={{ duration: 1.2, ease: "easeOut" }}
+          whileHover={{ scale: 1.03}} // optional gentle hover
+          className="relative w-[358px] h-[131px] md:w-[720px] md:h-[265px] lg:w-[948px] lg:h-[348px] rounded-[8px] overflow-hidden cursor-pointer"
+        >
           <Image
             src="/images/life-hero-grid.png" // 👈 update with your actual file name
             alt="Life at RedDot photo collage"
@@ -40,7 +47,8 @@ export const LifeHero = () => {
             className="object-cover rounded-[8px]"
             priority
           />
-        </div>
+          </motion.div>
+        
       </div>
 
       {/* 🧩 About Our Culture Section */}

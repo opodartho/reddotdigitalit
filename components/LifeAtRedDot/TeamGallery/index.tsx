@@ -28,27 +28,34 @@ const galleryData: GalleryItem[] = [
 export default function TeamGallery() {
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
+  const [rawSnap, setRawSnap] = useState(0);
+
   const autoplay = useRef(Autoplay({ delay: 3000, stopOnInteraction: false }));
 
-  // ✅ Fixed: Loop & TypeScript safe event listener with cleanup
+ // const handleMouseEnter = () => autoplay.current.stop();
+ // const handleMouseLeave = () => autoplay.current.play();
+
+  const totalSlides = galleryData.length;
+
+  // 🔥 Detect if slide is a clone
+  const isCloneOfFirst = rawSnap < 0 || rawSnap >= totalSlides;
+
+  // 🔥 Track snaps
   useEffect(() => {
     if (!api) return;
 
-    const totalSlides = galleryData.length;
+    const handleSelect = () => {
+      const raw = api.selectedScrollSnap(); // includes clones
+      setRawSnap(raw);
 
-    const handleSelect: () => void = () => {
-      // Normalize index in loop mode so cloned slides map to real ones
-      const realIndex = api.selectedScrollSnap() % totalSlides;
-      setCurrent(realIndex);
+      // Normalize for dots
+      const normalized = ((raw % totalSlides) + totalSlides) % totalSlides;
+      setCurrent(normalized);
     };
 
-    // Set initial active state
     handleSelect();
-
-    // Listen to Embla's "select" event
     api.on("select", handleSelect);
 
-    // ✅ Proper cleanup (TypeScript safe)
     return () => {
       api.off("select", handleSelect);
     };
@@ -56,7 +63,6 @@ export default function TeamGallery() {
 
   return (
     <section className="relative w-full pb-16 sm:pb-24">
-      {/* 🧠 Section Title */}
       <div className="text-center mb-[46px] sm:mb-[58px]">
         <h2 className="text-[30px] sm:text-[32px] font-semibold text-[#060414]">
           Team Gallery
@@ -66,63 +72,72 @@ export default function TeamGallery() {
         </p>
       </div>
 
-      {/* 🎠 Carousel */}
-      <div className="pl-[16px] sm:pl-[80px]">
+      <div
+        className="pl-[16px] sm:pl-[80px]"
+        //onMouseEnter={handleMouseEnter}
+        //onMouseLeave={handleMouseLeave}
+      >
         <Carousel
           className="w-full"
           setApi={setApi}
           opts={{ loop: true, align: "start" }}
           plugins={[autoplay.current]}
         >
-          <CarouselContent className="!flex !flex-row !justify-start !items-center !m-0 !p-0 [&>*]:!pl-0 [&>*]:!ml-0">
+          {/* ⭐ No placeholder, no snapping glitch */}
+          <CarouselContent
+            className="
+              !flex !flex-row !justify-start !items-center 
+              !m-0 !p-0 [&>*]:!pl-0 [&>*]:!ml-0
+            "
+          >
             {galleryData.map((item) => (
               <CarouselItem
                 key={item.id}
-                className="
+                className={`
                   flex-shrink-0
                   basis-[288px] sm:basis-[350px]
-                  mr-[12px] sm:mr-[24px]
-                  last:mr-0
-                  pt-[24px] 
-                  pb-[24px]
-                "
+                  
+                  ${
+                    item.id === totalSlides
+                      ? "mr-[24px]" // ONLY last real slide gets 2px gap
+                      : "mr-[12px] sm:mr-[24px]" // normal gap for other slides
+                  }
+                  
+                  pt-[24px]
+                  pb-[12px]
+                `}
               >
-            <Card
-               className="
-                  group
-                  relative
-                  w-[288px] h-[288px] sm:h-[350px] sm:w-[350px]
-                  rounded-[8px] overflow-hidden bg-white shadow-md
-                  transition-transform duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]
-                  hover:-translate-y-3 hover:scale-[1.05]
-                  hover:shadow-[0_12px_32px_rgba(0,0,0,0.10)]
+                <Card
+                  className="
+                    group
+                    relative
+                    w-[288px] h-[288px] sm:h-[350px] sm:w-[350px]
+                    rounded-[8px] overflow-hidden bg-white shadow-md
+                    transition-transform duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]
+                    hover:-translate-y-3 hover:scale-[1.05]
+                    hover:shadow-[0_12px_32px_rgba(0,0,0,0.10)]
+                    cursor-pointer
                   "
-            >
-                 <div className="relative w-full h-full overflow-hidden">
-                 <Image
-                 src={item.imageUrl}
-                 alt={item.alt}
-                 fill
-                 sizes="(max-width: 768px) 100vw, 350px"
-                 className="
-                 object-cover w-full h-full
-                 transition-transform duration-300 ease-out
-                 group-hover:brightness-105
-                "
-                 style={{ borderRadius: "8px" }}
-                 />
-                </div>
-            </Card>
-
-
+                >
+                  <div className="relative w-full h-full overflow-hidden">
+                    <Image
+                      src={item.imageUrl}
+                      alt={item.alt}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 350px"
+                      className="
+                        object-cover w-full h-full
+                        transition-transform duration-300 ease-out
+                        group-hover:brightness-105
+                      "
+                      style={{ borderRadius: "8px" }}
+                    />
+                  </div>
+                </Card>
               </CarouselItem>
             ))}
-
-            {/* Invisible placeholder to maintain final gap in loop */}
-            <div style={{ width: "24px", flexShrink: 0 }} />
           </CarouselContent>
 
-          {/* 🔘 Pagination Dots */}
           <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 flex gap-3">
             {galleryData.map((_, index) => (
               <span

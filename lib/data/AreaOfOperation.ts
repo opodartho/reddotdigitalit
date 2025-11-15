@@ -1,80 +1,132 @@
-
 export type OperationSection = {
   id: string;
+  area_name:string
   title: string;
   description: string;
   images: string[];
   coverage: string[];
 };
+
 export const staticOperationsData: OperationSection[] = [
   {
-    id: "fintech",
-    title: "Fintech Solution",
+    id: "sales-distribution",
+    area_name: "Sales Distribution",
+    title: "Revolutionizing Sales and Distribution Efficiency",
     description:
-      "We foster seamless collaboration through open communication and transparency. Our flexible partnership model adapts,",
-    images: ["/Rectangle 21475.png", "/Rectangle.png"],
+      "Digitally connected ecosystems for smarter growth",
+    images: ["/images/sales1.png", "/images/sales2.png"],
     coverage: [
-      "Team Augmentation",
-      "Product Start to Finish Development",
-      "MVP Services",
-      "DevOps as a Service",
-      "Cloud Migration",
+      "Sales automation and route optimization",
+      "Real-time order and inventory tracking",
+      "Performance dashboards and reporting",
+      "Distributor and retailer management",
+      "Mobile-based field force operations",
       "Remote Development",
     ],
   },
   {
-    id: "software",
-    title: "Customized Software Solution",
+    id: "crm",
+    area_name:"CRM",
+    title: "Empowering Customer-Centric Relationships",
     description:
-      "Tailored software designed to meet your unique business needs effectively.",
-    images: ["/Rectangle 21475.png", "/Rectangle.png"],
+      "Turning data into meaningful connections",
+    images: ["/images/crm1.png", "/images/crm2.png"],
     coverage: [
-      "Custom Development",
-      "Integration Services",
-      "API Design",
-      "Quality Assurance",
-      "Maintenance & Support",
+      "Lead and opportunity management",
+      "Omnichannel customer engagement",
+      "Performance analytics",
+      "Campaign tracking and automation",
+      "Feedback and support management",
     ],
   },
   {
-    id: "ai",
-    title: "AI & Machine Learning",
+    id: "ai-machine-learning",
+    area_name: "Ai & Mechine Learning",
+    title: "Data That Drives Decisions",
     description:
-      "Harness the power of AI for automation, prediction, and actionable insights.",
-    images: ["/Rectangle 21475.png", "/Rectangle.png"],
+      "Intelligence engineered for measurable outcomes",
+    images: ["/images/ai1.png", "/images/ai2.png"],
     coverage: [
-      "Predictive Analytics",
-      "Natural Language Processing",
-      "Computer Vision",
-      "Automated Workflows",
+      "Predictive analytics and forecasting",
+      "Machine learning model development",
+      "Real-time performance tracking",
+      "Business intelligence dashboards",
+      "Sentiment and behavioral analysis",
     ],
   },
   {
-    id: "rpa",
-    title: "RPA & Automation",
+    id: "resource-augmentation",
+    area_name:"Resource Augmentation",
+    title: "Empowering Teams with the Right Talent",
     description:
-      "Automate repetitive tasks to save time and reduce errors across business processes.",
-    images: ["/Rectangle 21475.png", "/Rectangle.png"],
+      "Flexible workforce solutions that scale with your business",
+    images: ["/images/resource1.png", "/images/resource2.png"],
     coverage: [
-      "Automation Scripts",
-      "Process Optimization",
-      "Monitoring Tools",
+      "IT and project-based staffing",
+      "Domain-specific skilled professionals",
+      "Contract-based and long-term engagement options",
+      "Onsite and offshore support models",
+      "End-to-end talent management",
     ],
   },
   {
-    id: "telco",
-    title: "Telco Service",
+    id: "fintech-solutions",
+    area_name:"Fintech Solutions",
+    title: "Shaping the Future of Financial Services",
     description:
-      "High-quality telecom solutions designed to ensure seamless communication.",
-    images: ["/Rectangle 21475.png", "/Rectangle.png"],
-    coverage: ["Network Setup", "Maintenance", "Monitoring"],
+      "Digital platforms for a connected financial ecosystem",
+    images: ["/images/fintech1.png", "/images/fintech2.png"],
+    coverage: [
+      "Digital banking and wallet platforms",
+      "Payment gateway integration",
+      "Data-driven financial analytics",
+      "Agent and merchant management systems",
+      "Compliance and transaction monitoring",
+    ],
   },
   {
-    id: "DevOps",
-    title: "DevOps",
+    id: "devops",
+    area_name:"Devops",
+    title: "Accelerating Development, Simplifying Deployment",
     description:
-      "High-quality telecom solutions designed to ensure seamless communication.",
-    images: ["/Rectangle 21475.png", "/Rectangle.png"],
-    coverage: ["Network Setup", "Maintenance", "Monitoring"],
+      "Agile, automated, and secure delivery pipelines",
+    images: ["/images/devops1.png", "/images/devops2.png"],
+    coverage: [
+      "Continuous Integration/Continuous Deployment (CI/CD)",
+      "Automated testing and monitoring",
+      "Infrastructure as code (IaC)",
+      "Containerization and orchestration",
+      "Cloud-native DevOps solutions",
+    ],
+  },
+  {
+    id: "customized-software-solutions",
+    area_name:  "Customized Software Solutions",
+    title: "Solutions Tailored to Your Business Needs",
+    description:
+      "Where technology meets your unique goals",
+    images: ["/images/custom1.png", "/images/custom2.png"],
+    coverage: [
+      "End-to-end solution design and development",
+      "Web and mobile applications",
+      "UI/UX-driven approach",
+      "System integration and automation",
+      "Legacy modernization",
+    ],
+  },
+  {
+    id: "cloud-migration",
+    area_name: "Cloud Migration",
+    title: "Seamless Journey to the Cloud",
+    description:
+      "Optimizing performance with secure cloud transformation",
+    images: ["/images/cloud1.png", "/images/cloud2.png"],
+    coverage: [
+      "Cloud readiness assessment",
+      "Data and application migration",
+      "Ongoing maintenance and support",
+      "Hybrid and multi-cloud deployment",
+      "Cloud security and governance",
+    ],
   },
 ];

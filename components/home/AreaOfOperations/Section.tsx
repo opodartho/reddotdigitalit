@@ -4,6 +4,8 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { OperationSection } from "@/lib/data/AreaOfOperation";
+import { useRouter } from "next/navigation";
+
 
 type AreaOfOperationsProps = {
   sections: OperationSection[];
@@ -11,7 +13,7 @@ type AreaOfOperationsProps = {
 
 export default function AreaOfOperations({ sections }: AreaOfOperationsProps) {
   const gapInRem = 2.5;
-
+  const router = useRouter();
   const [visited, setVisited] = useState<string[]>([sections[0].id]);
   const rightContentRef = useRef<HTMLDivElement>(null);
   const sectionRefs = useRef<Record<string, HTMLElement | null>>({});
@@ -48,20 +50,20 @@ export default function AreaOfOperations({ sections }: AreaOfOperationsProps) {
   }, [visited]);
 
   return (
-    <section className="bg-gradient-to-r from-pink-50 via-white to-orange-50 py-16">
-      <div className="mx-auto max-w-6xl px-6 lg:px-4">
-        <div className="mb-12 text-center">
-          <h2 className="text-poppins mb-2 text-3xl font-bold">
+    <section className="bg-gradient-to-r from-pink-50 via-white to-orange-50 pt-[72px] lg:pt-[110px] pb-[72px] lg:pb-[91px] ">
+      <div className="px-[16px]  sm:px-[80px]">
+        <div className="mb-[67px] lg:mb-[90px] text-center">
+          <h2 className="text-[#060414] text-poppins mb-2 font-semibold text-[25px] md:text-[32px] leading-[40px]">
             Area of Operations
           </h2>
-          <p className="text-poppins  mx-auto max-w-xl text-base text-gray-700">
+          <p className="text-[#121926] text-poppins  mx-auto max-w-xl text-[12px] md:text-[14px] font-normal  leading-[22px]">
             Our cutting-edge Modular Data Center solutions enable to <br />
             protect mission-critical data.
           </p>
         </div>
 
-        <div className="grid h-auto gap-8 md:h-[600px] md:grid-cols-[200px_1fr] md:gap-16 lg:gap-26">
-          <div className="relative left-6 pt-1.5">
+        <div className="flex flex-col lg:flex-row  justify-between items-start">
+          <div className="relative  pt-1.5 hidden lg:block">
             <div
               className="absolute top-0 left-[5px] w-0.5 bg-gray-300"
               style={{
@@ -104,7 +106,7 @@ export default function AreaOfOperations({ sections }: AreaOfOperationsProps) {
                           : "text-gray-400"
                       }`}
                     >
-                      {section.title}
+                      {section.area_name}
                     </span>
                   </div>
                 </div>
@@ -113,7 +115,7 @@ export default function AreaOfOperations({ sections }: AreaOfOperationsProps) {
           </div>
           <div
             ref={rightContentRef}
-            className="relative overflow-y-auto md:pr-6"
+            className="relative overflow-y-auto md:pr-6 lg:max-w-[770px] xl:max-w-[830px]"
             style={{
               height: "600px",
               scrollbarWidth: "none",
@@ -130,33 +132,40 @@ export default function AreaOfOperations({ sections }: AreaOfOperationsProps) {
                 className="mb-20"
                 style={{ minHeight: "500px" }}
               >
-                <div className="mb-6 flex gap-6">
+
+                {/* Mobile-only Area Name */}
+               <p className="lg:hidden text-center font-inter font-semibold text-[16px] leading-[23px] text-[#060414] mb-[56px]">
+                 {section.area_name}
+               </p>
+
+                <div className="mb-[34px] flex flex-col gap-4  lg:flex-row justify-between">
                   {section.images.slice(0, 2).map((src, idx) => (
                     <div
                       key={idx}
-                      className="relative h-40 flex-1 overflow-hidden rounded-lg shadow-md"
-                      style={{ width: "367px", height: "219px" }}
+                      className="relative h-40  overflow-hidden rounded-lg shadow-md   h-[219px]  w-[358px] md:w-[367px]   hover:-translate-y-3 hover:shadow-[0_8px_24px_rgba(49,1,139,0.1)]
+                        transition-transform duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]"
+                      
                     >
                       <Image
                         src={src}
-                        alt={`${section.title} image ${idx + 1}`}
+                        alt={`${section.area_name} image ${idx + 1}`}
                         fill
                         className="object-cover"
                       />
                     </div>
                   ))}
                 </div>
-                <h3 className="font-poppins mb-2 text-xl font-semibold">
+                <h3 className="font-poppins mb-[17px] md:mb-[34px] text-[25px] md:text-[32px] font-normal text-[#060414] leading-[40px]">
                   {section.title}
                 </h3>
-                <p className="mb-8 text-gray-700">{section.description}</p>
+                <p className="mb-[45px] md:mb-[41px] text-[14px] md:text-[18px] font-normal text-[#121926]  leading-[22px] md:leading-[30px]">{section.description}</p>
                 <div>
-                  <h4 className="mb-3 font-semibold">Coverage</h4>
-                  <ul className="grid grid-cols-2 gap-x-8 gap-y-2">
+                  <h4 className="mb-[22px] text-[22px] font-medium text-[#060414] leading-[30px]">Coverage</h4>
+                  <ul className="grid grid-cols-1 lg:grid-cols-2 gap-x-8  gap-y-[18px] md:gap-y-[22px] ">
                     {section.coverage.map((item, i) => (
                       <li
                         key={i}
-                        className="flex items-center gap-2 text-gray-700"
+                        className="flex items-center gap-2 text-[#121926] font-medium leading-[24px] text-[16px]"
                       >
                         <Image
                           src="/checkmark (1) 1.png"
@@ -170,7 +179,11 @@ export default function AreaOfOperations({ sections }: AreaOfOperationsProps) {
                   </ul>
                 </div>
 
-                <Button variant="default" size="lg" className="mt-18">
+                <Button   onClick={() => router.push(`/area_of_operations_details/${section.id}`)}
+                variant="default" size="lg"             className="rounded-[10px] w-[195px] h-[56px] text-[16px] leading-[24px]
+                                     transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]
+             hover:-translate-y-[6px] hover:shadow-[0_12px_20px_rgba(229,36,69,0.35)]
+             active:translate-y-[2px] mt-[38px] lg:mt-[73px]" >
                   Read More
                 </Button>
               </section>

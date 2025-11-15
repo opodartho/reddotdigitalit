@@ -54,7 +54,7 @@ export const Landing = async () => {
 
   return (
     <>
-      <div className="lg:pl-[240px] lg:pr-[240px]">
+      <div >
         <HeroSection />
         <ServicesCarousel services={servicesData} />
         <BackToTop />

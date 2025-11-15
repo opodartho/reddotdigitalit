@@ -42,7 +42,8 @@ export const GetInTouchForm = () => {
         </div>
 
         {/* 🧩 Right Form Section */}
-       <ContactForm/>
+       <ContactForm variant="extended" />
+
       </div>
     </section>
   );

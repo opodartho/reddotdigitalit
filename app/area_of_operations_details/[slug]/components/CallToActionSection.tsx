@@ -55,7 +55,10 @@ export default function CallToActionSection({
           <Button
             variant="default"
             size="lg"
-            className="rounded-[10px] w-[195px] h-[56px] text-[16px] leading-[24px]"
+            className="rounded-[10px] w-[195px] h-[56px] text-[16px] leading-[24px]
+                                     transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]
+             hover:-translate-y-[6px] hover:shadow-[0_12px_20px_rgba(229,36,69,0.35)]
+             active:translate-y-[2px]"
           >
             Schedule a Call <ArrowRight className="w-4 h-4" />
           </Button>
