@@ -10,26 +10,52 @@ export type NavLink = {
 };
 
 export const staticNavData: NavLink[] = [
-  {
-    title: "Area of Operations",
-    items: [
-      {
-        title: "Digital Transformation",
-        href: "/area-of-operations/digital-transformation",
-        description: "Innovative solutions for your business.",
-      },
-      {
-        title: "Cloud Services",
-        href: "/area-of-operations/cloud-services",
-        description: "Scalable cloud infrastructure and services.",
-      },
-      {
-        title: "Data Analytics",
-        href: "/area-of-operations/data-analytics",
-        description: "Harness the power of your data.",
-      },
-    ],
-  },
+{
+  title: "Area of Operations",
+  items: [
+    {
+      title: "Sales & Distribution",
+      href: "/area_of_operations_details/sales-distribution",
+      description: "Optimize your sales and field operations.",
+    },
+    {
+      title: "CRM",
+      href: "/area_of_operations_details/crm",
+      description: "Build lasting customer relationships.",
+    },
+    {
+      title: "AI & Machine Learning",
+      href: "/area_of_operations_details/ai-machine-learning",
+      description: "Turn data into smarter insights.",
+    },
+    {
+      title: "Resource Augmentation",
+      href: "/area_of_operations_details/resource-augmentation",
+      description: "Scale your team with expert talent.",
+    },
+    {
+      title: "Fintech Solutions",
+      href: "/area_of_operations_details/fintech-solutions",
+      description: "Transform financial services securely.",
+    },
+    {
+      title: "Customized Software Solutions",
+      href: "/area_of_operations_details/customized-software-solutions",
+      description: "Software built around your needs.",
+    },
+    {
+      title: "DevOps",
+      href: "/area_of_operations_details/devops",
+      description: "Accelerate delivery through automation.",
+    },
+    {
+      title: "Cloud Migration",
+      href: "/area_of_operations_details/cloud-migration",
+      description: "Modernize your systems on the cloud.",
+    },
+  ],
+},
+
   {
     title: "Products",
     items: [
