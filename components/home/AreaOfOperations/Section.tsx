@@ -193,7 +193,7 @@ export default function AreaOfOperations({ sections }: AreaOfOperationsProps) {
           {/* RIGHT PANEL */}
           <div
             ref={rightContentRef}
-            className="relative overflow-y-auto md:pr-6 lg:max-w-[770px] xl:max-w-[830px] flex-1"
+            className="relative overflow-y-auto md:pr-6 lg:max-w-[770px] xl:max-w-[830px] flex-1 pt-[12px]"
             style={{
               height: "100%",
               scrollbarWidth: "none",
@@ -257,7 +257,7 @@ export default function AreaOfOperations({ sections }: AreaOfOperationsProps) {
                   onClick={() =>
                     router.push(`/area_of_operations_details/${section.id}`)
                   }
-                  className="rounded-[10px] w-[195px] h-[56px] text-[16px] mt-[38px] lg:mt-[73px] transition-all hover:-translate-y-[6px] hover:shadow-[0_12px_20px_rgba(229,36,69,0.35)]"
+                  className="rounded-[10px] w-[195px] h-[56px] text-[16px] mt-[38px] lg:mt-[116px] transition-all hover:-translate-y-[6px] hover:shadow-[0_12px_20px_rgba(229,36,69,0.35)]"
                 >
                   Read More
                 </Button>
