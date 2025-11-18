@@ -2,12 +2,15 @@
 
 import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useState } from "react";
 
 export function RedHoverButton({
   children,
   className,
   ...props
 }: React.ButtonHTMLAttributes<HTMLButtonElement>) {
+  const [isHovered, setIsHovered] = useState(false);
+
   return (
     <button
       className={cn(
@@ -15,18 +18,37 @@ export function RedHoverButton({
         className
       )}
       {...props}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      onTouchStart={() => setIsHovered(true)}
+      onTouchEnd={() => setIsHovered(false)}
     >
       <div className="relative flex items-center justify-center w-full h-full">
         {/* Original text */}
-        <span className="relative z-10 transition-all duration-300 group-hover:opacity-0 whitespace-nowrap">
+        <span
+          className={cn(
+            "relative z-10 transition-all duration-300 whitespace-nowrap",
+            isHovered && "opacity-0"
+          )}
+        >
           {children}
         </span>
 
         {/* Rounded expanding effect */}
-        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-[#E52445] rounded-full transition-transform duration-1000 ease-out scale-0 group-hover:scale-[300] origin-center"></div>
+        <div
+          className={cn(
+            "absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-[#E52445] rounded-full transition-transform duration-1000 ease-out origin-center",
+            isHovered ? "scale-[300]" : "scale-0"
+          )}
+        ></div>
 
         {/* Hover text + arrow */}
-        <div className="absolute z-20 flex items-center justify-center gap-2 text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100 whitespace-nowrap">
+        <div
+          className={cn(
+            "absolute z-20 flex items-center justify-center gap-2 text-white whitespace-nowrap transition-opacity duration-300",
+            isHovered ? "opacity-100" : "opacity-0"
+          )}
+        >
           <span>{children}</span>
           <ArrowRight />
         </div>

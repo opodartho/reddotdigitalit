@@ -15,7 +15,7 @@ const ProductSolution = ({ solutions }: ProductSolutionSectionProps) => {
     <main className="">
       <Solutions solutions={solutions} />
 
-      <div className="mt-8 flex justify-center">
+      <div className="mb-10 flex justify-center">
         <RedButton >
           View More
         </RedButton>

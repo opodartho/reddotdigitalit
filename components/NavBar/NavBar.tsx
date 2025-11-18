@@ -144,7 +144,7 @@ export function NavBar() {
 
       {/* --- RESPONSIVE CHANGE: Mobile Menu Panel --- */}
       {isMobileMenuOpen && (
-        <div className="absolute top-[76px] left-0 z-40 flex h-[calc(100vh-76px)] w-full flex-col items-center space-y-6 overflow-y-auto bg-white p-8 md:hidden">
+        <div className="sticky top-[76px] left-0 z-40 flex h-[calc(100vh-76px)] w-full flex-col items-center space-y-6 overflow-y-auto bg-white p-8 md:hidden">
           {navLinks.map((link) => (
             <div key={link.title} className="text-center">
               {/* If it's a dropdown, show title as a non-clickable header */}
