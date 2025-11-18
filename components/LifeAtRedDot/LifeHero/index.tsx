@@ -6,15 +6,14 @@ import { motion } from "framer-motion";
 
 export const LifeHero = () => {
   return (
+    <>
+    <p className="text-[14px] text-[#959191] absolute lg:top-30 top-30 z-100 lg:left-21 left-4 whitespace-break-spaces">{`About Us      >>       Life At RedDot`} </p>
+
     <section className="relative w-full bg-white">
       {/* 🧭 Breadcrumb */}
      <div className="px-[16px] sm:px-[80px] pt-[23px] sm:pt-[44px]">
     
-        <div className="flex items-center justify-center w-[88px] h-[22px] sm:w-[93px] sm:h-[26px] rounded-[18px] border border-[#ECF1FE] bg-white shadow-[0_12px_48px_rgba(49,1,139,0.05)]">
-          <span className="text-[#121926] text-[12px] sm:text-[14px] font-normal leading-[18px] sm:leading-[21px] tracking-[0.032px]">
-            Our Culture
-          </span>
-        </div>
+       
      
 
       {/* 🧠 Hero Content */}
@@ -80,5 +79,6 @@ export const LifeHero = () => {
         </div>
   
     </section>
+    </>
   );
 };

@@ -67,7 +67,7 @@ export function NavBar() {
             {/* Logo and Home link */}
             <Link href="/" onClick={scrollToTop} className="flex-shrink-0 relative lg:right-16">
               <Image
-                src="/images/RedDotLogo.png"
+                src="/images/RedDotLogo.svg"
                 alt="Red Dot Digital Logo"
                 width={120}
                 height={40}

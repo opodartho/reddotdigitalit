@@ -21,7 +21,7 @@ export const staticProductSolutions: ProductSolutionItem[] = [
     image: "/image/human-resources 2.png",
   },
   {
-    title: "ERP & eCommerce",
+    title: "E-Commerce",
     description: "Unlock secure, fast, and convenient mobile transactions",
     image: "/image/online-shop 1.png",
   },

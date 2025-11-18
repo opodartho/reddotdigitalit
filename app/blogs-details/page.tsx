@@ -11,9 +11,11 @@ export default async function Blogs() {
     const [blogsDetailsData, blogsListData] = await Promise.all([getBlogsDetails(), getBlogsList()])
     return (
         <>
+            <p className="text-[14px] text-[#959191] absolute lg:top-40 top-30 z-100 lg:left-21 left-4 whitespace-break-spaces">{`Blog Details`} </p>
+
             {/* Container with 240px padding on each side for 1920px viewport */}
-            <div className="lg:pl-[80px] pl-[16px] lg:pr-[80px] pr-[16px] lg:w-full">
-                <div className="lg:max-w-[1440px] w-full mx-auto">
+            <div className="lg:pl-[80px] pl-[16px] lg:pr-[80px] pr-[16px] lg:w-full lg:overflow-hidden">
+                <div className="lg:max-w-[1440px] w-full mx-auto overflow-hidden">
                     <Header blogsDetailsData={blogsDetailsData} />
 
                     <div className="flex lg:gap-[104px] gap-0">
@@ -31,7 +33,7 @@ export default async function Blogs() {
                 </div>
             </div>
 
-            <div className="w-full">
+            <div className="w-full h-[710px]">
                 <BlogCarousel blogsListData={blogsListData} />
             </div>
         </>

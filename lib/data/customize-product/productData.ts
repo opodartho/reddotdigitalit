@@ -34,7 +34,7 @@ export type ProductItem = {
     {
       id: 4,
       date:"7 Sep 2024",
-      title: "ERP & eCommerce",
+      title: "E-Commerce",
       description:
         "Our cutting-edge Modular Data Center solutions enable to protect mission-critical data.",
       imageUrl: "/images/product4.jpg",

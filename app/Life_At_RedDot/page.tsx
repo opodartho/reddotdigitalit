@@ -8,6 +8,7 @@ import CultureSection from "@/components/LifeAtRedDot/CultureSection";
 export default function LifeAtRedDotPage() {
   return (
     <main className="w-full bg-white overflow-hidden">
+
       {/* 🟥 Hero Section (optional later) */}
       <LifeHero /> 
       <CultureSection/>

@@ -33,6 +33,8 @@ export default async function CustomizeProduct({ params }: { params: { id: strin
 
     return (
         <>
+            <p className="text-[14px] text-[#959191] absolute lg:top-40 top-30 z-100 lg:left-21 left-4 whitespace-break-spaces">{`Home      >>       Customized-Product     >>      ${HeaderData[index]?.title}`} </p>
+
             <div>
                 <Header headerData={HeaderData} Id={params.id} />
             </div>
