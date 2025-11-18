@@ -1,7 +1,7 @@
 import WhiteButton from "@/components/buttons/WhiteHoverButton";
-import { Button } from "@/components/ui/button";
+import RedButton from "@/components/buttons/RedHoverButton";
 import { HeaderItem } from "@/lib/data/header";
-import Image from "next/image";
+import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
 
 type HeaderProps = {
     headerData: HeaderItem[],
@@ -10,26 +10,58 @@ type HeaderProps = {
 
 export default function Header({ headerData, Id }: HeaderProps) {
     const indexNumber = Number(Id)
+    
     return (
-        <>
-            <div
-                className="lg:pl-[80px] lg:pr-[80px] lg:pt-[0px]   bg-cover bg-center bg-no-repeat lg:min-h-[532px] lg:flex lg:gap-[100px]"
-                style={{ backgroundImage: "url('/images/header-bg.svg')" }}
-            >
-                <div className="flex justify-center lg:hidden">
-                    <Image src={headerData[indexNumber]?.imageUrl || 'ok.svg'} alt="" height={358} width={358} className="pt-[42px] lg:hidden" />
+        <section
+            className="lg:relative lg:flex lg:flex-col lg:h-[655px] lg:md:flex-row lg:items-center lg:justify-center lg:w-full lg:px-6 lg:md:px-14 lg:md:gap-10"
+            style={{
+                background: `
+                    radial-gradient(circle at 85% 15%, #F0E8FF 0%, #FFFFFF 20%),
+                    radial-gradient(45.32% 45.32% at 10% 50%, rgba(240, 80, 54, 0.15) 0%, rgba(229, 36, 69, 0) 100%)
+                `,
+            }}
+        >
+            {/* Left text column */}
+            <div className="flex flex-col lg:pt-0 pt-10 gap-6 max-w-xl lg:pl-[0px] pl-[16px] pr-[16px] md:text-left md:w-[55%]">
+                <h1 className="text-4xl md:text-5xl font-semibold leading-tight lg:w-[480px] text-title">
+                    {headerData[indexNumber]?.title || ''}
+                </h1>
+
+                <p className="text-base md:text-lg leading-relaxed text-subtitle">
+                    {headerData[indexNumber]?.description || ''}
+                </p>
+
+                <div className="lg:flex lg:flex-row flex flex-col flex-wrap gap-4">
+                    <RedButton className="">
+                        {headerData[indexNumber]?.buttonText || ''}
+                    </RedButton>
+                    <WhiteButton className="tracking-tightest">Learn More</WhiteButton>
                 </div>
-                <div className="lg:w-[630px] lg:pl-[0px] pl-[16px] lg:pr-[0px] pr-[16px] lg:pb-[0px] pb-[68px]">
-                    <p className="font-semibold lg:text-[40px] text-[30px] lg:pt-[95px]  lg:w-[461px] pt-[51px] text-title">{headerData[indexNumber]?.title || ''}</p>
-                    <p className="pt-[26px] text-subtitle">{headerData[indexNumber]?.description || ''}</p>
-                    <div className="pt-[61px]">
-                        <WhiteButton className="bg-red-500 h-[56px] w-[229px]">
-                            {headerData[indexNumber]?.buttonText || ''}
-                        </WhiteButton>
-                    </div>
-                </div>
-                <img src={headerData[indexNumber]?.imageUrl || 'ok.svg'} alt="" className=" lg:block hidden " />
             </div>
-        </>
+
+            {/* Right image column with 3D card effect */}
+            <div className="flex justify-center overflow-visible lg:pt-0 pt-8 ">
+                <div className="relative z-1">
+                    <CardContainer className="lg:w-[600px] w-[327px] mx-auto">
+                        <CardBody className="relative lg:w-[600px] w-[327px] overflow-visible [transform-style:preserve-3d]">
+                            
+                            {/* Pop-out image */}
+                            <CardItem
+                                translateZ={50}
+                                className="lg:w-[585px] w-[310px] flex items-center justify-center"
+                            >
+                                <img
+                                    src={headerData[indexNumber]?.imageUrl || '/images/default.svg'}
+                                    alt={headerData[indexNumber]?.title || ''}
+                                    className="lg:w-[385px] w-full object-contain"
+                                    style={{ transformStyle: "preserve-3d" }}
+                                />
+                            </CardItem>
+
+                        </CardBody>
+                    </CardContainer>
+                </div>
+            </div>
+        </section>
     )
 }

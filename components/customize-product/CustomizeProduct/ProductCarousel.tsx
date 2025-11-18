@@ -70,11 +70,11 @@ export function ProductCarousel({ solutions }: SolutionsProps) {
         opts={{ loop: false, align: "start" }}
         plugins={[autoplay.current]}
       >
-        <CarouselContent className=" w-full lg:gap-[20px] gap-[140px] lg:ml-0 ml-[16px]">
+        <CarouselContent className="w-full lg:gap-[40px] gap-[20px] lg:ml-0 ml-[16px]">
           {slides.map((slide, index) => (
             <CarouselItem
               key={index}
-              className=" basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/5 px-2"
+              className="basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/5 lg:pl-0 pl-0"
             >
               <div className="cursor-pointer" onClick={() => router.push(`/customize-product/${index + 1}`)}>
                 <Card
