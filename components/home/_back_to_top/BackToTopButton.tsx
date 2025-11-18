@@ -27,13 +27,13 @@ const BackToTop = () => {
   };
 
   return (
-    <div className="pointer-events-none lg:fixed sticky z-100 top-100 lg:top-80  right-6 flex h-screen items-center justify-end">
+    <div className="pointer-events-none lg:fixed fixed z-1000 bottom-6 lg:bottom-6  right-6 flex  items-center justify-end">
       {" "}
       {isVisible && (
         <button
           onClick={scrollToTop}
           aria-label="Back to top"
-          className="pointer-events-auto flex items-center gap-2 rounded-full border border-gray-200 bg-white py-0.5 pr-4 pl-0.5 text-black opacity-100 shadow-lg transition-all hover:bg-gray-100 hover:opacity-100 hover:shadow-xl"
+          className="pointer-events-auto flex items-center lg:gap-2 rounded-full lg:border lg:border-gray-200 bg-white py-0.5 pr-1 pl-1 pt-1 pb-1 text-black opacity-100 shadow-lg transition-all hover:bg-gray-100 hover:opacity-100 hover:shadow-xl"
         >
           <div className="flex h-9 w-9 items-center justify-center rounded-full bg-[#3B3060]">
             {" "}
@@ -50,7 +50,7 @@ const BackToTop = () => {
               <path d="M12 19V5M5 12l7-7 7 7" />
             </svg>
           </div>
-          <span className="ml-1 pl-0.25 text-base font-semibold text-gray-800">
+          <span className="lg:ml-1 lg:pl-0.25 text-base font-semibold text-gray-800 lg:block hidden">
             Back to Top
           </span>
         </button>
