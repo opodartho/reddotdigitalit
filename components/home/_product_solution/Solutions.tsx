@@ -33,7 +33,7 @@ export default function Solutions({ solutions }: SolutionsProps) {
         </p>
       </div>
 
-      <div className="grid auto-rows-fr grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-4">
+      <div className="grid auto-rows-fr grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-4 pl-[16px] pr-[16px] lg:pl-[0px] lg:pr-[0px]">
         {solutions.map((solution, idx) => (
           <div
             key={idx}

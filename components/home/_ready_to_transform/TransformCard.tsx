@@ -13,7 +13,7 @@ export function TransformCard({
   imageUrl,
 }: TransformCardProps) {
   return (
-    <section className="relative mx-auto max-w-7xl mt-25 px-4 sm:px-6 py-12 sm:py-30">
+    <section className="relative mx-auto max-w-7xl mt-25 px-4 py-20">
       <div className="relative rounded-3xl bg-[#e52445] px-4 sm:px-8 pt-12 sm:pt-20 pb-8 sm:pb-14 overflow-visible">
         <div className="grid grid-cols-1 items-center gap-8 md:grid-cols-2">
           {/* Left Content */}

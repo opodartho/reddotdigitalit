@@ -8,7 +8,7 @@ type SolutionCoverageProps = {
 
 export default function SolutionCoverage({ coverage }: SolutionCoverageProps) {
     return (
-        <div className="lg:pl-[80px] pl-[16px] lg:w-full">
+        <div className=" pl-[16px] lg:w-full">
             <p className="text-[30px] font-semibold text-title">Solution Coverage</p>
             <p className="lg:w-full w-[358px] h-[110px] text-[14px] pt-[14px] lg:pb-[44px] pb-[24px] text-subtitle">
                 RedDot Digital Limited is a 100% subsidiary of Robi Axiata Limited, the
@@ -20,16 +20,16 @@ export default function SolutionCoverage({ coverage }: SolutionCoverageProps) {
                 {coverage.map((benefit) => (
                     <div
                         key={benefit.id}
-                        className="border-2 rounded-xl bg-cover bg-no-repeat  lg:h-[172px] h-[108px] lg:w-[calc(50%-29.5px)] w-full"
+                        className="border-2 rounded-xl bg-cover bg-no-repeat lg:flex lg:items-center  lg:h-auto h-[108px] lg:w-[600px] w-full"
                         style={{ backgroundImage: "url('/images/benefits.svg')" }}
                     >
-                        <div className="flex gap-[12px] p-[16px]">
+                        <div className="flex gap-[12px] p-[16px] lg:flex lg:items-center">
                             <Image
                                 src={"/images/redtick.svg"}
                                 alt=""
-                                height={30}
-                                width={30}
-                                className="lg:h-[30px] lg:w-[30px] h-[22px] w-[22px] mt-[6px]"
+                                height={10}
+                                width={10}
+                                className="lg:h-[20px] lg:w-[20px] h-[22px] w-[22px] items-center"
                             />
                             <div className="flex flex-col">
                                 <p className="text-[16px] font-semibold">{benefit.title}</p>
