@@ -28,7 +28,7 @@ export default function AreaOfOperationPage() {
 
   return (
     <>
-      <p className="text-[14px] text-[#959191] absolute lg:top-30 top-30 z-100 lg:left-21 left-4 whitespace-break-spaces">{`Area Of Operations      >>       ${data.title}`} </p>
+      <p className="text-[14px] text-[#959191] absolute lg:top-30 top-30 z-1 lg:left-21 left-4 whitespace-break-spaces">{`Area Of Operations      >>       ${data.title}`} </p>
 
 
       <main className="bg-white">

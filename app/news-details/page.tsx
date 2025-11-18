@@ -11,7 +11,7 @@ export default async function Blogs() {
     const [NewsDetailsData] = await Promise.all([getNewsDetails()])
     return (
         <>
-            <p className="text-[14px] text-[#959191] absolute lg:top-40 top-30 z-100 lg:left-21 left-4 whitespace-break-spaces">{`News Details`} </p>
+            <p className="text-[14px] text-[#959191] absolute lg:top-40 top-30 z-1 lg:left-21 left-4 whitespace-break-spaces">{`News Details`} </p>
 
             {/* Container with 240px padding on each side for 1920px viewport */}
             <div className="lg:pl-[80px] pl-[16px] lg:pr-[80px] pr-[16px] lg:w-full">

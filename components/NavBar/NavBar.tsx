@@ -17,8 +17,6 @@ import { Menu, X } from "lucide-react";
 
 export function NavBar() {
   const [navLinks, setNavLinks] = useState<NavLink[]>([]);
-  // --- RESPONSIVE STATE ---
-  // State to manage the visibility of the mobile menu
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
@@ -29,13 +27,9 @@ export function NavBar() {
     fetchData();
   }, []);
 
-  // Close mobile menu if window is resized to be larger
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth >= 768) {
-        // md breakpoint
-        setIsMobileMenuOpen(false);
-      }
+      if (window.innerWidth >= 768) setIsMobileMenuOpen(false);
     };
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
@@ -46,25 +40,14 @@ export function NavBar() {
   };
 
   const handleMobileLinkClick = () => {
-    setIsMobileMenuOpen(false); // Close menu when a link is clicked
+    setIsMobileMenuOpen(false);
   };
 
   return (
     <>
-      <div className="sticky lg:pl-[80px] lg:pr-[80px] top-0 lg:flex lg:justify-center  z-100 pt-[22px]">
-        {/* <nav
-        className=" bg-white backdrop-blur-2xl   rounded-4xl top-0 z-50 h-[76px] w-[1440px] shadow-[0_4px_29px_rgba(0,0,0,0.05)] backdrop-blur-sm"
-        // style={{
-        //   background:
-        //     "radial-gradient(circle at 85% 15%, #F0E8FF 0%, #FFFFFF 50%)",
-        // }}
-
-      > */}
+      <div className="sticky lg:pl-[80px] lg:pr-[80px] top-0 lg:flex lg:justify-center z-100 pt-[22px]">
         <nav className="sticky top-0 lg:w-[1440px] w-[390px] h-[76px] rounded-4xl bg-white/40 backdrop-blur-xl border-b border-white/20 shadow-[0_4px_29px_rgba(0,0,0,0.05)]">
-
-          {/* --- RESPONSIVE CHANGE: Adjusted padding for different screen sizes --- */}
           <div className="flex h-full items-center justify-between px-4 md:px-10 lg:px-[80px]">
-            {/* Logo and Home link */}
             <Link href="/" onClick={scrollToTop} className="flex-shrink-0 relative lg:right-16">
               <Image
                 src="/images/RedDotLogo.svg"
@@ -75,32 +58,31 @@ export function NavBar() {
               />
             </Link>
 
-            {/* --- RESPONSIVE CHANGE: Desktop Navigation Menu (hidden on mobile) --- */}
+            {/* Desktop Navigation */}
             <NavigationMenu className="hidden h-full justify-center md:flex">
               <NavigationMenuList className="h-full space-x-16">
                 {navLinks.map((link) => (
                   <NavigationMenuItem key={link.title}>
-                    {/* Simplified logic for single links vs. dropdowns */}
                     {!link.items || link.items.length === 0 ? (
                       <Link href={link.href || "#"} legacyBehavior passHref>
-                        <NavigationMenuLink className="font-poppins flex h-full items-center bg-transparent px-0 text-[15px] font-normal hover:bg-transparent focus:bg-transparent text-title">
+                        <NavigationMenuLink className="font-poppins flex h-full items-center px-0 text-[15px] font-normal text-title hover:text-red-500">
                           {link.title}
                         </NavigationMenuLink>
                       </Link>
                     ) : (
                       <>
-                        <NavigationMenuTrigger className="font-poppins h-full bg-transparent px-0 text-[15px] font-normal hover:bg-transparent focus:bg-transparent text-title">
+                        <NavigationMenuTrigger className="font-poppins h-full px-0 text-[15px] font-normal text-title hover:text-red-500">
                           {link.title}
                         </NavigationMenuTrigger>
                         <NavigationMenuContent>
-                          <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
+                          <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
                             {link.items?.map((item) => (
                               <ListItem
                                 key={item.title}
-                                title={<span className="text-title">{item.title}</span>}
+                                title={item.title}
                                 href={item.href}
                               >
-                                <span className="text-subtitle">{item.description}</span>
+                                {item.description}
                               </ListItem>
                             ))}
                           </ul>
@@ -112,27 +94,20 @@ export function NavBar() {
               </NavigationMenuList>
             </NavigationMenu>
 
-            {/* --- RESPONSIVE CHANGE: Right side container (hidden on mobile) --- */}
+            {/* Right side container */}
             <div className="hidden h-full items-center gap-5 md:flex">
-              <button
-                aria-label="apps"
-                className="rounded-full p-2 hover:bg-gray-100"
-                title="More"
-              >
-                {/* 3x3 dots icon */}
-
-              </button>
-              <div className="relative left-16 ">
+              <button aria-label="apps" className="rounded-full p-2 hover:bg-gray-100" title="More"></button>
+              <div className="relative left-16">
                 <Link
-                  href="/contact"
-                  className="flex bg-gradient-to-l h-[56px] w-[153px] from-red-700 via-red-600 via-red-500 to-red-400 text-white justify-end  items-center  rounded-[25px] border border-[#E52445] bg-white px-7 text-lg whitespace-nowrap  hover:bg-red-100 dark:bg-transparent"
+                  href="/contact-us"
+                  className="flex h-[56px] w-[153px] bg-gradient-to-l from-red-700 via-red-600 via-red-500 to-red-400 text-white justify-end items-center rounded-[25px] border border-[#E52445] px-7 text-lg hover:bg-red-100 dark:bg-transparent"
                 >
                   Contact Us
                 </Link>
               </div>
             </div>
 
-            {/* --- RESPONSIVE CHANGE: Hamburger Menu Button (visible on mobile only) --- */}
+            {/* Hamburger Menu */}
             <div className="md:hidden">
               <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
                 {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
@@ -142,15 +117,14 @@ export function NavBar() {
         </nav>
       </div>
 
-      {/* --- RESPONSIVE CHANGE: Mobile Menu Panel --- */}
+      {/* Mobile Menu */}
       {isMobileMenuOpen && (
         <div className="sticky top-[76px] left-0 z-40 flex h-[calc(100vh-76px)] w-full flex-col items-center space-y-6 overflow-y-auto bg-white p-8 md:hidden">
           {navLinks.map((link) => (
             <div key={link.title} className="text-center">
-              {/* If it's a dropdown, show title as a non-clickable header */}
               {link.items && link.items.length > 0 ? (
                 <>
-                  <h3 className="font-poppins mb-2 text-2xl font-bold  text-title">
+                  <h3 className="font-poppins mb-2 text-2xl font-bold text-title">
                     {link.title}
                   </h3>
                   <div className="flex flex-col space-y-4">
@@ -159,7 +133,7 @@ export function NavBar() {
                         key={item.title}
                         href={item.href}
                         onClick={handleMobileLinkClick}
-                        className="text-lg  hover:text-[#E52445] text-subtitle"
+                        className="text-lg text-subtitle hover:text-red-500"
                       >
                         {item.title}
                       </Link>
@@ -167,23 +141,21 @@ export function NavBar() {
                   </div>
                 </>
               ) : (
-                // If it's a single link
                 <Link
                   href={link.href || "#"}
                   onClick={handleMobileLinkClick}
-                  className="font-poppins text-2xl font-bold  hover:text-[#E52445] text-title"
+                  className="font-poppins text-2xl font-bold text-title hover:text-red-500"
                 >
                   {link.title}
                 </Link>
               )}
             </div>
           ))}
-          {/* Add a divider and the Contact Us button at the end */}
           <hr className="w-full border-gray-200" />
           <Link
-            href="/contact"
+            href="/contact-us"
             onClick={handleMobileLinkClick}
-            className="flex w-full  max-w-xs items-center justify-center rounded-[25px] border border-[#E52445] bg-white px-10 py-3 text-lg text-[#E52445]  hover:bg-red-100"
+            className="flex w-full max-w-xs items-center justify-center rounded-[25px] border border-[#E52445] bg-white px-10 py-3 text-lg text-[#E52445] hover:bg-red-100"
           >
             Contact Us
           </Link>
@@ -193,20 +165,23 @@ export function NavBar() {
   );
 }
 
-// ListItem component remains unchanged
-const ListItem = ({ className, title, children, ...props }: any) => {
+// Updated ListItem component: text-only hover, no background change
+const ListItem = ({ className, title, children, href, ...props }: any) => {
   return (
     <li>
       <NavigationMenuLink asChild>
         <a
+          href={href}
           className={cn(
-            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+            "block rounded-2xl p-4 border border-transparent transition-colors duration-200 hover:text-red-500",
             className
           )}
           {...props}
         >
-          <div className="text-sm leading-none font-medium text-title">{title}</div>
-          <p className=" line-clamp-2 text-sm leading-snug text-subtitle">
+          <div className="text-sm font-medium transition-colors duration-200 hover:text-red-500">
+            {title}
+          </div>
+          <p className="text-sm line-clamp-2 transition-colors duration-200 hover:text-red-500">
             {children}
           </p>
         </a>

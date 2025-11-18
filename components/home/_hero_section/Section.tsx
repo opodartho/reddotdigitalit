@@ -44,7 +44,6 @@ export default function HeroSection() {
 
   return (
     <>
-      <p className="text-[14px] text-[#959191] absolute lg:top-40 top-30 z-100 lg:left-16 left-4 whitespace-break-spaces">{`Home`} </p>
 
       <section
         className="lg:relative lg:flex lg:flex-col lg:h-[655px] h-[] lg:md:flex-row lg:items-center lg:justify-center lg:w-full lg:px-6 lg:md:px-14  lg:md:gap-10"
@@ -57,16 +56,16 @@ export default function HeroSection() {
       >
 
         {/* Left text column */}
-        <div className="flex flex-col lg:pt-0 pt-10 gap-6 max-w-xl lg:pl-[0px] pl-[16px] md:text-left md:w-[55%]">
-          <div className="flex flex-wrap justify-center md:justify-start gap-2">
+        <div className="flex flex-col lg:pt-0 pt-10 gap-6 max-w-xl lg:pl-[0px] pl-[16px] lg:pr-[0px] pr-[16px] md:text-left md:w-[55%]">
+          <div className="pr-[4px] flex lg:gap-[12px] gap-[2px] flex-row lg:justify-normal lg:justify-items-normal h-[40px] justify-center items-center">
             {["15+ enterprise solutions", "ISO Certified", "5+ years of experience"].map(
               (text) => (
-                <span
+                <p
                   key={text}
-                  className="text-[#70738F] border rounded-full px-3 py-1 text-xs font-medium bg-[#FFFFFF]"
+                  className="text-[#70738F] flex justify-center items-center border rounded-full px-3 w-[150px] py-1 text-xs font-medium bg-[#FFFFFF]"
                 >
                   {text}
-                </span>
+                </p>
               )
             )}
           </div>

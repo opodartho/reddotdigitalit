@@ -7,7 +7,7 @@ export default async function Speakup() {
     const [SpeakupData] = await Promise.all([getSpeakup()])
     return (
         <>
-            <p className="text-[14px] text-[#959191] absolute lg:top-40 top-30 z-100 lg:left-21 left-4 whitespace-break-spaces">{`About Us      >>       Whistleblowing`} </p>
+            <p className="text-[14px] text-[#959191] absolute lg:top-40 top-30 z-1 lg:left-21 left-4 whitespace-break-spaces">{`About Us      >>       Whistleblowing`} </p>
 
             <div>
                 <Header SpeakupData={SpeakupData} />

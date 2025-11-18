@@ -5,7 +5,7 @@ export type NavLink = {
   items?: {
     title: string;
     href: string;
-    description: string;
+    description?: string;
   }[];
 };
 
@@ -62,42 +62,34 @@ export const staticNavData: NavLink[] = [
       {
         title: "MFS",
         href: "/customize-product/1",
-        description: "Unlock secure, fast, and convenient mobile transactions",
       },
       {
         title: "DFS",
         href: "/customize-product/2",
-        description: `Empowering individuals and businesses with accessible, innovative financial tools.`,
       },
       {
         title: "HRMS",
         href: "/customize-product/3",
-        description: `HRMS encompasses candidate application, selection process, recruiting and onboarding, employee life cycle management, payroll management`,
       },
       {
         title: "E-Commerce",
         href: "/customize-product/4",
-        description: `An online video streaming OTT platform that offers Live TV and VOD. `,
       },
       {
         title: "IOT Backend",
         href: "/customize-product/5",
-        description: `a device that detects the presence of gases in an area, often as part of a safety system. `,
       },
       {
         title: "Streaming Solution App",
         href: "/customize-product/6",
-        description: `An online video streaming OTT platform that offers Live TV and VOD. `,
       },
       {
         title: "Customer Experience Solution",
         href: "/customize-product/7",
-        description: `encompasses a strategic blend of technology, processes, and people designed to optimize every interaction a customer has `,
       },
       {
         title: "Sales & Distribution",
         href: "/customize-product/8",
-        description: `encompasses a strategic blend of technology, processes, and people designed to optimize every interaction a customer has `,
       },
 
 
