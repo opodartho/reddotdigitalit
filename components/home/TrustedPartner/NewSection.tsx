@@ -39,13 +39,6 @@ const tabData: TabData[] = [
   },
 
   {
-    title: "Telecom", images: [
-      "/images/robi.svg",
-      "/images/smart.svg",
-    ]
-  },
-
-  {
     title: "Bank & Fintech", images: [
       "/images/scb.svg",
       "/images/tap.svg",
@@ -59,7 +52,12 @@ const tabData: TabData[] = [
       "/images/citizens.svg",
     ]
   },
-
+  {
+    title: "Telecom", images: [
+      "/images/robi.svg",
+      "/images/smart.svg",
+    ]
+  },
   {
     title: "FMCG", images: [
 

@@ -26,11 +26,25 @@ export function NewsCard({ imageUrl, title, description }: NewsCardProps) {
         </CardItem>
 
         {/* Text content */}
-        <CardItem translateZ={0}>
+        <CardItem translateZ={0} className="w-full">
           <div className="flex flex-col px-6 pt-6 pb-6">
             <h3 className="pb-3 text-xl font-semibold text-gray-900">{title}</h3>
-            <p className="pb-6 text-sm text-gray-600">{description}</p>
-            <div className="mt-auto self-start">
+            <div className="pb-6">
+              <p 
+                className="text-sm text-gray-600 h-[100px]"
+                style={{
+                  display: '-webkit-box',
+                  WebkitLineClamp: 3,
+                  WebkitBoxOrient: 'vertical',
+                  overflow: 'hidden',
+                  textOverflow: 'ellipsis',
+                  lineHeight: '1.5'
+                }}
+              >
+                {description}
+              </p>
+            </div>
+            <div className="-mt-[10px] self-start">
               <Button variant="link">Read More »</Button>
             </div>
           </div>
