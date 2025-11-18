@@ -69,7 +69,7 @@ export const TestimonialCarousel: React.FC<CarouselProps> = ({
 
       {/* Carousel */}
       <div
-        className="embla bg-gradient-to-r from-[#ffecf0] to-[#faf9fe] w-full lg:h-[484px] h-[753px]"
+        className="embla bg-gradient-to-r from-[#ffecf0] to-[#faf9fe] w-full lg:h-[584px] h-auto"
         ref={emblaRef}
       >
         <div className="embla__container">
@@ -83,7 +83,7 @@ export const TestimonialCarousel: React.FC<CarouselProps> = ({
                 key={testimonial.id}
               >
                 <div
-                  className="bg-white rounded-2xl shadow border border-transparent p-6 lg:h-[484px] h-[714px] w-[308px] lg:w-[574px] transition-all duration-300 hover:shadow-xl hover:border-red-600 hover:shadow-red-300 "
+                  className="bg-white rounded-2xl shadow border border-transparent p-6 lg:h-[584px] h-[800px] w-[308px] lg:w-[574px] transition-all duration-300 hover:shadow-xl hover:border-red-600 hover:shadow-red-300 "
                 >
                   <div className="pl-[10px] pt-[10px]">
                     <Image
@@ -100,18 +100,22 @@ export const TestimonialCarousel: React.FC<CarouselProps> = ({
                   </blockquote>
 
                   <div className="mt-[34px] pl-[10px]">
+                  <div className="fixed w-[574px] bottom-12 lg:mt-[0px]">
                     <Image
                       src={testimonial.logoSrc}
                       alt={`${testimonial.company} Logo`}
-                      width={59}
-                      height={48}
+                      width={100}
+                      height={100}
                       className="mb-4 object-contain"
                     />
+
+                    
                     <p className="font-poppins text-[13px] font-semibold text-zinc-800">
                       {testimonial.name}
                     </p>
                     <p className="font-poppins text-[10px] text-black">{testimonial.company}</p>
                     <p className="font-poppins text-[10px] text-black">{testimonial.title}</p>
+                    </div>
                   </div>
                 </div>
               </div>
