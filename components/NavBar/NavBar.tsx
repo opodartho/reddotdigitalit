@@ -51,7 +51,7 @@ export function NavBar() {
 
   return (
     <>
-      <div className="sticky lg:pl-[80px] lg:pr-[80px] top-0 lg:flex lg:justify-center  z-100 pt-[22px]">
+      <div className="sticky lg:pl-[80px] lg:pr-[80px] top-[22px] lg:flex lg:justify-center  z-100 ">
         {/* <nav
         className=" bg-white backdrop-blur-2xl   rounded-4xl top-0 z-50 h-[76px] w-[1440px] shadow-[0_4px_29px_rgba(0,0,0,0.05)] backdrop-blur-sm"
         // style={{
