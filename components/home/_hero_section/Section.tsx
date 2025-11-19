@@ -56,7 +56,7 @@ export default function HeroSection() {
         >
 
           {/* Left text column */}
-          <div className="flex flex-col lg:flex lg:pt-30 pt-10 gap-6 xl lg:pl-[0px]  lg:pr-[0px] md:text-left md:w-[55%]">
+          <div className="flex flex-col lg:flex lg:pt-30 pt-10 gap-6 xl  lg:pl-[0px] lg:pr-[0px] pl-[16px] pr-[16px] md:text-left md:w-[55%]">
             <div className="pr-[4px] flex lg:gap-[12px] gap-[2px] flex-row lg:justify-normal lg:justify-items-normal h-[40px] justify-center items-center">
               {["15+ enterprise solutions", "ISO Certified", "5+ years of experience"].map(
                 (text) => (
