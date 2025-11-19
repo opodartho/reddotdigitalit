@@ -17,7 +17,7 @@ export default function AboutRedDot({ aboutUs }: AboutUsProps) {
                 </div>
 
                 <div>
-                    <Image src={aboutUs.imageUrl} alt="Cox's Bazar" height={316.05} width={570} className="lg:h-[316.05px] lg:w-[570px] h-[316.31px] w-[474.4px]" />
+                    <Image src={aboutUs.imageUrl} alt="Cox's Bazar" height={316.05} width={570} className="lg:h-[316.05px] lg:w-[570px] h-[316.31px] w-[474.4px] lg:pt-[0px] pt-[40px]" />
                 </div>
             </div>
             
