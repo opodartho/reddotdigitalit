@@ -2,6 +2,7 @@
 "use client";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
+import WhiteButton from "@/components/buttons/WhiteHoverButton";
 
 export default function ServiceHero({
   title,
@@ -39,7 +40,7 @@ export default function ServiceHero({
           </p>
 
           {/* CTA Button (Reused from UI library) */}  {/*hover added*/}
-          <Button
+          {/*<Button
             variant="default"
             size="lg"
             className="rounded-[10px] w-[195px] h-[56px] text-[16px] leading-[24px]
@@ -49,6 +50,15 @@ export default function ServiceHero({
           >
             Schedule a Call
           </Button>
+
+          */}
+
+
+          <WhiteButton
+            className="w-[195px] h-[56px] text-[16px] leading-[24px]"
+          >
+           Schedule a Call
+         </WhiteButton>
         </div>
 
         {/* 🟣 Right Image */}
