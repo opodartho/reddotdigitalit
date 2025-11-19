@@ -7,6 +7,15 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
+  --breakpoint-4xs: 375px;
+  --breakpoint-3xs: 430px;
+  --breakpoint-2xs: 576px;
+  --breakpoint-xs: 640px;
+  --breakpoint-sm: 768px;
+  --breakpoint-md: 896px;
+  --breakpoint-lg: 960px;
+  --breakpoint-xl: 1100px;
+  --breakpoint-2xl: 1280px;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
@@ -142,3 +151,18 @@
   display: none !important;
 }
 
+.container {
+  @apply mx-auto px-4;
+  width: 100%;
+  max-width: 344px;
+}
+
+@media (min-width: 344px)   { .container { max-width: 340px; } }
+@media (min-width: 375px)   { .container { max-width: 370px; } }
+@media (min-width: 576px)   { .container { max-width: 512px; } }
+@media (min-width: 640px)   { .container { max-width: 576px; } }
+@media (min-width: 768px)   { .container { max-width: 672px; } }
+@media (min-width: 896px)   { .container { max-width: 768px; } }
+@media (min-width: 960px)   { .container { max-width: 896px; } }
+@media (min-width: 1100px)  { .container { max-width: 1024px; } }
+@media (min-width: 1280px)  { .container { max-width: 1100px; } }

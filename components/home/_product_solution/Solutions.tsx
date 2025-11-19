@@ -23,7 +23,7 @@ export default function Solutions({ solutions }: SolutionsProps) {
 
   return (
     <section className="lg:px-4 lg:py-4 py-10 md:px-8">
-      <div className="mx-auto mb-10 max-w-2xl text-center">
+      <div className="mx-auto mb-10 container 2xl text-center">
         <h2 className="text-4xl font-poppins font-semibold mb-4 lg:mt-20">
           Our Product Solution
         </h2>

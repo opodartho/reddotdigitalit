@@ -46,7 +46,7 @@ export function NavBar() {
   return (
     <>
       <div className="sticky lg:pl-[80px] lg:pr-[80px] top-0 lg:flex lg:justify-center z-100 pt-[22px]">
-        <nav className="sticky top-0 lg:w-[1440px] w-[390px] h-[76px] rounded-4xl bg-white/40 backdrop-blur-xl border-b border-white/20 shadow-[0_4px_29px_rgba(0,0,0,0.05)]">
+        <nav className="sticky top-0 lg:w-[1440px] h-[76px] rounded-4xl bg-white/40 backdrop-blur-xl border-b border-white/20 shadow-[0_4px_29px_rgba(0,0,0,0.05)]">
           <div className="flex h-full items-center justify-between px-4 md:px-10 lg:px-[80px]">
             <Link href="/" onClick={scrollToTop} className="flex-shrink-0 relative lg:right-16">
               <Image
@@ -155,7 +155,7 @@ export function NavBar() {
           <Link
             href="/contact-us"
             onClick={handleMobileLinkClick}
-            className="flex w-full max-w-xs items-center justify-center rounded-[25px] border border-[#E52445] bg-white px-10 py-3 text-lg text-[#E52445] hover:bg-red-100"
+            className="flex w-full xs items-center justify-center rounded-[25px] border border-[#E52445] bg-white px-10 py-3 text-lg text-[#E52445] hover:bg-red-100"
           >
             Contact Us
           </Link>

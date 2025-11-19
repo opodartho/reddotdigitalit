@@ -13,7 +13,7 @@ export function TransformCard({
   imageUrl,
 }: TransformCardProps) {
   return (
-    <section className="relative mx-auto max-w-7xl mt-25 px-4 py-20">
+    <section className="relative mx-auto lg:max-w-7xl mt-25 px-4 py-20">
       <div className="relative rounded-3xl bg-[#e52445] px-4 sm:px-8 pt-12 sm:pt-20 pb-8 sm:pb-14 overflow-visible">
         <div className="grid grid-cols-1 items-center gap-8 md:grid-cols-2">
           {/* Left Content */}
@@ -25,7 +25,7 @@ export function TransformCard({
               {description}
             </p>
             <Button asChild className="px-6 py-2 h-[56px] bg-white sm:px-8 sm:py-3 mt-[52px]">
-              <a href={buttonLink} className="" style={{color:"red"}}>
+              <a href={buttonLink} className="" style={{ color: "red" }}>
                 {buttonText}
                 <span className="--font-poppins text-red-500 font-medium text-[16px] leading-[100%] tracking-[0] text-center">
                   →
@@ -37,7 +37,7 @@ export function TransformCard({
           {/* Right Image */}
           <div className="relative flex justify-center md:justify-end">
             <div
-              className="relative w-full max-w-[300px] sm:max-w-[600px] md:max-w-[600px] h-auto md:h-[500px] rotate-0 md:rotate-[-5deg] 
+              className="relative w-full container [300px] sm:container [600px] md:container [600px] h-auto md:h-[500px] rotate-0 md:rotate-[-5deg] 
               md:-mt-50"
             >
               {/* Upward bleed on desktop */}

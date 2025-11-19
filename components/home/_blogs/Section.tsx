@@ -9,7 +9,7 @@ type BlogsSectionProps = {
 const Blogs = ({ blogsData }: BlogsSectionProps) => {
   return (
     <section className=" px-8 py-16 hidden">
-      <div className="mx-auto max-w-7xl">
+      <div className="mx-auto container 7xl">
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
           {blogsData.map((item) => (
             <BlogCard

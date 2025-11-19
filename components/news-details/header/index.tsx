@@ -14,7 +14,7 @@ export default function Header({ newsDetailsData }: NewsDetailsProps) {
 
                 <img
                     src={newsDetailsData.imageUrls[0]}
-                    className="lg:pt-[44px] pt-[80px] w-full lg:max-w-[1280px]"
+                    className="lg:pt-[44px] pt-[80px] w-full"
                 />
             </div>
         </>

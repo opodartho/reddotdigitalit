@@ -21,7 +21,7 @@ export default function CaseStudyOutcome() {
         </h3>
 
         {/* 🔹 Subheading */}
-   <p className="font-poppins font-[700] text-[16px] leading-[30px] text-black mb-[51px] max-w-[1291px]">
+        <p className="font-poppins font-[700] text-[16px] leading-[30px] text-black mb-[51px] container [1291px]">
           RedDot Digital Limited is a 100% subsidiary of Robi Axiata Limited, the
           second-largest mobile network operator in Bangladesh, offering IT and
           digital solutions.
@@ -32,7 +32,7 @@ export default function CaseStudyOutcome() {
           {/* LEFT CONTENT */}
           <div className="flex flex-col justify-between">
             {/* top paragraph */}
-      <p className="font-poppins font-[700] text-[16px] leading-[24px] text-[rgba(33,31,31,0.85)] mb-[32px] max-w-[424px]">
+            <p className="font-poppins font-[700] text-[16px] leading-[24px] text-[rgba(33,31,31,0.85)] mb-[32px] container [424px]">
 
               Our Board of Directors brings together a team of seasoned
               professionals, providing strategic direction and leadership. Their
@@ -41,7 +41,7 @@ export default function CaseStudyOutcome() {
             </p>
 
             {/* benefits */}
-            <div className="flex flex-col gap-[42px] max-w-[427px]">
+            <div className="flex flex-col gap-[42px] container [427px]">
               {benefits.map((b, i) => (
                 <div key={i}>
                   <h4 className="font-poppins font-[600] text-[18px] leading-[24px] text-[rgba(33,31,31,0.85)] mb-[4px]">

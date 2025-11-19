@@ -5,13 +5,13 @@ export default function CaseStudyAbout() {
   return (
     <section
       className="
-       w-full max-w-[984px] mt-[32px]
+       w-full container [984px] mt-[32px]
  
        px-[18px] lg:px-20 
 
       "
     >
-      
+
       <h2 className="font-poppins text-[32px]  leading-[40px]  tracking-[0.032px] font-[700] text-black mb-[12px] ">
         About The Project
       </h2>

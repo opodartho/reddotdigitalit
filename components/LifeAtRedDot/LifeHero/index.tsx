@@ -17,14 +17,14 @@ export const LifeHero = () => {
 
 
           {/* 🧠 Hero Content */}
-          <div className="flex flex-col items-start justify-center max-w-[675px]  mt-[34px] sm:mt-[38px]">
+          <div className="flex flex-col items-start justify-center container [675px]  mt-[34px] sm:mt-[38px]">
             {/* 🟥 Title */}
             <h1 className="font-poppins font-semibold text-[#060414] text-[30px] sm:text-[40px] leading-[45px] sm:leading-[48px] text-left">
               Life at RedDot
             </h1>
 
             {/* 🩶 Subtitle */}
-            <p className="text-[14px] sm:text-[18px] leading-[21px] sm:leading-[30px] text-[#121926] text-left mt-[14px] sm:mt-[12px] max-w-[675px]">
+            <p className="text-[14px] sm:text-[18px] leading-[21px] sm:leading-[30px] text-[#121926] text-left mt-[14px] sm:mt-[12px] container [675px]">
               We code, we create, we collaborate – and we love every bit of it.
             </p>
           </div>
@@ -52,7 +52,7 @@ export const LifeHero = () => {
 
         {/* 🧩 About Our Culture Section */}
         <div className="mt-[48px] sm:mt-[92px] text-center px-[16px] sm:px-[80px]">
-          <div className="max-w-[918px] mx-auto">
+          <div className="container [918px] mx-auto">
             <h2
               className="font-poppins font-bold text-[#060414]
                        text-[25px] sm:text-[32px]
@@ -66,7 +66,7 @@ export const LifeHero = () => {
               className="font-poppins font-normal text-[#121926]
                        text-[14px] sm:text-[16px]
                        leading-[21px] sm:leading-[30px]
-                       mx-auto max-w-[918px]"
+                       mx-auto container [918px]"
             >
               RedDot Digital Limited is a 100% subsidiary of Robi Axiata Limited, the
               second-largest mobile network operator in Bangladesh, offering IT and

@@ -110,13 +110,13 @@ export default function TrustedPartners() {
 
   return (
     <section className="pt-[100px] pb-auto bg-white">
-      <div className="max-w-7xl mx-auto px-2 sm:px-4">
+      <div className=" mx-auto px-2 sm:px-4">
         {/* Title */}
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-3xl font-semibold text-gray-900">
             Trusted by Partners
           </h2>
-          <p className="mt-4 text-base md:text-md text-gray-600 max-w-2xl mx-auto px-4">
+          <p className="mt-4 text-base md:text-md text-gray-600 container 2xl mx-auto px-4">
             Our cutting-edge Modular Data Center solutions enable to <br />
             protect mission-critical data.
           </p>
@@ -129,11 +129,10 @@ export default function TrustedPartners() {
               <button
                 key={tab.title}
                 onClick={() => setActiveTab(tab.title)}
-                className={`px-6 py-2 font-semibold rounded-xl border transition-colors ${
-                  activeTab === tab.title
-                    ? "border-red-500 bg-red-50 text-red-600"
-                    : "border-gray-300 bg-white text-gray-500 hover:bg-gray-50"
-                }`}
+                className={`px-6 py-2 font-semibold rounded-xl border transition-colors ${activeTab === tab.title
+                  ? "border-red-500 bg-red-50 text-red-600"
+                  : "border-gray-300 bg-white text-gray-500 hover:bg-gray-50"
+                  }`}
               >
                 {tab.title}
               </button>

@@ -23,12 +23,12 @@ export function ServiceWeServeTabs() {
       }}
     >
       {/* Title */}
-      <h2 className="mt-16 text-xl sm:text-3xl font-poppins font-regular max-w-xs sm:max-w-md text-center text-[#060414] text-title">
+      <h2 className="mt-16 text-xl sm:text-3xl font-poppins font-regular container xs sm:container md text-center text-[#060414] text-title">
         Service We Serve
       </h2>
 
       {/* Subtitle */}
-      <p className="mt-3 text-sm sm:text-base font-normal max-w-md sm:max-w-lg leading-relaxed text-center font-poppins text-[#060414] text-subtitle">
+      <p className="mt-3 text-sm sm:text-base font-normal container md sm:container lg leading-relaxed text-center font-poppins text-[#060414] text-subtitle">
         Our cutting-edge modular data center solution enabled to
         <br className="hidden sm:block" />
         protect mission-critical data.
@@ -40,7 +40,7 @@ export function ServiceWeServeTabs() {
         onValueChange={setActiveTab}
         className="mt-10 w-full flex flex-col items-center"
       >
-        <TabsList className="flex overflow-x-auto sm:overflow-visible justify-start sm:justify-center bg-white rounded-md w-full sm:w-auto max-w-full sm:max-w-[900px] h-[74px] px-3 py-4 gap-4 sm:gap-8 shadow-md">
+        <TabsList className="flex overflow-x-auto sm:overflow-visible justify-start sm:justify-center bg-white rounded-md w-full sm:w-auto container full sm:container [900px] h-[74px] px-3 py-4 gap-4 sm:gap-8 shadow-md">
           {staticServiceWeServeData.map((service) => (
             <TabsTrigger
               key={service.id}
@@ -58,7 +58,7 @@ export function ServiceWeServeTabs() {
             <TabsContent
               key={service.id}
               value={service.tab}
-              className="w-full max-w-6xl"
+              className="w-full container 6xl"
             >
               <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-8 sm:gap-10 w-full">
                 {/* Left Image */}
@@ -68,7 +68,7 @@ export function ServiceWeServeTabs() {
                     alt="Service"
                     width={530}
                     height={450}
-                    className="rounded-[16px] sm:rounded-[21px] object-cover w-full max-w-md sm:max-w-lg"
+                    className="rounded-[16px] sm:rounded-[21px] object-cover w-full container md sm:container lg"
                   />
                 </div>
 

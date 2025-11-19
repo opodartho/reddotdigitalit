@@ -15,7 +15,7 @@ const MoreCaseStudiesCarousel = ({ caseStudiesData }: MoreCaseStudiesCarouselPro
         More Case Studies
       </h2>
 
-      <div className="max-w-[1280px] mx-auto ">
+      <div className="container [1280px] mx-auto ">
         <CaseStudiesCarousel caseStudiesData={caseStudiesData} />
       </div>
     </section>

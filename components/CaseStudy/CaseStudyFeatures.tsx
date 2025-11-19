@@ -16,14 +16,14 @@ export default function CaseStudyFeatures() {
         Key Features Delivered
       </h3>
 
-      
-        {/* 🔹 Description */}
-        <p className="font-poppins font-[700] text-[16px] leading-[30px] text-[#000000] mb-[40px] max-w-[1280px]">
-          RedDot Digital Limited is a 100% subsidiary of Robi Axiata Limited,
-          the second-largest mobile network operator in Bangladesh, offering IT
-          and digital solutions. Network operator in Bangladesh, offering IT and
-          digital solutions.
-        </p>
+
+      {/* 🔹 Description */}
+      <p className="font-poppins font-[700] text-[16px] leading-[30px] text-[#000000] mb-[40px] container [1280px]">
+        RedDot Digital Limited is a 100% subsidiary of Robi Axiata Limited,
+        the second-largest mobile network operator in Bangladesh, offering IT
+        and digital solutions. Network operator in Bangladesh, offering IT and
+        digital solutions.
+      </p>
 
 
       {/* 🔹 Feature List */}

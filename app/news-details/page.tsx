@@ -15,7 +15,7 @@ export default async function Blogs() {
 
             {/* Container with 240px padding on each side for 1920px viewport */}
             <div className="lg:pl-[80px] pl-[16px] lg:pr-[80px] pr-[16px] lg:w-full">
-                <div className="lg:max-w-[1440px] w-full mx-auto">
+                <div className="max-w-[1440px] w-full mx-auto">
                     <Header newsDetailsData={NewsDetailsData} />
 
                     <div className="flex lg:gap-[104px] gap-0">

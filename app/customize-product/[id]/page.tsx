@@ -38,10 +38,10 @@ export default async function CustomizeProduct({ params }: { params: { id: strin
             <div className="pt-10 lg:pt-0">
                 <Header headerData={HeaderData} Id={params.id} />
             </div>
-            <div className="lg:pl-[80px] lg:pr-[80px] lg:flex-1 lg:flex-grow lg:pt-[90px] pt-[48px] pr-[80px]">
+            <div className="lg:pl-[80px] lg:pr-[80px] lg:flex-1 lg:flex-grow lg:pt-[0px] pt-[48px] pr-[80px]">
                 <AboutProject aboutProjectData={AboutProjectData} Id={params.id} />
             </div>
-            <div className="lg:pl-[80px] lg:pr-[80px] lg:flex-1 lg:pt-[114px] pt-[48px] pr-[16px]">
+            <div className="lg:pl-[80px] lg:pr-[80px] lg:flex-1 lg:pt-[60px] pt-[48px] pr-[16px]">
                 <KeyBenefits keyBenefitsData={KeyBenefitsData} Id={params.id} />
             </div>
             {solutionCoverageForProduct && (

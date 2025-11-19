@@ -48,7 +48,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({
 
   return (
     <div
-      className={`bg-[#F9F8FB] rounded-[16px] px-[16px] md:px-[35px] py-[62px] md:py-[57px] flex flex-col justify-start w-full max-w-[774px] ${className}`}
+      className={`bg-[#F9F8FB] rounded-[16px] px-[16px] md:px-[35px] py-[62px] md:py-[57px] flex flex-col justify-start w-full container [774px] ${className}`}
     >
       <form
         onSubmit={handleSubmit(onSubmit)}
@@ -74,11 +74,10 @@ export const ContactForm: React.FC<ContactFormProps> = ({
                 message: "Only letters and spaces allowed",
               },
             })}
-            className={`w-full h-[48px] border rounded-[6px] px-4 text-[14px] leading-[30px] text-[#121926] focus:outline-none focus:ring-1 bg-white transition-all duration-200 ${
-              errors.fullName
-                ? "border-[#E52445] focus:ring-[#E52445]"
-                : "border-[rgba(59,59,115,0.21)] focus:ring-blue-500"
-            }`}
+            className={`w-full h-[48px] border rounded-[6px] px-4 text-[14px] leading-[30px] text-[#121926] focus:outline-none focus:ring-1 bg-white transition-all duration-200 ${errors.fullName
+              ? "border-[#E52445] focus:ring-[#E52445]"
+              : "border-[rgba(59,59,115,0.21)] focus:ring-blue-500"
+              }`}
           />
           {errors.fullName && (
             <p className="text-[#E52445] text-[13px] mt-1">
@@ -103,11 +102,10 @@ export const ContactForm: React.FC<ContactFormProps> = ({
                   {...register("companyName", {
                     required: "Company name is required",
                   })}
-                  className={`w-full h-[48px] border rounded-[6px] px-4 text-[14px] leading-[30px] text-[#121926] focus:outline-none focus:ring-1 bg-white transition-all duration-200 ${
-                    errors.companyName
-                      ? "border-[#E52445] focus:ring-[#E52445]"
-                      : "border-[rgba(59,59,115,0.21)] focus:ring-blue-500"
-                  }`}
+                  className={`w-full h-[48px] border rounded-[6px] px-4 text-[14px] leading-[30px] text-[#121926] focus:outline-none focus:ring-1 bg-white transition-all duration-200 ${errors.companyName
+                    ? "border-[#E52445] focus:ring-[#E52445]"
+                    : "border-[rgba(59,59,115,0.21)] focus:ring-blue-500"
+                    }`}
                 />
                 {errors.companyName && (
                   <p className="text-[#E52445] text-[13px] mt-1">
@@ -131,11 +129,10 @@ export const ContactForm: React.FC<ContactFormProps> = ({
                       message: "Invalid email format",
                     },
                   })}
-                  className={`w-full h-[48px] border rounded-[6px] px-4 text-[14px] leading-[30px] text-[#121926] focus:outline-none focus:ring-1 bg-white transition-all duration-200 ${
-                    errors.email
-                      ? "border-[#E52445] focus:ring-[#E52445]"
-                      : "border-[rgba(59,59,115,0.21)] focus:ring-blue-500"
-                  }`}
+                  className={`w-full h-[48px] border rounded-[6px] px-4 text-[14px] leading-[30px] text-[#121926] focus:outline-none focus:ring-1 bg-white transition-all duration-200 ${errors.email
+                    ? "border-[#E52445] focus:ring-[#E52445]"
+                    : "border-[rgba(59,59,115,0.21)] focus:ring-blue-500"
+                    }`}
                 />
                 {errors.email && (
                   <p className="text-[#E52445] text-[13px] mt-1">
@@ -156,13 +153,12 @@ export const ContactForm: React.FC<ContactFormProps> = ({
                   {...register("service", {
                     required: "Please select a service",
                   })}
-                  className={`w-full h-[48px] border rounded-[6px] px-4 text-[14px] leading-[30px] text-[#121926] focus:outline-none focus:ring-1 bg-white transition-all duration-200 ${
-                    errors.service
-                      ? "border-[#E52445] focus:ring-[#E52445]"
-                      : "border-[rgba(59,59,115,0.21)] focus:ring-blue-500"
-                  }`}
+                  className={`w-full h-[48px] border rounded-[6px] px-4 text-[14px] leading-[30px] text-[#121926] focus:outline-none focus:ring-1 bg-white transition-all duration-200 ${errors.service
+                    ? "border-[#E52445] focus:ring-[#E52445]"
+                    : "border-[rgba(59,59,115,0.21)] focus:ring-blue-500"
+                    }`}
                 >
-                
+
                   <option value="MFS">MFS</option>
                   <option value="Cloud">Cloud</option>
                   <option value="ERP">ERP</option>
@@ -186,11 +182,10 @@ export const ContactForm: React.FC<ContactFormProps> = ({
                   {...register("budget", {
                     required: "Project budget is required",
                   })}
-                  className={`w-full h-[48px] border rounded-[6px] px-4 text-[14px] leading-[30px] text-[#121926] focus:outline-none focus:ring-1 bg-white transition-all duration-200 ${
-                    errors.budget
-                      ? "border-[#E52445] focus:ring-[#E52445]"
-                      : "border-[rgba(59,59,115,0.21)] focus:ring-blue-500"
-                  }`}
+                  className={`w-full h-[48px] border rounded-[6px] px-4 text-[14px] leading-[30px] text-[#121926] focus:outline-none focus:ring-1 bg-white transition-all duration-200 ${errors.budget
+                    ? "border-[#E52445] focus:ring-[#E52445]"
+                    : "border-[rgba(59,59,115,0.21)] focus:ring-blue-500"
+                    }`}
                 />
                 {errors.budget && (
                   <p className="text-[#E52445] text-[13px] mt-1">
@@ -218,11 +213,10 @@ export const ContactForm: React.FC<ContactFormProps> = ({
                     message: "Invalid email format",
                   },
                 })}
-                className={`w-full h-[48px] border rounded-[6px] px-4 text-[14px] leading-[30px] text-[#121926] focus:outline-none focus:ring-1 bg-white transition-all duration-200 ${
-                  errors.email
-                    ? "border-[#E52445] focus:ring-[#E52445]"
-                    : "border-[rgba(59,59,115,0.21)] focus:ring-blue-500"
-                }`}
+                className={`w-full h-[48px] border rounded-[6px] px-4 text-[14px] leading-[30px] text-[#121926] focus:outline-none focus:ring-1 bg-white transition-all duration-200 ${errors.email
+                  ? "border-[#E52445] focus:ring-[#E52445]"
+                  : "border-[rgba(59,59,115,0.21)] focus:ring-blue-500"
+                  }`}
               />
               {errors.email && (
                 <p className="text-[#E52445] text-[13px] mt-1">
@@ -250,11 +244,10 @@ export const ContactForm: React.FC<ContactFormProps> = ({
                     message: "Invalid phone number",
                   },
                 })}
-                className={`w-full h-[48px] border rounded-[6px] px-4 text-[14px] leading-[30px] text-[#121926] focus:outline-none focus:ring-1 bg-white transition-all duration-200 ${
-                  errors.phone
-                    ? "border-[#E52445] focus:ring-[#E52445]"
-                    : "border-[rgba(59,59,115,0.21)] focus:ring-blue-500"
-                }`}
+                className={`w-full h-[48px] border rounded-[6px] px-4 text-[14px] leading-[30px] text-[#121926] focus:outline-none focus:ring-1 bg-white transition-all duration-200 ${errors.phone
+                  ? "border-[#E52445] focus:ring-[#E52445]"
+                  : "border-[rgba(59,59,115,0.21)] focus:ring-blue-500"
+                  }`}
               />
               {errors.phone && (
                 <p className="text-[#E52445] text-[13px] mt-1">
@@ -276,11 +269,10 @@ export const ContactForm: React.FC<ContactFormProps> = ({
             {...register("description", {
               required: "Description is required",
             })}
-            className={`w-full border rounded-[6px] px-4 py-2 text-[14px] leading-[30px] text-[#121926] resize-none focus:outline-none focus:ring-1 bg-white transition-all duration-200 ${
-              errors.description
-                ? "border-[#E52445] focus:ring-[#E52445]"
-                : "border-[rgba(59,59,115,0.21)] focus:ring-blue-500"
-            }`}
+            className={`w-full border rounded-[6px] px-4 py-2 text-[14px] leading-[30px] text-[#121926] resize-none focus:outline-none focus:ring-1 bg-white transition-all duration-200 ${errors.description
+              ? "border-[#E52445] focus:ring-[#E52445]"
+              : "border-[rgba(59,59,115,0.21)] focus:ring-blue-500"
+              }`}
           />
           {errors.description && (
             <p className="text-[#E52445] text-[13px] mt-1">

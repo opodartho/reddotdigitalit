@@ -75,11 +75,11 @@ export const TestimonialCarousel: React.FC<CarouselProps> = ({
         <div className="embla__container">
           {testimonials.map((testimonial) => (
             <div
-              className="lg:embla__slide md:embla__slide_mobile basis-[44.44%]  px-2 "
+              className="lg:embla__slide md:embla__slide_mobile basis-[44.44%] lg:px-2"
               key={testimonial.id}
             >
               <div
-                className="lg:embla__slide md:embla__slide_mobile basis-[44.44%] px-2"
+                className="lg:embla__slide md:embla__slide_mobile basis-[44.44%] lg:px-2"
                 key={testimonial.id}
               >
                 <div

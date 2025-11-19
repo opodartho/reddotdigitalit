@@ -11,7 +11,7 @@ export const HeaderData: HeaderItem={
     images: [
         {imageUrl: '/images/board_of_directors.svg', link:'/board-of-directors'},
     {imageUrl: '/images/management_council.svg', link:'/management-council'},
-    {imageUrl: '/images/life_of_reddot.svg', link:''},
+    {imageUrl: '/images/life_of_reddot.svg', link:'/Life_At_RedDot'},
     {imageUrl: '/images/our_policy.svg', link:'/privacy-policy'},
     {imageUrl: '/images/whistleblow.svg', link:'/speak-up'}
     ]

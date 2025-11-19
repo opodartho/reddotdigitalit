@@ -45,7 +45,7 @@ export function BlogCarousel({ newsListData }: ProductCarouselProps) {
     }, [api]);
 
     return (
-        <div className="relative z-10 w-full ">
+        <div className="relative z-10 w-full h-[720px]">
 
             <p className="text-[40px] lg:pl-[80px] pl-[41px] pt-[42px] lg:pr-[80px] lg:pt-[64px] font-bold">Related Blogs</p>
             <Carousel
@@ -70,7 +70,7 @@ export function BlogCarousel({ newsListData }: ProductCarouselProps) {
                                     <CardDescription className="text-[14px] pl-[10px] pr-[43px] pt-[20px]">
                                         {slide.description}
                                     </CardDescription>
-                                    <RedButton variant={"link"} className="text-start w-[96.2px] pl-[3px]">Read More </RedButton>
+                                    <RedButton  className="text-start w-[96.2px] pl-[3px]">Read More </RedButton>
                                 </CardHeader>
                             </Card>
                         </CarouselItem>

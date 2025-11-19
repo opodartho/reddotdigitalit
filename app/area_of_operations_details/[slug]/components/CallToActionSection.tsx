@@ -37,20 +37,20 @@ export default function CallToActionSection({
       <div className="w-full flex justify-center items-center overflow-hidden bg-white 
                  bg-no-repeat bg-cover bg-center 
                  rounded-[24px] lg:rounded-[48px] 
-                 mx-auto max-w-[1299px] py-[50px]  lg:py-[120px] px-[22px] lg:px-[133px] 
+                 mx-auto container py-[50px]  lg:py-[120px] px-[22px] lg:px-[133px] 
                  transition-all duration-500"
-      style={{
-        backgroundImage: `url('${bgImage}')`,
-      }}
-    >
-      {/* 🌿 Text + Button */}
-      <div className="relative z-10 flex flex-col items-center justify-center text-center max-w-[948px]">
-        <h2 className="text-[28px] sm:text-[32px] md:text-[40px] font-bold text-[#060414] leading-[38px] sm:leading-[44px] mb-[38px] lg:mb-4">
-         {title}
-        </h2>
-        <p className="text-[15px] sm:text-[16px] leading-[28px] sm:leading-[30px] text-[#121926] mb-[38px] lg:mb-[50px]  max-w-[900px]">
-        {description}
-        </p>
+        style={{
+          backgroundImage: `url('${bgImage}')`,
+        }}
+      >
+        {/* 🌿 Text + Button */}
+        <div className="relative z-10 flex flex-col items-center justify-center text-center container">
+          <h2 className="text-[28px] sm:text-[32px] md:text-[40px] font-bold text-[#060414] leading-[38px] sm:leading-[44px] mb-[38px] lg:mb-4">
+            {title}
+          </h2>
+          <p className="text-[15px] sm:text-[16px] leading-[28px] sm:leading-[30px] text-[#121926] mb-[38px] lg:mb-[50px]  container">
+            {description}
+          </p>
           {/* CTA Button (Reused from UI library) */}
           <Button
             variant="default"
@@ -62,7 +62,7 @@ export default function CallToActionSection({
           >
             Schedule a Call <ArrowRight className="w-4 h-4" />
           </Button>
-      </div>
+        </div>
       </div>
     </section>
   );

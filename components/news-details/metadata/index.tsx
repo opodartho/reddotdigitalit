@@ -1,9 +1,9 @@
 // MetaData.tsx - No changes needed
 import { NewsDetailsItem, newsDetailsData } from "@/lib/data/news-details/newsDetailsData";
-type NewsDetailsProps={
+type NewsDetailsProps = {
     newsDetailsData: NewsDetailsItem
 }
-export default function MetaData({newsDetailsData}: NewsDetailsProps) {
+export default function MetaData({ newsDetailsData }: NewsDetailsProps) {
     return (
         <>
             <div className="lg:block hidden lg:flex-col sticky top-30 lg:pt-[64px] lg:pl-[24px] lg:w-[197px]">
@@ -34,7 +34,7 @@ export default function MetaData({newsDetailsData}: NewsDetailsProps) {
 
                 <div className="lg:flex lg:flex-col pt-[44px]">
                     <p className="font-semibold text-[16px]">Share</p>
-                    <div className="lg:flex lg:flex-row lg:flex-wrap lg:gap-[12px] lg:pt-[6px] text-[14px] lg:max-w-[190px]">
+                    <div className="lg:flex lg:flex-row lg:flex-wrap lg:gap-[12px] lg:pt-[6px] text-[14px] lg:container [190px]">
                         {newsDetailsData.share.map((p, index) => (<div key={index}><img src={p} /></div>))}
                     </div>
                 </div>

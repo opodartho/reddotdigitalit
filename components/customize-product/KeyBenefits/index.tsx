@@ -39,7 +39,7 @@ export default function KeyBenefits({ keyBenefitsData, Id }: KeyBenefitsProps) {
               />
               <div className="flex flex-col">
                 <p className="text-[16px] font-semibold text-title">{benefit.title}</p>
-                <p className="lg:mt-[10px] text-subtitle mt-[4px] text-[12px] lg:w-[264px] line-clamp-3">
+                <p className="lg:mt-[10px] text-subtitle mt-[4px] text-[12px]  line-clamp-3">
                   {benefit.description}
                 </p>
               </div>

@@ -10,55 +10,55 @@ export const ContactSection = () => {
   const controls = useAnimationControls();
 
   // ✨ Custom loop animation logic
-useEffect(() => {
-  const sequence = async () => {
-    while (true) {
-      // Step 1: Reset visibility
-      await controls.start({
-        opacity: 0,
-        transition: { duration: 0 },
-      });
-
-      // Step 2: Animate words one by one
-      for (let i = 0; i < title.length; i++) {
-        await controls.start((index) => {
-          if (index <= i) {
-            return {
-              opacity: 1,
-              y: 0,
-              transition: { duration: 0.5, ease: "easeOut" },
-            };
-          }
-          return {};
+  useEffect(() => {
+    const sequence = async () => {
+      while (true) {
+        // Step 1: Reset visibility
+        await controls.start({
+          opacity: 0,
+          transition: { duration: 0 },
         });
+
+        // Step 2: Animate words one by one
+        for (let i = 0; i < title.length; i++) {
+          await controls.start((index) => {
+            if (index <= i) {
+              return {
+                opacity: 1,
+                y: 0,
+                transition: { duration: 0.5, ease: "easeOut" },
+              };
+            }
+            return {};
+          });
+        }
+
+        // Step 3: Pause
+        await new Promise((r) => setTimeout(r, 1000));
+
+        // Step 4: Fade out entire line
+        await controls.start({
+          opacity: 0,
+          y: -10,
+          transition: { duration: 0.8, ease: "easeInOut" },
+        });
+
+        // Step 5: Wait before restart
+        await new Promise((r) => setTimeout(r, 300));
       }
+    };
 
-      // Step 3: Pause
-      await new Promise((r) => setTimeout(r, 1000));
-
-      // Step 4: Fade out entire line
-      await controls.start({
-        opacity: 0,
-        y: -10,
-        transition: { duration: 0.8, ease: "easeInOut" },
-      });
-
-      // Step 5: Wait before restart
-      await new Promise((r) => setTimeout(r, 300));
-    }
-  };
-
-  // 🔥 KEY FIX: Run AFTER mount
-  setTimeout(() => {
-    sequence();
-  }, 0);
-}, [controls]);
+    // 🔥 KEY FIX: Run AFTER mount
+    setTimeout(() => {
+      sequence();
+    }, 0);
+  }, [controls]);
 
   return (
     <section className="relative w-full bg-white">
       <div className="px-[16px] sm:px-[80px] flex flex-col lg:flex-row justify-between items-start gap-12">
         {/* 🧭 Left Info Section */}
-        <div className="flex flex-col justify-start max-w-[291px] sm:max-w-[420px]">
+        <div className="flex flex-col justify-start container">
           {/* ✨ Animated Looping Heading */}
           <h2 className="text-[25px] md:text-[32px] font-normal text-[#060414] leading-[40px] mb-4 md:mb-6 flex flex-wrap">
             {title.map((word, index) => (

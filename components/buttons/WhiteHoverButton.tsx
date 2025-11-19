@@ -11,7 +11,7 @@ export function WhiteHoverButton({
   return (
     <button
       className={cn(
-        "group relative cursor-pointer overflow-hidden border p-2 px-6 h-[56px] lg:max-w-[220px] w-[358px] text-center font-semibold",
+        "group relative cursor-pointer overflow-hidden border p-2 h-[56px] text-center font-semibold",
         className
       )}
       {...props}
@@ -44,7 +44,7 @@ export default function WhiteButton({ children, className }: ButtonProps) {
   return (
     <WhiteHoverButton
       className={cn(
-        "bg-[#E52445] text-white flex items-center justify-center h-[56px] rounded-md py-3 px-6 md:py-6 md:px-10",
+        "bg-[#E52445] text-white flex items-center justify-center h-[56px] rounded-md py-3 md:py-6",
         className || ""
       )}
     >

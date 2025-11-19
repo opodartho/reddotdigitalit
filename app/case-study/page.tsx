@@ -12,7 +12,7 @@ import CaseStudyOutcome from "@/components/CaseStudy/CaseStudyOutcome"
 import CaseStudyTestimonials from "@/components/CaseStudy/CaseStudyTestimonials"
 import MoreCaseStudiesCarousel from "@/components/CaseStudy/MoreCaseStudiesCarousel";
 import { staticCaseStudiesData } from "@/lib/data/caseStudiesData";
-  
+
 
 
 export default function CaseStudyPage() {
@@ -58,21 +58,21 @@ export default function CaseStudyPage() {
         <CaseStudyTechnology />
       </section>
 
-       {/*8️⃣OutCome*/} 
+      {/*8️⃣OutCome*/}
       <section className="w-full ">
         <CaseStudyOutcome />
       </section>
 
-      {/*9️⃣ Testimonials*/} 
+      {/*9️⃣ Testimonials*/}
       <section className="w-full ">
-        < CaseStudyTestimonials/>
+        < CaseStudyTestimonials />
       </section>
 
 
 
       {/*  More Case Studies Carousel */}
       <section className="w-full ">
-         <MoreCaseStudiesCarousel caseStudiesData={staticCaseStudiesData} />
+        <MoreCaseStudiesCarousel caseStudiesData={staticCaseStudiesData} />
       </section>
 
       {/* 9️⃣ Call To Action */}
@@ -80,11 +80,11 @@ export default function CaseStudyPage() {
         <CaseStudyCTA />
       </section>
 
-   
+
     </main>
   );
 }
 
 
 
-/* removed all the max-w-[1280px] mx-auto and replace with  px-[18px] lg:px-20 */
+/* removed all the container [1280px] mx-auto and replace with  px-[18px] lg:px-20 */

@@ -133,7 +133,7 @@ export default function AreaOfOperations({ sections }: AreaOfOperationsProps) {
                 ref={wrapperRef}               // ← moved here
       style={{height: "100vh", overflow: "hidden" }} 
         
-        className="flex flex-col lg:flex-row justify-between items-start h-full ">
+        className="flex flex-col lg:flex-row items-start h-full lg:justify-center lg:gap-[250px]">
           {/* LEFT TIMELINE */}
           <div
             className="relative hidden lg:block pt-1.5"

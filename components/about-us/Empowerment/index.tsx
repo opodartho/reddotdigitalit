@@ -1,10 +1,10 @@
 import { EmpowermentItem } from "@/lib/data/about-us/Empowerment";
 import Image from "next/image";
 
-type EmpowermentProps={
+type EmpowermentProps = {
     empowermentData: EmpowermentItem
 }
-export default function Empowerment({empowermentData}: EmpowermentProps) {
+export default function Empowerment({ empowermentData }: EmpowermentProps) {
 
     const missions = [
         { title: 'Our Mission', description: 'We are dedicated to establish dynamic changes with quality products and services. Our efforts involve establishing a high level of customer benefits with unquestionable methods and ethical approaches.' },
@@ -14,8 +14,8 @@ export default function Empowerment({empowermentData}: EmpowermentProps) {
     return (
         <>
             <div className="w-full">
-                <div className=" lg:w-full w-[358px] lg:ml-[0px] ml-[16px] lg:h-[869px] h-auto lg:relative mt-[114px]" style={{ backgroundImage: "url('/images/Background.png')" }}>
-                    <p className="lg:pb-[68px]  lg:pt-[75px] pt-[15px] lg:text-[32px] text-[25px] font-medium max-w-[1276px] lg:pl-[80px] pl-[15px]">{empowermentData.title}</p>
+                <div className=" lg:w-full w-full lg:ml-[0px] lg:h-[869px] h-auto lg:relative mt-[114px]" style={{ backgroundImage: "url('/images/Background.png')" }}>
+                    <p className="lg:pb-[68px]  lg:pt-[75px] pt-[15px] lg:text-[32px] text-[25px] font-medium [1276px] lg:pl-[80px] pl-[15px]">{empowermentData.title}</p>
 
                     <div className="lg:flex lg:pl-[80px]  pl-[15px] pr-[15px] gap-[88px] lg:pt-[58px] pt-[111px]">
                         <div className="flex flex-col gap-[12px] flex-shrink-0">

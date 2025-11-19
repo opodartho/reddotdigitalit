@@ -14,7 +14,7 @@ export default function CaseStudyTestimonials() {
         </h3>
 
         {/* 🔹 Subheading */}
-        <p className="text-[16px] font-[400] leading-[30px] text-[#000000] mb-[51px] max-w-[948px]">
+        <p className="text-[16px] font-[400] leading-[30px] text-[#000000] mb-[51px] container [948px]">
           RedDot Digital Limited is a 100% subsidiary of Robi Axiata Limited, the
           second-largest mobile network operator in Bangladesh, offering IT and
           digital solutions.
@@ -26,7 +26,7 @@ export default function CaseStudyTestimonials() {
           <div className="w-[40px] h-[40px] rounded-full bg-[#A5A5A5] mb-[36px]" />
 
           {/* Testimonial text */}
-          <p className="text-[14px] font-[400] leading-[26px] text-[#000000] max-w-[1209px] mb-[16px] ">
+          <p className="text-[14px] font-[400] leading-[26px] text-[#000000] container [1209px] mb-[16px] ">
             RedDot Digital Limited is a 100% subsidiary of Robi Axiata Limited,
             the second-largest mobile network operator in Bangladesh, offering IT
             and digital solutions. RedDot Digital Limited is a 100% subsidiary of

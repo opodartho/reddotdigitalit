@@ -15,7 +15,7 @@ const FooterColumn = ({ column }: FooterColumnProps) => {
 
       {/* Render simple text content */}
       {column.content && (
-        <p className="text-gray-950 font-normal text-[14px] leading-[22px] tracking-[0px] w-[300px] text-subtitle">
+        <p className="text-gray-950 font-normal text-[14px] leading-[22px] tracking-[0px] text-subtitle">
           {column.content}
         </p>
       )}

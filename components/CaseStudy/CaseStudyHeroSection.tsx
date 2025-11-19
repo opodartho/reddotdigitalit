@@ -52,7 +52,7 @@ export default function CaseStudyHeroSection() {
           className="
             text-[#211F1F] font-[600] font-poppins
             text-[40px] leading-[48px]
-            max-w-[623px]
+            container [623px]
            
           "
         >

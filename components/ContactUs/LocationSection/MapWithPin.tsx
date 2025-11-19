@@ -39,7 +39,7 @@ const AlwaysOpenPopup = ({
 
 const MapWithPin: React.FC = () => {
   return (
-    <div className="relative w-full w-[357px] lg:max-w-[634px] h-[272px] sm:h-[350px] lg:h-[483px] overflow-hidden rounded-[16px]">
+    <div className="relative w-full w-[357px] lg:container [634px] h-[272px] sm:h-[350px] lg:h-[483px] overflow-hidden rounded-[16px]">
       <MapContainer
         center={[23.92, 90.32]} // Center between Gulshan & Gazipur
         zoom={9.5}
