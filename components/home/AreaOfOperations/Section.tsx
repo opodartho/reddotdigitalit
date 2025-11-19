@@ -19,7 +19,7 @@ export default function AreaOfOperations({ sections }: AreaOfOperationsProps) {
   // Store which section is currently active
   const [activeId, setActiveId] = useState<string>(sections[0].id);
 
-  // ⭐ INTERSECTION OBSERVER — detects active section like Stripe
+  // INTERSECTION OBSERVER — detects active section like Stripe
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -68,25 +68,25 @@ export default function AreaOfOperations({ sections }: AreaOfOperationsProps) {
         {/* LEFT COLUMN — Sticky */}
 
     {/* LEFT COLUMN — Sticky */}
-<div className="hidden lg:flex flex-col sticky top-[140px] h-fit min-w-[250px] relative">
+<div className="hidden lg:flex flex-col sticky top-[190px] mt-[24px] h-fit min-w-[250px] relative">
 
   {/* === Grey Full Line === */}
   <div
-    className="absolute left-[7px] top-[6px] w-[2px] bg-gray-300"
-    style={{ height: `${sections.length * 44}px` }}
+    className="absolute left-[5px] top-[-6px] w-[2px] bg-gray-300"
+    style={{ height: `${sections.length * 48}px` }}
   ></div>
 
   {/* === Red Progress Line (visited) === */}
   <div
-    className="absolute left-[7px] top-[6px] w-[2px] bg-red-500 transition-all duration-500"
+    className="absolute left-[5px] top-[-6px] w-[2px] bg-red-500 transition-all duration-500"
     style={{
-      height: `${(activeIndex + 1) * 44}px`
+      height: `${(activeIndex + 1) * 48}px`
     }}
   ></div>
 
   {/* === Dots + Labels === */}
   {sections.map((section, i) => {
-    const isVisited = i <= activeIndex;   // 👈 KEY FIX
+    const isVisited = i <= activeIndex;   // 
 
     return (
       <div key={section.id} className="flex items-center mb-6 relative">
