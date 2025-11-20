@@ -33,27 +33,26 @@ export function NavBar() {
       if (window.innerWidth >= 768) setIsMobileMenuOpen(false);
     };
     
-    // In your NavBar component, replace the handleScroll function with:
-const handleScroll = () => {
-  // Method 1: Look for specific hero section by ID
-  const heroSection = document.getElementById('hero-section');
-  
-  // Method 2: Look for specific class
-  const heroByClass = document.querySelector('.hero-section');
-  
-  // Method 3: First section of main
-  const firstMainSection = document.querySelector('main section:first-child');
-  
-  const targetSection = heroSection || heroByClass || firstMainSection;
-  
-  if (targetSection) {
-    const sectionBottom = targetSection.getBoundingClientRect().bottom;
-    setIsScrolled(sectionBottom <= -1);
-  } else {
-    // Fallback to viewport height
-    setIsScrolled(window.scrollY > window.innerHeight);
-  }
-};
+    const handleScroll = () => {
+      // Method 1: Look for specific hero section by ID
+      const heroSection = document.getElementById('hero-section');
+      
+      // Method 2: Look for specific class
+      const heroByClass = document.querySelector('.hero-section');
+      
+      // Method 3: First section of main
+      const firstMainSection = document.querySelector('main section:first-child');
+      
+      const targetSection = heroSection || heroByClass || firstMainSection;
+      
+      if (targetSection) {
+        const sectionBottom = targetSection.getBoundingClientRect().bottom;
+        setIsScrolled(sectionBottom <= -10);
+      } else {
+        // Fallback to viewport height
+        setIsScrolled(window.scrollY > window.innerHeight);
+      }
+    };
 
     window.addEventListener("resize", handleResize);
     window.addEventListener("scroll", handleScroll);
@@ -80,8 +79,10 @@ const handleScroll = () => {
       <div className="lg:flex lg:justify-center sticky lg:top-6 z-1000">
         <div className="absolute bg-transparent top-0 lg:flex lg:justify-center lg:items-center z-100 pt-[22px] w-full">
           <nav className={cn(
-            "z-1000 top-0 lg:w-[1440px] h-[76px] rounded-4xl bg-transparent backdrop-blur-2xl opacity-100 border-b border-white/20 shadow-[0_4px_29px_rgba(0,0,0,0.05)] transition-all duration-300",
-            isScrolled ? "backdrop-blur-2xl" : "bg-transparent"
+            "z-1000 top-0 lg:w-[1440px] h-[76px] rounded-4xl backdrop-blur-2xl opacity-100 border-b shadow-[0_4px_29px_rgba(0,0,0,0.05)] transition-all duration-300",
+            isScrolled 
+              ? "bg-white/95 border-gray-200/50"  // White background with blur when scrolled
+              : "bg-transparent border-white/20"  // Transparent with white border on hero
           )}>
             <div className="flex h-full items-center justify-between px-4 md:px-10 lg:px-[80px]">
               <Link href="/" onClick={scrollToTop} className="flex-shrink-0 relative lg:right-16">
@@ -92,7 +93,7 @@ const handleScroll = () => {
                   height={40}
                   className={cn(
                     "cursor-pointer transition-all duration-300",
-                    isScrolled ? "filter-none" : "brightness-0 invert"
+                    
                   )}
                 />
               </Link>
