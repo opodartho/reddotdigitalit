@@ -45,7 +45,7 @@ export default async function RootLayout({
         suppressHydrationWarning
       >
         <NavBar />
-        <main>{children}</main>
+        <main className="lg:overflow-x-visible overflow-x-hidden">{children}</main>
         <Footer />
         <BackToTop />
       </body>
