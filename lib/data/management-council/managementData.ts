@@ -46,7 +46,7 @@ export const managementData: Management={
 {
     id: 5,
     imageUrl:'/images/director5.svg',
-    name:'Mohammad Yeakub',
+    name:'Tasnuva Amreen Zaman',
     role:'Chief Platform Officer',
     description:'Hasib Mustabsir joined RedDot Digital Limited as Chief Executive Officer (CEO) in October 2021.'
 }
