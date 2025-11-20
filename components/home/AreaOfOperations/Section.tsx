@@ -32,7 +32,7 @@ export default function AreaOfOperations({ sections }: AreaOfOperationsProps) {
       },
       {
         threshold: 0.4,
-        rootMargin: "-10% 0px -10% 0px",
+        rootMargin: "50% 0px 50% 0px",
       }
     );
 
@@ -44,9 +44,9 @@ export default function AreaOfOperations({ sections }: AreaOfOperationsProps) {
     return () => observer.disconnect();
   }, []);
 
- const activeIndex = sections.findIndex((s) => s.id === activeId);
+  const activeIndex = sections.findIndex((s) => s.id === activeId);
 
- 
+
 
   return (
     <section className="bg-gradient-to-r from-pink-50 via-white to-orange-50 pt-[110px] pb-[110px]">
@@ -63,53 +63,51 @@ export default function AreaOfOperations({ sections }: AreaOfOperationsProps) {
       </div>
 
       {/* MAIN WRAPPER — Stripe Style */}
-      <div className="px-[16px] sm:px-[80px] flex flex-col lg:flex-row justify-between gap-12">
+      <div className="px-[16px] sm:px-[80px] flex flex-col lg:flex-row items-start h-full lg:justify-center lg:gap-[250px]">
 
         {/* LEFT COLUMN — Sticky */}
 
-    {/* LEFT COLUMN — Sticky */}
-<div className="hidden lg:flex flex-col sticky top-[190px] mt-[24px] h-fit min-w-[250px] relative">
+        {/* LEFT COLUMN — Sticky */}
+        <div className="hidden lg:flex flex-col sticky top-[180px] mt-[24px] min-w-[250px] relative">
 
-  {/* === Grey Full Line === */}
-  <div
-    className="absolute left-[5px] top-[-6px] w-[2px] bg-gray-300"
-    style={{ height: `${sections.length * 48}px` }}
-  ></div>
+          {/* === Grey Full Line === */}
+          <div
+            className="absolute left-[5px] top-[-6px] w-[2px] bg-gray-300"
+            style={{ height: `${sections.length * 96}px` }}
+          ></div>
 
-  {/* === Red Progress Line (visited) === */}
-  <div
-    className="absolute left-[5px] top-[-6px] w-[2px] bg-red-500 transition-all duration-500"
-    style={{
-      height: `${(activeIndex + 1) * 48}px`
-    }}
-  ></div>
+          {/* === Red Progress Line (visited) === */}
+          <div
+            className="absolute left-[5px] top-[-6px] w-[2px] bg-red-500 transition-all duration-500"
+            style={{
+              height: `${(activeIndex + 1) * 96}px`
+            }}
+          ></div>
 
-  {/* === Dots + Labels === */}
-  {sections.map((section, i) => {
-    const isVisited = i <= activeIndex;   // 
+          {/* === Dots + Labels === */}
+          {sections.map((section, i) => {
+            const isVisited = i <= activeIndex;   // 
 
-    return (
-      <div key={section.id} className="flex items-center mb-6 relative">
-        
-        {/* Dot */}
-        <div
-          className={`h-3 w-3 rounded-full mr-3 transition-all ${
-            isVisited ? "bg-red-500" : "bg-white border border-gray-400"
-          }`}
-        ></div>
+            return (
+              <div key={section.id} className="flex items-center mb-20 relative">
 
-        {/* Label */}
-        <p
-          className={`transition-all ${
-            isVisited ? "text-red-500 font-semibold" : "text-gray-400"
-          }`}
-        >
-          {section.area_name}
-        </p>
-      </div>
-    );
-  })}
-</div>
+                {/* Dot */}
+                <div
+                  className={`h-3 w-3 rounded-full mr-3 transition-all ${isVisited ? "bg-red-500" : "bg-white border border-gray-400"
+                    }`}
+                ></div>
+
+                {/* Label */}
+                <p
+                  className={`transition-all ${isVisited ? "text-red-500 font-semibold" : "text-gray-400"
+                    }`}
+                >
+                  {section.area_name}
+                </p>
+              </div>
+            );
+          })}
+        </div>
 
 
         {/* RIGHT COLUMN — Natural Page Scroll */}
