@@ -2,7 +2,6 @@
 
 import React, { useState } from "react";
 import Autoplay from "embla-carousel-autoplay";
-import { ProductSolutionItem } from "@/lib/data/productSolutionData";
 import {
     Carousel,
     CarouselContent,

@@ -100,7 +100,7 @@ export const TestimonialCarousel: React.FC<CarouselProps> = ({
                   </blockquote>
 
                   <div className="mt-[34px] pl-[10px]">
-                  <div className="fixed w-[574px] bottom-12 lg:mt-[0px]">
+                  <div className="absolute w-[574px] bottom-12 lg:mt-[0px]">
                     <Image
                       src={testimonial.logoSrc}
                       alt={`${testimonial.company} Logo`}

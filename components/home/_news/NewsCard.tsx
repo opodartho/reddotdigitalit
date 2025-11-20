@@ -4,11 +4,14 @@ import React from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { NewsItem } from "@/lib/data/newsData";
+import { useRouter } from 'next/navigation'
 import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
 
 type NewsCardProps = Omit<NewsItem, "id">;
 
 export function NewsCard({ imageUrl, title, description }: NewsCardProps) {
+
+  const router= useRouter()
   return (
     <CardContainer className="w-full cursor-pointer">
       <CardBody className="relative w-full h-full [transform-style:preserve-3d] bg-white rounded-xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300">
@@ -44,7 +47,7 @@ export function NewsCard({ imageUrl, title, description }: NewsCardProps) {
                 {description}
               </p>
             </div>
-            <div className="-mt-[10px] self-start">
+            <div className="-mt-[10px] self-start" onClick={()=>{router.push('/news-details')}}>
               <Button variant="link">Read More »</Button>
             </div>
           </div>

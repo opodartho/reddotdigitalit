@@ -47,7 +47,7 @@ export function BlogCarousel({ newsListData }: ProductCarouselProps) {
     return (
         <div className="relative z-10 w-full h-[720px]">
 
-            <p className="text-[40px] lg:pl-[80px] pl-[41px] pt-[42px] lg:pr-[80px] lg:pt-[64px] font-bold">Related Blogs</p>
+            <p className="text-[40px] lg:pl-[80px] pl-[41px] pt-[42px] lg:pr-[80px] lg:pt-[64px] font-bold">Related Events</p>
             <Carousel
                 className="w-full pt-[44px]"
                 setApi={setApi}
