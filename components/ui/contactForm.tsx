@@ -3,6 +3,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
+import WhiteButton from "../buttons/WhiteHoverButton";
 
 interface ContactFormProps {
   buttonText?: string;
@@ -75,8 +76,8 @@ export const ContactForm: React.FC<ContactFormProps> = ({
               },
             })}
             className={`w-full h-[48px] border rounded-[6px] px-4 text-[14px] leading-[30px] text-[#121926] focus:outline-none focus:ring-1 bg-white transition-all duration-200 ${errors.fullName
-              ? "border-[#E52445] focus:ring-[#E52445]"
-              : "border-[rgba(59,59,115,0.21)] focus:ring-blue-500"
+                ? "border-[#E52445] focus:ring-[#E52445]"
+                : "border-[rgba(59,59,115,0.21)] focus:ring-blue-500"
               }`}
           />
           {errors.fullName && (
@@ -103,8 +104,8 @@ export const ContactForm: React.FC<ContactFormProps> = ({
                     required: "Company name is required",
                   })}
                   className={`w-full h-[48px] border rounded-[6px] px-4 text-[14px] leading-[30px] text-[#121926] focus:outline-none focus:ring-1 bg-white transition-all duration-200 ${errors.companyName
-                    ? "border-[#E52445] focus:ring-[#E52445]"
-                    : "border-[rgba(59,59,115,0.21)] focus:ring-blue-500"
+                      ? "border-[#E52445] focus:ring-[#E52445]"
+                      : "border-[rgba(59,59,115,0.21)] focus:ring-blue-500"
                     }`}
                 />
                 {errors.companyName && (
@@ -130,8 +131,8 @@ export const ContactForm: React.FC<ContactFormProps> = ({
                     },
                   })}
                   className={`w-full h-[48px] border rounded-[6px] px-4 text-[14px] leading-[30px] text-[#121926] focus:outline-none focus:ring-1 bg-white transition-all duration-200 ${errors.email
-                    ? "border-[#E52445] focus:ring-[#E52445]"
-                    : "border-[rgba(59,59,115,0.21)] focus:ring-blue-500"
+                      ? "border-[#E52445] focus:ring-[#E52445]"
+                      : "border-[rgba(59,59,115,0.21)] focus:ring-blue-500"
                     }`}
                 />
                 {errors.email && (
@@ -154,8 +155,8 @@ export const ContactForm: React.FC<ContactFormProps> = ({
                     required: "Please select a service",
                   })}
                   className={`w-full h-[48px] border rounded-[6px] px-4 text-[14px] leading-[30px] text-[#121926] focus:outline-none focus:ring-1 bg-white transition-all duration-200 ${errors.service
-                    ? "border-[#E52445] focus:ring-[#E52445]"
-                    : "border-[rgba(59,59,115,0.21)] focus:ring-blue-500"
+                      ? "border-[#E52445] focus:ring-[#E52445]"
+                      : "border-[rgba(59,59,115,0.21)] focus:ring-blue-500"
                     }`}
                 >
 
@@ -183,8 +184,8 @@ export const ContactForm: React.FC<ContactFormProps> = ({
                     required: "Project budget is required",
                   })}
                   className={`w-full h-[48px] border rounded-[6px] px-4 text-[14px] leading-[30px] text-[#121926] focus:outline-none focus:ring-1 bg-white transition-all duration-200 ${errors.budget
-                    ? "border-[#E52445] focus:ring-[#E52445]"
-                    : "border-[rgba(59,59,115,0.21)] focus:ring-blue-500"
+                      ? "border-[#E52445] focus:ring-[#E52445]"
+                      : "border-[rgba(59,59,115,0.21)] focus:ring-blue-500"
                     }`}
                 />
                 {errors.budget && (
@@ -214,8 +215,8 @@ export const ContactForm: React.FC<ContactFormProps> = ({
                   },
                 })}
                 className={`w-full h-[48px] border rounded-[6px] px-4 text-[14px] leading-[30px] text-[#121926] focus:outline-none focus:ring-1 bg-white transition-all duration-200 ${errors.email
-                  ? "border-[#E52445] focus:ring-[#E52445]"
-                  : "border-[rgba(59,59,115,0.21)] focus:ring-blue-500"
+                    ? "border-[#E52445] focus:ring-[#E52445]"
+                    : "border-[rgba(59,59,115,0.21)] focus:ring-blue-500"
                   }`}
               />
               {errors.email && (
@@ -245,8 +246,8 @@ export const ContactForm: React.FC<ContactFormProps> = ({
                   },
                 })}
                 className={`w-full h-[48px] border rounded-[6px] px-4 text-[14px] leading-[30px] text-[#121926] focus:outline-none focus:ring-1 bg-white transition-all duration-200 ${errors.phone
-                  ? "border-[#E52445] focus:ring-[#E52445]"
-                  : "border-[rgba(59,59,115,0.21)] focus:ring-blue-500"
+                    ? "border-[#E52445] focus:ring-[#E52445]"
+                    : "border-[rgba(59,59,115,0.21)] focus:ring-blue-500"
                   }`}
               />
               {errors.phone && (
@@ -270,8 +271,8 @@ export const ContactForm: React.FC<ContactFormProps> = ({
               required: "Description is required",
             })}
             className={`w-full border rounded-[6px] px-4 py-2 text-[14px] leading-[30px] text-[#121926] resize-none focus:outline-none focus:ring-1 bg-white transition-all duration-200 ${errors.description
-              ? "border-[#E52445] focus:ring-[#E52445]"
-              : "border-[rgba(59,59,115,0.21)] focus:ring-blue-500"
+                ? "border-[#E52445] focus:ring-[#E52445]"
+                : "border-[rgba(59,59,115,0.21)] focus:ring-blue-500"
               }`}
           />
           {errors.description && (
@@ -283,7 +284,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({
 
         {/* Submit Button */}
         <div className="lg:flex justify-center">
-          <Button
+          {/*<Button
             type="submit"
             variant="default"
             size="lg"
@@ -294,6 +295,15 @@ export const ContactForm: React.FC<ContactFormProps> = ({
           >
             {buttonText}
           </Button>
+
+          */
+          }
+          <WhiteButton
+            className="w-[195px] h-[56px] text-[16px] leading-[24px]"
+          >
+            {buttonText}
+          </WhiteButton>
+
         </div>
       </form>
     </div>

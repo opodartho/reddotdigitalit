@@ -2,268 +2,183 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { Button } from "@/components/ui/button";
 import { OperationSection } from "@/lib/data/AreaOfOperation";
 import { useRouter } from "next/navigation";
+import WhiteButton from "@/components/buttons/WhiteHoverButton";
 
 type AreaOfOperationsProps = {
   sections: OperationSection[];
 };
 
 export default function AreaOfOperations({ sections }: AreaOfOperationsProps) {
-  const gapInRem = 2.5;
   const router = useRouter();
 
-  const wrapperRef = useRef<HTMLDivElement>(null);
-  const rightContentRef = useRef<HTMLDivElement>(null);
+  // Store element refs for each section safely
   const sectionRefs = useRef<Record<string, HTMLElement | null>>({});
-  const lastButtonRef = useRef<HTMLButtonElement | null>(null);
 
-  const [visited, setVisited] = useState<string[]>([sections[0].id]);
+  // Store which section is currently active
+  const [activeId, setActiveId] = useState<string>(sections[0].id);
 
-  // ⭐ NEW: dynamic release threshold based on last button position
-  const computeBottomThreshold = () => {
-    const rightEl = rightContentRef.current;
-    if (!rightEl) return 150;
-
-    const lastButton = lastButtonRef.current;
-    if (!lastButton) return 150;
-
-    const buttonHeight = lastButton.clientHeight || 56;
-    return buttonHeight + 200; // button height + safety offset
-  };
-
-  // ---------------------------------------------------
-  // 🔥 Scroll Hijacker — traps inside right side until fully done
-  // ---------------------------------------------------
-
- const handleMasterScroll = (e: WheelEvent) => {
-  const rightEl = rightContentRef.current;
-  if (!rightEl) return;
-
-  const scrollingDown = e.deltaY > 0;
-  const scrollingUp = e.deltaY < 0;
-
-  const atTop = rightEl.scrollTop === 0;
-
-  // NEW FIXED BOTTOM DETECTION
-  const atBottom =
-    rightEl.scrollTop + rightEl.clientHeight >= rightEl.scrollHeight - 5;
-
-  const shouldTrap =
-    (!atTop && !atBottom) ||
-    (atTop && scrollingDown) ||
-    (atBottom && scrollingUp);
-
-  if (shouldTrap) {
-    e.preventDefault();
-    rightEl.scrollTop += e.deltaY;
-    return;
-  }
-
-  if (atTop && scrollingUp) return;
-  if (atBottom && scrollingDown) return;
-
-  e.preventDefault();
-  rightEl.scrollTop += e.deltaY;
-}
-
+  // INTERSECTION OBSERVER — detects active section like Stripe
   useEffect(() => {
-    const wrapper = wrapperRef.current;
-    if (!wrapper) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            const id = entry.target.getAttribute("data-id");
+            if (id) setActiveId(id);
+          }
+        }
+      },
+      {
+        threshold: 0.4,
+        rootMargin: "-10% 0px -10% 0px",
+      }
+    );
 
-    wrapper.addEventListener("wheel", handleMasterScroll, { passive: false });
-    return () => wrapper.removeEventListener("wheel", handleMasterScroll);
+    // Observe all section blocks
+    for (const el of Object.values(sectionRefs.current)) {
+      if (el) observer.observe(el);
+    }
+
+    return () => observer.disconnect();
   }, []);
 
-  // ---------------------------------------------------
-  // RIGHT-PANEL scroll spy
-  // ---------------------------------------------------
+ const activeIndex = sections.findIndex((s) => s.id === activeId);
 
-  const handleScroll = () => {
-    const rightEl = rightContentRef.current;
-    if (!rightEl) return;
-
-    const threshold = rightEl.scrollTop + rightEl.offsetHeight / 2;
-    const newVisited: string[] = [];
-
-    for (const section of sections) {
-      const el = sectionRefs.current[section.id];
-      if (el && el.offsetTop < threshold) newVisited.push(section.id);
-    }
-
-    if (newVisited.length === 0) newVisited.push(sections[0].id);
-
-    if (JSON.stringify(newVisited) !== JSON.stringify(visited)) {
-      setVisited(newVisited);
-    }
-  };
-
-  useEffect(() => {
-    const rightEl = rightContentRef.current;
-    if (!rightEl) return;
-
-    handleScroll();
-    rightEl.addEventListener("scroll", handleScroll, { passive: true });
-    return () => rightEl.removeEventListener("scroll", handleScroll);
-  }, [visited]);
-
-  // ---------------------------------------------------
-  // HTML SECTION
-  // ---------------------------------------------------
+ 
 
   return (
-    <section
-      
-      className="bg-gradient-to-r from-pink-50 via-white to-orange-50 pt-[72px] lg:pt-[110px] pb-[72px] lg:pb-[91px]"
-      
-    >
-      <div className="px-[16px] sm:px-[80px] h-full flex flex-col">
-        <div className="mb-[67px] lg:mb-[90px] text-center">
-          <h2 className="text-[#060414] text-poppins mb-2 font-semibold text-[25px] md:text-[32px] leading-[40px]">
-            Area of Operations
-          </h2>
-          <p className="text-[#121926] text-poppins mx-auto max-w-xl text-[12px] md:text-[14px] leading-[22px]">
-            Our cutting-edge Modular Data Center solutions enable to <br />
-            protect mission-critical data.
-          </p>
-        </div>
+    <section className="bg-gradient-to-r from-pink-50 via-white to-orange-50 pt-[110px] pb-[110px]">
+      {/* HEADER */}
+      <div className="px-[16px] sm:px-[80px] text-center mb-[70px]">
+        <h2 className="text-[#060414] text-poppins font-semibold text-[25px] md:text-[32px]">
+          Area of Operations
+        </h2>
 
-        <div 
-                ref={wrapperRef}               // ← moved here
-      style={{height: "100vh", overflow: "hidden" }} 
+        <p className="text-[#121926] text-poppins mt-2 mx-auto max-w-xl text-[12px] md:text-[14px] leading-[22px]">
+          Our cutting-edge Modular Data Center solutions enable to <br />
+          protect mission-critical data.
+        </p>
+      </div>
+
+      {/* MAIN WRAPPER — Stripe Style */}
+      <div className="px-[16px] sm:px-[80px] flex flex-col lg:flex-row justify-between gap-12">
+
+        {/* LEFT COLUMN — Sticky */}
+
+    {/* LEFT COLUMN — Sticky */}
+<div className="hidden lg:flex flex-col sticky top-[190px] mt-[24px] h-fit min-w-[250px] relative">
+
+  {/* === Grey Full Line === */}
+  <div
+    className="absolute left-[5px] top-[-6px] w-[2px] bg-gray-300"
+    style={{ height: `${sections.length * 48}px` }}
+  ></div>
+
+  {/* === Red Progress Line (visited) === */}
+  <div
+    className="absolute left-[5px] top-[-6px] w-[2px] bg-red-500 transition-all duration-500"
+    style={{
+      height: `${(activeIndex + 1) * 48}px`
+    }}
+  ></div>
+
+  {/* === Dots + Labels === */}
+  {sections.map((section, i) => {
+    const isVisited = i <= activeIndex;   // 
+
+    return (
+      <div key={section.id} className="flex items-center mb-6 relative">
         
-        className="flex flex-col lg:flex-row items-start h-full lg:justify-center lg:gap-[250px]">
-          {/* LEFT TIMELINE */}
-          <div
-            className="relative hidden lg:block pt-1.5"
-            style={{ height: "100%", position: "sticky", top: 120 }}
-          >
-            <div
-              className="absolute top-0 left-[5px] w-0.5 bg-gray-300"
-              style={{
-                height: `${(sections.length - 1) * (gapInRem * 28) + 6}px`,
+        {/* Dot */}
+        <div
+          className={`h-3 w-3 rounded-full mr-3 transition-all ${
+            isVisited ? "bg-red-500" : "bg-white border border-gray-400"
+          }`}
+        ></div>
+
+        {/* Label */}
+        <p
+          className={`transition-all ${
+            isVisited ? "text-red-500 font-semibold" : "text-gray-400"
+          }`}
+        >
+          {section.area_name}
+        </p>
+      </div>
+    );
+  })}
+</div>
+
+
+        {/* RIGHT COLUMN — Natural Page Scroll */}
+        <div className="flex-1 lg:max-w-[770px]  space-y-[80px]">
+
+          {sections.map((section) => (
+            <section
+              key={section.id}
+              data-id={section.id}
+              ref={(el: HTMLElement | null) => {
+                sectionRefs.current[section.id] = el;
               }}
-            />
+              className="pb-10"
+            >
+              {/* MOBILE HEADING */}
+              <p className="lg:hidden text-center font-semibold text-[20px] mb-[40px]">
+                {section.area_name}
+              </p>
 
-            <div
-              className="absolute top-0 left-[5px] w-0.5 bg-red-500 transition-all duration-300"
-              style={{
-                height: `${
-                  visited.length > 1
-                    ? (visited.length - 1) * (gapInRem * 30) + 6
-                    : 0
-                }px`,
-              }}
-            />
-
-            {sections.map((section, index) => {
-              const isVisited = visited.includes(section.id);
-              const isLastItem = index === sections.length - 1;
-
-              return (
-                <div
-                  key={section.id}
-                  className="relative z-10"
-                  style={{
-                    paddingBottom: !isLastItem ? `${gapInRem}rem` : "0",
-                  }}
-                >
-                  <div className="flex items-center">
-                    <div
-                      className={`mr-3 h-3 w-3 rounded-full transition-colors duration-300 ${
-                        isVisited ? "bg-red-500" : "bg-gray-300"
-                      }`}
-                    />
-                    <span
-                      className={`transition-colors duration-300 ${
-                        isVisited
-                          ? "font-semibold text-red-500"
-                          : "text-gray-400"
-                      }`}
-                    >
-                      {section.area_name}
-                    </span>
+              {/* IMAGES */}
+              <div className="flex flex-col sm:flex-row gap-6 mb-8">
+                {section.images.slice(0, 2).map((src, i) => (
+                  <div
+                    key={i}
+                    className="relative overflow-hidden rounded-xl shadow-md h-[220px] w-full sm:w-[350px] transition-transform hover:-translate-y-3"
+                  >
+                    <Image src={src} alt="" fill className="object-cover" />
                   </div>
-                </div>
-              );
-            })}
-          </div>
+                ))}
+              </div>
 
-          {/* RIGHT PANEL */}
-          <div
-            ref={rightContentRef}
-            className="relative overflow-y-auto md:pr-6 lg:max-w-[770px] xl:max-w-[830px] flex-1 pt-[12px]"
-            style={{
-              height: "100%",
-              scrollbarWidth: "none",
-              msOverflowStyle: "none",
-            }}
-          >
-            <style>{`div::-webkit-scrollbar { display: none; }`}</style>
+              {/* TITLE */}
+              <h3 className="text-[28px] md:text-[34px] font-semibold mb-4">
+                {section.title}
+              </h3>
 
-            {sections.map((section, idx) => (
-              <section
-                key={section.id}
-                ref={(el) => {
-  sectionRefs.current[section.id] = el;
-}}
+              {/* DESCRIPTION */}
+              <p className="text-[15px] md:text-[17px] leading-[26px] mb-10">
+                {section.description}
+              </p>
 
-                className="mb-20"
-                style={{ minHeight: "500px" }}
+              {/* COVERAGE */}
+              <h4 className="text-[22px] font-medium mb-4">Coverage</h4>
+              <ul className="grid grid-cols-1 lg:grid-cols-2 gap-y-4 gap-x-8 mb-12">
+                {section.coverage.map((item, idx) => (
+                  <li key={idx} className="flex items-center gap-2 text-[16px]">
+                    <Image
+                      src="/checkmark (1) 1.png"
+                      alt=""
+                      width={18}
+                      height={18}
+                    />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+
+              {/* BUTTON */}
+              <WhiteButton
+                onClick={() =>
+                  router.push(`/area_of_operations_details/${section.id}`)
+                }
+                className="w-[195px] h-[56px] text-[16px]"
               >
-                <p className="lg:hidden text-center font-inter font-semibold text-[16px] mb-[56px]">
-                  {section.area_name}
-                </p>
+                Read More
+              </WhiteButton>
+            </section>
+          ))}
 
-                <div className="mb-[34px] flex flex-col gap-4 lg:flex-row justify-between">
-                  {section.images.slice(0, 2).map((src, i) => (
-                    <div
-                      key={i}
-                      className="relative overflow-hidden rounded-lg shadow-md h-[219px] w-[358px] md:w-[367px] transition-transform hover:-translate-y-3 duration-300"
-                    >
-                      <Image src={src} alt="" fill className="object-cover" />
-                    </div>
-                  ))}
-                </div>
-
-                <h3 className="font-poppins mb-[17px] text-[25px] md:text-[32px] font-normal">
-                  {section.title}
-                </h3>
-
-                <p className="mb-[45px] text-[14px] md:text-[18px] leading-[22px] md:leading-[30px]">
-                  {section.description}
-                </p>
-
-                <div>
-                  <h4 className="mb-[22px] text-[22px] font-medium">Coverage</h4>
-                  <ul className="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-[18px] md:gap-y-[22px]">
-                    {section.coverage.map((item, i) => (
-                      <li key={i} className="flex items-center gap-2 text-[16px]">
-                        <Image
-                          src="/checkmark (1) 1.png"
-                          alt="Checkmark icon"
-                          width={18}
-                          height={18}
-                        />
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <Button
-                  ref={idx === sections.length - 1 ? lastButtonRef : null}
-                  onClick={() =>
-                    router.push(`/area_of_operations_details/${section.id}`)
-                  }
-                  className="rounded-[10px] w-[195px] h-[56px] text-[16px] mt-[38px] lg:mt-[116px] transition-all hover:-translate-y-[6px] hover:shadow-[0_12px_20px_rgba(229,36,69,0.35)]"
-                >
-                  Read More
-                </Button>
-              </section>
-            ))}
-          </div>
         </div>
       </div>
     </section>

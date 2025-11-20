@@ -4,6 +4,7 @@
 import React, { useEffect, useState } from "react";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import WhiteButton from "@/components/buttons/WhiteHoverButton";
 
 export default function CallToActionSection({
   title,
@@ -52,6 +53,7 @@ export default function CallToActionSection({
             {description}
           </p>
           {/* CTA Button (Reused from UI library) */}
+         { /*
           <Button
             variant="default"
             size="lg"
@@ -62,7 +64,14 @@ export default function CallToActionSection({
           >
             Schedule a Call <ArrowRight className="w-4 h-4" />
           </Button>
-        </div>
+          */
+}       
+                 <WhiteButton
+                   className="w-[195px] h-[56px] text-[16px] leading-[24px]"
+                 >
+                  Schedule a Call
+                </WhiteButton>
+      </div>
       </div>
     </section>
   );

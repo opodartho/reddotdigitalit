@@ -53,8 +53,8 @@ export const Landing = async () => {
   ]);
 
   return (
-   
-      <div className="">
+
+    <div className="">
       <div >
         <HeroSection />
         <ServicesCarousel services={servicesData} />
@@ -70,6 +70,6 @@ export const Landing = async () => {
         <TestimonialSection testimonials={testimonialsData} />
         <ReadyToTransform transformData={transformData} />
       </div>
-   </div>
+    </div>
   );
 };
