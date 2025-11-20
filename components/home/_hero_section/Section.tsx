@@ -44,9 +44,9 @@ export default function HeroSection() {
 
   return (
     <>
-      <div className="lg:flex lg:justify-center">
+      <div className="lg:flex lg:justify-center lg:w-full">
         <section
-          className="lg:relative lg:flex lg:h-[655px] lg:max-w-7xl lg:flex-row  lg:w-full lg:px-6 md:px-14  lg:gap-[108px]"
+          className="lg:relative lg:flex lg:h-[655px] lg:max-w-7xl lg:flex-row  lg:w-full lg:px-[0px] md:px-14  lg:gap-[208px]"
           style={{
             background: `
         radial-gradient(circle at 85% 15%, #F0E8FF 0%, #FFFFFF 20%),

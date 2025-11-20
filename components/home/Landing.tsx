@@ -24,6 +24,7 @@ import { getPartners } from "@/lib/api/fetchPartners";
 import TestimonialSection from "@/components/home/_testimonial/Section";
 import { NavBar } from "@/components/NavBar/NavBar";
 import TrustedPartners from "./TrustedPartner/NewSection";
+import FirstHeroSection from "./_first_hero";
 
 export const Landing = async () => {
   const [
@@ -56,6 +57,7 @@ export const Landing = async () => {
 
     <div className="">
       <div >
+        <FirstHeroSection/>
         <HeroSection />
         <ServicesCarousel services={servicesData} />
         <BackToTop />

@@ -45,8 +45,9 @@ export function NavBar() {
 
   return (
     <>
-      <div className="sticky lg:pl-[80px] lg:pr-[80px] top-0 lg:flex lg:justify-center z-100 pt-[22px]">
-        <nav className="sticky top-0 lg:w-[1440px] h-[76px] rounded-4xl bg-white/40 backdrop-blur-xl border-b border-white/20 shadow-[0_4px_29px_rgba(0,0,0,0.05)]">
+    <div className="lg:flex lg:justify-center sticky lg:top-6 z-1000">
+ <div className="absolute bg-transparent  top-0 lg:flex lg:justify-center lg:items-center z-100 pt-[22px]">
+        <nav className="z-1000 top-0 lg:w-[1440px] h-[76px] rounded-4xl bg-transparent backdrop-blur-xl opacity-100 border-b border-white/20 shadow-[0_4px_29px_rgba(0,0,0,0.05)]">
           <div className="flex h-full items-center justify-between px-4 md:px-10 lg:px-[80px]">
             <Link href="/" onClick={scrollToTop} className="flex-shrink-0 relative lg:right-16">
               <Image
@@ -71,7 +72,7 @@ export function NavBar() {
                       </Link>
                     ) : (
                       <>
-                        <NavigationMenuTrigger className="font-poppins h-full px-0 text-[15px] font-normal text-title hover:text-red-500">
+                        <NavigationMenuTrigger className="font-poppins h-full px-0 text-[15px] font-normal text-white hover:text-red-500">
                           {link.title}
                         </NavigationMenuTrigger>
                         <NavigationMenuContent>
@@ -115,6 +116,7 @@ export function NavBar() {
             </div>
           </div>
         </nav>
+      </div>
       </div>
 
       {/* Mobile Menu */}
