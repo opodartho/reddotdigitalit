@@ -41,11 +41,11 @@ export default async function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${poppins.variable} ${inter.variable} antialiased text-title text-subtitle`}
-        suppressHydrationWarning
+        className={`${geistSans.variable} ${geistMono.variable} ${poppins.variable} ${inter.variable} antialiased text-title text-subtitle `}
+        suppressHydrationWarning 
       >
-        <NavBar />
-         <main>{children}</main>
+       <NavBar/>
+         <main >{children}</main>
         <Footer />
         <BackToTop />
       </body>

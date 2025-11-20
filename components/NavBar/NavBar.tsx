@@ -51,7 +51,7 @@ export function NavBar() {
 
   return (
     <>
-      <div className="sticky lg:pl-[80px] lg:pr-[80px] top-[22px] lg:flex lg:justify-center  z-100 ">
+      <div className=" sticky pt-[22px] lg:pl-[80px] lg:pr-[80px] top-0 lg:flex lg:justify-center  z-100 ">
         {/* <nav
         className=" bg-white backdrop-blur-2xl   rounded-4xl top-0 z-50 h-[76px] w-[1440px] shadow-[0_4px_29px_rgba(0,0,0,0.05)] backdrop-blur-sm"
         // style={{
@@ -60,7 +60,8 @@ export function NavBar() {
         // }}
 
       > */}
-        <nav className="sticky top-0 lg:w-[1440px] w-[390px] h-[76px] rounded-4xl bg-white/40 backdrop-blur-xl border-b border-white/20 shadow-[0_4px_29px_rgba(0,0,0,0.05)]">
+        <nav className=" sticky lg:w-[1280px] w-[390px] h-[76px] rounded-4xl bg-white/40 backdrop-blur-xl border-b border-white/20 shadow-[0_4px_29px_rgba(0,0,0,0.05)]">
+
 
           {/* --- RESPONSIVE CHANGE: Adjusted padding for different screen sizes --- */}
           <div className="flex h-full items-center justify-between px-4 md:px-10 lg:px-[80px]">
@@ -124,7 +125,7 @@ export function NavBar() {
               </button>
               <div className="relative left-16 ">
                 <Link
-                  href="/contact"
+                  href="/contact-us"
                   className="flex bg-gradient-to-l h-[56px] w-[153px] from-red-700 via-red-600 via-red-500 to-red-400 text-white justify-end  items-center  rounded-[25px] border border-[#E52445] bg-white px-7 text-lg whitespace-nowrap  hover:bg-red-100 dark:bg-transparent"
                 >
                   Contact Us

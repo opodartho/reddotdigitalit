@@ -25,6 +25,8 @@ import TestimonialSection from "@/components/home/_testimonial/Section";
 import { NavBar } from "@/components/NavBar/NavBar";
 import TrustedPartners from "./TrustedPartner/NewSection";
 
+
+
 export const Landing = async () => {
   const [
     newsData,
@@ -56,7 +58,7 @@ export const Landing = async () => {
 
     <div className="">
       <div >
-        <HeroSection />
+        <HeroSection/>
         <ServicesCarousel services={servicesData} />
         <BackToTop />
         <ProductSolution solutions={productSolutionsData} />
