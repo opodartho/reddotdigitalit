@@ -18,6 +18,7 @@ import { Menu, X } from "lucide-react";
 export function NavBar() {
   const [navLinks, setNavLinks] = useState<NavLink[]>([]);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     async function fetchData() {
@@ -31,8 +32,39 @@ export function NavBar() {
     const handleResize = () => {
       if (window.innerWidth >= 768) setIsMobileMenuOpen(false);
     };
+    
+    // In your NavBar component, replace the handleScroll function with:
+const handleScroll = () => {
+  // Method 1: Look for specific hero section by ID
+  const heroSection = document.getElementById('hero-section');
+  
+  // Method 2: Look for specific class
+  const heroByClass = document.querySelector('.hero-section');
+  
+  // Method 3: First section of main
+  const firstMainSection = document.querySelector('main section:first-child');
+  
+  const targetSection = heroSection || heroByClass || firstMainSection;
+  
+  if (targetSection) {
+    const sectionBottom = targetSection.getBoundingClientRect().bottom;
+    setIsScrolled(sectionBottom <= -1);
+  } else {
+    // Fallback to viewport height
+    setIsScrolled(window.scrollY > window.innerHeight);
+  }
+};
+
     window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    window.addEventListener("scroll", handleScroll);
+    
+    // Initial check
+    handleScroll();
+    
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   const scrollToTop = () => {
@@ -45,88 +77,105 @@ export function NavBar() {
 
   return (
     <>
-    <div className="lg:flex lg:justify-center sticky lg:top-6 z-1000">
- <div className="absolute bg-transparent  top-0 lg:flex lg:justify-center lg:items-center z-100 pt-[22px]">
-        <nav className="z-1000 top-0 lg:w-[1440px] h-[76px] rounded-4xl bg-transparent backdrop-blur-xl opacity-100 border-b border-white/20 shadow-[0_4px_29px_rgba(0,0,0,0.05)]">
-          <div className="flex h-full items-center justify-between px-4 md:px-10 lg:px-[80px]">
-            <Link href="/" onClick={scrollToTop} className="flex-shrink-0 relative lg:right-16">
-              <Image
-                src="/images/RedDotLogo.svg"
-                alt="Red Dot Digital Logo"
-                width={120}
-                height={40}
-                className="cursor-pointer"
-              />
-            </Link>
+      <div className="lg:flex lg:justify-center sticky lg:top-6 z-1000">
+        <div className="absolute bg-transparent top-0 lg:flex lg:justify-center lg:items-center z-100 pt-[22px] w-full">
+          <nav className={cn(
+            "z-1000 top-0 lg:w-[1440px] h-[76px] rounded-4xl bg-transparent backdrop-blur-2xl opacity-100 border-b border-white/20 shadow-[0_4px_29px_rgba(0,0,0,0.05)] transition-all duration-300",
+            isScrolled ? "backdrop-blur-2xl" : "bg-transparent"
+          )}>
+            <div className="flex h-full items-center justify-between px-4 md:px-10 lg:px-[80px]">
+              <Link href="/" onClick={scrollToTop} className="flex-shrink-0 relative lg:right-16">
+                <Image
+                  src="/images/RedDotLogo.svg"
+                  alt="Red Dot Digital Logo"
+                  width={120}
+                  height={40}
+                  className={cn(
+                    "cursor-pointer transition-all duration-300",
+                    isScrolled ? "filter-none" : "brightness-0 invert"
+                  )}
+                />
+              </Link>
 
-            {/* Desktop Navigation */}
-            <NavigationMenu className="hidden h-full justify-center md:flex">
-              <NavigationMenuList className="h-full space-x-16">
-                {navLinks.map((link) => (
-                  <NavigationMenuItem key={link.title}>
-                    {!link.items || link.items.length === 0 ? (
-                      <Link href={link.href || "#"} legacyBehavior passHref>
-                        <NavigationMenuLink className="font-poppins flex h-full items-center px-0 text-[15px] font-normal text-title hover:text-red-500">
-                          {link.title}
-                        </NavigationMenuLink>
-                      </Link>
-                    ) : (
-                      <>
-                        <NavigationMenuTrigger className="font-poppins h-full px-0 text-[15px] font-normal text-white hover:text-red-500">
-                          {link.title}
-                        </NavigationMenuTrigger>
-                        <NavigationMenuContent>
-                          <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-                            {link.items?.map((item) => (
-                              <ListItem
-                                key={item.title}
-                                title={item.title}
-                                href={item.href}
-                              >
-                                {item.description}
-                              </ListItem>
-                            ))}
-                          </ul>
-                        </NavigationMenuContent>
-                      </>
+              {/* Desktop Navigation */}
+              <NavigationMenu className="hidden h-full justify-center md:flex">
+                <NavigationMenuList className="h-full space-x-16">
+                  {navLinks.map((link) => (
+                    <NavigationMenuItem key={link.title}>
+                      {!link.items || link.items.length === 0 ? (
+                        <Link href={link.href || "#"} legacyBehavior passHref>
+                          <NavigationMenuLink className={cn(
+                            "font-poppins flex h-full items-center px-0 text-[15px] font-normal hover:text-red-500 transition-colors duration-300",
+                            isScrolled ? "text-gray-900" : "text-white"
+                          )}>
+                            {link.title}
+                          </NavigationMenuLink>
+                        </Link>
+                      ) : (
+                        <>
+                          <NavigationMenuTrigger className={cn(
+                            "font-poppins h-full px-0 text-[15px] font-normal hover:text-red-500 transition-colors duration-300",
+                            isScrolled ? "text-gray-900" : "text-white"
+                          )}>
+                            {link.title}
+                          </NavigationMenuTrigger>
+                          <NavigationMenuContent>
+                            <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+                              {link.items?.map((item) => (
+                                <ListItem
+                                  key={item.title}
+                                  title={item.title}
+                                  href={item.href}
+                                >
+                                  {item.description}
+                                </ListItem>
+                              ))}
+                            </ul>
+                          </NavigationMenuContent>
+                        </>
+                      )}
+                    </NavigationMenuItem>
+                  ))}
+                </NavigationMenuList>
+              </NavigationMenu>
+
+              {/* Right side container */}
+              <div className="hidden h-full items-center gap-5 md:flex">
+                <div className="relative left-16">
+                  <Link
+                    href="/contact-us"
+                    className={cn(
+                      "flex h-[56px] w-[153px] justify-end items-center rounded-[25px] border px-7 text-lg transition-all duration-300", 
+                      "bg-gradient-to-l from-red-700 via-red-600 via-red-500 to-red-400 text-white border-[#E52445] hover:bg-red-100" 
                     )}
-                  </NavigationMenuItem>
-                ))}
-              </NavigationMenuList>
-            </NavigationMenu>
+                  >
+                    Contact Us
+                  </Link>
+                </div>
+              </div>
 
-            {/* Right side container */}
-            <div className="hidden h-full items-center gap-5 md:flex">
-              <button aria-label="apps" className="rounded-full p-2 hover:bg-gray-100" title="More"></button>
-              <div className="relative left-16">
-                <Link
-                  href="/contact-us"
-                  className="flex h-[56px] w-[153px] bg-gradient-to-l from-red-700 via-red-600 via-red-500 to-red-400 text-white justify-end items-center rounded-[25px] border border-[#E52445] px-7 text-lg hover:bg-red-100 dark:bg-transparent"
+              {/* Hamburger Menu */}
+              <div className="md:hidden">
+                <button 
+                  onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                  className={isScrolled ? "text-gray-900" : "text-white"}
                 >
-                  Contact Us
-                </Link>
+                  {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+                </button>
               </div>
             </div>
-
-            {/* Hamburger Menu */}
-            <div className="md:hidden">
-              <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
-                {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
-              </button>
-            </div>
-          </div>
-        </nav>
-      </div>
+          </nav>
+        </div>
       </div>
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="sticky top-[76px] left-0 z-40 flex h-[calc(100vh-76px)] w-full flex-col items-center space-y-6 overflow-y-auto bg-white p-8 md:hidden">
+        <div className="fixed top-0 left-0 z-40 flex h-screen w-full flex-col items-center space-y-6 overflow-y-auto bg-white p-8 pt-24 md:hidden">
           {navLinks.map((link) => (
             <div key={link.title} className="text-center">
               {link.items && link.items.length > 0 ? (
                 <>
-                  <h3 className="font-poppins mb-2 text-2xl font-bold text-title">
+                  <h3 className="font-poppins mb-2 text-2xl font-bold text-gray-900">
                     {link.title}
                   </h3>
                   <div className="flex flex-col space-y-4">
@@ -135,7 +184,7 @@ export function NavBar() {
                         key={item.title}
                         href={item.href}
                         onClick={handleMobileLinkClick}
-                        className="text-lg text-subtitle hover:text-red-500"
+                        className="text-lg text-gray-700 hover:text-red-500"
                       >
                         {item.title}
                       </Link>
@@ -146,7 +195,7 @@ export function NavBar() {
                 <Link
                   href={link.href || "#"}
                   onClick={handleMobileLinkClick}
-                  className="font-poppins text-2xl font-bold text-title hover:text-red-500"
+                  className="font-poppins text-2xl font-bold text-gray-900 hover:text-red-500"
                 >
                   {link.title}
                 </Link>
@@ -157,7 +206,7 @@ export function NavBar() {
           <Link
             href="/contact-us"
             onClick={handleMobileLinkClick}
-            className="flex w-full xs items-center justify-center rounded-[25px] border border-[#E52445] bg-white px-10 py-3 text-lg text-[#E52445] hover:bg-red-100"
+            className="flex w-full items-center justify-center rounded-[25px] border border-[#E52445] bg-white px-10 py-3 text-lg text-[#E52445] hover:bg-red-100"
           >
             Contact Us
           </Link>
@@ -167,7 +216,7 @@ export function NavBar() {
   );
 }
 
-// Updated ListItem component: text-only hover, no background change
+// ListItem component remains the same
 const ListItem = ({ className, title, children, href, ...props }: any) => {
   return (
     <li>
@@ -175,15 +224,15 @@ const ListItem = ({ className, title, children, href, ...props }: any) => {
         <a
           href={href}
           className={cn(
-            "block rounded-2xl p-4 border border-transparent transition-colors duration-200 hover:text-red-500",
+            "block rounded-2xl p-4 border border-transparent transition-colors duration-200 hover:text-red-500 text-gray-900",
             className
           )}
           {...props}
         >
-          <div className="text-sm font-medium transition-colors duration-200 hover:text-red-500">
+          <div className="text-sm font-medium transition-colors duration-200">
             {title}
           </div>
-          <p className="text-sm line-clamp-2 transition-colors duration-200 hover:text-red-500">
+          <p className="text-sm line-clamp-2 text-gray-600">
             {children}
           </p>
         </a>

@@ -44,7 +44,7 @@ export default function FirstHeroSection() {
 
   return (
     <>
-      <div className="lg:flex lg:h-[620px] lg:justify-center lg:w-full" style={{backgroundImage:`url('/images/darkbg.svg')`}}>
+      <div id="hero-section" className="lg:flex lg:h-[620px] lg:justify-center lg:w-full" style={{backgroundImage:`url('/images/darkbg.svg')`}}>
         
 
           
