@@ -25,6 +25,7 @@ import TestimonialSection from "@/components/home/_testimonial/Section";
 import { NavBar } from "@/components/NavBar/NavBar";
 import TrustedPartners from "./TrustedPartner/NewSection";
 import FirstHeroSection from "./_first_hero";
+import { getHeroes } from "@/lib/api/home-hero/fetchHero";
 
 export const Landing = async () => {
   const [
@@ -39,6 +40,7 @@ export const Landing = async () => {
     aboutData,
     achievementData,
     partnersData,
+    heroSlidesData
   ] = await Promise.all([
     getLatestNews(),
     getCaseStudies(),
@@ -51,13 +53,14 @@ export const Landing = async () => {
     getAboutData(),
     getAchievementData(),
     getPartners(),
+    getHeroes()
   ]);
 
   return (
 
     <div className="">
       <div >
-        <FirstHeroSection/>
+        <FirstHeroSection heroSlidesData={heroSlidesData}/>
         <HeroSection />
         <ServicesCarousel services={servicesData} />
         <BackToTop />

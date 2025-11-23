@@ -40,10 +40,10 @@ export function NavBar() {
       if (heroSection) {
         const sectionBottom = heroSection.getBoundingClientRect().bottom;
         // When the hero section (620px height) is completely scrolled past
-        setIsScrolled(sectionBottom <= 0);
+        setIsScrolled(window.scrollY > 550);
       } else {
         // Fallback: use the exact hero section height (620px)
-        setIsScrolled(window.scrollY > 620);
+        setIsScrolled(window.scrollY > 420);
       }
     };
 
@@ -69,10 +69,10 @@ export function NavBar() {
 
   return (
     <>
-      <div className="lg:flex lg:justify-center sticky lg:top-6 z-1000">
+      <div className="lg:flex lg:justify-center sticky lg:top-[22px] z-1000">
         <div className="absolute bg-transparent top-0 lg:flex lg:justify-center lg:items-center z-100 pt-[22px] w-full">
           <nav className={cn(
-            "z-1000 top-0 lg:w-[1440px] h-[76px] rounded-4xl backdrop-blur-2xl opacity-100 border-b shadow-[0_4px_29px_rgba(0,0,0,0.05)] transition-all duration-300",
+            "z-1000 top-0 lg:w-[1440px] h-[76px] rounded-4xl backdrop-blur-2xl opacity-100 border-b shadow-[0_4px_29px_rgba(0,0,0,0.05)] transition-all duration-100",
             isScrolled 
               ? "bg-transparent backdrop-blur-2xl border-gray-200/50"  // White background when scrolled past hero
               : "bg-transparent border-white/20"  // Transparent on hero section
@@ -86,7 +86,7 @@ export function NavBar() {
                   height={40}
                   className={cn(
                     "cursor-pointer transition-all duration-300",
-                    isScrolled ? "filter-none" : "brightness-0 invert"
+                    
                   )}
                 />
               </Link>
@@ -99,7 +99,7 @@ export function NavBar() {
                       {!link.items || link.items.length === 0 ? (
                         <Link href={link.href || "#"} legacyBehavior passHref>
                           <NavigationMenuLink className={cn(
-                            "font-poppins flex h-full items-center px-0 text-[15px] font-normal hover:text-red-500 transition-colors duration-300",
+                            "font-poppins flex h-full items-center px-0 text-[15px] font-normal hover:text-red-500 transition-colors duration-100",
                             isScrolled ? "text-gray-900" : "text-white"
                           )}>
                             {link.title}

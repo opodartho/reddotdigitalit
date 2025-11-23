@@ -14,8 +14,13 @@ import RedButton from "@/components/buttons/RedHoverButton";
 import WhiteButton from "@/components/buttons/WhiteHoverButton";
 import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
 import Autoplay from "embla-carousel-autoplay";
+import { HeroSlides } from "@/lib/data/home-hero/hero";
 
-export default function FirstHeroSection() {
+export type HeroSlidesProps = {
+  heroSlidesData: HeroSlides[]
+}
+
+export default function FirstHeroSection({ heroSlidesData }: HeroSlidesProps) {
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
   const [slides, setSlides] = useState<HeroSlide[]>([]);
@@ -44,10 +49,18 @@ export default function FirstHeroSection() {
 
   return (
     <>
-      <div id="hero-section" className="lg:flex lg:h-[620px] lg:justify-center lg:w-full" style={{backgroundImage:`url('/images/darkbg.svg')`}}>
-        
+      <div id="hero-section" className="lg:flex lg:h-[620px] lg:justify-center lg:w-full" style={{ backgroundImage: `url('/images/darkbg.svg')` }}>
 
-          
+      <p className="absolute pt-[144px] text-[48px] h-[24px]  text-white text-center w-[819px] font-extrabold">Crafting Innovation, Delivering Excellence</p>
+        <div className="pt-[200px] flex gap-[14px]">
+          {heroSlidesData?.map((p, index) => (
+            <button key={index} className="cursor-pointer">
+              <img src={p.imageUrl} alt="" />
+            </button>
+          ))}
+        </div>
+
+        <WhiteButton className="absolute top-[520px] w-[250px]">Explore All Services</WhiteButton>
       </div>
     </>
   );
