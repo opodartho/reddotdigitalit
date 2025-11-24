@@ -109,8 +109,8 @@ export default function TrustedPartners() {
     : currentTab?.images || [];
 
   return (
-    <section className="container pt-[100px] pb-auto bg-white">
-      <div className=" mx-auto px-2 sm:px-4">
+    <section className="pt-[100px] pb-auto bg-white">
+      <div className="lg:container mx-auto px-2 sm:px-4">
         {/* Title */}
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-3xl font-semibold text-gray-900">
@@ -142,7 +142,7 @@ export default function TrustedPartners() {
 
         {/* Logo Grid */}
         <div
-          className="lg:grid lg:grid-cols-7 grid grid-cols-2  gap-0"
+          className="lg:grid lg:grid-cols-7 grid grid-cols-4  gap-0"
           style={{
             gridTemplateRows: `repeat(${Math.ceil(imagesToShow.length / 7)}, minmax(0, 1fr))`,
           }}
