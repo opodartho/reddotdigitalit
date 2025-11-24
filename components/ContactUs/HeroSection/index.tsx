@@ -5,7 +5,7 @@ import Image from "next/image";
 
 export const HeroSection = () => {
   return (
-    <section className="relative w-full  bg-white pt-[23px] md:pt-[44px] pb-[60px] lg:pb-[110px] overflow-hidden">
+    <section className="relative w-full  bg-white lg:pt-[148px] pt-[23px] md:pt-[44px] pb-[60px] lg:pb-[110px] overflow-hidden">
       {/* Container */}
       <div className="px-[18px] sm:px-[80px] relative">
         {/* Breadcrumb */}
@@ -63,7 +63,7 @@ export const HeroSection = () => {
       </div>
 
       {/* Desktop version - positioned on right */}
-      <div className="hidden lg:block absolute right-[63px] xl:right-[80px] top-[73px]">
+      <div className="hidden lg:block absolute right-[63px] xl:right-[80px] top-[148px]">
         <Image
           src="/images/contact-icon.png" 
           alt="contact icon"
