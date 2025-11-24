@@ -1,13 +1,16 @@
-// MetaData.tsx - No changes needed
+// MetaData.tsx - Updated to match News component structure
 import { BlogsDetailsItem, blogsDetailsData } from "@/lib/data/blogs-details/blogDetailsData";
 
-type BlogsDetailsProps={
+type BlogsDetailsProps = {
     blogsDetailsData: BlogsDetailsItem
 }
-export default function MetaData({blogsDetailsData}: BlogsDetailsProps) {
+
+export default function MetaData({ blogsDetailsData }: BlogsDetailsProps) {
     return (
         <>
-            <div className="lg:block hidden lg:flex-col  sticky top-30 lg:pt-[64px] lg:pl-[24px] lg:w-[197px]">
+            <div className="lg:block hidden lg:flex-col sticky top-30 lg:pt-[64px] lg:pl-[24px] lg:w-[197px]">
+                {/* Changed from lg:sticky top-[30px] to sticky top-[30px] to match News component */}
+                
                 <div className="lg:flex lg:flex-col">
                     <p className="font-semibold text-[16px]">Date</p>
                     <p className="pt-[6px] text-[14px]">Last Update: {blogsDetailsData.date}</p>

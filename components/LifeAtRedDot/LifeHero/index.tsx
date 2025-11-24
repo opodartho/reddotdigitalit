@@ -7,7 +7,6 @@ import { motion } from "framer-motion";
 export const LifeHero = () => {
   return (
     <>
-      <p className="text-[14px] text-[#959191] absolute lg:top-30 top-30 z-1 lg:left-21 left-4 whitespace-break-spaces">{`About Us      >>       Life At RedDot`} </p>
 
       <section className="relative w-full bg-white">
         {/* 🧭 Breadcrumb */}

@@ -18,7 +18,6 @@ export default async function AboutUs() {
     const [AboutData, AchievementsData, ManageData, HeaderData, JourneyData, RootsData, EmpowermentData] = await Promise.all([getAboutUs(), getAchievements(), getManagement(), getHeader(), getJourney(), getRoots(), getEmpowerment()])
     return (
         <>
-            <p className="text-[14px] text-[#959191] absolute lg:top-40 top-30 z-1 lg:left-21 left-4 whitespace-break-spaces">{`About Us`} </p>
 
             <div className="overflow-hidden lg:pl-[80px] lg:pr-[80px]">
                 <div className="lg:pr-80px">

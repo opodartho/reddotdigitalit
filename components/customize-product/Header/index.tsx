@@ -22,7 +22,7 @@ export default function Header({ headerData, Id }: HeaderProps) {
             }}
         >
             {/* Left text column */}
-            <div className="flex flex-col lg:pt-0 pt-10 gap-6 container xl lg:pl-[0px] pl-[16px] pr-[16px] md:text-left md:w-[55%]">
+            <div className="flex flex-col lg:pt-5 pt-10 gap-6 container xl lg:pl-[0px] pl-[16px] pr-[16px] md:text-left md:w-[55%]">
                 <h1 className="text-4xl md:text-5xl font-semibold leading-tight lg:w-[480px] text-title">
                     {headerData[indexNumber]?.title || ''}
                 </h1>
@@ -40,7 +40,7 @@ export default function Header({ headerData, Id }: HeaderProps) {
             </div>
 
             {/* Right image column with 3D card effect */}
-            <div className="flex justify-center overflow-visible lg:pt-0 pt-8 ">
+            <div className="flex justify-center overflow-visible lg:pt-28 pt-8 ">
                 <div className="relative z-1">
                     <CardContainer className="lg:w-[600px] w-[327px] mx-auto">
                         <CardBody className="relative lg:w-[600px] w-[327px] overflow-visible [transform-style:preserve-3d]">
