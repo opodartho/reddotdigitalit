@@ -14,7 +14,7 @@ export default function ServiceHero({
   image: string;
 }) {
   return (
-    <section className="relative w-full bg-[#F6F5FA] pt-[42px] lg:pt-[68px] ">
+    <section className="relative w-full bg-[#F6F5FA] pt-[42px] lg:pt-[160px] ">
       <div className=" px-[16px] sm:px-[80px] flex flex-col lg:flex-row lg:justify-between lg:items-start pb:[64px] lg:pb-[60px]">
         {/* 🟣 Left Content */}
         <div className="order-2 lg:order-1 container [655px] flex flex-col justify-start ">

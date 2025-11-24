@@ -15,6 +15,7 @@ import WhiteButton from "@/components/buttons/WhiteHoverButton";
 import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
 import Autoplay from "embla-carousel-autoplay";
 import { HeroSlides } from "@/lib/data/home-hero/hero";
+import { useRouter } from "next/navigation";
 
 export type HeroSlidesProps = {
   heroSlidesData: HeroSlides[]
@@ -25,7 +26,7 @@ export default function FirstHeroSection({ heroSlidesData }: HeroSlidesProps) {
   const [current, setCurrent] = useState(0);
   const [slides, setSlides] = useState<HeroSlide[]>([]);
   const autoplay = useRef(Autoplay({ delay: 3000, stopOnInteraction: false }));
-
+  const navigate= useRouter()
   useEffect(() => {
     async function fetchSlides() {
       const heroSlides = await getHeroSlides();
@@ -54,7 +55,7 @@ export default function FirstHeroSection({ heroSlidesData }: HeroSlidesProps) {
       <p className="absolute pt-[144px] text-[48px] h-[24px]  text-white text-center w-[819px] font-extrabold">Crafting Innovation, Delivering Excellence</p>
         <div className="pt-[200px] flex gap-[24px]">
           {heroSlidesData?.map((p, index) => (
-            <button key={index} className="cursor-pointer hover:scale-2 transition-transform duration-300 ease-in-out hover:scale-125 hover:z-10">
+            <button key={index} onClick={()=>navigate.push(`${p.route}`)}  className="cursor-pointer transition-transform duration-300 ease-in-out hover:scale-110 hover:z-10">
               <img src={p.imageUrl} alt="" />
             </button>
           ))}
