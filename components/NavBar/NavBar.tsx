@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -19,6 +20,10 @@ export function NavBar() {
   const [navLinks, setNavLinks] = useState<NavLink[]>([]);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const pathname = usePathname();
+  
+  // Check if current page is home page
+  const isHomePage = pathname === "/";
 
   useEffect(() => {
     async function fetchData() {
@@ -34,16 +39,21 @@ export function NavBar() {
     };
     
     const handleScroll = () => {
-      // Target the hero section with ID 'hero-section'
-      const heroSection = document.getElementById('hero-section');
-      
-      if (heroSection) {
-        const sectionBottom = heroSection.getBoundingClientRect().bottom;
-        // When the hero section (620px height) is completely scrolled past
-        setIsScrolled(window.scrollY > 550);
+      // Only apply scroll logic for home page
+      if (isHomePage) {
+        const heroSection = document.getElementById('hero-section');
+        
+        if (heroSection) {
+          const sectionBottom = heroSection.getBoundingClientRect().bottom;
+          // When the hero section (620px height) is completely scrolled past
+          setIsScrolled(window.scrollY > 550);
+        } else {
+          // Fallback: use the exact hero section height (620px)
+          setIsScrolled(window.scrollY > 420);
+        }
       } else {
-        // Fallback: use the exact hero section height (620px)
-        setIsScrolled(window.scrollY > 420);
+        // For all other pages, text should always be black
+        setIsScrolled(true);
       }
     };
 
@@ -57,7 +67,18 @@ export function NavBar() {
       window.removeEventListener("resize", handleResize);
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [isHomePage]); // Add isHomePage as dependency
+
+  // Determine text color based on page and scroll state
+  const getTextColorClass = () => {
+    if (!isHomePage) {
+      // All other pages: always black text
+      return "text-gray-900";
+    } else {
+      // Home page: white text until scrolled, then black
+      return isScrolled ? "text-gray-900" : "text-white";
+    }
+  };
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -73,9 +94,11 @@ export function NavBar() {
         <div className="absolute bg-transparent top-0 lg:flex lg:justify-center lg:items-center z-100 pt-[22px] w-full">
           <nav className={cn(
             "z-1000 top-0 lg:w-[1440px] h-[76px] rounded-4xl backdrop-blur-2xl opacity-100 border-b shadow-[0_4px_29px_rgba(0,0,0,0.05)] transition-all duration-100",
-            isScrolled 
-              ? "bg-transparent backdrop-blur-2xl border-gray-200/50"  // White background when scrolled past hero
-              : "bg-transparent border-white/20"  // Transparent on hero section
+            isHomePage 
+              ? isScrolled 
+                ? "bg-transparent backdrop-blur-2xl border-gray-200/50"  // White background when scrolled past hero
+                : "bg-transparent border-white/20"  // Transparent on hero section
+              : "bg-transparent backdrop-blur-2xl border-gray-200/50"  // Other pages: always have the scrolled style
           )}>
             <div className="flex h-full items-center justify-between px-4 md:px-10 lg:px-[80px]">
               <Link href="/" onClick={scrollToTop} className="flex-shrink-0 relative lg:right-16">
@@ -86,7 +109,6 @@ export function NavBar() {
                   height={40}
                   className={cn(
                     "cursor-pointer transition-all duration-300",
-                    
                   )}
                 />
               </Link>
@@ -100,7 +122,7 @@ export function NavBar() {
                         <Link href={link.href || "#"} legacyBehavior passHref>
                           <NavigationMenuLink className={cn(
                             "font-poppins flex h-full items-center px-0 text-[15px] font-normal hover:text-red-500 transition-colors duration-100",
-                            isScrolled ? "text-gray-900" : "text-white"
+                            getTextColorClass()
                           )}>
                             {link.title}
                           </NavigationMenuLink>
@@ -109,7 +131,7 @@ export function NavBar() {
                         <>
                           <NavigationMenuTrigger className={cn(
                             "font-poppins h-full px-0 text-[15px] font-normal hover:text-red-500 transition-colors duration-300",
-                            isScrolled ? "text-gray-900" : "text-white"
+                            getTextColorClass()
                           )}>
                             {link.title}
                           </NavigationMenuTrigger>
@@ -152,7 +174,7 @@ export function NavBar() {
               <div className="md:hidden">
                 <button 
                   onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                  className={isScrolled ? "text-gray-900" : "text-white"}
+                  className={getTextColorClass()}
                 >
                   {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
                 </button>
