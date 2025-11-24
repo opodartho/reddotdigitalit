@@ -44,25 +44,19 @@ export default function HeroSection() {
 
   return (
     <>
-      <div className="lg:w-full lg:px-[200px]">
+      <div className="lg:w-full lg:px-[200px] lg:bg-transparent" style={{backgroundImage:`url('/images/bg-hero.svg')`}}>
         <section
-          className="lg:relative lg:flex lg:h-[655px] lg:max-w-8xl lg:flex-row lg:w-full lg:gap-[258px]"
-          style={{
-            background: `
-        radial-gradient(circle at 85% 15%, #F0E8FF 0%, #FFFFFF 20%),
-        radial-gradient(45.32% 45.32% at 10% 50%, rgba(240, 80, 54, 0.15) 0%, rgba(229, 36, 69, 0) 100%)
-      `,
-          }}
+          className="lg:relative lg:flex lg:h-[655px] lg:flex-row lg:w-full lg:gap-[258px]"
         >
 
           {/* Left text column - Fixed for full width */}
-          <div className="flex flex-col lg:pt-30 pt-10 gap-6 lg:w-1/2 lg:min-w-[600px] lg:px-0 px-[16px]"> {/* Added min-width */}
+          <div className="flex flex-col lg:pt-40 pt-10 gap-6 lg:w-1/2 lg:min-w-[600px] lg:px-0 px-[16px]"> {/* Added min-width */}
             <div className="pr-[4px] flex lg:gap-[12px] gap-[2px] flex-row lg:justify-start h-[40px] items-center">
               {["15+ enterprise solutions", "ISO Certified", "5+ years of experience"].map(
                 (text) => (
                   <p
                     key={text}
-                    className="text-[#70738F] flex justify-center items-center border rounded-full px-3 w-[150px] py-1 text-xs font-medium bg-[#FFFFFF]"
+                    className="text-[#70738F] flex justify-center items-center border rounded-full px-3 w-[180px] py-1 text-xs font-medium bg-[#FFFFFF]"
                   >
                     {text}
                   </p>
@@ -92,7 +86,7 @@ export default function HeroSection() {
           </div>
 
           {/* Carousel */}
-          <div className="lg:flex lg:items-center lg:justify-center lg:w-1/2">
+          <div className="lg:flex lg:items-center lg:justify-center lg:w-1/2 lg:pt-22">
             <div className="flex justify-center overflow-visible">
               <div className="relative z-1 lg:h-full h-[550px] lg:w-full overflow-visible">
                 <Carousel className="lg:overflow-hidden lg:w-[800px] w-[357px] basis-[44.4%]" setApi={setApi} opts={{ loop: true, align: "center" }} plugins={[autoplay.current]}>

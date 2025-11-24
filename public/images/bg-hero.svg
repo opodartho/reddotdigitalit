@@ -1,0 +1,39 @@
+<svg width="1920" height="696" viewBox="0 0 1920 696" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_5309_324)">
+<rect width="1920" height="696" fill="white"/>
+<g opacity="0.6">
+<ellipse opacity="0.15" cx="400.5" cy="119.111" rx="406.5" ry="248.111" fill="url(#paint0_radial_5309_324)"/>
+<ellipse opacity="0.15" cx="470.5" cy="447.889" rx="406.5" ry="248.111" fill="url(#paint1_radial_5309_324)"/>
+<ellipse opacity="0.15" cx="1064.5" cy="189" rx="1039.5" ry="635" fill="url(#paint2_radial_5309_324)"/>
+</g>
+<g filter="url(#filter0_f_5309_324)">
+<ellipse cx="638" cy="348.5" rx="629" ry="262.5" fill="url(#paint3_radial_5309_324)" fill-opacity="0.9"/>
+</g>
+</g>
+<defs>
+<filter id="filter0_f_5309_324" x="-175" y="-98" width="1626" height="893" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feGaussianBlur stdDeviation="92" result="effect1_foregroundBlur_5309_324"/>
+</filter>
+<radialGradient id="paint0_radial_5309_324" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(400.5 142.316) rotate(90) scale(224.906 368.482)">
+<stop stop-color="#F00036"/>
+<stop offset="1" stop-color="#E52445" stop-opacity="0"/>
+</radialGradient>
+<radialGradient id="paint1_radial_5309_324" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(470.5 471.094) rotate(90) scale(224.906 368.482)">
+<stop stop-color="#BD54FE"/>
+<stop offset="1" stop-color="#B324E5" stop-opacity="0"/>
+</radialGradient>
+<radialGradient id="paint2_radial_5309_324" cx="0" cy="0" r="1" gradientTransform="matrix(-777.8 505.577 -827.634 -476.09 1524.3 -75.5833)" gradientUnits="userSpaceOnUse">
+<stop stop-color="#8300F7"/>
+<stop offset="1" stop-color="#9100FF" stop-opacity="0.08"/>
+</radialGradient>
+<radialGradient id="paint3_radial_5309_324" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(638 348.5) rotate(90) scale(262.5 629)">
+<stop stop-color="white"/>
+<stop offset="1" stop-color="white"/>
+</radialGradient>
+<clipPath id="clip0_5309_324">
+<rect width="1920" height="696" fill="white"/>
+</clipPath>
+</defs>
+</svg>

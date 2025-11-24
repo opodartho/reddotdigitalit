@@ -1,4 +1,4 @@
-// Blogs.tsx - Proper 1440px content area layout
+// Blogs.tsx - Fixed version for sticky to work
 import Body from "@/components/blogs-details/body";
 import Header from "@/components/blogs-details/header";
 import MetaData from "@/components/blogs-details/metadata";
@@ -11,20 +11,20 @@ export default async function Blogs() {
     const [blogsDetailsData, blogsListData] = await Promise.all([getBlogsDetails(), getBlogsList()])
     return (
         <>
-            <p className="text-[14px] text-[#959191] absolute lg:top-40 top-30 z-1 lg:left-21 left-4 whitespace-break-spaces">{`Blog Details`} </p>
 
             {/* Container with 240px padding on each side for 1920px viewport */}
-            <div className="lg:pl-[80px] pl-[16px] lg:pr-[80px] pr-[16px] lg:w-full lg:overflow-hidden">
-                <div className="lg:max-w-[1440px] w-full mx-auto overflow-hidden">
+            <div className="lg:pl-[80px] pl-[16px] lg:pr-[80px] pr-[16px] lg:w-full">
+                <div className="max-w-[1440px] w-full mx-auto">
                     <Header blogsDetailsData={blogsDetailsData} />
 
-                    <div className="flex lg:gap-[104px] gap-0">
-                        {/* MetaData - Fixed width */}
-                        <div className="shrink-0">
+                    {/* KEY: Add relative positioning to the flex container */}
+                    <div className="flex lg:gap-[104px] gap-0 sticky">
+                        {/* MetaData - Fixed width with proper alignment */}
+                        <div className=" sticky top-30"> {/* Remove any sticky classes here */}
                             <MetaData blogsDetailsData={blogsDetailsData} />
                         </div>
 
-                        {/* Body - Takes remaining space */}
+                        {/* Body - Takes remaining space with sufficient content height */}
                         <div className="flex-1 min-w-0">
                             <Body blogsDetailsData={blogsDetailsData} />
                             <WorkWithUs />

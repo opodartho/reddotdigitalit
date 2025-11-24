@@ -5,7 +5,7 @@ import Image from "next/image";
 
 export const HeroSection = () => {
   return (
-    <section className="relative w-full  bg-white pt-[23px] md:pt-[44px] pb-[60px] lg:pb-[110px] overflow-hidden">
+    <section className="relative w-full  bg-white lg:pt-[148px] pt-[23px] md:pt-[44px] pb-[60px] lg:pb-[110px] overflow-hidden">
       {/* Container */}
       <div className="px-[18px] sm:px-[80px] relative">
         {/* Breadcrumb */}
