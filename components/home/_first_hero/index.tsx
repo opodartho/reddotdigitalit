@@ -63,9 +63,14 @@ export default function FirstHeroSection({ heroSlidesData }: HeroSlidesProps) {
           ))}
         </div>
 
-        <div className="lg:hidden">
+        
+
+
+      </div>
+
+      <div className="lg:hidden absolute top-[10px] z-200 w-full">
   <Carousel 
-    className="lg:overflow-hidden lg:w-[700px] w-[357px] basis-[84.4%]" 
+    className="lg:overflow-hidden lg:w-[700px] w-full basis-[24.4%]" 
     setApi={setApi} 
     opts={{ 
       loop: true, 
@@ -74,11 +79,11 @@ export default function FirstHeroSection({ heroSlidesData }: HeroSlidesProps) {
     }} 
     plugins={[autoplay.current]}
   >
-    <CarouselContent className="lg:ml-0 lg:mr-0 lg:gap-180 gap-[10px]">
+    <CarouselContent className="lg:ml-0 lg:mr-0 lg:gap-180 gap-[2px]">
       {heroSlidesData.map((slide) => (
         <CarouselItem 
           key={slide.id} 
-          className="basis-1/2 lg:pl-0 lg:pr-0" // Changed from basis-full to basis-1/2 for 2 slides
+          className="basis-1/3 md:basis-1/7 sm:basis-1/5 lg:pl-0 lg:pr-0" // Changed from basis-full to basis-1/2 for 2 slides
         >
           <CardContainer className="lg:w-[600px] w-[327px] mx-auto">
             <CardBody className="relative lg:w-[600px] w-[327px] overflow-visible [transform-style:preserve-3d]">
@@ -109,9 +114,6 @@ export default function FirstHeroSection({ heroSlidesData }: HeroSlidesProps) {
   </Carousel>
 
 </div>
-
-
-      </div>
       <div className="flex justify-center">
         <WhiteButton className="lg:absolute absolute lg:top-[560px] top-[420px] lg:ml-[0px] ml-[16px] lg:mr-[0px] mr-[16px] w-[250px]">Explore All Services</WhiteButton>
       </div>
