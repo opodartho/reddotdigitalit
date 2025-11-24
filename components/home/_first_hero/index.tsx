@@ -52,9 +52,9 @@ export default function FirstHeroSection({ heroSlidesData }: HeroSlidesProps) {
       <div id="hero-section" className="lg:flex lg:h-[620px] lg:justify-center lg:w-full" style={{ backgroundImage: `url('/images/darkbg.svg')` }}>
 
       <p className="absolute pt-[144px] text-[48px] h-[24px]  text-white text-center w-[819px] font-extrabold">Crafting Innovation, Delivering Excellence</p>
-        <div className="pt-[200px] flex gap-[14px]">
+        <div className="pt-[200px] flex gap-[24px]">
           {heroSlidesData?.map((p, index) => (
-            <button key={index} className="cursor-pointer">
+            <button key={index} className="cursor-pointer hover:scale-2 transition-transform duration-300 ease-in-out hover:scale-125 hover:z-10">
               <img src={p.imageUrl} alt="" />
             </button>
           ))}
