@@ -69,7 +69,7 @@ export const TestimonialCarousel: React.FC<CarouselProps> = ({
 
       {/* Carousel */}
       <div
-        className="embla bg-gradient-to-r from-[#ffecf0] to-[#faf9fe] w-full lg:h-[584px] h-auto"
+        className="embla bg-gradient-to-r from-[#ffecf0] to-[#faf9fe] w-full lg:h-[588px] h-auto"
         ref={emblaRef}
       >
         <div className="embla__container">
