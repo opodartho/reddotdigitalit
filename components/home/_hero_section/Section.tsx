@@ -44,9 +44,9 @@ export default function HeroSection() {
 
   return (
     <>
-      <div className="lg:flex lg:justify-center">
+      <div className="lg:w-full lg:px-[200px]">
         <section
-          className="lg:relative lg:flex lg:h-[655px] lg:max-w-7xl lg:flex-row  lg:w-full lg:px-6 md:px-14  lg:gap-[108px]"
+          className="lg:relative lg:flex lg:h-[655px] lg:max-w-8xl lg:flex-row lg:w-full lg:gap-[258px]"
           style={{
             background: `
         radial-gradient(circle at 85% 15%, #F0E8FF 0%, #FFFFFF 20%),
@@ -55,9 +55,9 @@ export default function HeroSection() {
           }}
         >
 
-          {/* Left text column */}
-          <div className="flex flex-col lg:flex lg:pt-30 pt-10 gap-6 xl  lg:pl-[0px] lg:pr-[0px] pl-[16px] pr-[16px] md:text-left md:w-[55%]">
-            <div className="pr-[4px] flex lg:gap-[12px] gap-[2px] flex-row lg:justify-normal lg:justify-items-normal h-[40px] justify-center items-center">
+          {/* Left text column - Fixed for full width */}
+          <div className="flex flex-col lg:pt-30 pt-10 gap-6 lg:w-1/2 lg:min-w-[600px] lg:px-0 px-[16px]"> {/* Added min-width */}
+            <div className="pr-[4px] flex lg:gap-[12px] gap-[2px] flex-row lg:justify-start h-[40px] items-center">
               {["15+ enterprise solutions", "ISO Certified", "5+ years of experience"].map(
                 (text) => (
                   <p
@@ -70,31 +70,35 @@ export default function HeroSection() {
               )}
             </div>
 
-            <h1 className="lg:text-4xl text-3xl md:text-5xl font-medium leading-tight text-title">
-              Crafting <span className="text-[#E52445]">Innovation,</span>
-              <br className="block" />
-              <span className="text-[#E52445]">Delivering</span> <span className="">Excellence</span>
-            </h1>
+            {/* Heading with proper width control */}
+            <div className="lg:max-w-none w-full"> {/* Remove all max-width constraints */}
+              <h1 className="lg:text-6xl text-3xl md:text-5xl font-medium leading-tight text-title lg:whitespace-nowrap"> {/* Added whitespace-nowrap */}
+                Crafting <span className="text-[#E52445]">Innovation,</span>
+              </h1>
+              <h1 className="lg:text-6xl text-3xl md:text-5xl font-medium leading-tight text-title lg:whitespace-nowrap"> {/* Added whitespace-nowrap */}
+                <span className="text-[#E52445]">Delivering</span> Excellence
+              </h1>
+            </div>
 
-            <p className="text-base md:text-lg leading-relaxed text-subtitle">
+            <p className="text-base md:text-lg leading-relaxed text-subtitle lg:max-w-md"> {/* Reduced max-width */}
               We turn ideas into innovative tech solutions with custom software that boosts
               efficiency and growth.
             </p>
 
-            <div className="lg:flex lg:flex-row  flex flex-col  gap-4">
+            <div className="lg:flex lg:flex-row flex flex-col gap-4">
               <RedButton className="">Explore Services</RedButton>
-              <WhiteButton className="">Let's Work With Us</WhiteButton>
+              <WhiteButton className="lg:w-[250px]">Let's Work With Us</WhiteButton>
             </div>
           </div>
 
           {/* Carousel */}
-          <div className="lg:flex lg:items-center lg:justify-center ">
-            <div className="flex justify-center overflow-visible ">
+          <div className="lg:flex lg:items-center lg:justify-center lg:w-1/2">
+            <div className="flex justify-center overflow-visible">
               <div className="relative z-1 lg:h-full h-[550px] lg:w-full overflow-visible">
-                <Carousel className="lg:overflow-hidden lg:w-[700px] w-[357px] basis-[44.4%]" setApi={setApi} opts={{ loop: true, align: "center" }} plugins={[autoplay.current]}>
-                  <CarouselContent className="lg:ml-0  lg:mr-0 lg:gap-180  gap-[10px] ">
+                <Carousel className="lg:overflow-hidden lg:w-[800px] w-[357px] basis-[44.4%]" setApi={setApi} opts={{ loop: true, align: "center" }} plugins={[autoplay.current]}>
+                  <CarouselContent className="lg:ml-0 lg:mr-0 lg:gap-180 gap-[10px]">
                     {slides.map((slide) => (
-                      <CarouselItem key={slide.id} className="basis-full lg:pl-0  lg:pr-0 ">
+                      <CarouselItem key={slide.id} className="basis-full lg:pl-0 lg:pr-0">
                         <CardContainer className="lg:w-[600px] w-[327px] mx-auto">
                           <CardBody className="relative lg:w-[600px] w-[327px] overflow-visible [transform-style:preserve-3d]">
 
@@ -114,7 +118,6 @@ export default function HeroSection() {
                             {/* Card background with fixed width */}
                             <CardItem translateZ={0}>
                               <div className="bg-white rounded-lg lg:w-[600px] w-[327px] lg:h-[465px] h-[380px] shadow-lg flex flex-col">
-
                                 <div className="flex flex-col gap-2 px-4 lg:pt-[291px] pt-[191px] w-full">
                                   <h3 className="text-lg font-semibold flex justify-between items-center text-title">
                                     {slide.title}
@@ -139,8 +142,6 @@ export default function HeroSection() {
                       </CarouselItem>
                     ))}
                   </CarouselContent>
-
-                  {/* Navigation dots */}
                 </Carousel>
 
                 <div className="lg:mt-8 justify-center w-full flex gap-2 z-120">
