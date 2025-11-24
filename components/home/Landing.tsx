@@ -61,7 +61,6 @@ export const Landing = async () => {
     <div className="">
       <div >
         <FirstHeroSection heroSlidesData={heroSlidesData}/>
-        <HeroSection />
         <ServicesCarousel services={servicesData} />
         <BackToTop />
         <ProductSolution solutions={productSolutionsData} />

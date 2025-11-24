@@ -63,7 +63,7 @@ export default function AreaOfOperations({ sections }: AreaOfOperationsProps) {
       </div>
 
       {/* MAIN WRAPPER — Stripe Style */}
-      <div className="px-[16px] sm:px-[80px] flex flex-col lg:flex-row items-start h-full lg:justify-center lg:gap-[250px]">
+      <div className="px-[16px] sm:px-[80px] flex flex-col lg:flex-row items-start h-full lg:justify-center lg:gap-[150px]">
 
         {/* LEFT COLUMN — Sticky */}
 
@@ -72,15 +72,15 @@ export default function AreaOfOperations({ sections }: AreaOfOperationsProps) {
 
           {/* === Grey Full Line === */}
           <div
-            className="absolute left-[5px] top-[-6px] w-[2px] bg-gray-300"
-            style={{ height: `${sections.length * 96}px` }}
+            className="absolute left-[5px] top-[8px] w-[2px] bg-gray-300"
+            style={{ height: `${sections.length * 60}px` }}
           ></div>
 
           {/* === Red Progress Line (visited) === */}
           <div
-            className="absolute left-[5px] top-[-6px] w-[2px] bg-red-500 transition-all duration-500"
+            className="absolute left-[5px] top-[8px] w-[2px] bg-red-500 transition-all duration-500"
             style={{
-              height: `${(activeIndex + 1) * 96}px`
+              height: `${(activeIndex + 1) * 60}px`
             }}
           ></div>
 
@@ -89,7 +89,7 @@ export default function AreaOfOperations({ sections }: AreaOfOperationsProps) {
             const isVisited = i <= activeIndex;   // 
 
             return (
-              <div key={section.id} className="flex items-center mb-20 relative">
+              <div key={section.id} className="flex items-center mb-[40px] relative">
 
                 {/* Dot */}
                 <div

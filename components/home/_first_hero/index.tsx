@@ -50,9 +50,9 @@ export default function FirstHeroSection({ heroSlidesData }: HeroSlidesProps) {
 
   return (
     <>
-      <div id="hero-section" className="lg:flex lg:h-[620px] lg:justify-center lg:w-full" style={{ backgroundImage: `url('/images/darkbg.svg')` }}>
+      <div id="hero-section" className="lg:flex lg:h-[690px] lg:justify-center lg:w-full" style={{ backgroundImage: `url('/images/darkbg.svg')` }}>
 
-      <p className="absolute pt-[144px] text-[48px] h-[24px]  text-white text-center w-[819px] font-bold">Crafting Innovation, Delivering Excellence</p>
+      <p className="absolute pt-[144px] text-[48px] h-[24px]  text-white text-center w-[819px] font-bold text-poppins">Crafting Innovation, Delivering Excellence</p>
         <div className="pt-[200px] flex gap-[24px]">
           {heroSlidesData?.map((p, index) => (
             <button key={index} onClick={()=>navigate.push(`${p.route}`)}  className="cursor-pointer transition-transform duration-300 ease-in-out hover:scale-110 hover:z-10">
@@ -61,7 +61,7 @@ export default function FirstHeroSection({ heroSlidesData }: HeroSlidesProps) {
           ))}
         </div>
 
-        <WhiteButton className="absolute top-[520px] w-[250px]">Explore All Services</WhiteButton>
+        <WhiteButton className="absolute top-[560px] w-[250px]">Explore All Services</WhiteButton>
       </div>
     </>
   );

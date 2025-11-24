@@ -46,10 +46,10 @@ export function NavBar() {
         if (heroSection) {
           const sectionBottom = heroSection.getBoundingClientRect().bottom;
           // When the hero section (620px height) is completely scrolled past
-          setIsScrolled(window.scrollY > 550);
+          setIsScrolled(window.scrollY > 600);
         } else {
           // Fallback: use the exact hero section height (620px)
-          setIsScrolled(window.scrollY > 420);
+          setIsScrolled(window.scrollY > 580);
         }
       } else {
         // For all other pages, text should always be black
@@ -93,14 +93,14 @@ export function NavBar() {
       <div className="lg:flex lg:justify-center sticky lg:top-[22px] z-1000">
         <div className="absolute bg-transparent top-0 lg:flex lg:justify-center lg:items-center z-100 pt-[22px] w-full">
           <nav className={cn(
-            "z-1000 top-0 lg:w-[1440px] h-[76px] rounded-4xl backdrop-blur-2xl opacity-100 border-b shadow-[0_4px_29px_rgba(0,0,0,0.05)] transition-all duration-100",
+            "z-1000 top-0 lg:w-[1140px] h-[66px] rounded-4xl backdrop-blur-2xl opacity-100 border-b shadow-[0_4px_29px_rgba(0,0,0,0.05)] transition-all duration-100",
             isHomePage 
               ? isScrolled 
                 ? "bg-transparent backdrop-blur-2xl border-gray-200/50"  // White background when scrolled past hero
                 : "bg-transparent border-white/20"  // Transparent on hero section
               : "bg-transparent backdrop-blur-2xl border-gray-200/50"  // Other pages: always have the scrolled style
           )}>
-            <div className="flex h-full items-center justify-between px-4 md:px-10 lg:px-[80px]">
+            <div className="flex h-full items-center justify-between px-4 md:px-10 lg:px-[70px]">
               <Link href="/" onClick={scrollToTop} className="flex-shrink-0 relative lg:right-16">
                 <Image
                   src="/images/RedDotLogo.svg"
@@ -115,7 +115,7 @@ export function NavBar() {
 
               {/* Desktop Navigation */}
               <NavigationMenu className="hidden h-full justify-center md:flex">
-                <NavigationMenuList className="h-full space-x-16">
+                <NavigationMenuList className="h-full space-x-8">
                   {navLinks.map((link) => (
                     <NavigationMenuItem key={link.title}>
                       {!link.items || link.items.length === 0 ? (
@@ -136,7 +136,7 @@ export function NavBar() {
                             {link.title}
                           </NavigationMenuTrigger>
                           <NavigationMenuContent>
-                            <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+                            <ul className="grid w-[400px] gap-1 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
                               {link.items?.map((item) => (
                                 <ListItem
                                   key={item.title}
@@ -156,7 +156,7 @@ export function NavBar() {
               </NavigationMenu>
 
               {/* Right side container */}
-              <div className="hidden h-full items-center gap-5 md:flex">
+              <div className="hidden h-full items-center gap-2 md:flex">
                 <div className="relative left-16">
                   <Link
                     href="/contact-us"
