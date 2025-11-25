@@ -32,7 +32,7 @@ export default function AreaOfOperations({ sections }: AreaOfOperationsProps) {
       },
       {
         threshold: 0.4,
-        rootMargin: "50% 0px 50% 0px",
+        rootMargin: "-10% 0px -10% 0px",
       }
     );
 
@@ -49,7 +49,7 @@ export default function AreaOfOperations({ sections }: AreaOfOperationsProps) {
 
 
   return (
-    <section className="bg-gradient-to-r w-full from-pink-50 via-white to-orange-50 pt-[110px] pb-[110px]">
+    <section className="bg-gradient-to-r from-pink-50 via-white to-orange-50 pt-[110px] pb-[110px]">
       {/* HEADER */}
       <div className="px-[16px] sm:px-[80px] text-center mb-[70px]">
         <h2 className="text-[#060414] text-poppins font-semibold text-[25px] md:text-[32px]">
@@ -63,24 +63,24 @@ export default function AreaOfOperations({ sections }: AreaOfOperationsProps) {
       </div>
 
       {/* MAIN WRAPPER — Stripe Style */}
-      <div className="px-[16px] sm:px-[80px] flex flex-col lg:flex-row items-start h-full lg:justify-center lg:gap-[250px]">
+      <div className="px-[16px] sm:px-[80px] flex flex-col xl:flex-row justify-between gap-12">
 
         {/* LEFT COLUMN — Sticky */}
 
         {/* LEFT COLUMN — Sticky */}
-        <div className="hidden lg:flex flex-col sticky top-[180px] mt-[24px] min-w-[250px] relative">
+        <div className="hidden xl:flex flex-col sticky top-[190px] mt-[24px] h-fit min-w-[250px] relative">
 
           {/* === Grey Full Line === */}
           <div
             className="absolute left-[5px] top-[-6px] w-[2px] bg-gray-300"
-            style={{ height: `${sections.length * 96}px` }}
+            style={{ height: `${sections.length * 48}px` }}
           ></div>
 
           {/* === Red Progress Line (visited) === */}
           <div
             className="absolute left-[5px] top-[-6px] w-[2px] bg-red-500 transition-all duration-500"
             style={{
-              height: `${(activeIndex + 1) * 96}px`
+              height: `${(activeIndex + 1) * 48}px`
             }}
           ></div>
 
@@ -89,7 +89,7 @@ export default function AreaOfOperations({ sections }: AreaOfOperationsProps) {
             const isVisited = i <= activeIndex;   // 
 
             return (
-              <div key={section.id} className="flex items-center mb-20 relative">
+              <div key={section.id} className="flex items-center mb-6 relative">
 
                 {/* Dot */}
                 <div
@@ -111,6 +111,7 @@ export default function AreaOfOperations({ sections }: AreaOfOperationsProps) {
 
 
         {/* RIGHT COLUMN — Natural Page Scroll */}
+     
         <div className="flex-1 lg:max-w-[770px]  space-y-[80px]">
 
           {sections.map((section) => (
@@ -178,7 +179,8 @@ export default function AreaOfOperations({ sections }: AreaOfOperationsProps) {
           ))}
 
         </div>
-      </div>
+        </div>
+  
     </section>
   );
 }

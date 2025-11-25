@@ -16,7 +16,7 @@ export function WhiteHoverButton({
       )}
       {...props}
     >
-      <div className="relative flex items-center justify-center w-full h-full">
+      <div className="relative flex items-center justify-center w-full h-full  ">
 
         <span className="relative z-10 transition-all duration-300 group-hover:opacity-0 whitespace-nowrap">
           {children}

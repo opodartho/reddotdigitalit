@@ -1,0 +1,19 @@
+/* Remove testimonial sizing */
+.embla__slide,
+.embla__slide_mobile {
+  flex: 0 0 auto;
+}
+
+/* Featured project: SINGLE CARD PER SLIDE */
+.embla__slide_project {
+  flex: 0 0 100%;  /* full width like Figma */
+  min-width: 0;
+}
+
+.embla {
+  overflow: hidden;
+}
+
+.embla__container {
+  display: flex;
+}

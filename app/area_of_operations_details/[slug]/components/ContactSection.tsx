@@ -10,49 +10,55 @@ export const ContactSection = () => {
   const controls = useAnimationControls();
 
   // ✨ Custom loop animation logic
-  useEffect(() => {
-    const sequence = async () => {
-      while (true) {
-        // Step 1: Reset visibility
-        await controls.start({
-          opacity: 0,
-          transition: { duration: 0 },
+useEffect(() => {
+  let isMounted = true; 
+
+  const sequence = async () => {
+    while (isMounted) {
+      // Step 1: Reset visibility
+      await controls.start({
+        opacity: 0,
+        transition: { duration: 0 },
+      });
+
+      // Step 2: Animate words one by one
+      for (let i = 0; i < title.length; i++) {
+        await controls.start((index) => {
+          if (index <= i) {
+            return {
+              opacity: 1,
+              y: 0,
+              transition: { duration: 0.5, ease: "easeOut" },
+            };
+          }
+          return {};
         });
-
-        // Step 2: Animate words one by one
-        for (let i = 0; i < title.length; i++) {
-          await controls.start((index) => {
-            if (index <= i) {
-              return {
-                opacity: 1,
-                y: 0,
-                transition: { duration: 0.5, ease: "easeOut" },
-              };
-            }
-            return {};
-          });
-        }
-
-        // Step 3: Pause
-        await new Promise((r) => setTimeout(r, 1000));
-
-        // Step 4: Fade out entire line
-        await controls.start({
-          opacity: 0,
-          y: -10,
-          transition: { duration: 0.8, ease: "easeInOut" },
-        });
-
-        // Step 5: Wait before restart
-        await new Promise((r) => setTimeout(r, 300));
       }
-    };
 
-    // 🔥 KEY FIX: Run AFTER mount
-    setTimeout(() => {
-      sequence();
-    }, 0);
-  }, [controls]);
+      // Step 3: Pause
+      await new Promise((r) => setTimeout(r, 1000));
+
+      // Step 4: Fade out
+      await controls.start({
+        opacity: 0,
+        y: -10,
+        transition: { duration: 0.8, ease: "easeInOut" },
+      });
+
+      await new Promise((r) => setTimeout(r, 300));
+    }
+  };
+
+  // 👌 FIX: Run AFTER mount + hydration
+  requestAnimationFrame(() => {
+    sequence();
+  });
+
+  return () => {
+    isMounted = false; // clean animation loop
+  };
+}, []);
+
 
   return (
     <section className="relative w-full bg-white">
