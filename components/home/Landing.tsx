@@ -24,9 +24,11 @@ import { getPartners } from "@/lib/api/fetchPartners";
 import TestimonialSection from "@/components/home/_testimonial/Section";
 import { NavBar } from "@/components/NavBar/NavBar";
 import TrustedPartners from "./TrustedPartner/NewSection";
-import NewHero from "./_new_hero/Section";
+
 import FeaturedProjectsSection from "./featured-projects/FeaturedProjectsSection";
 import Solutions from "@/components/home/_product_solution/Section";
+import FirstHeroSection from "./_first_hero";
+import { getHeroes } from "@/lib/api/home-hero/fetchHero";
 
 export const Landing = async () => {
   const [
@@ -41,6 +43,7 @@ export const Landing = async () => {
     aboutData,
     achievementData,
     partnersData,
+    heroSlidesData
   ] = await Promise.all([
     getLatestNews(),
     getCaseStudies(),
@@ -53,16 +56,15 @@ export const Landing = async () => {
     getAboutData(),
     getAchievementData(),
     getPartners(),
+    getHeroes()
   ]);
 
   return (
 
     <div className="">
       <div >
-        <NewHero />
+         <FirstHeroSection heroSlidesData={heroSlidesData}/>
          <FeaturedProjectsSection />
-       
-
         <ServicesCarousel services={servicesData} />
         <BackToTop />
         <Solutions solutions={productSolutionsData} />

@@ -10,7 +10,6 @@ export default async function ManagementCouncil() {
     const [managementData] = await Promise.all([getManagement()])
     return (
         <>
-            <p className="text-[14px] text-[#959191] absolute lg:top-40 top-30 z-1 lg:left-21 left-4 whitespace-break-spaces">{`About Us      >>       Management Council`} </p>
 
             <div className="lg:pl-[80px] pl-[16px] lg:pr-[80px] pr-[16px] ">
                 <Header managementData={managementData} />

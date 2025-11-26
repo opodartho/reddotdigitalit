@@ -78,7 +78,7 @@ export default function AreaOfOperations({ sections }: AreaOfOperationsProps) {
 
           {/* === Red Progress Line (visited) === */}
           <div
-            className="absolute left-[5px] top-[-6px] w-[2px] bg-red-500 transition-all duration-500"
+            className="absolute left-[5px] top-[8px] w-[2px] bg-red-500 transition-all duration-500"
             style={{
               height: `${(activeIndex + 1) * 48}px`
             }}
