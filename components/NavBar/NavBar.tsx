@@ -93,7 +93,7 @@ export function NavBar() {
       <div className="lg:flex lg:justify-center sticky lg:top-[22px] z-1000">
         <div className="absolute bg-transparent top-0 lg:flex lg:justify-center lg:items-center z-100 pt-[22px] w-full">
           <nav className={cn(
-            "z-1000 top-0 lg:w-[1140px] h-[66px] rounded-4xl backdrop-blur-2xl opacity-100 border-b shadow-[0_4px_29px_rgba(0,0,0,0.05)] transition-all duration-100",
+            " px-4 z-1000 top-0 lg:w-[1140px] h-[66px] rounded-4xl backdrop-blur-2xl opacity-100 border-b shadow-[0_4px_29px_rgba(0,0,0,0.05)] transition-all duration-100",
             isHomePage 
               ? isScrolled 
                 ? "bg-transparent backdrop-blur-2xl border-gray-200/50"  // White background when scrolled past hero
@@ -161,7 +161,7 @@ export function NavBar() {
                   <Link
                     href="/contact-us"
                     className={cn(
-                      "flex h-[56px] w-[153px] justify-end items-center rounded-[25px] border px-7 text-lg transition-all duration-300", 
+                      "flex  justify-end items-center rounded-[25px] border px-7 py-2 text-lg transition-all duration-300", 
                       "bg-gradient-to-l from-red-700 via-red-600 via-red-500 to-red-400 text-white border-[#E52445] hover:bg-red-100" 
                     )}
                   >

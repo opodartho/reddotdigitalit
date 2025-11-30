@@ -141,28 +141,33 @@ export default function TrustedPartners() {
         </div>
 
         {/* Logo Grid */}
-        <div
-          className="lg:grid lg:grid-cols-7 grid grid-cols-2  gap-0"
-          style={{
-            gridTemplateRows: `repeat(${Math.ceil(imagesToShow.length / 7)}, minmax(0, 1fr))`,
-          }}
-        >
-          {imagesToShow.map((imgSrc, idx) => (
-            <div
-              key={idx}
-              className="flex items-center justify-center hover:shadow-xl border border-gray-200"
-              style={{ aspectRatio: "0.5/ 0.5" }}
-            >
-              <Image
-                src={imgSrc}
-                alt={`Partner ${idx + 1}`}
-                width={100}
-                height={100}
-                className="object-contain"
-              />
-            </div>
-          ))}
-        </div>
+<div
+  className="
+    grid 
+    justify-center
+    gap-0
+    auto-rows-[120px]
+    grid-cols-[repeat(auto-fill,minmax(120px,1fr))]
+  "
+>
+  {imagesToShow.map((imgSrc, idx) => (
+<div
+  key={idx}
+  className="relative flex items-center justify-center border border-gray-200 hover:shadow-md h-[120px] w-full"
+>
+<Image
+  src={imgSrc}
+  alt={`Partner ${idx + 1}`}
+  fill
+  className="
+    object-contain
+    p-7
+  "
+/>
+    </div>
+  ))}
+</div>
+
       </div>
     </section>
   );

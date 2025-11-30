@@ -99,7 +99,7 @@ export default function CultureSection() {
       className="relative w-full bg-gradient-to-br from-[#F0F7FF] via-[#FFFAFE] to-[#FFEBEF]
                  mt-[68px] sm:mt-[92px] mb-[81px] sm:mb-[113px]"
     >
-      <div className="mx-auto container [1280px] px-[20px] sm:px-[32px] lg:px-[40px] xl:px-0 text-center py-[90px] sm:py-[118px]">
+      <div className="mx-auto max-w-[1280px] px-[20px] sm:px-[32px] lg:px-[40px] xl:px-0 text-center py-[90px] sm:py-[118px]">
         <div className="mb-[46px] sm:mb-[78px]">
           <h2 className="text-[25px] sm:text-[30px] lg:text-[32px] font-bold text-[#060414]">
             Our Culture

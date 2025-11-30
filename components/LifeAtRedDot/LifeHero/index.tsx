@@ -10,7 +10,7 @@ export const LifeHero = () => {
 
       <section className="relative w-full bg-white">
         {/* 🧭 Breadcrumb */}
-        <div className="px-[16px] sm:px-[80px] pt-[23px] sm:pt-[44px]">
+        <div className="px-[16px] sm:px-[80px] pt-[56px] sm:pt-[80px]">
 
 
 

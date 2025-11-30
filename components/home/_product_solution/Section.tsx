@@ -13,7 +13,7 @@ export default function Solutions({ solutions }: Props) {
   const router = useRouter();
 
   return (
-    <section className="pb-[56px] px-[16px] sm:px-[80px] ">
+    <section className="max-w-[1440px] mx-auto  pb-[56px] px-[16px] sm:px-[80px] ">
       {/* Header */}
       <div className="text-center max-w-2xl mx-auto mb-[54px]">
         <h2 className="font-poppins text-[32px] leading-[40px] font-semibold text-[#060414]">

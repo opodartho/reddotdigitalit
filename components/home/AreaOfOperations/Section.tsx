@@ -49,8 +49,8 @@ export default function AreaOfOperations({ sections }: AreaOfOperationsProps) {
 
 
   return (
-    <section className="bg-gradient-to-r from-pink-50 via-white to-orange-50 pt-[110px] pb-[110px]">
-      {/* HEADER */}
+    <section className=" bg-gradient-to-r from-pink-50 via-white to-orange-50 pt-[80px] pb-[110px]">
+      {/* HEADER */}<div className="max-w-[1440px] mx-auto">
       <div className="px-[16px] sm:px-[80px] text-center mb-[70px]">
         <h2 className="text-[#060414] text-poppins font-semibold text-[25px] md:text-[32px]">
           Area of Operations
@@ -63,12 +63,16 @@ export default function AreaOfOperations({ sections }: AreaOfOperationsProps) {
       </div>
 
       {/* MAIN WRAPPER — Stripe Style */}
-      <div className="px-[16px] sm:px-[80px] flex flex-col xl:flex-row justify-between gap-12">
+        <div className="px-[16px] sm:px-[80px] flex flex-col xl:flex-row justify-between gap-12">
 
         {/* LEFT COLUMN — Sticky */}
 
-        {/* LEFT COLUMN — Sticky */}
-        <div className="hidden xl:flex flex-col sticky top-[190px] mt-[24px] h-fit min-w-[250px] relative">
+          <div className="hidden xl:flex flex-col sticky top-[190px] mt-[24px] h-fit min-w-[250px] relative">
+
+       
+     
+         
+
 
           {/* === Grey Full Line === */}
           <div
@@ -78,7 +82,7 @@ export default function AreaOfOperations({ sections }: AreaOfOperationsProps) {
 
           {/* === Red Progress Line (visited) === */}
           <div
-            className="absolute left-[5px] top-[8px] w-[2px] bg-red-500 transition-all duration-500"
+            className="absolute left-[5px] top-[-6px] w-[2px] bg-red-500 transition-all duration-500"
             style={{
               height: `${(activeIndex + 1) * 48}px`
             }}
@@ -109,10 +113,9 @@ export default function AreaOfOperations({ sections }: AreaOfOperationsProps) {
           })}
         </div>
 
-
         {/* RIGHT COLUMN — Natural Page Scroll */}
      
-        <div className="flex-1 lg:max-w-[770px]  space-y-[80px]">
+        <div className="flex-1 lg:max-w-[770px]  space-y-[56px]">
 
           {sections.map((section) => (
             <section
@@ -180,7 +183,7 @@ export default function AreaOfOperations({ sections }: AreaOfOperationsProps) {
 
         </div>
         </div>
-  
+  </div>
     </section>
   );
 }

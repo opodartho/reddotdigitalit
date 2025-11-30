@@ -7,8 +7,9 @@ type TestimonialSectionProps = {
 
 const TestimonialSection = ({ testimonials }: TestimonialSectionProps) => {
   return (
-    <div className="font-poppins bg-gradient-to-r from-[#ffecf0] to-[#faf9fe] pt-12 pb-10">
-      <div className="mx-auto px-6">
+    <div className="font-poppins  pt-12 pb-10 bg-cover bg-center bg-no-repeat"
+  style={{ backgroundImage: "url('/images/news-bg.png')" }}>
+      <div className="mx-auto pl-[16px] sm:pl-[80px]">
         <TestimonialCarousel testimonials={testimonials} />
       </div>
     </div>
