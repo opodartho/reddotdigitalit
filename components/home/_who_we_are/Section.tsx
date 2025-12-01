@@ -11,13 +11,13 @@ interface WhoWeAreProps {
 
 const WhoWeAre = ({ aboutData, achievementData }: WhoWeAreProps) => {
   return (
-    <section className="max-w-[1440px] mx-auto">
+    <section className="max-w-[1440px] mx-auto mt-[48px]">
       <h1 className="--font-poppins font-semibold text-[32px] leading-[40px] tracking-[0.03px] text-center align-middle text-title">
         Who We Are
       </h1>
-      <p className="--font-poppins font-normal text-[14px] leading-[22px] tracking-[0] text-center align-middle mt-[16px] text-subtitle">
-        Our cutting-edge Modular Data Center solutions enable to
-        <br /> protect mission-critical data
+      <p className="--font-poppins font-normal text-[14px] leading-[22px] tracking-[0] text-center align-middle mt-[16px] text-subtitle px-[2px] sm:px-0">
+        Driving digital transformation with expertise, technology,and a
+        <br />passion for building impactful enterprise solutions.
       </p>
       <TabButtons
         about={<About data={aboutData} />}

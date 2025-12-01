@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useCallback } from "react";
+import React, { useCallback, useState } from "react";
 import Image from "next/image";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
@@ -32,10 +32,7 @@ const SeeMoreText = ({ text }: { text: string }) => {
 
   React.useEffect(() => {
     calculateOverflow();
-
     window.addEventListener("resize", calculateOverflow);
-
-    // fix for font loading + layout shift
     setTimeout(calculateOverflow, 50);
     setTimeout(calculateOverflow, 200);
 
@@ -68,24 +65,54 @@ const SeeMoreText = ({ text }: { text: string }) => {
   );
 };
 
-
 /* --------------------------------------------------
    MAIN CAROUSEL COMPONENT
 -------------------------------------------------- */
 export const TestimonialCarousel: React.FC<CarouselProps> = ({
   testimonials,
 }) => {
+  const autoplayOptions = Autoplay({ delay: 2000, stopOnInteraction: false });
+
   const [emblaRef, emblaApi] = useEmblaCarousel(
     {
       loop: true,
       align: "start",
       slidesToScroll: 1,
     },
-    [Autoplay({ delay: 3000, stopOnInteraction: false })]
+    [autoplayOptions]
   );
 
-  const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
-  const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
+  /* CLICK FLASH */
+  const [activeArrow, setActiveArrow] = useState<"prev" | "next" | null>(null);
+
+  const flashArrow = (arrow: "prev" | "next") => {
+    setActiveArrow(arrow);
+    setTimeout(() => setActiveArrow(null), 200);
+  };
+
+  /* SAFELY ACCESS AUTOPLAY PLUGIN */
+  const getAutoplay = () => emblaApi?.plugins().autoplay;
+
+  /* PAUSE + RESUME AUTOPLAY */
+  const pauseAutoplay = () => {
+    const ap = getAutoplay();
+    if (!ap) return;
+
+    ap.stop();
+    setTimeout(() => ap.play(), );
+  };
+
+  const scrollPrev = () => {
+    emblaApi?.scrollPrev();
+    flashArrow("prev");
+    pauseAutoplay();
+  };
+
+  const scrollNext = () => {
+    emblaApi?.scrollNext();
+    flashArrow("next");
+    pauseAutoplay();
+  };
 
   return (
     <>
@@ -101,14 +128,37 @@ export const TestimonialCarousel: React.FC<CarouselProps> = ({
           </p>
         </div>
 
-        {/* ARROWS - HIDE ON MOBILE */}
+        {/* ARROWS */}
         <div className="hidden lg:flex mt-2 space-x-3">
+
+          {/* LEFT ARROW */}
           <button onClick={scrollPrev}>
-            <Image src="/icons/arrow-left1.png" width={48} height={48} alt="Prev" />
+            <Image
+              src={
+                activeArrow === "prev"
+                  ? "/icons/arrow-left-red.png"
+                  : "/icons/arrow-left-grey.png"
+              }
+              width={48}
+              height={48}
+              alt="Prev"
+            />
           </button>
+
+          {/* RIGHT ARROW */}
           <button onClick={scrollNext}>
-            <Image src="/icons/arrow-right1.png" width={48} height={48} alt="Next" />
+            <Image
+              src={
+                activeArrow === "next"
+                  ? "/icons/arrow-right-red.png"
+                  : "/icons/arrow-right-grey.png"
+              }
+              width={48}
+              height={48}
+              alt="Next"
+            />
           </button>
+
         </div>
       </div>
 
@@ -120,18 +170,12 @@ export const TestimonialCarousel: React.FC<CarouselProps> = ({
               <div
                 className="
                   bg-white border border-[#E8EAED] rounded-[10px]
-                  
-                  /* DESKTOP (lg and up) */
-                  lg:px-[42px] lg:py-[34px]
-                  lg:w-[574px] lg:min-h-[484px]
 
-                  /* MOBILE + TABLET */
-                 w-[270px]
-                  px-5 py-6 min-h-[360px]
+                  lg:px-[42px] lg:py-[34px] lg:w-[574px] lg:min-h-[484px]
 
-                  h-auto
+                  w-[270px] px-5 py-6 min-h-[360px]
 
-                  flex flex-col
+                  h-auto flex flex-col
                   transition-all duration-300 hover:shadow-xl
                 "
               >
@@ -146,7 +190,7 @@ export const TestimonialCarousel: React.FC<CarouselProps> = ({
                   />
                 </div>
 
-                {/* TEXT BLOCK */}
+                {/* TEXT */}
                 <div className="mb-4 lg:mb-6">
                   <SeeMoreText text={testimonial.quote} />
                 </div>
@@ -154,17 +198,15 @@ export const TestimonialCarousel: React.FC<CarouselProps> = ({
                 {/* FOOTER */}
                 <div className="mt-auto flex flex-col items-start gap-2 pt-4">
                   <div
-                    className={`
-                      relative
-                      ${testimonial.id === 2 || testimonial.id === 5
+                    className={`relative ${
+                      testimonial.id === 2 || testimonial.id === 5
                         ? "w-[90px] h-[35px] lg:w-[100px] lg:h-[40px]"
                         : "w-[50px] h-[40px] lg:w-[59px] lg:h-[48px]"
-                      }
-                    `}
+                    }`}
                   >
                     <Image
                       src={testimonial.logoSrc}
-                      alt={`${testimonial.company} Logo`}
+                      alt="Logo"
                       fill
                       className="object-contain"
                     />
@@ -181,7 +223,9 @@ export const TestimonialCarousel: React.FC<CarouselProps> = ({
                       {testimonial.title}
                     </p>
                   </div>
+
                 </div>
+
               </div>
             </div>
           ))}

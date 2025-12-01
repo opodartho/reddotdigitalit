@@ -51,17 +51,17 @@ export const staticFooterData: FooterData = {
     {
       title: "About Us",
       links: [
-        { text: "About Company", href: "#" },
-        { text: "News", href: "#" },
-        { text: "Blog", href: "#" },
+        { text: "About Company", href: "/about-us" },
+        { text: "News", href: "/news-list" },
+        { text: "Blog", href: "/blogs-list" },
       ],
     },
     {
       title: "Area of operations",
       links: [
         { text: "Services", href: "#" },
-        { text: "Contact Us", href: "#" },
-        { text: "Privacy Notice", href: "#" },
+        { text: "Contact Us", href: "/contact-us" },
+        { text: "Privacy Notice", href: "/privacy-policy" },
       ],
     },
     {
