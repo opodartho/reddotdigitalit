@@ -71,13 +71,9 @@ export function NavBar() {
 
   // Determine text color based on page and scroll state
   const getTextColorClass = () => {
-    if (!isHomePage) {
-      // All other pages: always black text
+    
       return "text-gray-900";
-    } else {
-      // Home page: white text until scrolled, then black
-      return isScrolled ? "text-gray-900" : "text-white";
-    }
+   
   };
 
   const scrollToTop = () => {

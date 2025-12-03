@@ -119,10 +119,10 @@ export const TestimonialCarousel: React.FC<CarouselProps> = ({
       {/* HEADER */}
       <div className="mb-10 lg:mb-20 flex items-start justify-between w-full px-4 lg:pr-[80px]">
         <div>
-          <h2 className="text-[24px] lg:text-[32px] leading-[30px] lg:leading-[40px] font-semibold tracking-[0.03px] text-white">
+          <h2 className="text-[24px] lg:text-[32px] leading-[30px] lg:leading-[40px] font-semibold tracking-[0.03px] text-[#060414]">
             Hear From Our Clients!
           </h2>
-          <p className="mt-2 text-[13px] lg:text-[14px] leading-[20px] lg:leading-[22px] font-normal text-white">
+          <p className="mt-2 text-[13px] lg:text-[14px] leading-[20px] lg:leading-[22px] font-normal text-[#060414]">
             Our cutting-edge Modular Data Center solutions enable to protect
             mission-critical data.
           </p>
@@ -137,7 +137,7 @@ export const TestimonialCarousel: React.FC<CarouselProps> = ({
               src={
                 activeArrow === "prev"
                   ? "/icons/arrow-left-red.png"
-                  : "/icons/arrow-left-grey.png"
+                  : "/icons/arrow-left-new.png"
               }
               width={48}
               height={48}
@@ -151,7 +151,7 @@ export const TestimonialCarousel: React.FC<CarouselProps> = ({
               src={
                 activeArrow === "next"
                   ? "/icons/arrow-right-red.png"
-                  : "/icons/arrow-right-grey.png"
+                  : "/icons/arrow-right-new.png"
               }
               width={48}
               height={48}

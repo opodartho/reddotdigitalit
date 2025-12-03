@@ -28,7 +28,9 @@ import TrustedPartners from "./TrustedPartner/NewSection";
 import FeaturedProjectsSection from "./featured-projects/FeaturedProjectsSection";
 import Solutions from "@/components/home/_product_solution/Section";
 import FirstHeroSection from "./_first_hero";
-import { getHeroes } from "@/lib/api/home-hero/fetchHero";
+
+import { getHeroes } from "@/lib/api/home-hero-redesign/fetchHero";
+import FirstHeroRedesignSection from "./_first_hero_redesign/Section";
 
 export const Landing = async () => {
   const [
@@ -63,7 +65,8 @@ export const Landing = async () => {
 
     <div className="">
       <div >
-         <FirstHeroSection heroSlidesData={heroSlidesData}/>
+         
+         <FirstHeroRedesignSection heroSlidesData={heroSlidesData}/>
          <FeaturedProjectsSection />
         <ServicesCarousel services={servicesData} />
         <BackToTop />
