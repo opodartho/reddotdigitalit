@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useState, useEffect } from "react";
 import Image from "next/image";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
@@ -16,7 +16,7 @@ export const FeaturedProjectsCarousel: React.FC<CarouselProps> = ({
   projects,
 }) => {
   const autoplayOptions = Autoplay({
-    delay: 2000,
+    delay: 4000,
     stopOnInteraction: false,
   });
 
@@ -39,25 +39,15 @@ export const FeaturedProjectsCarousel: React.FC<CarouselProps> = ({
     setTimeout(() => setActiveArrow(null), 200);
   };
 
-  /**********************************************
-   * SAFELY ACCESS AUTOPLAY PLUGIN
-   **********************************************/
   const getAutoplay = () => emblaApi?.plugins()?.autoplay;
 
-  /**********************************************
-   * PAUSE + RESUME AUTOPLAY ON CLICK
-   **********************************************/
   const pauseAutoplay = () => {
     const ap = getAutoplay();
     if (!ap) return;
-
     ap.stop();
-    setTimeout(() => ap.play(), );
+    setTimeout(() => ap.play(), 4000);
   };
 
-  /**********************************************
-   * SCROLL + FLASH + PAUSE AUTOPLAY
-   **********************************************/
   const scrollPrev = useCallback(() => {
     emblaApi?.scrollPrev();
     flashArrow("prev");
@@ -70,6 +60,23 @@ export const FeaturedProjectsCarousel: React.FC<CarouselProps> = ({
     pauseAutoplay();
   }, [emblaApi]);
 
+  /**********************************************
+   * PAGINATION DOTS — LAG-FREE VERSION
+   **********************************************/
+  const scrollSnaps = projects.map((_, i) => i); // instant rendering
+  const [selectedIndex, setSelectedIndex] = useState(0);
+
+  const onSelect = useCallback(() => {
+    if (!emblaApi) return;
+    setSelectedIndex(emblaApi.selectedScrollSnap());
+  }, [emblaApi]);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+    emblaApi.on("select", onSelect);
+    onSelect(); // set initial dot
+  }, [emblaApi, onSelect]);
+
   return (
     <>
       {/* Header */}
@@ -79,8 +86,6 @@ export const FeaturedProjectsCarousel: React.FC<CarouselProps> = ({
         </h2>
 
         <div className="mt-2 flex space-x-3">
-
-          {/* LEFT ARROW */}
           <button onClick={scrollPrev}>
             <Image
               src={
@@ -94,7 +99,6 @@ export const FeaturedProjectsCarousel: React.FC<CarouselProps> = ({
             />
           </button>
 
-          {/* RIGHT ARROW */}
           <button onClick={scrollNext}>
             <Image
               src={
@@ -107,14 +111,12 @@ export const FeaturedProjectsCarousel: React.FC<CarouselProps> = ({
               height={48}
             />
           </button>
-
         </div>
       </div>
 
       {/* Carousel */}
-      <div className="embla" ref={emblaRef}>
+      <div className="embla relative" ref={emblaRef}>
         <div className="embla__container">
-
           {projects.map((project) => (
             <div
               key={project.id}
@@ -158,7 +160,28 @@ export const FeaturedProjectsCarousel: React.FC<CarouselProps> = ({
               </div>
             </div>
           ))}
+        </div>
 
+        {/* ⭐ FIXED DOTS (no lag, inside carousel visually) */}
+        <div
+          className="
+          absolute 
+          left-0 right-0 
+          top-[260px] sm:top-[340px] md:top-[420px] lg:top-[494px] xl:top-[570px]
+          flex justify-center space-x-2 
+          z-20
+        "
+        >
+          {scrollSnaps.map((i) => (
+            <button
+              key={i}
+              onClick={() => emblaApi?.scrollTo(i)}
+              className={`
+                h-[8px] w-[8px] rounded-full transition-all
+                ${selectedIndex === i ? "bg-[#E52445]" : "bg-[#DCE6F9]"}
+              `}
+            />
+          ))}
         </div>
       </div>
     </>

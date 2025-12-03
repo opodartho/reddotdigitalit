@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ContactForm } from "@/components/ui/contactForm";
 import { motion, useAnimationControls } from "framer-motion";
@@ -9,34 +9,44 @@ export const ContactSection = () => {
   const title = ["Leave", "Your", "Query", "To", "Us"];
   const controls = useAnimationControls();
 
-  // ✨ Custom loop animation logic
-useEffect(() => {
-  let isMounted = true; 
+  // FIX: Track mount state
+  const [mounted, setMounted] = useState(false);
 
-  const sequence = async () => {
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+useEffect(() => {
+  let isMounted = true;
+
+  const runSequence = async () => {
+    await new Promise((res) => setTimeout(res, 0)); // ensures component is mounted
+
     while (isMounted) {
-      // Step 1: Reset visibility
+      // Step 1: reset instantly
       await controls.start({
         opacity: 0,
+        y: 10,
         transition: { duration: 0 },
       });
 
-      // Step 2: Animate words one by one
+      // Step 2: animate one by one
       for (let i = 0; i < title.length; i++) {
-        await controls.start((index) => {
-          if (index <= i) {
-            return {
-              opacity: 1,
-              y: 0,
-              transition: { duration: 0.5, ease: "easeOut" },
-            };
-          }
-          return {};
-        });
+        if (!isMounted) return;
+
+        await controls.start((index) =>
+          index === i
+            ? {
+                opacity: 1,
+                y: 0,
+                transition: { duration: 0.5, ease: "easeOut" },
+              }
+            : {}
+        );
       }
 
-      // Step 3: Pause
-      await new Promise((r) => setTimeout(r, 1000));
+      // Step 3: Wait
+      await new Promise((res) => setTimeout(res, 1200));
 
       // Step 4: Fade out
       await controls.start({
@@ -49,23 +59,20 @@ useEffect(() => {
     }
   };
 
-  // 👌 FIX: Run AFTER mount + hydration
-  requestAnimationFrame(() => {
-    sequence();
-  });
+  runSequence();
 
   return () => {
-    isMounted = false; // clean animation loop
+    isMounted = false; // cleanup stops animation loop
   };
-}, []);
+}, [controls]);
 
 
   return (
     <section className="relative w-full bg-white">
       <div className="px-[16px] sm:px-[80px] flex flex-col lg:flex-row justify-between items-start gap-12">
-        {/* 🧭 Left Info Section */}
+        
+        {/* LEFT SIDE */}
         <div className="flex flex-col justify-start container">
-          {/* ✨ Animated Looping Heading */}
           <h2 className="text-[25px] md:text-[32px] font-normal text-[#060414] leading-[40px] mb-4 md:mb-6 flex flex-wrap">
             {title.map((word, index) => (
               <motion.span
@@ -80,14 +87,12 @@ useEffect(() => {
             ))}
           </h2>
 
-          {/* Description */}
           <p className="text-[14px] md:text-[16px] leading-[21px] md:leading-[32px] text-[#121926]/85 mb-8 md:mb-10">
             RedDot Digital Limited is a 100% subsidiary of Robi Axiata Limited,
             the second-largest mobile network operator in Bangladesh, offering
             IT and digital solutions. RedDot is establishing its own office in.
           </p>
 
-          {/* Contact Info */}
           <div className="flex flex-col md:flex-row md:justify-between">
             <div>
               <h4 className="text-[18px] md:text-[22px] font-medium text-[#060414] md:mb-1">
@@ -109,7 +114,7 @@ useEffect(() => {
           </div>
         </div>
 
-        {/* 🧩 Right Form Section */}
+        {/* RIGHT SIDE FORM */}
         <ContactForm />
       </div>
     </section>

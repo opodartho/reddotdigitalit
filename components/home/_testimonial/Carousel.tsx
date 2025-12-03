@@ -71,7 +71,7 @@ const SeeMoreText = ({ text }: { text: string }) => {
 export const TestimonialCarousel: React.FC<CarouselProps> = ({
   testimonials,
 }) => {
-  const autoplayOptions = Autoplay({ delay: 2000, stopOnInteraction: false });
+  const autoplayOptions = Autoplay({ delay: 4000, stopOnInteraction: false });
 
   const [emblaRef, emblaApi] = useEmblaCarousel(
     {
