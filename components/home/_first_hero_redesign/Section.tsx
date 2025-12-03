@@ -27,7 +27,7 @@ export default function FirstHeroRedesifnSection({ heroSlidesData }: HeroSlidesP
         <>
             <section
                 id="hero-section"
-                className="relative flex flex-col items-center w-full pb-[50px] lg:pb-[100px]
+                className="relative flex flex-col items-center w-full pb-[50px] lg:pb-[80px]
         h-auto lg:h-[830px] bg-[#F7F6FD] overflow-hidden"
             >
                 {/* VIDEO BACKGROUND */}
@@ -41,20 +41,42 @@ export default function FirstHeroRedesifnSection({ heroSlidesData }: HeroSlidesP
                 />
 
                 {/* WHITE OVERLAY */}
-                <div className="absolute inset-0 bg-white/60 backdrop-blur-[2px]" />
+                <div className="absolute inset-0 bg-white/80 backdrop-blur-[2px]" />
 
                 {/* BADGES */}
-                <div className="relative flex flex-wrap justify-center gap-3 mt-[140px] sm:mt-[200px]">
-                    <span className="px-4 py-1 bg-white shadow-md rounded-full text-[14px]">
-                        15+ enterprise solutions
-                    </span>
-                    <span className="px-4 py-1 bg-white shadow-md rounded-full text-[14px]">
-                        ISO Certified
-                    </span>
-                    <span className="px-4 py-1 bg-white shadow-md rounded-full text-[14px]">
-                        5+ years of experience
-                    </span>
-                </div>
+<div className="relative flex flex-wrap justify-center gap-3 
+   mt-[140px] sm:mt-[200px]">
+
+  {[
+    "15+ enterprise solutions",
+    "ISO Certified",
+    "5+ years of experience",
+  ].map((text, i) => (
+    <div
+      key={i}
+      className="
+        bg-gradient-to-r from-[#E52445] via-[#7A5CFA] to-[#E52445]
+        p-[1px]
+        rounded-[17px]
+        shadow-[0px_12px_48px_rgba(49,1,139,0.05)]
+      "
+    >
+      {/* INNER WHITE LAYER (THIS WAS MISSING) */}
+      <div
+        className="
+          bg-white
+          rounded-[17px]
+          px-4 py-[2px] 
+          flex items-center justify-center
+          text-[14px] leading-[21px] text-[#121926] font-poppins font-normal
+        "
+      >
+        {text}
+      </div>
+    </div>
+  ))}
+</div>
+
 
                 {/* TITLE */}
                 <h1
@@ -75,7 +97,7 @@ export default function FirstHeroRedesifnSection({ heroSlidesData }: HeroSlidesP
 
 
                 {/* DESKTOP ICON ROW */}
-                <div className="hidden lg:flex gap-[24px] mt-[40px] backdrop-blur-md p-4 rounded-xl">
+                <div className="hidden lg:flex max-w-[1138px] gap-[24px] mt-[40px] backdrop-blur-md p-4 rounded-xl">
                     {heroSlidesData.map((item, index) => (
                         <button
                             key={index}
@@ -90,7 +112,7 @@ export default function FirstHeroRedesifnSection({ heroSlidesData }: HeroSlidesP
 
 
                 {/* MOBILE CAROUSEL – FULL SIZE ICONS */}
-                <div className="lg:hidden w-full mt-[40px] ">
+                <div className="lg:hidden w-full mt-[40px] xl:mt-[20px]">
                     <Carousel
                         setApi={setApi}
                         plugins={[autoplay.current]}
@@ -104,7 +126,11 @@ export default function FirstHeroRedesifnSection({ heroSlidesData }: HeroSlidesP
                             {heroSlidesData.map((slide) => (
                                 <CarouselItem
                                     key={slide.id}
-                                    className="basis-1/3 flex justify-center"
+                                    className="
+  basis-1/3       /* mobile: 3 per slide */
+  sm:basis-1/4    /* tablet: 4 per slide */
+  flex justify-center
+"
                                 >
                                     <div
                                         className="
@@ -127,7 +153,7 @@ export default function FirstHeroRedesifnSection({ heroSlidesData }: HeroSlidesP
                 </div>
 
                 {/* BUTTON */}
-                <div className="mt-[40px] sm:mt-[52px]">
+                <div className="mt-[40px] sm:mt-[48px]">
                     <WhiteButton className="w-[240px]">
                         Explore All Services
                     </WhiteButton>
