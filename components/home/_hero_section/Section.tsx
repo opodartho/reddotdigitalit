@@ -46,7 +46,7 @@ export default function HeroSection() {
     <>
       <div className="lg:w-full lg:px-[200px] lg:bg-transparent" style={{backgroundImage:`url('/images/bg-hero.svg')`}}>
         <section
-          className="lg:relative lg:flex lg:h-[655px] lg:flex-row lg:w-full lg:gap-[258px]"
+          className="lg:relative lg:flex lg:h-[655px] lg:flex-row lg:w-full lg:gap-[240px]"
         >
 
           {/* Left text column - Fixed for full width */}
