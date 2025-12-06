@@ -11,12 +11,12 @@ export function WhiteHoverButton({
   return (
     <button
       className={cn(
-        "group relative cursor-pointer overflow-hidden border p-2 h-[56px] text-center font-semibold",
+        "group relative cursor-pointer border-red-600 overflow-hidden border p-2 h-[56px] text-center font-semibold",
         className
       )}
       {...props}
     >
-      <div className="relative flex items-center justify-center w-full h-full">
+      <div className="relative flex items-center justify-center w-full h-full  ">
 
         <span className="relative z-10 transition-all duration-300 group-hover:opacity-0 whitespace-nowrap">
           {children}

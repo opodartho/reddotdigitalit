@@ -32,7 +32,7 @@ const About = ({ data }: AboutProps) => {
             alt="Group"
             width={539}
             height={230}
-            className="w-full h-[230px] rounded-[18px] object-cover"
+            className="w-full h-[230px] rounded-[18px] object-cover transition-transform duration-300 hover:scale-104"
           />
         </div>
         <div className="grid grid-cols-2 gap-4">
@@ -41,14 +41,14 @@ const About = ({ data }: AboutProps) => {
             alt="Speaker"
             width={263}
             height={232}
-            className="w-full h-[232px] rounded-[18px] object-cover"
+            className="w-full h-[232px] rounded-[18px] object-cover transition-transform duration-300 hover:scale-104"
           />
           <Image
             src={data.images[2]}
             alt="Event"
             width={263}
             height={232}
-            className="w-full h-[232px] rounded-[18px] object-cover"
+            className="w-full h-[232px] rounded-[18px] object-cover transition-transform duration-300 hover:scale-104"
           />
         </div>
       </div>

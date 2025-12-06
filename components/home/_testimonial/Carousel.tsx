@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useCallback } from "react";
+import React, { useCallback, useState } from "react";
 import Image from "next/image";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
@@ -11,115 +11,241 @@ type CarouselProps = {
   testimonials: Testimonial[];
 };
 
+/* --------------------------------------------------
+   SEE MORE TEXT (8-line limit)
+-------------------------------------------------- */
+const SeeMoreText = ({ text }: { text: string }) => {
+  const [expanded, setExpanded] = React.useState(false);
+  const textRef = React.useRef<HTMLParagraphElement>(null);
+  const [shouldShow, setShouldShow] = React.useState(false);
+
+  const calculateOverflow = () => {
+    const el = textRef.current;
+    if (!el) return;
+
+    const lineHeight = 22;
+    const maxLines = 8;
+    const maxHeight = lineHeight * maxLines;
+
+    setShouldShow(el.scrollHeight > maxHeight);
+  };
+
+  React.useEffect(() => {
+    calculateOverflow();
+    window.addEventListener("resize", calculateOverflow);
+    setTimeout(calculateOverflow, 50);
+    setTimeout(calculateOverflow, 200);
+
+    return () => window.removeEventListener("resize", calculateOverflow);
+  }, [text]);
+
+  return (
+    <div>
+      <p
+        ref={textRef}
+        className={`
+          whitespace-pre-line
+          text-[14px] leading-[22px] font-poppins text-black
+          transition-all duration-300
+          ${expanded ? "max-h-[2000px]" : "max-h-[176px] overflow-hidden"}
+        `}
+      >
+        {text}
+      </p>
+
+      {shouldShow && (
+        <button
+          onClick={() => setExpanded(!expanded)}
+          className="text-red-600 font-medium mt-1"
+        >
+          {expanded ? "See less" : "See more"}
+        </button>
+      )}
+    </div>
+  );
+};
+
+/* --------------------------------------------------
+   MAIN CAROUSEL COMPONENT
+-------------------------------------------------- */
 export const TestimonialCarousel: React.FC<CarouselProps> = ({
   testimonials,
 }) => {
+  const autoplayOptions = Autoplay({ delay: 4000, stopOnInteraction: false });
+
   const [emblaRef, emblaApi] = useEmblaCarousel(
     {
       loop: true,
       align: "start",
       slidesToScroll: 1,
     },
-    [Autoplay({ delay: 3000, stopOnInteraction: false })]
+    [autoplayOptions]
   );
 
-  const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
-  const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
+  /* CLICK FLASH */
+  const [activeArrow, setActiveArrow] = useState<"prev" | "next" | null>(null);
+
+  const flashArrow = (arrow: "prev" | "next") => {
+    setActiveArrow(arrow);
+    setTimeout(() => setActiveArrow(null), 200);
+  };
+
+  /* SAFELY ACCESS AUTOPLAY PLUGIN */
+  const getAutoplay = () => emblaApi?.plugins().autoplay;
+
+  /* PAUSE + RESUME AUTOPLAY */
+  const pauseAutoplay = () => {
+    const ap = getAutoplay();
+    if (!ap) return;
+
+    ap.stop();
+    setTimeout(() => ap.play(),);
+  };
+
+  const scrollPrev = () => {
+    emblaApi?.scrollPrev();
+    flashArrow("prev");
+    pauseAutoplay();
+  };
+
+  const scrollNext = () => {
+    emblaApi?.scrollNext();
+    flashArrow("next");
+    pauseAutoplay();
+  };
 
   return (
     <>
-      <div className="mb-20 flex items-start justify-between w-full">
+      {/* HEADER */}
+      <div className="mb-10 lg:mb-20 flex items-start justify-between w-full pr-4 lg:pr-[80px]">
         <div>
-          <h2 className="text-[32px] leading-[40px] font-semibold tracking-[0.03px] text-gray-950">
+          <h2 className="text-[24px] lg:text-[32px] leading-[30px] lg:leading-[40px] font-semibold tracking-[0.03px] text-[#060414]">
             Hear From Our Clients!
           </h2>
-          <p className="mt-2 text-[14px] leading-[22px] font-normal text-zinc-800">
+          <p className="mt-2 text-[13px] lg:text-[14px] leading-[20px] lg:leading-[22px] font-normal text-[#060414]">
             Our cutting-edge Modular Data Center solutions enable to protect
             mission-critical data.
           </p>
         </div>
 
-        <div className="mt-2 flex space-x-3">
-          <button
-            onClick={scrollPrev}
-            aria-label="Previous testimonial"
-            className="flex items-center justify-center duration-300"
-          >
+        {/* ARROWS */}
+        <div className="flex mt-2 space-x-3">
+
+          {/* LEFT ARROW */}
+          <button onClick={scrollPrev} className="group">
             <Image
-              src="/icons/arrow-left.png"
-              alt="Previous"
+              src={
+                activeArrow === "prev"
+                  ? "/icons/arrow-left-red.png"
+                  : "/icons/arrow-left.png"
+              }
               width={48}
               height={48}
+              alt="Prev"
+              className="group-hover:hidden"
+            />
+
+            {/* HOVER STATE */}
+            <Image
+              src="/icons/arrow-left-red.png"
+              width={48}
+              height={48}
+              alt="Prev Hover"
+              className="hidden group-hover:block"
             />
           </button>
-          <button
-            onClick={scrollNext}
-            aria-label="Next testimonial"
-            className="flex items-center justify-center duration-300"
-          >
+
+          <button onClick={scrollNext} className="group">
             <Image
-              src="/icons/arrow-right.png"
+              src={
+                activeArrow === "next"
+                  ? "/icons/arrow-right-red.png"
+                  : "/icons/arrow-right.png"
+              }
+              width={48}
+              height={48}
               alt="Next"
+              className="group-hover:hidden"
+            />
+
+            {/* HOVER STATE */}
+            <Image
+              src="/icons/arrow-right-red.png"
               width={48}
               height={48}
+              alt="Next Hover"
+              className="hidden group-hover:block"
             />
           </button>
+
+
         </div>
       </div>
 
-      {/* Carousel */}
-      <div
-        className="embla bg-gradient-to-r from-[#ffecf0] to-[#faf9fe] w-full lg:h-[588px] h-auto"
-        ref={emblaRef}
-      >
+      {/* CAROUSEL */}
+      <div className="embla w-full h-auto px-4 lg:px-0" ref={emblaRef}>
         <div className="embla__container">
           {testimonials.map((testimonial) => (
-            <div
-              className="lg:embla__slide md:embla__slide_mobile basis-[44.44%] lg:px-2"
-              key={testimonial.id}
-            >
+            <div className="embla__slide px-2" key={testimonial.id}>
               <div
-                className="lg:embla__slide md:embla__slide_mobile basis-[44.44%] lg:px-2"
-                key={testimonial.id}
+                className="
+                  bg-white border border-[#E8EAED] rounded-[10px]
+
+                  lg:px-[42px] lg:py-[34px] lg:w-[574px] lg:min-h-[484px]
+
+                  w-[270px] px-5 py-6 min-h-[360px]
+
+                  h-auto flex flex-col
+                  transition-all duration-300 hover:shadow-xl hover:border-red-600 hover:shadow-red-300
+                "
               >
-                <div
-                  className="bg-white rounded-2xl shadow border border-transparent p-6 lg:h-[584px] h-[800px] w-[308px] lg:w-[574px] transition-all duration-300 hover:shadow-xl hover:border-red-600 hover:shadow-red-300 "
-                >
-                  <div className="pl-[10px] pt-[10px]">
-                    <Image
-                      src={testimonial.imageSrc}
-                      alt={testimonial.name}
-                      width={50}
-                      height={50}
-                      className="rounded-full"
-                    />
-                  </div>
+                {/* AVATAR */}
+                <div className="w-[40px] lg:w-[50px] h-[40px] lg:h-[50px] rounded-full bg-[#F6F2FD] flex items-center justify-center mb-4 lg:mb-6">
+                  <Image
+                    src={testimonial.imageSrc}
+                    alt={testimonial.name}
+                    width={34}
+                    height={34}
+                    className="object-contain"
+                  />
+                </div>
 
-                  <blockquote className="whitespace-pre-line font-poppins text-[16px] lg:w-[490px] w-[256px] pl-[10px] pt-[16px] font-normal text-black">
-                    {testimonial.quote}
-                  </blockquote>
+                {/* TEXT */}
+                <div className="mb-4 lg:mb-6">
+                  <SeeMoreText text={testimonial.quote} />
+                </div>
 
-                  <div className="mt-[34px] pl-[10px]">
-                  <div className="absolute w-[574px] bottom-12 lg:mt-[0px]">
+                {/* FOOTER */}
+                <div className="mt-auto flex flex-col items-start gap-2 pt-4">
+                  <div
+                    className={`relative ${testimonial.id === 2 || testimonial.id === 5
+                        ? "w-[90px] h-[35px] lg:w-[100px] lg:h-[40px]"
+                        : "w-[50px] h-[40px] lg:w-[59px] lg:h-[48px]"
+                      }`}
+                  >
                     <Image
                       src={testimonial.logoSrc}
-                      alt={`${testimonial.company} Logo`}
-                      width={100}
-                      height={100}
-                      className="mb-4 object-contain"
+                      alt="Logo"
+                      fill
+                      className="object-contain"
                     />
+                  </div>
 
-                    
-                    <p className="font-poppins text-[13px] font-semibold text-zinc-800">
+                  <div>
+                    <p className="font-poppins text-[12px] lg:text-[13px] font-semibold text-zinc-800">
                       {testimonial.name}
                     </p>
-                    <p className="font-poppins text-[10px] text-black">{testimonial.company}</p>
-                    <p className="font-poppins text-[10px] text-black">{testimonial.title}</p>
-                    </div>
+                    <p className="font-poppins text-[10px] text-black">
+                      {testimonial.company}
+                    </p>
+                    <p className="font-poppins text-[10px] text-black">
+                      {testimonial.title}
+                    </p>
                   </div>
-                </div>
-              </div>
 
+                </div>
+
+              </div>
             </div>
           ))}
         </div>

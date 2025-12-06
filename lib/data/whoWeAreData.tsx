@@ -36,7 +36,7 @@ export const achievementData: AchievementData[] = [
     value: "200+",
     description:
       "Our cutting-edge Modular Data Center solutions enable to protect mission-critical data.",
-    bgGradient: "bg-gradient-to-r from-cyan-300 to-blue-500 to-cyan-100",
+    bgGradient: "bg-gradient-to-r from-[#6BEBEB] to-[#CFF7F7]",
   },
   {
     icon: "/image/techstack.png",
@@ -44,7 +44,7 @@ export const achievementData: AchievementData[] = [
     value: "80+",
     description:
       "Our cutting-edge Modular Data Center solutions enable to protect mission-critical data.",
-    bgGradient: "bg-gradient-to-r from-pink-200 to-pink-100",
+    bgGradient: "bg-gradient-to-r from-[#F2D6FA] to-[#FCE8EC]",
   },
   {
     icon: "/image/project.png",
@@ -52,7 +52,7 @@ export const achievementData: AchievementData[] = [
     value: "30+",
     description:
       "Our cutting-edge Modular Data Center solutions enable to protect mission-critical data.",
-    bgGradient: "bg-gradient-to-r from-violet-300 to-indigo-200",
+    bgGradient: "bg-gradient-to-r from-[#E8DAFF] to-[#DBEFFF]",
   },
   {
     icon: "/image/experience.png",
@@ -60,6 +60,6 @@ export const achievementData: AchievementData[] = [
     value: "7 Years",
     description:
       "Our cutting-edge Modular Data Center solutions enable to protect mission-critical data.",
-    bgGradient: "bg-gradient-to-r from-emerald-200 to-yellow-100",
+    bgGradient: "bg-gradient-to-r from-[#D3FCFD] to-[#E5FDD3]",
   },
 ];

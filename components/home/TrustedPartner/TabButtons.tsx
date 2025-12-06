@@ -1,3 +1,7 @@
+//not using this
+
+
+
 "use client";
 
 import { useState } from "react";
@@ -27,7 +31,7 @@ export const TabButtons = ({
     `px-10 py-2 font-semibold transition-colors ${
       activeTab === tabName
         ? "rounded-2xl border-2 border-red-500 bg-red-50 text-red-600"
-        : "border border-gray-300 bg-white text-gray-500 hover:bg-gray-50"
+        : "border border-gray-300 bg-white text-gray-500 hover:bg-gray-50 "
     }`;
 
   return (

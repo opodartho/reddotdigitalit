@@ -21,7 +21,7 @@ export function NavBar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
-  
+
   // Check if current page is home page
   const isHomePage = pathname === "/";
 
@@ -37,12 +37,12 @@ export function NavBar() {
     const handleResize = () => {
       if (window.innerWidth >= 768) setIsMobileMenuOpen(false);
     };
-    
+
     const handleScroll = () => {
       // Only apply scroll logic for home page
       if (isHomePage) {
         const heroSection = document.getElementById('hero-section');
-        
+
         if (heroSection) {
           const sectionBottom = heroSection.getBoundingClientRect().bottom;
           // When the hero section (620px height) is completely scrolled past
@@ -59,10 +59,10 @@ export function NavBar() {
 
     window.addEventListener("resize", handleResize);
     window.addEventListener("scroll", handleScroll);
-    
+
     // Initial check
     handleScroll();
-    
+
     return () => {
       window.removeEventListener("resize", handleResize);
       window.removeEventListener("scroll", handleScroll);
@@ -90,26 +90,27 @@ export function NavBar() {
 
   return (
     <>
-      <div className="lg:flex lg:justify-center sticky lg:top-[22px] z-1000" style={{backgroundImage:`url('/images/bg-hero.svg')`}}>
-        <div className="absolute bg-transparent top-0 lg:flex lg:justify-center lg:items-center z-100 pt-[22px] w-full" >
+      <div className="lg:flex lg:justify-center sticky lg:top-[22px] z-1000" style={{ backgroundImage: `url('/images/bg-hero.svg')` }}>
+        <div className=" absolute bg-transparent top-0 lg:flex lg:justify-center lg:items-center z-100 pt-[22px] w-full" >
           <nav className={cn(
-            "z-1000 top-0 lg:w-[1140px] h-[66px] rounded-4xl backdrop-blur-2xl opacity-100 border-b shadow-[0_4px_29px_rgba(0,0,0,0.05)] transition-all duration-100",
-            isHomePage 
-              ? isScrolled 
+            " px-4 z-1000 top-0 lg:w-[1140px] h-[66px] rounded-4xl backdrop-blur-2xl opacity-100 border-b shadow-[0_4px_29px_rgba(0,0,0,0.05)] transition-all duration-100",
+            isHomePage
+              ? isScrolled
                 ? "bg-transparent backdrop-blur-2xl border-gray-200/50"  // White background when scrolled past hero
                 : "bg-transparent border-white/20"  // Transparent on hero section
               : "bg-transparent backdrop-blur-2xl border-gray-200/50"  // Other pages: always have the scrolled style
           )}>
-            <div className="flex h-full items-center justify-between px-4 md:px-10 lg:px-[70px]">
+            <div className="flex h-full items-center justify-between px-4 md:px-10 lg:px-[70px] ">
               <Link href="/" onClick={scrollToTop} className="flex-shrink-0 relative lg:right-16">
                 <Image
                   src="/images/RedDotLogo.svg"
                   alt="Red Dot Digital Logo"
                   width={120}
                   height={40}
-                  className={cn(
-                    "cursor-pointer transition-all duration-300",
-                  )}
+className={cn(
+  "cursor-pointer transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:scale-[1.04] hover:opacity-90"
+)}
+
                 />
               </Link>
 
@@ -158,21 +159,29 @@ export function NavBar() {
               {/* Right side container */}
               <div className="hidden h-full items-center gap-2 md:flex">
                 <div className="relative left-16">
-                  <Link
-                    href="/contact-us"
-                    className={cn(
-                      "flex h-[56px] w-[153px] justify-end items-center rounded-[25px] border px-7 text-lg transition-all duration-300", 
-                      "bg-gradient-to-l from-red-700 via-red-600 via-red-500 to-red-400 text-white border-[#E52445] hover:bg-red-100" 
-                    )}
-                  >
-                    Contact Us
-                  </Link>
+
+                  {/* Gradient Border Wrapper */}
+                  <div className="p-[1px] rounded-[25px] bg-[linear-gradient(90deg,#FFFFFF,#FFDBE1,#FFFFFF,#FFDBE1)] ">
+
+                    <Link
+                      href="/contact-us"
+                      className={cn(
+                        "flex justify-end items-center rounded-[25px] px-7 py-2 text-lg transition-all duration-300",
+                        "bg-gradient-to-r from-[#E52445] via-[#BD1E39] to-[#7F1426] text-white hover:opacity-90 "
+                      )}
+                    >
+                      Contact Us
+                    </Link>
+
+                  </div>
+
                 </div>
               </div>
 
+
               {/* Hamburger Menu */}
               <div className="md:hidden">
-                <button 
+                <button
                   onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                   className={getTextColorClass()}
                 >

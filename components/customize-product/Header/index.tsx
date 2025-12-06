@@ -35,7 +35,7 @@ export default function Header({ headerData, Id }: HeaderProps) {
                     <RedButton className="">
                         {headerData[indexNumber]?.buttonText || ''}
                     </RedButton>
-                    <WhiteButton className="tracking-tightest">Learn More</WhiteButton>
+                    <WhiteButton className="tracking-tightest px-10 py-2">Learn More</WhiteButton>
                 </div>
             </div>
 

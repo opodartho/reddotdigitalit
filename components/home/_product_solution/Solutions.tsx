@@ -22,7 +22,7 @@ export default function Solutions({ solutions }: SolutionsProps) {
   const router = useRouter();
 
   return (
-    <section className="lg:px-4 lg:py-4 py-10 md:px-8">
+    <section className=" pb-10 max-w-[1440px] mx-auto px-[16px] sm:px-[80px]">
       <div className="mx-auto mb-10 container 2xl text-center">
         <h2 className="text-4xl font-poppins font-semibold mb-4 lg:mt-20">
           Our Product Solution
@@ -33,7 +33,7 @@ export default function Solutions({ solutions }: SolutionsProps) {
         </p>
       </div>
 
-      <div className="grid auto-rows-fr grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-4 pl-[16px] pr-[16px] lg:pl-[0px] lg:pr-[0px]">
+      <div className="grid auto-rows-fr grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 pl-[16px] pr-[16px] lg:pl-[0px] lg:pr-[0px]">
         {solutions.map((solution, idx) => (
           <div
             key={idx}

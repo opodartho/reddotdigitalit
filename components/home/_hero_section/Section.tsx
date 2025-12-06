@@ -1,157 +1,208 @@
 "use client";
-import { InteractiveHoverButton } from "@/components/ui/interactive-hover-button";
-import React, { useState, useEffect, useRef } from "react";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  type CarouselApi,
-} from "@/components/ui/carousel";
-import { getHeroSlides } from "@/lib/api/fetchHeroSlides";
-import type { HeroSlide } from "@/lib/data/heroSlidesData";
-import { ArrowUpRight } from "lucide-react";
+
+import React, { useEffect, useState } from "react";
+import useEmblaCarousel from "embla-carousel-react";
+import Autoplay from "embla-carousel-autoplay";
+import Image from "next/image";
 import RedButton from "@/components/buttons/RedHoverButton";
 import WhiteButton from "@/components/buttons/WhiteHoverButton";
-import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
-import Autoplay from "embla-carousel-autoplay";
+
+import { getHeroSlides } from "@/lib/api/fetchHeroSlides";
+import type { HeroSlide } from "@/lib/data/heroSlidesData";
 
 export default function HeroSection() {
-  const [api, setApi] = useState<CarouselApi>();
-  const [current, setCurrent] = useState(0);
   const [slides, setSlides] = useState<HeroSlide[]>([]);
-  const autoplay = useRef(Autoplay({ delay: 3000, stopOnInteraction: false }));
+  const [emblaRef, emblaApi] = useEmblaCarousel(
+    { loop: true },
+    [Autoplay({ delay: 3500, stopOnInteraction: false })]
+  );
+
+  const [selectedIndex, setSelectedIndex] = useState(0);
 
   useEffect(() => {
-    async function fetchSlides() {
-      const heroSlides = await getHeroSlides();
-      setSlides(heroSlides);
-    }
-    fetchSlides();
+    (async () => {
+      const data = await getHeroSlides();
+      setSlides(data);
+    })();
   }, []);
-
   useEffect(() => {
-    if (!api) return;
+    if (!emblaApi) return;
 
-    setCurrent(api.selectedScrollSnap() + 1);
+    const onSelect = () => setSelectedIndex(emblaApi.selectedScrollSnap());
+    emblaApi.on("select", onSelect);
+    onSelect();
 
-    api.on("select", () => {
-      setCurrent(api.selectedScrollSnap() + 1);
-    });
-  }, [api]);
-
-  const CARD_WIDTH = 579; // fixed card width
-  const IMAGE_WIDTH = 439; // pop-out image width
+    return () => {
+      // Safe cleanup
+      emblaApi.off("select", onSelect);
+    };
+  }, [emblaApi]);
 
   return (
-    <>
-      <div className="lg:w-full lg:px-[200px] lg:bg-transparent" style={{backgroundImage:`url('/images/bg-hero.svg')`}}>
-        <section
-          className="lg:relative lg:flex lg:h-[655px] lg:flex-row lg:w-full lg:gap-[240px]"
-        >
+   <section className="w-full bg-white bg-cover bg-center bg-no-repeat"
+     style={{backgroundImage:`url('/images/BG.png')`}}>
+      <div
+        className="
+          max-w-[1440px] mx-auto px-[16px] sm:px-[120px] pt-[100px] md:pt-[168px] pb-20
+          flex flex-col  xl:flex-row items-start justify-between
+        "
+      >
 
-          {/* Left text column - Fixed for full width */}
-          <div className="flex flex-col lg:pt-40 pt-10 gap-6 lg:w-1/2 lg:min-w-[600px] lg:px-0 px-[16px]"> {/* Added min-width */}
-            <div className="pr-[4px] flex lg:gap-[12px] gap-[2px] flex-row lg:justify-start h-[40px] items-center">
-              {["15+ enterprise solutions", "ISO Certified", "5+ years of experience"].map(
-                (text) => (
-                  <p
-                    key={text}
-                    className="text-[#70738F] flex justify-center items-center border rounded-full px-3 w-[180px] py-1 text-xs font-medium bg-[#FFFFFF]"
-                  >
-                    {text}
-                  </p>
-                )
-              )}
-            </div>
+        {/* LEFT SIDE */}
+        <LeftSide />
 
-            {/* Heading with proper width control */}
-            <div className="lg:max-w-none w-full"> {/* Remove all max-width constraints */}
-              <h1 className="lg:text-6xl text-3xl md:text-5xl font-medium leading-tight text-title lg:whitespace-nowrap"> {/* Added whitespace-nowrap */}
-                Crafting <span className="text-[#E52445]">Innovation,</span>
-              </h1>
-              <h1 className="lg:text-6xl text-3xl md:text-5xl font-medium leading-tight text-title lg:whitespace-nowrap"> {/* Added whitespace-nowrap */}
-                <span className="text-[#E52445]">Delivering</span> Excellence
-              </h1>
-            </div>
+        {/* RIGHT SIDE – FIXED FIGMA WIDTH */}
 
-            <p className="text-base md:text-lg leading-relaxed text-subtitle lg:max-w-md"> {/* Reduced max-width */}
-              We turn ideas into innovative tech solutions with custom software that boosts
-              efficiency and growth.
-            </p>
+        <div className="mx-auto xl:mx-0 flex flex-col items-center overflow-hidden mt-[48px] xl:mt-0">
 
-            <div className="lg:flex lg:flex-row flex flex-col gap-4">
-              <RedButton className="">Explore Services</RedButton>
-              <WhiteButton className="lg:w-[250px]">Let's Work With Us</WhiteButton>
-            </div>
-          </div>
-
-          {/* Carousel */}
-          <div className="lg:flex lg:items-center lg:justify-center lg:w-1/2 lg:pt-22">
-            <div className="flex justify-center overflow-visible">
-              <div className="relative z-1 lg:h-full h-[550px] lg:w-full overflow-visible">
-                <Carousel className="lg:overflow-hidden lg:w-[800px] w-[357px] basis-[44.4%]" setApi={setApi} opts={{ loop: true, align: "center" }} plugins={[autoplay.current]}>
-                  <CarouselContent className="lg:ml-0 lg:mr-0 lg:gap-180 gap-[10px]">
-                    {slides.map((slide) => (
-                      <CarouselItem key={slide.id} className="basis-full lg:pl-0 lg:pr-0">
-                        <CardContainer className="lg:w-[600px] w-[327px] mx-auto">
-                          <CardBody className="relative lg:w-[600px] w-[327px] overflow-visible [transform-style:preserve-3d]">
-
-                            {/* Pop-out image centered */}
-                            <CardItem
-                              translateZ={50}
-                              className="absolute lg:top-[6px] top-[6px] left-1/2 -translate-x-1/2 lg:w-[585px] w-[310px] lg:h-[280px] z-20 flex items-center justify-center"
-                            >
-                              <img
-                                src={slide.imageUrl}
-                                alt={slide.title}
-                                className="lg:w-[800px] w-full object-contain"
-                                style={{ transformStyle: "preserve-3d" }}
-                              />
-                            </CardItem>
-
-                            {/* Card background with fixed width */}
-                            <CardItem translateZ={0}>
-                              <div className="bg-white rounded-lg lg:w-[600px] w-[327px] lg:h-[465px] h-[380px] shadow-lg flex flex-col">
-                                <div className="flex flex-col gap-2 px-4 lg:pt-[291px] pt-[191px] w-full">
-                                  <h3 className="text-lg font-semibold flex justify-between items-center text-title">
-                                    {slide.title}
-                                  </h3>
-                                  <p className="text-sm mb-2 text-subtitle lg:pt-[10px]">{slide.description}</p>
-                                  <div className="flex flex-wrap gap-2 lg:pt-[30px]">
-                                    {slide.tags.map((tag) => (
-                                      <span
-                                        key={tag}
-                                        className="bg-[#F5F5FA] text-xs px-3 py-1 rounded-full text-[#70738F]"
-                                      >
-                                        {tag}
-                                      </span>
-                                    ))}
-                                  </div>
-                                </div>
-                              </div>
-                            </CardItem>
-
-                          </CardBody>
-                        </CardContainer>
-                      </CarouselItem>
-                    ))}
-                  </CarouselContent>
-                </Carousel>
-
-                <div className="lg:mt-8 justify-center w-full flex gap-2 z-120">
-                  {slides.map((_, index) => (
-                    <span
-                      key={index}
-                      className={`w-5 h-1 rounded-[2px] transition-colors duration-200 ${index + 1 === current ? "bg-[#E52445]" : "bg-gray-300"
-                        }`}
-                    ></span>
-                  ))}
+          {/* Embla viewport width matches EXACT card width */}
+          <div
+            ref={emblaRef}
+            className=" w-[357px] lg:w-[579px]"
+          >
+            <div className="flex">
+              {slides.map((slide) => (
+                <div
+                  key={slide.id}
+                  className="flex-shrink-0 w-[357px] lg:w-[579px]"
+                >
+                  <HeroCard slide={slide} />
                 </div>
-              </div>
+              ))}
             </div>
           </div>
-        </section>
+
+          {/* Pagination */}
+          <div className="flex gap-3 mt-4">
+            {slides.map((_, i) => (
+              <div
+                key={i}
+                className={`w-6 h-[3px] rounded-full transition-all ${i === selectedIndex ? "bg-[#E52445]" : "bg-[#DDE0E4]"
+                  }`}
+              />
+            ))}
+          </div>
+        </div>
+
       </div>
-    </>
+    </section>
+  );
+}
+
+/* ---------------- LEFT SIDE ---------------- */
+
+function LeftSide() {
+  return (
+    <div className="max-w-[593px] flex flex-col gap-6 flex-1">
+      {/* Badges */}
+      <div className="flex flex-col sm:flex-row gap-3 ">
+        <Badge>15+ enterprise solutions</Badge>
+        <Badge>ISO Certified</Badge>
+        <Badge>5+ years of experience</Badge>
+      </div>
+
+
+      {/* Heading */}
+      <h1 className="text-[#060414] text-[30px] lg:text-[48px] font-medium leading-[130%] max-w-[600px]">
+        Crafting <span className="text-[#E52445]">Innovation,</span> Delivering{" "}
+        <span className="text-[#E52445]">Excellence</span>
+      </h1>
+
+      {/* Description */}
+      <p className="text-[14px] lg:text-[18px] text-[#121926] leading-[166%] max-w-[515px]">
+        We turn ideas into innovative tech solutions with custom software that
+        boosts efficiency and growth.
+      </p>
+
+      {/* Buttons */}
+      <div className="flex flex-col sm:flex-row gap-4 mt-4">
+        <RedButton className="h-[56px] w-full sm:w-[233px]  font-medium">
+          Explore All Services
+        </RedButton>
+
+        <WhiteButton className="h-[56px] w-full sm:w-[233px] font-medium">
+          Let’s work with us
+        </WhiteButton>
+      </div>
+    </div>
+  );
+}
+
+const Badge = ({ children }: { children: React.ReactNode }) => (
+  <span
+    className="
+      inline-flex
+      self-start
+      w-auto
+      px-4 
+      text-[12px]
+      leading-[22px]
+      bg-white
+      border border-[#E4E1EF]
+      rounded-full
+      shadow-[0px_12px_48px_rgba(49,1,139,0.05)]
+      text-[#70738F]
+      whitespace-nowrap
+    "
+  >
+    {children}
+  </span>
+);
+
+
+/* ---------------- HERO CARD ---------------- */
+
+function HeroCard({ slide }: { slide: HeroSlide }) {
+  return (
+ <div
+  className="
+    bg-white rounded-[12px] border border-[1px]
+    w-[357px] h-[498px] lg:w-[579px] lg:h-[430px]
+    flex flex-col cursor-pointer
+  "
+>
+
+      {/* IMAGE BLOCK */}
+      <div
+        className="
+          mx-auto mt-[8px] overflow-hidden rounded-[8px]
+          w-[343px] h-[263px] lg:w-[563px] lg:h-[263px]
+        "
+      >
+        <Image
+          src={slide.imageUrl}
+          alt={slide.title}
+          width={563}
+          height={263}
+          className="object-cover w-full h-full"
+        />
+      </div>
+
+      {/* Content */}
+<div className="px-5 pt-5 pb-6 flex flex-col justify-between flex-1">
+  <div>
+    <h3 className="text-[18px] font-medium text-[#060414]">
+      {slide.title}
+    </h3>
+
+    <p className="text-[14px] leading-[22px] text-[#697586] mt-2">
+      {slide.description}
+    </p>
+  </div>
+
+  {/* TAGS SECTION AT BOTTOM */}
+  <div className="flex flex-wrap gap-3 mt-4">
+    {slide.tags.map((tag, i) => (
+      <span
+        key={i}
+        className="px-3 py-1 text-[12px] bg-[#F5F5FA] rounded-full text-[#70738F]"
+      >
+        {tag}
+      </span>
+    ))}
+  </div>
+</div>
+
+    </div>
   );
 }
