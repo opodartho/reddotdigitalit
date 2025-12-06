@@ -86,31 +86,52 @@ export const FeaturedProjectsCarousel: React.FC<CarouselProps> = ({
         </h2>
 
         <div className="mt-2 flex space-x-3">
-          <button onClick={scrollPrev}>
+    <button onClick={scrollPrev} className="group">
             <Image
               src={
                 activeArrow === "prev"
                   ? "/icons/arrow-left-red.png"
                   : "/icons/arrow-left.png"
               }
-              alt="Prev"
               width={48}
               height={48}
+              alt="Prev"
+              className="group-hover:hidden"
+            />
+
+            {/* HOVER STATE */}
+            <Image
+              src="/icons/arrow-left-red.png"
+              width={48}
+              height={48}
+              alt="Prev Hover"
+              className="hidden group-hover:block"
             />
           </button>
 
-          <button onClick={scrollNext}>
+          <button onClick={scrollNext} className="group">
             <Image
               src={
                 activeArrow === "next"
                   ? "/icons/arrow-right-red.png"
                   : "/icons/arrow-right.png"
               }
-              alt="Next"
               width={48}
               height={48}
+              alt="Next"
+              className="group-hover:hidden"
+            />
+
+            {/* HOVER STATE */}
+            <Image
+              src="/icons/arrow-right-red.png"
+              width={48}
+              height={48}
+              alt="Next Hover"
+              className="hidden group-hover:block"
             />
           </button>
+
         </div>
       </div>
 

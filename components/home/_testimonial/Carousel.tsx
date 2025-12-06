@@ -132,7 +132,7 @@ export const TestimonialCarousel: React.FC<CarouselProps> = ({
         <div className="hidden lg:flex mt-2 space-x-3">
 
           {/* LEFT ARROW */}
-          <button onClick={scrollPrev}>
+           <button onClick={scrollPrev} className="group">
             <Image
               src={
                 activeArrow === "prev"
@@ -142,11 +142,20 @@ export const TestimonialCarousel: React.FC<CarouselProps> = ({
               width={48}
               height={48}
               alt="Prev"
+              className="group-hover:hidden"
+            />
+
+            {/* HOVER STATE */}
+            <Image
+              src="/icons/arrow-left-red.png"
+              width={48}
+              height={48}
+              alt="Prev Hover"
+              className="hidden group-hover:block"
             />
           </button>
 
-          {/* RIGHT ARROW */}
-          <button onClick={scrollNext}>
+          <button onClick={scrollNext} className="group">
             <Image
               src={
                 activeArrow === "next"
@@ -156,8 +165,19 @@ export const TestimonialCarousel: React.FC<CarouselProps> = ({
               width={48}
               height={48}
               alt="Next"
+              className="group-hover:hidden"
+            />
+
+            {/* HOVER STATE */}
+            <Image
+              src="/icons/arrow-right-red.png"
+              width={48}
+              height={48}
+              alt="Next Hover"
+              className="hidden group-hover:block"
             />
           </button>
+
 
         </div>
       </div>
