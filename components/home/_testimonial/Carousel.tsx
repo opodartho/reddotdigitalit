@@ -99,7 +99,7 @@ export const TestimonialCarousel: React.FC<CarouselProps> = ({
     if (!ap) return;
 
     ap.stop();
-    setTimeout(() => ap.play(), );
+    setTimeout(() => ap.play(),);
   };
 
   const scrollPrev = () => {
@@ -132,7 +132,7 @@ export const TestimonialCarousel: React.FC<CarouselProps> = ({
         <div className="hidden lg:flex mt-2 space-x-3">
 
           {/* LEFT ARROW */}
-           <button onClick={scrollPrev} className="group">
+          <button onClick={scrollPrev} className="group">
             <Image
               src={
                 activeArrow === "prev"
@@ -196,7 +196,7 @@ export const TestimonialCarousel: React.FC<CarouselProps> = ({
                   w-[270px] px-5 py-6 min-h-[360px]
 
                   h-auto flex flex-col
-                  transition-all duration-300 hover:shadow-xl
+                  transition-all duration-300  hover:border-[2px] border-[#E52445] 
                 "
               >
                 {/* AVATAR */}
@@ -218,11 +218,10 @@ export const TestimonialCarousel: React.FC<CarouselProps> = ({
                 {/* FOOTER */}
                 <div className="mt-auto flex flex-col items-start gap-2 pt-4">
                   <div
-                    className={`relative ${
-                      testimonial.id === 2 || testimonial.id === 5
-                        ? "w-[90px] h-[35px] lg:w-[100px] lg:h-[40px]"
-                        : "w-[50px] h-[40px] lg:w-[59px] lg:h-[48px]"
-                    }`}
+                    className={`relative ${testimonial.id === 2 || testimonial.id === 5
+                      ? "w-[90px] h-[35px] lg:w-[100px] lg:h-[40px]"
+                      : "w-[50px] h-[40px] lg:w-[59px] lg:h-[48px]"
+                      }`}
                   >
                     <Image
                       src={testimonial.logoSrc}
