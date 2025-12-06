@@ -99,7 +99,7 @@ export const TestimonialCarousel: React.FC<CarouselProps> = ({
     if (!ap) return;
 
     ap.stop();
-    setTimeout(() => ap.play(), );
+    setTimeout(() => ap.play(),);
   };
 
   const scrollPrev = () => {
@@ -117,7 +117,7 @@ export const TestimonialCarousel: React.FC<CarouselProps> = ({
   return (
     <>
       {/* HEADER */}
-      <div className="mb-10 lg:mb-20 flex items-start justify-between w-full px-4 lg:pr-[80px]">
+      <div className="mb-10 lg:mb-20 flex items-start justify-between w-full pr-4 lg:pr-[80px]">
         <div>
           <h2 className="text-[24px] lg:text-[32px] leading-[30px] lg:leading-[40px] font-semibold tracking-[0.03px] text-[#060414]">
             Hear From Our Clients!
@@ -129,10 +129,10 @@ export const TestimonialCarousel: React.FC<CarouselProps> = ({
         </div>
 
         {/* ARROWS */}
-        <div className="hidden lg:flex mt-2 space-x-3">
+        <div className="flex mt-2 space-x-3">
 
           {/* LEFT ARROW */}
-          <button onClick={scrollPrev}>
+          <button onClick={scrollPrev} className="group">
             <Image
               src={
                 activeArrow === "prev"
@@ -142,11 +142,20 @@ export const TestimonialCarousel: React.FC<CarouselProps> = ({
               width={48}
               height={48}
               alt="Prev"
+              className="group-hover:hidden"
+            />
+
+            {/* HOVER STATE */}
+            <Image
+              src="/icons/arrow-left-red.png"
+              width={48}
+              height={48}
+              alt="Prev Hover"
+              className="hidden group-hover:block"
             />
           </button>
 
-          {/* RIGHT ARROW */}
-          <button onClick={scrollNext}>
+          <button onClick={scrollNext} className="group">
             <Image
               src={
                 activeArrow === "next"
@@ -156,8 +165,19 @@ export const TestimonialCarousel: React.FC<CarouselProps> = ({
               width={48}
               height={48}
               alt="Next"
+              className="group-hover:hidden"
+            />
+
+            {/* HOVER STATE */}
+            <Image
+              src="/icons/arrow-right-red.png"
+              width={48}
+              height={48}
+              alt="Next Hover"
+              className="hidden group-hover:block"
             />
           </button>
+
 
         </div>
       </div>
@@ -198,11 +218,10 @@ export const TestimonialCarousel: React.FC<CarouselProps> = ({
                 {/* FOOTER */}
                 <div className="mt-auto flex flex-col items-start gap-2 pt-4">
                   <div
-                    className={`relative ${
-                      testimonial.id === 2 || testimonial.id === 5
+                    className={`relative ${testimonial.id === 2 || testimonial.id === 5
                         ? "w-[90px] h-[35px] lg:w-[100px] lg:h-[40px]"
                         : "w-[50px] h-[40px] lg:w-[59px] lg:h-[48px]"
-                    }`}
+                      }`}
                   >
                     <Image
                       src={testimonial.logoSrc}

@@ -86,7 +86,8 @@ export const FeaturedProjectsCarousel: React.FC<CarouselProps> = ({
         </h2>
 
         <div className="mt-2 flex space-x-3">
-          <button onClick={scrollPrev}>
+          <button onClick={scrollPrev} className="group">
+            {/* Default (grey) icon */}
             <Image
               src={
                 activeArrow === "prev"
@@ -96,10 +97,21 @@ export const FeaturedProjectsCarousel: React.FC<CarouselProps> = ({
               alt="Prev"
               width={48}
               height={48}
+              className="group-hover:hidden"
+            />
+
+            {/* Hover state → red */}
+            <Image
+              src="/icons/arrow-left-red.png"
+              alt="Prev Hover"
+              width={48}
+              height={48}
+              className="hidden group-hover:block"
             />
           </button>
 
-          <button onClick={scrollNext}>
+          <button onClick={scrollNext} className="group">
+            {/* Default (grey) icon */}
             <Image
               src={
                 activeArrow === "next"
@@ -109,6 +121,16 @@ export const FeaturedProjectsCarousel: React.FC<CarouselProps> = ({
               alt="Next"
               width={48}
               height={48}
+              className="group-hover:hidden"
+            />
+
+            {/* Hover state → red */}
+            <Image
+              src="/icons/arrow-right-red.png"
+              alt="Next Hover"
+              width={48}
+              height={48}
+              className="hidden group-hover:block"
             />
           </button>
         </div>
