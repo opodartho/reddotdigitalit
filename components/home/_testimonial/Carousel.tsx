@@ -196,7 +196,7 @@ export const TestimonialCarousel: React.FC<CarouselProps> = ({
                   w-[270px] px-5 py-6 min-h-[360px]
 
                   h-auto flex flex-col
-                  transition-all duration-300  hover:border-[2px] border-[#E52445] 
+                  transition-all duration-300  hover:border-[2px] hover:border-[#E52445]
                 "
               >
                 {/* AVATAR */}
