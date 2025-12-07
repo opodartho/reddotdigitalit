@@ -36,7 +36,7 @@ const Achievement = ({ data }: { data: AchievementData[] }) => {
   return (
     <div className="max-w-[1440px] mx-auto px-[16px] sm:px-[80px] mt-[48px]  grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4">
       {data.map((item, index) => (
-        <div key={index} className="transition-all duration-300 ease-in-out hover:h-2xl">
+        <div key={index} className="transition-all duration-300 ease-in-out hover:h-2xl mb-[16px]">
           <AchievementCard {...item} />
         </div>
       ))}

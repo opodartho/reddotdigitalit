@@ -103,7 +103,7 @@ export function NavBar() {
             <div className="flex h-full items-center justify-between px-4 md:px-10 lg:px-[70px] ">
               <Link href="/" onClick={scrollToTop} className="flex-shrink-0 relative lg:right-16">
                 <Image
-                  src="/images/RedDotLogo.svg"
+                  src="/images/RedDotLogo.png"
                   alt="Red Dot Digital Logo"
                   width={120}
                   height={40}
