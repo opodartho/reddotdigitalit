@@ -20,8 +20,8 @@ export const TabButtons = ({ about, achievement }: TabButtonsProps) => {
             onClick={() => setActiveTab("about")}
             className={` px-10 py-2 font-semibold ${
               activeTab === "about"
-                ? "rounded-2xl border-t-2 border-b-2 border-l-2 border-r-2 border-red-500 bg-red-50 text-red-600"
-                : " border-gray-300 bg-white text-gray-500 hover:text-red-600 hover:[text-shadow:0_0_8px_rgba(229,36,69,0.8)]"
+                  ? "rounded-2xl border-t-2 border-r-2 border-b-2 border-l-2 border-red-500 bg-red-50 text-red-600 hover:text-red-600 hover:[text-shadow:0_0_8px_rgba(229,36,69,0.8)]"
+                 : " border-gray-300 bg-white text-gray-500 hover:text-red-600 hover:[text-shadow:0_0_8px_rgba(229,36,69,0.8)]"
                     
             }`}
           >
@@ -33,7 +33,7 @@ export const TabButtons = ({ about, achievement }: TabButtonsProps) => {
             onClick={() => setActiveTab("achievement")}
             className={`px-10 py-2 font-semibold ${
               activeTab === "achievement"
-                ? "rounded-2xl border-t-2 border-r-2 border-b-2 border-l-2 border-red-500 bg-red-50 text-red-600"
+                ? "rounded-2xl border-t-2 border-r-2 border-b-2 border-l-2 border-red-500 bg-red-50 text-red-600 hover:text-red-600 hover:[text-shadow:0_0_8px_rgba(229,36,69,0.8)]"
                  : " border-gray-300 bg-white text-gray-500 hover:text-red-600 hover:[text-shadow:0_0_8px_rgba(229,36,69,0.8)]"
             }`}
           >
