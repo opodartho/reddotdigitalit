@@ -44,38 +44,38 @@ export default function FirstHeroRedesifnSection({ heroSlidesData }: HeroSlidesP
                 <div className="absolute inset-0 bg-white/80 backdrop-blur-[2px]" />
 
                 {/* BADGES */}
-<div className="relative flex flex-wrap justify-center gap-3 
+                <div className="relative flex flex-wrap justify-center gap-3 
    mt-[140px] sm:mt-[200px]">
 
-  {[
-    "15+ enterprise solutions",
-    "ISO Certified",
-    "5+ years of experience",
-  ].map((text, i) => (
-    <div
-      key={i}
-      className="
+                    {[
+                        "15+ enterprise solutions",
+                        "ISO Certified",
+                        "5+ years of experience",
+                    ].map((text, i) => (
+                        <div
+                            key={i}
+                            className="
         bg-gradient-to-r from-[#E52445] via-[#7A5CFA] to-[#E52445]
         p-[1px]
         rounded-[17px]
         shadow-[0px_12px_48px_rgba(49,1,139,0.05)]
       "
-    >
-      {/* INNER WHITE LAYER (THIS WAS MISSING) */}
-      <div
-        className="
+                        >
+                            {/* INNER WHITE LAYER (THIS WAS MISSING) */}
+                            <div
+                                className="
           bg-white
           rounded-[17px]
           px-4 py-[2px] 
           flex items-center justify-center
           text-[14px] leading-[21px] text-[#121926] font-poppins font-normal
         "
-      >
-        {text}
-      </div>
-    </div>
-  ))}
-</div>
+                            >
+                                {text}
+                            </div>
+                        </div>
+                    ))}
+                </div>
 
 
                 {/* TITLE */}
@@ -91,24 +91,43 @@ export default function FirstHeroRedesifnSection({ heroSlidesData }: HeroSlidesP
 
                 {/* SUBTEXT */}
                 <p className="relative max-w-[680px] mt-4 text-center text-[16px] sm:text-[18px] leading-[22px] text-[#121926A6] px-4">
-                    We turn ideas into innovative tech solutions with custom software that <br/>
+                    We turn ideas into innovative tech solutions with custom software that <br />
                     boosts efficiency and growth.
                 </p>
 
 
                 {/* DESKTOP ICON ROW */}
-                <div className="hidden lg:flex max-w-[1138px] gap-[24px] mt-[40px] backdrop-blur-md p-4 rounded-xl">
-                    {heroSlidesData.map((item, index) => (
-                        <button
-                            key={index}
-                            onClick={() => navigate.push(item.route)}
-                            className="cursor-pointer transition-transform duration-300 
-        ease-in-out hover:scale-110 hover:z-10"
-                        >
-                            <img src={item.imageUrl} alt="" />
-                        </button>
-                    ))}
-                </div>
+{/* DESKTOP ICON ROW */}
+<div className="hidden lg:flex max-w-[1138px] gap-[24px] mt-[40px] backdrop-blur-md p-4 rounded-xl">
+  {heroSlidesData.map((item, index) => (
+    <button
+      key={index}
+      onClick={() => navigate.push(item.route)}
+      className="
+        cursor-pointer 
+        transition-transform duration-300 ease-in-out 
+        hover:scale-110 hover:z-10
+        "
+    >
+      <div
+        className="
+          rounded-[12px]
+          transition-all duration-300
+          border border-transparent
+          hover:border-[#E52445]
+          hover:shadow-[0_0_20px_rgba(229,36,69,0.25)]
+        "
+      >
+        <img
+          src={item.imageUrl}
+          alt=""
+          className="rounded-[12px] w-full h-full object-contain"
+        />
+      </div>
+    </button>
+  ))}
+</div>
+
 
 
                 {/* MOBILE CAROUSEL – FULL SIZE ICONS */}
@@ -135,7 +154,7 @@ export default function FirstHeroRedesifnSection({ heroSlidesData }: HeroSlidesP
                                     <div
                                         className="
     flex items-center justify-center
-    cursor-pointer"
+    cursor-pointer "
                                         onClick={() => navigate.push(slide.route)}
                                     >
                                         <img

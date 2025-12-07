@@ -107,7 +107,7 @@ export default function TrustedPartners() {
   return (
     <section className="pb-[80px] pt-[80px] bg-[#F7F6FD] mt-[32px] sm:mt-[56px]">
       <div className="mx-auto max-w-[1440px] px-[16px] sm:px-[80px]">
-        
+
         {/* Title */}
         <div className="text-center mb-12">
           <h2 className="text-3xl font-semibold text-gray-900">
@@ -129,11 +129,10 @@ export default function TrustedPartners() {
                   setActiveTab(tab.title);
                   setShowAll(false);
                 }}
-                className={`px-6 py-2 font-semibold rounded-xl border transition-colors ${
-                  activeTab === tab.title
-                    ? "border-red-500 bg-red-50 text-red-600"
-                    : "border-gray-300 bg-white text-gray-500 hover:bg-gray-50"
-                }`}
+                className={`px-6 py-2 font-semibold rounded-xl border transition-colors ${activeTab === tab.title
+                    ? "border-red-500 bg-red-50 text-red-600  hover:[text-shadow:0_0_10px_rgba(229,36,69,0.7)]"
+                    : "border-gray-300 bg-white text-gray-500  hover:text-red-600  hover:bg-gray-50   hover:[text-shadow:0_0_10px_rgba(229,36,69,0.7)]"
+                  }`}
               >
                 {tab.title}
               </button>
