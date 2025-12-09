@@ -51,7 +51,22 @@ export default function FirstHeroSection({ heroSlidesData }: HeroSlidesProps) {
               className="cursor-pointer transition-transform duration-300 
                 ease-in-out hover:scale-110 hover:z-10"
             >
-              <img src={item.imageUrl} alt="" />
+
+              <div
+                className="
+          rounded-[12px]
+          transition-all duration-300
+          border border-transparent
+          hover:border-[#E52445]
+          hover:shadow-[0_0_20px_rgba(229,36,69,0.25)]
+        "
+              >
+                <img
+                  src={item.imageUrl}
+                  alt=""
+                  className="rounded-[12px] w-full h-full object-contain"
+                />
+              </div>
             </button>
           ))}
         </div>

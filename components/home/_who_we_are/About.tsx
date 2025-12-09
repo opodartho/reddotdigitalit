@@ -32,7 +32,7 @@ const About = ({ data }: AboutProps) => {
             alt="Group"
             width={539}
             height={230}
-            className="w-full h-[230px] rounded-[18px] object-cover transition-transform duration-300 hover:scale-104"
+            className="w-full h-[230px] rounded-[18px] object-cover transition-transform duration-300 hover:scale-104 hover:border-[2px] hover:border-[#E52445] hover:shadow-[0_0_25px_rgba(229,36,69,0.55)]"
           />
         </div>
         <div className="grid grid-cols-2 gap-4">
@@ -41,14 +41,14 @@ const About = ({ data }: AboutProps) => {
             alt="Speaker"
             width={263}
             height={232}
-            className="w-full h-[232px] rounded-[18px] object-cover transition-transform duration-300 hover:scale-104"
+            className="w-full h-[232px] rounded-[18px] object-cover transition-transform duration-300 hover:scale-104 hover:border-[2px] hover:border-[#E52445] hover:shadow-[0_0_25px_rgba(229,36,69,0.55)]"
           />
           <Image
             src={data.images[2]}
             alt="Event"
             width={263}
             height={232}
-            className="w-full h-[232px] rounded-[18px] object-cover transition-transform duration-300 hover:scale-104"
+            className="w-full h-[232px] rounded-[18px] object-cover transition-transform duration-300 hover:scale-104 hover:border-[2px] hover:border-[#E52445] hover:shadow-[0_0_25px_rgba(229,36,69,0.55)]"
           />
         </div>
       </div>
