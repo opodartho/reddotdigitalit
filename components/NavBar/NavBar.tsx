@@ -15,6 +15,7 @@ import {
 import { getNavLinks, NavLink } from "@/lib/api/fetchNavData";
 import { cn } from "@/lib/utils";
 import { Menu, X } from "lucide-react";
+import SplitTextHover from "../animation/SplitTextHover";
 
 export function NavBar() {
   const [navLinks, setNavLinks] = useState<NavLink[]>([]);
@@ -104,7 +105,7 @@ export function NavBar() {
                   width={120}
                   height={40}
                   className={cn(
-                    "cursor-pointer transition-all duration-300",
+                    "cursor-pointer transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:scale-[1.04] hover:opacity-90",
                   )}
                 />
               </Link>
@@ -162,11 +163,11 @@ export function NavBar() {
                     <Link
                       href="/contact-us"
                       className={cn(
-                        "flex justify-end items-center rounded-[25px] px-7 py-2 text-lg transition-all duration-300",
+                        " flex justify-center items-center rounded-[25px] w-[144px] h-[44px] text-lg transition-all duration-300",
                         "bg-gradient-to-r from-[#E52445] via-[#BD1E39] to-[#7F1426] text-white hover:opacity-90 "
                       )}
                     >
-                      Contact Us
+                      <SplitTextHover text="Contact Us" />
                     </Link>
 
                   </div>

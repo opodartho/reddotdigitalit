@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import WhiteButton from "@/components/buttons/WhiteHoverButton";
-
+import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
 export default function ServiceHero({
   title,
   description,
@@ -14,8 +14,8 @@ export default function ServiceHero({
   image: string;
 }) {
   return (
-    <section className="relative w-full bg-[#F6F5FA] pt-[68px] lg:pt-[160px] ">
-      <div className=" px-[16px] sm:px-[80px] flex flex-col lg:flex-row lg:justify-between lg:items-start pb:[64px] lg:pb-[60px]">
+<section className="relative w-full bg-[#F6F5FA] pt-[68px] lg:pt-[160px] ">
+        <div className=" px-[16px] sm:px-[80px] flex flex-col lg:flex-row lg:justify-between lg:items-start pb:[64px] lg:pb-[60px]">
         {/* 🟣 Left Content */}
         <div className="order-2 lg:order-1 container [655px] flex flex-col justify-start ">
           {/* Breadcrumb */}
@@ -62,17 +62,29 @@ export default function ServiceHero({
         </div>
 
         {/* 🟣 Right Image */}
-        <div className="order-1 lg:order-2 flex justify-center lg:justify-end lg:items-start mb-[51px] lg:mb-0 lg:-mt-[6px]  ">
-          <div className="relative w-[300px] h-[258px] md:w-[400px] md:h-[300px] lg:w-[489px] lg:h-[315px] rounded-[12px]  overflow-hidden bg-[#F6F5FA]">
-            <Image
-              src={image}
-              alt={title}
-              fill
-              className="object-contain mix-blend-multiply"
-              priority
-            />
-          </div>
+{/* 🟣 Right Image with 3D Card Effect */}
+<div className="order-1 lg:order-2 flex justify-center lg:justify-end lg:items-start mb-[51px] lg:mb-0 lg:-mt-[6px]">
+
+  <CardContainer className="relative w-[300px] h-[258px] md:w-[400px] md:h-[300px] lg:w-[489px] lg:h-[315px] rounded-[12px]">
+    <CardBody className="w-full h-full rounded-[12px] overflow-visible [transform-style:preserve-3d] bg-[#F6F5FA]">
+
+      <CardItem translateZ={45} className="w-full h-full rounded-[12px] flex items-center justify-center">
+        <div className="relative w-full h-full rounded-[12px] overflow-hidden">
+          <Image
+            src={image}
+            alt={title}
+            fill
+            className="object-contain mix-blend-multiply"
+            priority
+          />
         </div>
+      </CardItem>
+
+    </CardBody>
+  </CardContainer>
+
+</div>
+
       </div>
     </section>
   );

@@ -97,36 +97,36 @@ export default function FirstHeroRedesifnSection({ heroSlidesData }: HeroSlidesP
 
 
                 {/* DESKTOP ICON ROW */}
-{/* DESKTOP ICON ROW */}
-<div className="hidden lg:flex max-w-[1138px] gap-[24px] mt-[40px] backdrop-blur-md p-4 rounded-xl">
-  {heroSlidesData.map((item, index) => (
-    <button
-      key={index}
-      onClick={() => navigate.push(item.route)}
-      className="
+                {/* DESKTOP ICON ROW */}
+                <div className="hidden lg:flex max-w-[1138px] gap-[24px] mt-[40px] backdrop-blur-md p-4 rounded-xl">
+                    {heroSlidesData.map((item, index) => (
+                        <button
+                            key={index}
+                            onClick={() => navigate.push(item.route)}
+                            className="
         cursor-pointer 
         transition-transform duration-300 ease-in-out 
         hover:scale-110 hover:z-10
         "
-    >
-      <div
-        className="
+                        >
+                            <div
+                                className="
           rounded-[12px]
           transition-all duration-300
           border border-transparent
           hover:border-[#E52445]
           hover:shadow-[0_0_20px_rgba(229,36,69,0.25)]
         "
-      >
-        <img
-          src={item.imageUrl}
-          alt=""
-          className="rounded-[12px] w-full h-full object-contain"
-        />
-      </div>
-    </button>
-  ))}
-</div>
+                            >
+                                <img
+                                    src={item.imageUrl}
+                                    alt=""
+                                    className="rounded-[12px] w-full h-full object-contain"
+                                />
+                            </div>
+                        </button>
+                    ))}
+                </div>
 
 
 
