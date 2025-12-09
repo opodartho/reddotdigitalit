@@ -125,7 +125,7 @@ export const staticNavData: NavLink[] = [
       },
       {
         title: "Whistleblowing",
-        href: "/whistle-blow",
+          href: "/speak-up",
         description: "Learn about our Whistleblowing Policy",
       },
       {
