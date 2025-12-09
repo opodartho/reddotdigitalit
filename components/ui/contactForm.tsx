@@ -75,7 +75,9 @@ export const ContactForm: React.FC<ContactFormProps> = ({
                 message: "Only letters and spaces allowed",
               },
             })}
-            className={`w-full h-[48px] border rounded-[6px] px-4 text-[14px] leading-[30px] text-[#121926] focus:outline-none focus:ring-1 bg-white transition-all duration-200 ${errors.fullName
+            className={`w-full h-[48px] border rounded-[6px] px-4 text-[14px] leading-[30px] text-[#121926]
+              placeholder-gray-500
+               focus:outline-none focus:ring-1 bg-white transition-all duration-200 ${errors.fullName
                 ? "border-[#E52445] focus:ring-[#E52445]"
                 : "border-[rgba(59,59,115,0.21)] focus:ring-blue-500"
               }`}
@@ -103,7 +105,9 @@ export const ContactForm: React.FC<ContactFormProps> = ({
                   {...register("companyName", {
                     required: "Company name is required",
                   })}
-                  className={`w-full h-[48px] border rounded-[6px] px-4 text-[14px] leading-[30px] text-[#121926] focus:outline-none focus:ring-1 bg-white transition-all duration-200 ${errors.companyName
+                  className={`w-full h-[48px] border rounded-[6px] px-4 text-[14px] leading-[30px] text-[#121926]
+                    placeholder-gray-500
+                     focus:outline-none focus:ring-1 bg-white transition-all duration-200 ${errors.companyName
                       ? "border-[#E52445] focus:ring-[#E52445]"
                       : "border-[rgba(59,59,115,0.21)] focus:ring-blue-500"
                     }`}
@@ -130,7 +134,9 @@ export const ContactForm: React.FC<ContactFormProps> = ({
                       message: "Invalid email format",
                     },
                   })}
-                  className={`w-full h-[48px] border rounded-[6px] px-4 text-[14px] leading-[30px] text-[#121926] focus:outline-none focus:ring-1 bg-white transition-all duration-200 ${errors.email
+                  className={`w-full h-[48px] border rounded-[6px] px-4 text-[14px] leading-[30px] text-[#121926] 
+                    placeholder-gray-500
+                    focus:outline-none focus:ring-1 bg-white transition-all duration-200 ${errors.email
                       ? "border-[#E52445] focus:ring-[#E52445]"
                       : "border-[rgba(59,59,115,0.21)] focus:ring-blue-500"
                     }`}
@@ -154,7 +160,9 @@ export const ContactForm: React.FC<ContactFormProps> = ({
                   {...register("service", {
                     required: "Please select a service",
                   })}
-                  className={`w-full h-[48px] border rounded-[6px] px-4 text-[14px] leading-[30px] text-[#121926] focus:outline-none focus:ring-1 bg-white transition-all duration-200 ${errors.service
+                  className={`w-full h-[48px] border rounded-[6px] px-4 text-[14px] leading-[30px] text-[#121926] 
+                    placeholder-gray-500
+                    focus:outline-none focus:ring-1 bg-white transition-all duration-200 ${errors.service
                       ? "border-[#E52445] focus:ring-[#E52445]"
                       : "border-[rgba(59,59,115,0.21)] focus:ring-blue-500"
                     }`}
@@ -183,7 +191,9 @@ export const ContactForm: React.FC<ContactFormProps> = ({
                   {...register("budget", {
                     required: "Project budget is required",
                   })}
-                  className={`w-full h-[48px] border rounded-[6px] px-4 text-[14px] leading-[30px] text-[#121926] focus:outline-none focus:ring-1 bg-white transition-all duration-200 ${errors.budget
+                  className={`w-full h-[48px] border rounded-[6px] px-4 text-[14px] leading-[30px] text-[#121926] 
+                    placeholder-gray-500
+                    focus:outline-none focus:ring-1 bg-white transition-all duration-200 ${errors.budget
                       ? "border-[#E52445] focus:ring-[#E52445]"
                       : "border-[rgba(59,59,115,0.21)] focus:ring-blue-500"
                     }`}
@@ -214,7 +224,9 @@ export const ContactForm: React.FC<ContactFormProps> = ({
                     message: "Invalid email format",
                   },
                 })}
-                className={`w-full h-[48px] border rounded-[6px] px-4 text-[14px] leading-[30px] text-[#121926] focus:outline-none focus:ring-1 bg-white transition-all duration-200 ${errors.email
+                className={`w-full h-[48px] border rounded-[6px] px-4 text-[14px] leading-[30px] text-[#121926]
+                  placeholder-gray-500
+                   focus:outline-none focus:ring-1 bg-white transition-all duration-200 ${errors.email
                     ? "border-[#E52445] focus:ring-[#E52445]"
                     : "border-[rgba(59,59,115,0.21)] focus:ring-blue-500"
                   }`}
@@ -245,7 +257,9 @@ export const ContactForm: React.FC<ContactFormProps> = ({
                     message: "Invalid phone number",
                   },
                 })}
-                className={`w-full h-[48px] border rounded-[6px] px-4 text-[14px] leading-[30px] text-[#121926] focus:outline-none focus:ring-1 bg-white transition-all duration-200 ${errors.phone
+                className={`w-full h-[48px] border rounded-[6px] px-4 text-[14px] leading-[30px] text-[#121926]
+                  placeholder-gray-500
+                   focus:outline-none focus:ring-1 bg-white transition-all duration-200 ${errors.phone
                     ? "border-[#E52445] focus:ring-[#E52445]"
                     : "border-[rgba(59,59,115,0.21)] focus:ring-blue-500"
                   }`}
@@ -270,7 +284,9 @@ export const ContactForm: React.FC<ContactFormProps> = ({
             {...register("description", {
               required: "Description is required",
             })}
-            className={`w-full border rounded-[6px] px-4 py-2 text-[14px] leading-[30px] text-[#121926] resize-none focus:outline-none focus:ring-1 bg-white transition-all duration-200 ${errors.description
+            className={`w-full border rounded-[6px] px-4 py-2 text-[14px] leading-[30px] text-[#121926]
+              placeholder-gray-500
+              resize-none focus:outline-none focus:ring-1 bg-white transition-all duration-200 ${errors.description
                 ? "border-[#E52445] focus:ring-[#E52445]"
                 : "border-[rgba(59,59,115,0.21)] focus:ring-blue-500"
               }`}
@@ -289,7 +305,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({
             variant="default"
             size="lg"
             className="rounded-[10px] w-[195px] h-[56px] text-[16px] leading-[24px]
-              transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]
+              transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]
               hover:-translate-y-[6px] hover:shadow-[0_12px_20px_rgba(229,36,69,0.35)]
               active:translate-y-[2px]"
           >

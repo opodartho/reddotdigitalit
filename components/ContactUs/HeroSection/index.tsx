@@ -63,7 +63,7 @@ export const HeroSection = () => {
       </div>
 
       {/* Desktop version - positioned on right */}
-      <div className="hidden lg:block absolute right-[63px] xl:right-[80px] top-[73px]">
+      <div className="hidden lg:block absolute right-[63px] xl:right-[80px] top-[148px]">
         <Image
           src="/images/contact-icon.png" 
           alt="contact icon"

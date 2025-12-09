@@ -136,7 +136,7 @@ export default function AreaOfOperations({ sections }: AreaOfOperationsProps) {
                 {section.images.slice(0, 2).map((src, i) => (
                   <div
                     key={i}
-                    className="relative overflow-hidden rounded-xl shadow-md h-[220px] w-full sm:w-[350px] transition-transform hover:-translate-y-3"
+                    className="relative overflow-hidden rounded-xl shadow-md h-[220px] w-full sm:w-[350px] transition-transform hover:-translate-y-3 hover:shadow-xl"
                   >
                     <Image src={src} alt="" fill className="object-cover" />
                   </div>

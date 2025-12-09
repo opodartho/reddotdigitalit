@@ -113,7 +113,7 @@ function LeftSide() {
           text={["Innovation,"]}
           typingSpeed={150}
           deletingSpeed={90}
-          pauseDuration={2500}
+          pauseDuration={1000}
           className="text-[#E52445]"
           fixedWidth={12}     // ⭐ keeps space locked
         />
@@ -124,7 +124,7 @@ function LeftSide() {
           text={["Excellence"]}
           typingSpeed={150}
           deletingSpeed={90}
-          pauseDuration={2500}
+          pauseDuration={1000}
           className="text-[#E52445]"
           fixedWidth={12}
         />
