@@ -8,7 +8,7 @@ export default function KeyBenefitsGrid({
 }) {
   return (
     <section className="w-full bg-white pt-12 md:pt-11">
-      <div className=" px-[16px] sm:px-[80px]">
+      <div className=" px-[16px] sm:px-[80px] ">
         {/* 🟣 Responsive grid container */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-[26px] auto-rows-fr">
           {benefits.map((item, index) => (

@@ -73,7 +73,7 @@ export const ContactSection = () => {
               </motion.span>
             ))}
           </h2>
-
+        
           {/* Description */}
           <p className="text-[14px] md:text-[16px] leading-[21px] md:leading-[32px] text-[#121926]/85 mb-8 md:mb-10">
             RedDot Digital Limited is a 100% subsidiary of Robi Axiata Limited,
@@ -101,6 +101,7 @@ export const ContactSection = () => {
               </p>
             </div>
           </div>
+      
         </div>
 
         {/* 🧩 Right Form Section */}
