@@ -1,6 +1,7 @@
 import { TestimonialCarousel } from "./Carousel";
 import { Testimonial } from "@/lib/data/testimonialData";
 
+
 type TestimonialSectionProps = {
   testimonials: Testimonial[];
 };
