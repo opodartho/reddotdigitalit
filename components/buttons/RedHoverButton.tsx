@@ -14,7 +14,7 @@ export function RedHoverButton({
   return (
     <button
       className={cn(
-        "group relative cursor-pointer overflow-hidden border p-2 h-[56px] text-center font-semibold",
+        "group relative cursor-pointer overflow-hidden border border-[#E52445]  p-2 h-[56px] text-center font-semibold",
         className
       )}
       {...props}

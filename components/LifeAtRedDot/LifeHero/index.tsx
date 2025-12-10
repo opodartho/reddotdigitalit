@@ -34,7 +34,7 @@ export const LifeHero = () => {
           <motion.div
             initial={{ opacity: 0, scale: 0.9, y: 60 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{ duration: 1.2, ease: "easeOut" }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
             whileHover={{ scale: 1.03 }} // optional gentle hover
             className="relative w-[358px] h-[131px] md:w-[720px] md:h-[265px] lg:w-[948px] lg:h-[348px] rounded-[8px] overflow-hidden cursor-pointer"
           >

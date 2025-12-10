@@ -1,5 +1,5 @@
 "use client"
-import { staticProductSolutions } from "@/lib/data/customize-product/productSolutionData";
+import { staticProductSolutions } from "@/lib/data/customize-product/staticProductSolutionData";
 import { ProductCarousel } from "./ProductCarousel";
 import { productData } from "@/lib/data/customize-product/productData";
 import { CustomizeItem } from "@/lib/data/customize-product/customize-product";
