@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Autoplay from "embla-carousel-autoplay";
-import { ProductSolutionItem } from "@/lib/data/customize-product/productSolutionData";
+import { ProductSolutionItem } from "@/lib/data/customize-product/staticProductSolutionData";
 import {
   Carousel,
   CarouselContent,
@@ -15,7 +15,7 @@ import {
   CardTitle,
   CardDescription,
 } from "@/components/ui/card";
-import { getProductSolutions } from "@/lib/api/fetchProductSolutions";
+import { getProductSolutions } from "@/lib/api/customize-product/fetchStaticProduct";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 

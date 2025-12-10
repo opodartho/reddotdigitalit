@@ -80,26 +80,35 @@ export default function CultureSection() {
     },
   ];
 
-  useEffect(() => {
-    if (!sectionRef.current) return;
-    const el = sectionRef.current;
+useEffect(() => {
+  if (!sectionRef.current) return;
 
-    // 👇 GSAP triggers Framer Motion control
-    ScrollTrigger.create({
+  const el = sectionRef.current;
+  let trigger: ScrollTrigger | null = null;
+
+  // Ensure GSAP + Framer Motion sync
+  requestAnimationFrame(() => {
+    trigger = ScrollTrigger.create({
       trigger: el,
       start: "top 80%",
       onEnter: () => controls.start("visible"),
       onLeaveBack: () => controls.start("hidden"),
     });
-  }, [controls]);
+  });
+
+  return () => {
+    if (trigger) trigger.kill(); // <-- FIX
+  };
+}, [controls]);
+
 
   return (
     <section
       ref={sectionRef}
       className="relative w-full bg-gradient-to-br from-[#F0F7FF] via-[#FFFAFE] to-[#FFEBEF]
-                 mt-[68px] sm:mt-[92px] mb-[81px] sm:mb-[113px]"
+                 mt-[68px] sm:mt-[92px] mb-[68px] sm:mb-[92px]"
     >
-      <div className="mx-auto max-w-[1280px] px-[20px] sm:px-[32px] lg:px-[40px] xl:px-0 text-center py-[90px] sm:py-[118px]">
+      <div className="mx-auto max-w-[1280px] px-[20px] sm:px-[32px] lg:px-[40px] xl:px-0 text-center py-[56px] sm:py-[80px]">
         <div className="mb-[46px] sm:mb-[78px]">
           <h2 className="text-[25px] sm:text-[30px] lg:text-[32px] font-bold text-[#060414]">
             Our Culture
