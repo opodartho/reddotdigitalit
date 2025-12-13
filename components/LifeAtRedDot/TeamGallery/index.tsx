@@ -11,34 +11,33 @@ import {
 } from "@/components/ui/carousel";
 import { Card } from "@/components/ui/card";
 
-type GalleryItem = {
-  id: number;
-  imageUrl: string;
-  alt: string;
-};
+import type { GalleryItem } from "@/lib/api/life/getTeamGallery";
+import type { TeamGalleryMeta } from "@/lib/api/life/getTeamGalleryMeta";
 
-const galleryData: GalleryItem[] = [
-  { id: 1, imageUrl: "/images/team1.jpg", alt: "Pohela Boishakh celebration" },
-  { id: 2, imageUrl: "/images/team2.jpg", alt: "Women's Day #InspireInclusion" },
-  { id: 3, imageUrl: "/images/team3.jpg", alt: "RedDot Digital Event Banner" },
-  { id: 4, imageUrl: "/images/team4.jpg", alt: "Team Gathering" },
-  { id: 5, imageUrl: "/images/team5.jpg", alt: "Cultural Festival" },
-];
+/**
+ * TeamGallery
+ * --------------------------------
+ * Pure UI component
+ * - Data comes from API (via page.tsx)
+ * - Design 100% unchanged
+ */
 
-export default function TeamGallery() {
+export default function TeamGallery({
+  meta,
+  data,
+}: {
+  meta: TeamGalleryMeta;
+  data: GalleryItem[];
+}) {
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
   const [rawSnap, setRawSnap] = useState(0);
 
-  const autoplay = useRef(Autoplay({ delay: 3000, stopOnInteraction: false }));
+  const autoplay = useRef(
+    Autoplay({ delay: 3000, stopOnInteraction: false })
+  );
 
- // const handleMouseEnter = () => autoplay.current.stop();
- // const handleMouseLeave = () => autoplay.current.play();
-
-  const totalSlides = galleryData.length;
-
-  // 🔥 Detect if slide is a clone
-  const isCloneOfFirst = rawSnap < 0 || rawSnap >= totalSlides;
+  const totalSlides = data.length;
 
   // 🔥 Track snaps
   useEffect(() => {
@@ -59,24 +58,21 @@ export default function TeamGallery() {
     return () => {
       api.off("select", handleSelect);
     };
-  }, [api]);
+  }, [api, totalSlides]);
 
   return (
     <section className="relative w-full pb-16 sm:pb-24">
+      {/* ✅ Heading from API */}
       <div className="text-center mb-[46px] sm:mb-[58px]">
         <h2 className="text-[30px] sm:text-[32px] font-semibold text-[#060414]">
-          Team Gallery
+          {meta.heading}
         </h2>
         <p className="text-[14px] text-[#121926] font-medium mt-[14px] sm:mt-[4px]">
-          360° Automated Sales & Distribution Management
+          {meta.subtitle}
         </p>
       </div>
 
-      <div
-        className="pl-[16px] sm:pl-[80px]"
-        //onMouseEnter={handleMouseEnter}
-        //onMouseLeave={handleMouseLeave}
-      >
+      <div className="pl-[16px] sm:pl-[80px]">
         <Carousel
           className="w-full"
           setApi={setApi}
@@ -86,23 +82,21 @@ export default function TeamGallery() {
           {/* ⭐ No placeholder, no snapping glitch */}
           <CarouselContent
             className="
-              !flex !flex-row !justify-start !items-center 
+              !flex !flex-row !justify-start !items-center
               !m-0 !p-0 [&>*]:!pl-0 [&>*]:!ml-0
             "
           >
-            {galleryData.map((item) => (
+            {data.map((item, index) => (
               <CarouselItem
                 key={item.id}
                 className={`
                   flex-shrink-0
                   basis-[288px] sm:basis-[350px]
-                  
                   ${
-                    item.id === totalSlides
-                      ? "mr-[24px]" // ONLY last real slide gets 2px gap
-                      : "mr-[12px] sm:mr-[24px]" // normal gap for other slides
+                    index === totalSlides - 1
+                      ? "mr-[24px]"
+                      : "mr-[12px] sm:mr-[24px]"
                   }
-                  
                   pt-[24px]
                   pb-[12px]
                 `}
@@ -138,14 +132,15 @@ export default function TeamGallery() {
             ))}
           </CarouselContent>
 
+          {/* 🔘 Dots */}
           <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 flex gap-3">
-            {galleryData.map((_, index) => (
+            {data.map((_, index) => (
               <span
                 key={index}
                 className={`w-[26px] h-[3px] rounded-md transition-colors duration-200 ${
                   index === current ? "bg-[#E52445]" : "bg-[#DDE0E4]"
                 }`}
-              ></span>
+              />
             ))}
           </div>
         </Carousel>
