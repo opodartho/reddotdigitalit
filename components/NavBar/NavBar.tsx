@@ -93,12 +93,13 @@ export function NavBar() {
   return (
     <>
       <div className="lg:flex lg:justify-center sticky lg:top-[22px] z-1000" style={{ backgroundImage: `url('/images/bg-hero.svg')` }}>
-        <div className=" absolute bg-transparent top-0 lg:flex lg:justify-center lg:items-center z-100 pt-[22px] w-full" >
+         <div className=" absolute bg-transparent top-0 lg:flex lg:justify-center lg:items-center z-100 pt-[22px] w-full" >
+
           <nav className={cn(
             " px-4 z-1000 top-0 lg:w-[1140px] h-[66px] rounded-4xl backdrop-blur-2xl opacity-100 border-b shadow-[0_4px_29px_rgba(0,0,0,0.05)] transition-all duration-100",
             isHomePage
               ? isScrolled
-                ? "bg-transparent backdrop-blur-2xl border-gray-200/50"  // White background when scrolled past hero
+            ? "bg-transparent backdrop-blur-2xl border-gray-200/50"  // White background when scrolled past hero
                 : "bg-transparent border-white/20"  // Transparent on hero section
               : "bg-transparent backdrop-blur-2xl border-gray-200/50"  // Other pages: always have the scrolled style
           )}>

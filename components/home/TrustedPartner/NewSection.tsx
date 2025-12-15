@@ -120,8 +120,8 @@ export default function TrustedPartners() {
         </div>
 
         {/* Tabs */}
-        <div className="flex justify-center mb-8">
-          <div className="flex flex-wrap gap-2">
+        <div className="flex justify-center mb-8 ">
+          <div className="flex flex-wrap gap-2 ">
             {tabData.map((tab) => (
               <button
                 key={tab.title}
@@ -132,7 +132,7 @@ export default function TrustedPartners() {
                 className={`px-6 py-2 font-semibold rounded-xl border transition-colors ${
                   activeTab === tab.title
                     ? "border-red-500 bg-red-50 text-red-600"
-                    : "border-gray-300 bg-white text-gray-500  hover:text-red-600  hover:bg-gray-50   hover:[text-shadow:0_0_10px_rgba(229,36,69,0.7)]"
+                    : "border-gray-300 bg-white text-gray-500  hover:text-red-600  hover:bg-gray-50   "
                 }`}
               >
                 {tab.title}

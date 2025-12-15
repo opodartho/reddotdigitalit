@@ -2,10 +2,11 @@
 
 import React from "react";
 import Image from "next/image";
+import type { ContactHeroData } from "@/lib/api/contact/getContactHeroData";
 
-export const HeroSection = () => {
+export const HeroSection = ({ data }: { data: ContactHeroData }) => {
   return (
-    <section className="relative w-full  bg-white lg:pt-[148px] pt-[23px] md:pt-[44px] pb-[60px] lg:pb-[110px] overflow-hidden">
+    <section className="relative w-full  bg-white lg:pt-[150px] pt-[100px]  pb-[60px] lg:pb-[110px] overflow-hidden">
       {/* Container */}
       <div className="px-[18px] sm:px-[80px] relative">
         {/* Breadcrumb */}
@@ -20,7 +21,7 @@ export const HeroSection = () => {
               bg-white shadow-[0_12px_48px_rgba(49,1,139,0.05)]
             "
           >
-            Contact
+            {data.badge}
           </span>
         </div>
 
@@ -33,7 +34,7 @@ export const HeroSection = () => {
           "
           style={{ maxWidth: "623px" }}
         >
-          Contact With Us
+          {data.heading}
         </h1>
 
         {/* Subheading */}
@@ -45,16 +46,14 @@ export const HeroSection = () => {
           "
           style={{ maxWidth: "675px" }}
         >
-          Delivers innovative, customer-focused solutions. 
-          We combine expertise and creativity to help you succeed.
+          {data.subtitle}
         </p>
       </div>
 
-   
       {/* Mobile version - centered under text */}
       <div className="mt-[25px] flex justify-center lg:hidden">
         <Image
-          src="/images/contact-icon.png" // replace with your actual file path
+          src={data.imageUrl}
           alt="contact icon"
           width={132}
           height={132}
@@ -65,7 +64,7 @@ export const HeroSection = () => {
       {/* Desktop version - positioned on right */}
       <div className="hidden lg:block absolute right-[63px] xl:right-[80px] top-[148px]">
         <Image
-          src="/images/contact-icon.png" 
+          src={data.imageUrl}
           alt="contact icon"
           width={188}
           height={188}

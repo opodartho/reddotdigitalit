@@ -33,17 +33,14 @@ const gradients = [
   "bg-gradient-to-r from-sky-50 to-violet-100",
   "bg-gradient-to-r from-blue-50 to-violet-50",
 ];
-
 export function ProductCarousel({ solutions }: SolutionsProps) {
   const [api, setApi] = React.useState<CarouselApi>();
   const [current, setCurrent] = React.useState(0);
+  const [snapCount, setSnapCount] = React.useState(0);
   const [slides, setSlides] = useState<ProductSolutionItem[]>([]);
-  const router = useRouter()
-  const autoplay = React.useRef(
-    Autoplay({ delay: 3000, stopOnInteraction: false })
-  );
+  const router = useRouter();
+  const autoplay = React.useRef(Autoplay({ delay: 3000, stopOnInteraction: false }));
 
-  // Fetch slides once
   React.useEffect(() => {
     async function fetchSlides() {
       const heroSlides = await getProductSolutions();
@@ -55,33 +52,38 @@ export function ProductCarousel({ solutions }: SolutionsProps) {
   React.useEffect(() => {
     if (!api) return;
 
-    setCurrent(api.selectedScrollSnap() + 1);
+    const setFromApi = () => {
+      setCurrent(api.selectedScrollSnap());
+      setSnapCount(api.scrollSnapList().length);
+    };
 
-    api.on("select", () => {
-      setCurrent(api.selectedScrollSnap() + 1);
-    });
+    setFromApi();
+    api.on("select", setFromApi);
+    api.on("reInit", setFromApi);
   }, [api]);
 
   return (
-    <div className="relative z-10 w-full ">
+    <div className="relative z-10 w-full">
       <Carousel
         className="w-full"
         setApi={setApi}
         opts={{ loop: false, align: "start" }}
         plugins={[autoplay.current]}
       >
-        <CarouselContent className="w-full lg:gap-[40px] gap-[20px] lg:ml-0 ml-[16px]">
+        <CarouselContent className="w-full gap-4 sm:gap-5 lg:gap-6 pl-4 sm:pl-6 lg:pl-0">
           {slides.map((slide, index) => (
             <CarouselItem
               key={index}
-              className="basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/5 lg:pl-0 pl-0"
+              className="basis-[80%] sm:basis-1/2 md:basis-1/3 lg:basis-1/4 xl:basis-1/5"
             >
-              <div className="cursor-pointer" onClick={() => router.push(`/customize-product/${index + 1}`)}>
+              <div
+                className="cursor-pointer h-full"
+                onClick={() => router.push(`/customize-product/${index + 1}`)}
+              >
                 <Card
-                  className={`flex h-[172px] w-[305px] ${index === 0 ? '' : ''} flex-col transition hover:shadow-lg  ${gradients[index % gradients.length]
-                    }`}
+                  className={`flex h-full min-h-[180px] w-full flex-col transition hover:shadow-lg ${gradients[index % gradients.length]}`}
                 >
-                  <CardHeader className="">
+                  <CardHeader>
                     {slide.image ? (
                       <Image
                         src={slide.image}
@@ -94,7 +96,7 @@ export function ProductCarousel({ solutions }: SolutionsProps) {
                       <div className="mb-2 text-3xl">{slide.image}</div>
                     )}
                     <CardTitle className="text-base">{slide.title}</CardTitle>
-                    <CardDescription className="text-sm">
+                    <CardDescription className="text-sm line-clamp-2">
                       {slide.description}
                     </CardDescription>
                   </CardHeader>
@@ -105,12 +107,13 @@ export function ProductCarousel({ solutions }: SolutionsProps) {
         </CarouselContent>
 
         <div className="absolute bottom-[-40px] left-1/2 -translate-x-1/2 flex gap-2">
-          {slides.map((_, index) => (
+          {Array.from({ length: snapCount }).map((_, index) => (
             <span
               key={index}
-              className={`w-5 h-1 rounded-[2px] transition-colors duration-200 ${index + 1 === current ? "bg-[#E52445]" : "bg-gray-300"
-                }`}
-            ></span>
+              className={`w-5 h-1 rounded-[2px] transition-colors duration-200 ${
+                index === current ? "bg-[#E52445]" : "bg-gray-300"
+              }`}
+            />
           ))}
         </div>
       </Carousel>

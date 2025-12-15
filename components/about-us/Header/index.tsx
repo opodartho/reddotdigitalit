@@ -18,8 +18,13 @@ export default function Header({ headerData }: HeaderProps) {
 
     return (
         <>
-            <div className=" lg:pt-[44px] lg:pl-[0px]  pl-[16px] lg:text-[40px] text-[25px] font-semibold lg:pb-[82px] pb-[23px] lg:w-full">
-                <p className=" text-title pt-[111px] lg:pt-[84px]">{headerData.title}</p>
+            <div className=" lg:pt-[140px] pt-[100px] lg:pl-[0px]  pl-[16px] lg:text-[40px] text-[25px] font-semibold lg:pb-[82px] pb-[23px] lg:w-full">
+                <div className="inline-flex items-center justify-center px-2 py-[2px] border border-[#ECF1FE] rounded-[17px] bg-white shadow-[0_12px_48px_rgba(49,1,139,0.05)] mb-[17px] lg:mb-[14px]">
+                    <span className="font-poppins text-[#121926] text-[14px] leading-[21px] tracking-[0.032px] font-normal">
+                        About Us
+                    </span>
+                </div>
+                <p className=" text-title ">{headerData.title}</p>
             </div>
 
             <div className="lg:w-full h-[700px] w-full  lg:h-[318px] lg:mb-[98px] mb-[30px] relative lg:ml-[0px] bg-repeat lg:bg-no-repeat" style={{ backgroundImage: "url('/images/Our Roots.png')", }}>

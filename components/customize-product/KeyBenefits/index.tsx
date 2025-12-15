@@ -14,39 +14,49 @@ export default function KeyBenefits({ keyBenefitsData, Id }: KeyBenefitsProps) {
   const benefitsGroup = keyBenefitsData[index] || [];
 
   return (
-    <div className="lg:pl-[0px] pl-[16px] lg:w-full">
-      <p className="text-[30px] font-semibold text-title">Key Benefits</p>
-      <p className="lg:w-full w-[358px] h-[110px] text-subtitle text-[14px] pt-[14px] lg:pb-[44px] pb-[24px]">
+    <section className="w-full bg-white pt-[74px] lg:pt-[90px] max-w-[1440px] mx-auto">
+      <div className="px-[16px] sm:px-[80px]">
+        {/* 🟣 Section Title */}
+        <h2 className="font-poppins font-semibold md:font-bold text-[#060414] text-[25px] md:text-[32px] leading-[40px] tracking-[0.032px] text-left mb-[10px] md:mb-[14px]">
+          Key Benefits
+        </h2>
+      <p className="font-poppins font-normal text-[#121926] text-[14px] md:text-[16px] leading-[22px] md:leading-[30px] text-left ">
         RedDot Digital Limited is a 100% subsidiary of Robi Axiata Limited, the
         second-largest mobile network operator in Bangladesh, offering IT and
         digital solutions.
       </p>
+     
 
-      <div className="flex flex-wrap lg:gap-x-[59px] lg:gap-y-[44px] gap-y-[16px]">
+      <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-x-[59px] lg:gap-y-[44px] gap-y-[16px] pt-12 md:pt-11 auto-rows-fr">
         {benefitsGroup.map((benefit) => (
           <div
             key={benefit.id}
-            className="border-2 rounded-xl bg-cover bg-no-repeat lg:h-[137px] h-[108px] lg:w-[calc(50%-29.5px)] w-full"
-            style={{ backgroundImage: "url('/images/benefits.svg')" }}
+            className=" flex border-[1px] rounded-xl bg-cover bg-no-repeat  p-[18px] pb-[24px] md:p-[20px] md:pb-[30px]
+                transition-transform duration-300 ease-out
+                hover:-translate-y-[2px] bg-[#F9F7FD]"
+           
           >
-            <div className="flex gap-[12px] p-[16px]">
+            
+           <div className="flex items-start justify-start mr-[12px] sm:mr-[24px] shrink-0">
               <Image
                 src={"/images/redtick.svg"}
                 alt=""
                 height={30}
                 width={30}
-                className="lg:h-[30px] lg:w-[30px] h-[22px] w-[22px] mt-[6px]"
+                className=" lg:w-[30px]  w-[22px] flex items-center justify-center"
               />
-              <div className="flex flex-col">
-                <p className="text-[16px] font-semibold text-title">{benefit.title}</p>
-                <p className="lg:mt-[10px] text-subtitle mt-[4px] text-[12px]  line-clamp-3">
+            </div>
+              <div className="flex flex-col justify-start">
+                <p className="text-[16px] leading-[26px] font-semibold text-title">{benefit.title}</p>
+                <p className="lg:mt-[10px] text-subtitle mt-[12px] text-[12px] leading-[22px] line-clamp-3">
                   {benefit.description}
                 </p>
               </div>
             </div>
-          </div>
+         
         ))}
       </div>
-    </div>
+      </div>
+    </section>
   );
 }

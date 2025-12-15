@@ -64,18 +64,29 @@ export default function CultureSection({
   const sectionRef = useRef<HTMLDivElement>(null);
   const controls = useAnimation();
 
-  useEffect(() => {
-    if (!sectionRef.current) return;
-    const el = sectionRef.current;
+useEffect(() => {
+  if (!sectionRef.current) return;
 
-    // 👇 GSAP triggers Framer Motion control
+  let isMounted = true;
+
+  const ctx = gsap.context(() => {
     ScrollTrigger.create({
-      trigger: el,
+      trigger: sectionRef.current,
       start: "top 80%",
-      onEnter: () => controls.start("visible"),
-      onLeaveBack: () => controls.start("hidden"),
+      onEnter: () => {
+        if (isMounted) controls.start("visible");
+      },
+      onLeaveBack: () => {
+        if (isMounted) controls.start("hidden");
+      },
     });
-  }, [controls]);
+  }, sectionRef);
+
+  return () => {
+    isMounted = false;
+    ctx.revert(); // ✅ cleanup ScrollTrigger
+  };
+}, [controls]);
 
   return (
     <section

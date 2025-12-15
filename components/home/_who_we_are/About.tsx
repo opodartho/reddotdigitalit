@@ -1,14 +1,17 @@
+"use client"
+
 import React from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { AboutData } from "@/lib/data/whoWeAreData";
 import WhiteButton from "@/components/buttons/WhiteHoverButton";
-
+import { useRouter } from "next/navigation";
 type AboutProps = {
   data: AboutData;
 };
 
 const About = ({ data }: AboutProps) => {
+   const router = useRouter();
   return (
     <div className="container grid grid-cols-1 md:grid-cols-2 gap-x-[84px] gap-y-8 px-10 mt-[81px]">
       <div className="flex flex-col justify-start space-y-4">
@@ -21,7 +24,9 @@ const About = ({ data }: AboutProps) => {
         <p className="--font-poppins font-normal text-[16px] leading-[30px] tracking-[0] mt-[36px]">
           {data.description}
         </p>
-        <WhiteButton className="--font-poppins font-medium text-[16px] leading-[100%] tracking-[0] w-[207px] h-[56px] mt-[49px]">
+        <WhiteButton  onClick={() =>
+                  router.push(`/about-us`)
+                } className="--font-poppins font-medium text-[16px] leading-[100%] tracking-[0] w-[207px] h-[56px] mt-[49px]">
           Read More
         </WhiteButton>
       </div>
@@ -32,7 +37,7 @@ const About = ({ data }: AboutProps) => {
             alt="Group"
             width={539}
             height={230}
-            className="w-full h-[230px] rounded-[18px] object-cover transition-transform duration-300 hover:scale-104 hover:border-[2px] hover:border-[#E52445] hover:shadow-[0_0_25px_rgba(229,36,69,0.55)]"
+            className="w-full h-[230px] rounded-[18px] object-cover transition-transform duration-300 hover:scale-104  "
           />
         </div>
         <div className="grid grid-cols-2 gap-4">
@@ -41,14 +46,14 @@ const About = ({ data }: AboutProps) => {
             alt="Speaker"
             width={263}
             height={232}
-            className="w-full h-[232px] rounded-[18px] object-cover transition-transform duration-300 hover:scale-104 hover:border-[2px]  hover:border-[#E52445] hover:shadow-[0_0_25px_rgba(229,36,69,0.55)]"
+            className="w-full h-[232px] rounded-[18px] object-cover transition-transform duration-300 hover:scale-104  "
           />
           <Image
             src={data.images[2]}
             alt="Event"
             width={263}
             height={232}
-            className="w-full h-[232px] rounded-[18px] object-cover transition-transform duration-300 hover:scale-104 hover:border-[2px]  hover:border-[#E52445] hover:shadow-[0_0_25px_rgba(229,36,69,0.55)]"
+            className="w-full h-[232px] rounded-[18px] object-cover transition-transform duration-300 hover:scale-104 "
           />
         </div>
       </div>

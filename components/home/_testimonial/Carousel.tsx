@@ -129,7 +129,7 @@ export const TestimonialCarousel: React.FC<CarouselProps> = ({
         </div>
 
         {/* ARROWS */}
-        <div className="flex mt-2 space-x-3">
+        <div className="flex mt-2 space-x-3 z-5000">
 
           {/* LEFT ARROW */}
           <button onClick={scrollPrev} className="group">

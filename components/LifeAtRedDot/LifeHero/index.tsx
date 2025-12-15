@@ -19,16 +19,21 @@ export const LifeHero = ({ data }: { data: LifeHeroData }) => {
     <>
       <section className="relative w-full bg-white">
         {/* 🧭 Breadcrumb */}
-        <div className="px-[16px] sm:px-[80px] pt-[56px] sm:pt-[80px]">
+        <div className="px-[16px] sm:px-[80px] pt-[100px] sm:pt-[150px] max-w-[1440px] mx-auto">
+          <div className="flex items-center justify-center w-[88px] h-[22px] sm:w-[93px] sm:h-[26px] rounded-[18px] border border-[#ECF1FE] bg-white shadow-[0_12px_48px_rgba(49,1,139,0.05)]">
+            <span className="text-[#121926] text-[12px] sm:text-[14px] font-normal leading-[18px] sm:leading-[21px] tracking-[0.032px]">
+              Our Culture
+            </span>
+          </div>
           {/* 🧠 Hero Content */}
-          <div className="flex flex-col items-start justify-center container [675px] mt-[34px] sm:mt-[38px]">
+          <div className="flex flex-col items-start justify-center max-w-[675px] mt-[34px] sm:mt-[38px]">
             {/* 🟥 Title */}
             <h1 className="font-poppins font-semibold text-[#060414] text-[30px] sm:text-[40px] leading-[45px] sm:leading-[48px] text-left">
               {data.title}
             </h1>
 
             {/* 🩶 Subtitle */}
-            <p className="text-[14px] sm:text-[18px] leading-[21px] sm:leading-[30px] text-[#121926] text-left mt-[14px] sm:mt-[12px] container [675px]">
+            <p className="text-[14px] sm:text-[18px] leading-[21px] sm:leading-[30px] text-[#121926] text-left mt-[14px] sm:mt-[12px] max-w-[675px]">
               {data.subtitle}
             </p>
           </div>

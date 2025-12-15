@@ -16,8 +16,8 @@ const WhoWeAre = ({ aboutData, achievementData }: WhoWeAreProps) => {
         Who We Are
       </h1>
       <p className="--font-poppins font-normal text-[14px] leading-[22px] tracking-[0] text-center align-middle mt-[16px] text-subtitle">
-        Our cutting-edge Modular Data Center solutions enable to
-        <br /> protect mission-critical data
+       Driving digital transformation with expertise, technology, and a 
+        <br /> passion for building impactful enterprise solutions.
       </p>
       <TabButtons
         about={<About data={aboutData} />}

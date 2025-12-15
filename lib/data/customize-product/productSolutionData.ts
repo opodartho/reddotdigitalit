@@ -7,42 +7,42 @@ export type ProductSolutionItem = {
 export const staticProductSolutions: ProductSolutionItem[] = [
   {
     title: "MFS",
-    description: "Unlock secure, fast, and convenient mobile transactions",
+    description: "Empowering financial institutions with secure, scalable, and fully regulated solutions.",
     image: "/image/smartphone 1.png",
   },
   {
     title: "DFS",
-    description: "Unlock secure, fast, and convenient mobile transactions",
+    description:  "Transforming digital payments with seamless, flexible, and future-ready financial systems.",
     image: "/image/online-banking 1.png",
   },
   {
     title: "Human Resources",
-    description: "Unlock secure, fast, and convenient mobile transactions",
+    description: "Simplifying workforce management through intelligent automation and digital workflows.",
     image: "/image/human-resources 2.png",
   },
   {
     title: "E-Commerce",
-    description: "Unlock secure, fast, and convenient mobile transactions",
+    description: "Driving business growth with customizable, user-centric digital commerce solutions.",
     image: "/image/online-shop 1.png",
   },
   {
     title: "IOT Backend",
-    description: "Unlock secure, fast, and convenient mobile transactions",
+    description:  "Connecting devices and data with robust backend infrastructure for seamless operations.",
     image: "/image/Group.png",
   },
   {
     title: "Streaming Solution App",
-    description: "Unlock secure, fast, and convenient mobile transactions",
+    description: "Delivering uninterrupted, high-quality digital entertainment experiences across devices.",
     image: "/image/streaming-tv-app 1.png",
   },
   {
     title: "Customer Experience",
-    description: "Unlock secure, fast, and convenient mobile transactions",
+    description:"Enhancing engagement through personalized, omnichannel digital experiences.",
     image: "/image/performance 1.png",
   },
   {
     title: "Sales & Distribution",
-    description: "Unlock secure, fast, and convenient mobile transactions",
+    description: "Optimizing field operations with data-powered tools for smarter sales and distribution.",
     image: "/image/Group (1).png",
   },
 ];

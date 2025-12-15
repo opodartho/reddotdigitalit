@@ -28,8 +28,8 @@ export default function Solutions({ solutions }: SolutionsProps) {
           Our Product Solution
         </h2>
         <p className="font-poppins text-black">
-          Our cutting-edge Modular Data Center solutions enable to <br />
-          protect mission-critical data.
+          Building intelligent, scalable, and secure digital solutions  <br />
+          tailored to your business needs.
         </p>
       </div>
 
@@ -65,7 +65,7 @@ export default function Solutions({ solutions }: SolutionsProps) {
                 <h3 className="mb-2 text-xl font-semibold transition-colors duration-300 group-hover:text-[#E52445]">
                   {solution.title}
                 </h3>
-                <p className="mb-4 text-sm font-normal transition-colors duration-300 group-hover:text-gray-800">
+                <p className="mb-4 text-sm font-normal transition-colors duration-300 group-hover:text-gray-800 line-clamp-2  group-hover:line-clamp-none">
                   {solution.description}
                 </p>
               </div>

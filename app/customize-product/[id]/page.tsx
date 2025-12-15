@@ -15,50 +15,38 @@ import { getSolutionCoverage } from "@/lib/api/customize-product/fetchSolutionCo
 import { getTransformData } from "@/lib/api/fetchTransform";
 import { notFound } from "next/navigation";
 
+export default async function CustomizeProduct({
+  params,
+}: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
+  const productId = Number(id);
 
-export default async function CustomizeProduct({ params }: { params: { id: string } }) {
+  const [KeyBenefitsData, AboutProjectData, CustomizeData, HeaderData, ConclusionData, SolutionCoverageData, transformData] =
+    await Promise.all([getKeyBenefits(), getAboutProject(), getCustomize(), getHeader(), getConclusion(), getSolutionCoverage(), getTransformData()]);
 
-    const index = Number(params.id) + 1; // Convert 1-based ID to 0-based index
+  const numberOfProjects = AboutProjectData.length;
+  if (productId >= numberOfProjects || productId < 1) notFound();
 
+  const solutionCoverageForProduct = SolutionCoverageData.find(
+    (item) => item.productId === productId
+  );
 
-
-    const [KeyBenefitsData, AboutProjectData, CustomizeData, HeaderData, ConclusionData, SolutionCoverageData, transformData] = await Promise.all([getKeyBenefits(), getAboutProject(), getCustomize(), getHeader(), getConclusion(), getSolutionCoverage(), getTransformData()])
-    const numberOfProjects = AboutProjectData.length
-    if ((Number(params.id) >= numberOfProjects) || Number(params.id) < 1) notFound();
-    const productId = Number(params.id);
-
-    const solutionCoverageForProduct = SolutionCoverageData.find(
-        (item) => item.productId === productId
-    );
-
-    return (
-        <>
-
-            <div className="pt-10 lg:pt-0">
-                <Header headerData={HeaderData} Id={params.id} />
-            </div>
-            <div className="lg:pl-[80px] lg:pr-[80px] lg:flex-1 lg:flex-grow lg:pt-[0px] pt-[48px] pr-[80px]">
-                <AboutProject aboutProjectData={AboutProjectData} Id={params.id} />
-            </div>
-            <div className="lg:pl-[80px] lg:pr-[80px] lg:flex-1 lg:pt-[60px] pt-[48px] pr-[16px]">
-                <KeyBenefits keyBenefitsData={KeyBenefitsData} Id={params.id} />
-            </div>
-            {solutionCoverageForProduct && (
-                <div className="lg:pl-[80px] lg:pr-[80px] lg:flex-1 lg:pt-[114px] pt-[48px] pr-[16px]">
-                    <SolutionCoverage
-                        coverage={solutionCoverageForProduct.coverage}
-                        Id={params.id}
-                    />
-                </div>
-            )}
-
-            <div className="lg:pt-[114px] pt-[48px]">
-                <Section customizeData={CustomizeData} />
-            </div>
-            <div className="lg:pt-[0px] pt-[173px] lg:pl-[80px] lg:pr-[80px]">
-                {/* <Conclusion conclusionData={ConclusionData} /> */}
-                <ReadyToTransform transformData={transformData} />
-            </div>
-        </>
-    )
+  return (
+    <>
+      <Header headerData={HeaderData} Id={id} />
+      <AboutProject aboutProjectData={AboutProjectData} Id={id} />
+      <KeyBenefits keyBenefitsData={KeyBenefitsData} Id={id} />
+      {solutionCoverageForProduct && (
+       
+          <SolutionCoverage coverage={solutionCoverageForProduct.coverage} Id={id} />
+        
+      )}
+      <div className="lg:pt-[114px] pt-[48px]">
+        <Section customizeData={CustomizeData} />
+      </div>
+      <div className="pt-0 md:pt-[80px]">
+        <ReadyToTransform transformData={transformData} />
+      </div>
+    </>
+  );
 }

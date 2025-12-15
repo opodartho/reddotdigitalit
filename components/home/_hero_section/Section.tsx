@@ -106,7 +106,6 @@ function LeftSide() {
 
       {/* Heading */}
       <h1 className="text-[#060414] text-[30px] lg:text-[48px] font-medium leading-[130%] max-w-[600px]">
-
         Crafting{" "}
 
         <TextType
@@ -115,21 +114,22 @@ function LeftSide() {
           deletingSpeed={90}
           pauseDuration={1000}
           className="text-[#E52445]"
-          fixedWidth={12}     // ⭐ keeps space locked
+          fixedWidth={12}
         />
 
-        {" "}Delivering{" "}
+        {" "}
+        <span className="text-[#E52445]">Delivering</span>{" "}
 
         <TextType
           text={["Excellence"]}
           typingSpeed={150}
           deletingSpeed={90}
           pauseDuration={1000}
-          className="text-[#E52445]"
+          className="text-[#060414]"
           fixedWidth={12}
         />
-
       </h1>
+
 
 
       {/* Description */}

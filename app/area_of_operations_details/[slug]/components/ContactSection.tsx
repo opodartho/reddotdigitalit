@@ -56,9 +56,9 @@ export const ContactSection = () => {
 
   return (
     <section className="relative w-full bg-white">
-      <div className="px-[16px] sm:px-[80px] flex flex-col lg:flex-row justify-between items-start gap-12">
+      <div className="px-[16px] sm:px-[80px] flex flex-col lg:flex-row justify-between items-start gap-12 max-w-[1440px] mx-auto">
         {/* 🧭 Left Info Section */}
-        <div className="flex flex-col justify-start container">
+        <div className="flex flex-col justify-start max-w-[291px] sm:max-w-[420px]">
           {/* ✨ Animated Looping Heading */}
           <h2 className="text-[25px] md:text-[32px] font-normal text-[#060414] leading-[40px] mb-4 md:mb-6 flex flex-wrap">
             {title.map((word, index) => (

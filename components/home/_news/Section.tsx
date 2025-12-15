@@ -2,6 +2,7 @@ import React from "react";
 import { NewsCard } from "./NewsCard";
 import { NewsItem } from "@/lib/data/newsData";
 import RedButton from "@/components/buttons/RedHoverButton";
+import Link from "next/link";
 
 type NewsSectionProps = {
   newsData: NewsItem[];
@@ -15,25 +16,27 @@ const News = ({ newsData }: NewsSectionProps) => {
           Latest Events
         </h2>
         <div className="max-w-[1440px] px-[38px] sm:px-[80px] mx-auto">
-        <div className="grid grid-cols-1 xl:gap-6 gap-0 sm:grid-cols-2 xl:grid-cols-4 space-y-[32px]">
-          {newsData.map((item) => (
-            <NewsCard
-              key={item.id}
-              title={item.title}
-              description={item.description}
-              imageUrl={item.imageUrl}
-            />
-          ))}
+          <div className="grid grid-cols-1 xl:gap-6 gap-0 sm:grid-cols-2 xl:grid-cols-4 space-y-[32px]">
+            {newsData.map((item) => (
+              <NewsCard
+                key={item.id}
+                title={item.title}
+                description={item.description}
+                imageUrl={item.imageUrl}
+              />
+            ))}
+          </div>
         </div>
-         </div>
-           <div className="flex justify-center">
-      
-      
-      
-              <RedButton className="mt-[40px] w-[195px] h-[56px] text-[16px] border border-[#E52445] ">
-                See More
-              </RedButton>
-            </div>
+        <div className="flex justify-center">
+
+
+
+          <Link href="/news-list">
+            <RedButton className="mt-[40px] w-[195px] h-[56px] text-[16px] border border-[#E52445]">
+              See More
+            </RedButton>
+          </Link>
+        </div>
       </div>
     </section>
   );
