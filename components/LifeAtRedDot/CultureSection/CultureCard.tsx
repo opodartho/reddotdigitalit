@@ -1,15 +1,19 @@
 "use client";
 
-import React from "react";
 import Image from "next/image";
+import type { CultureItem } from "@/lib/api/life/getCultureData";
 
-interface CultureCardProps {
-  icon: string;
-  title: string;
-  desc: string;
-}
+/**
+ * CultureCard
+ * -----------------------------------
+ * Pure presentational component
+ * - Uses API contract type (CultureItem)
+ * - No data fetching
+ * - No animation logic
+ * - Pixel-perfect match with original design
+ */
 
-export const CultureCard: React.FC<CultureCardProps> = ({ icon, title, desc }) => {
+export function CultureCard({ icon, title, desc }: CultureItem) {
   return (
     <div
       className="
@@ -52,4 +56,4 @@ export const CultureCard: React.FC<CultureCardProps> = ({ icon, title, desc }) =
       </p>
     </div>
   );
-};
+}

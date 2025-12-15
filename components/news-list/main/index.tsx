@@ -1,3 +1,4 @@
+"use client"
 import { Button } from "@/components/ui/button";
 import {
     Card,
@@ -6,13 +7,17 @@ import {
     CardDescription,
 } from "@/components/ui/card";
 import { NewsListItem, newsListData } from "@/lib/data/news-list/newsListData";
+import { useRouter } from 'next/navigation'
+import RedButton from "@/components/buttons/RedHoverButton";
+import Link from "next/link";
 
-type NewsListProps={
+
+type NewsListProps = {
     newsListData: NewsListItem[]
 }
 
-export default function Grids({newsListData}: NewsListProps) {
-
+export default function Grids({ newsListData }: NewsListProps) {
+    const router = useRouter()
     return (
         <>
             <div className="lg:pt-[77px] pt-[68px] flex flex-wrap gap-x-[16px] gap-y-[30px] justify-center lg:justify-start ">
@@ -30,16 +35,23 @@ export default function Grids({newsListData}: NewsListProps) {
                                 <CardDescription className="text-[14px] pl-[10px] pr-[43px] pt-[20px]">
                                     {slide.description}
                                 </CardDescription>
-                                <Button variant={"link"} className="text-start w-[96.2px] pl-[3px]">Read More </Button>
+                                <Button variant={"link"} className="text-start w-[96.2px] pl-[3px]" onClick={() => router.push("/news-details")}>Read More »</Button>
                             </CardHeader>
                         </Card>
                     </div>
 
                 ))}
 
-                <div className="pt-[64px] flex w-full justify-center">
-                    <Button variant={"outline"} className="">Load More...</Button>
-                </div>
+
+
+            </div>
+
+            <div className="flex justify-center">
+                <Link href="/news-details">
+                    <RedButton className="mt-[64px] w-[195px] h-[56px] text-[16px] border border-[#E52445]">
+                        Load More
+                    </RedButton>
+                </Link>
             </div>
         </>
     )

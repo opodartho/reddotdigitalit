@@ -19,7 +19,7 @@ export default async function AboutUs() {
     return (
         <>
 
-            <div className="overflow-hidden lg:pl-[80px] lg:pr-[80px]">
+            <div className="overflow-hidden lg:pl-[80px] lg:pr-[80px] max-w-[1440px] mx-auto">
                 <div className="lg:pr-80px">
                     <Header headerData={HeaderData} />
                 </div>

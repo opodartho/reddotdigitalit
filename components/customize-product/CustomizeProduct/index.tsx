@@ -11,13 +11,14 @@ export default function Section({ customizeData }: CustomizeProps) {
     return (
         <>
 
-            <div className="flex flex-col lg:items-center">
-                <p className="text-[32px] font-semibold  lg:pl-[80px] pl-[16px] text-title">{customizeData.title}</p>
-                <p className="text-[14px]  lg:pl-[80px] pl-[16px] text-subtitle">{customizeData.description}</p>
+            <div className="flex flex-col lg:items-center px-[16px] sm:px-[80px] max-w-[1440px] mx-auto">
+                <p className="text-[32px] font-semibold  text-title mb-[10px] ">{customizeData.title}</p>
+                <p className="text-[14px]  text-subtitle">{customizeData.description}</p>
+            </div>
                 <div className=" w-full pt-[64px]">
                     <ProductCarousel solutions={staticProductSolutions} />
                 </div>
-            </div>
+            
         </>
     )
 }

@@ -5,6 +5,10 @@ import { motion, useAnimation, Variants } from "framer-motion";
 import { gsap, ScrollTrigger } from "@/lib/gsapConfig";
 import Image from "next/image";
 
+// ✅ Types come from API layer (lib/api)
+import type { CultureItem } from "@/lib/api/life/getCultureData";
+import type { CultureSectionMeta } from "@/lib/api/life/getCultureSectionData";
+
 interface CultureCardProps {
   icon: string;
   title: string;
@@ -49,49 +53,40 @@ const CultureCard: React.FC<CultureCardProps> = ({ icon, title, desc }) => {
   );
 };
 
-export default function CultureSection() {
+// ✅ NOW: Data comes from props (fetched in page.tsx using lib/api)
+export default function CultureSection({
+  meta,
+  data,
+}: {
+  meta: CultureSectionMeta;
+  data: CultureItem[];
+}) {
   const sectionRef = useRef<HTMLDivElement>(null);
   const controls = useAnimation();
 
-  const cultureData = [
-    {
-      id: 1,
-      icon: "/icons/creativity.png",
-      title: "Creativity Matters",
-      desc: "We invest in your learning and development with mentorship programs, training opportunities, and clear career progression paths.",
-    },
-    {
-      id: 2,
-      icon: "/icons/collaboration.png",
-      title: "Collaboration First",
-      desc: "Work with talented, friendly teammates in an environment that values diverse perspectives and open communication.",
-    },
-    {
-      id: 3,
-      icon: "/icons/inclusion.png",
-      title: "Respect & Inclusion",
-      desc: "Build solutions that make real impact for clients across industries, from startups to enterprise organizations.",
-    },
-    {
-      id: 4,
-      icon: "/icons/impact.png",
-      title: "Driven by Impact",
-      desc: "Because life outside work matters too. Enjoy flexible schedules, remote work options, and comprehensive benefits.",
-    },
-  ];
+useEffect(() => {
+  if (!sectionRef.current) return;
 
-  useEffect(() => {
-    if (!sectionRef.current) return;
-    const el = sectionRef.current;
+  let isMounted = true;
 
-    // 👇 GSAP triggers Framer Motion control
+  const ctx = gsap.context(() => {
     ScrollTrigger.create({
-      trigger: el,
+      trigger: sectionRef.current,
       start: "top 80%",
-      onEnter: () => controls.start("visible"),
-      onLeaveBack: () => controls.start("hidden"),
+      onEnter: () => {
+        if (isMounted) controls.start("visible");
+      },
+      onLeaveBack: () => {
+        if (isMounted) controls.start("hidden");
+      },
     });
-  }, [controls]);
+  }, sectionRef);
+
+  return () => {
+    isMounted = false;
+    ctx.revert(); // ✅ cleanup ScrollTrigger
+  };
+}, [controls]);
 
   return (
     <section
@@ -102,10 +97,10 @@ export default function CultureSection() {
       <div className="mx-auto max-w-[1280px] px-[20px] sm:px-[32px] lg:px-[40px] xl:px-0 text-center py-[56px] sm:py-[80px]">
         <div className="mb-[46px] sm:mb-[78px]">
           <h2 className="text-[25px] sm:text-[30px] lg:text-[32px] font-bold text-[#060414]">
-            Our Culture
+            {meta.heading}
           </h2>
           <p className="text-[14px] sm:text-[16px] text-[#121926] font-normal mt-2 text-left sm:text-center">
-            360° Automated Sales & Distribution Management
+            {meta.subtitle}
           </p>
         </div>
 
@@ -123,7 +118,7 @@ export default function CultureSection() {
           animate={controls}
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-[24px] justify-items-center"
         >
-          {cultureData.map((item) => (
+          {data.map((item) => (
             <CultureCard
               key={item.id}
               icon={item.icon}

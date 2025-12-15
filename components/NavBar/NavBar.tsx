@@ -158,12 +158,12 @@ export function NavBar() {
                 <div className="relative left-16">
 
                   {/* Gradient Border Wrapper */}
-                  <div className="p-[1px] rounded-[25px] ">
+                  <div className="p-[1px] rounded-4xl ">
 
                     <Link
                       href="/contact-us"
                       className={cn(
-                        " flex justify-center items-center rounded-[25px] w-[144px] h-[44px] text-lg transition-all duration-300",
+                        " flex justify-center items-center rounded-4xl w-[144px] h-[44px] text-lg transition-all duration-300",
                         "bg-gradient-to-r from-[#E52445] via-[#BD1E39] to-[#7F1426] text-white hover:opacity-90 "
                       )}
                     >

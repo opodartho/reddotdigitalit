@@ -1,25 +1,26 @@
-import React from "react";
 import { HeroSection } from "@/components/ContactUs/HeroSection";
 import { GetInTouchForm } from "@/components/ContactUs/GetInTouchForm";
 import { LocationSection } from "@/components/ContactUs/LocationSection";
 
+import { getContactHeroData } from "@/lib/api/contact/getContactHeroData";
+import { getLocationData } from "@/lib/api/contact/getLocationData";
+import { getGetInTouchData } from "@/lib/api/contact/getGetInTouchData";
 
-export default function ContactUsPage() {
+export default async function ContactUsPage() {
+  const heroData = await getContactHeroData();
+  const locationData = await getLocationData();
+  const getInTouchData = await getGetInTouchData();
+
   return (
-    <main className="bg-white">
-
-
+    <main className="bg-white overflow-hidden max-w-[1440px] mx-auto">
       {/* ===== Hero Section ===== */}
-      <HeroSection />
+      <HeroSection data={heroData} />
 
-      {/* ===== Get In Touch Section (Info + Form) ===== */}
-      <GetInTouchForm />
+      {/* ===== Get In Touch Section ===== */}
+      <GetInTouchForm data={getInTouchData} />
 
-      {/* ===== Location Section (Map + Office Info) ===== */}
-      <LocationSection />
+      {/* ===== Location Section ===== */}
+      <LocationSection data={locationData} />
     </main>
   );
 }
-
-
-

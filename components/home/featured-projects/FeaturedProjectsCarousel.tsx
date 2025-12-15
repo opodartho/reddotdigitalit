@@ -85,7 +85,7 @@ export const FeaturedProjectsCarousel: React.FC<CarouselProps> = ({
           Featured Projects
         </h2>
 
-        <div className="mt-2 flex space-x-3">
+        <div className="mt-2 flex space-x-3 z-5000">
           <button onClick={scrollPrev} className="group">
             {/* Default (grey) icon */}
             <Image

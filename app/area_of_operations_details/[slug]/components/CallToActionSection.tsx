@@ -34,22 +34,22 @@ export default function CallToActionSection({
 
   return (
     <section
-      className="relative w-full  px-[16px] sm:px-[80px] py-[104px] lg:py-[133px]  ">
+      className="relative w-full  px-[16px] sm:px-[80px] py-[104px] lg:py-[133px] mx-auto max-w-[1440px]  ">
       <div className="w-full flex justify-center items-center overflow-hidden bg-white 
                  bg-no-repeat bg-cover bg-center 
                  rounded-[24px] lg:rounded-[48px] 
-                 mx-auto container py-[50px]  lg:py-[120px] px-[22px] lg:px-[133px] 
+                 py-[50px]  lg:py-[120px] px-[22px] lg:px-[133px] 
                  transition-all duration-500"
         style={{
           backgroundImage: `url('${bgImage}')`,
         }}
       >
         {/* 🌿 Text + Button */}
-        <div className="relative z-10 flex flex-col items-center justify-center text-center container">
+        <div className="relative z-10 flex flex-col items-center justify-center text-center  max-w-[948px]">
           <h2 className="text-[28px] sm:text-[32px] md:text-[40px] font-bold text-[#060414] leading-[38px] sm:leading-[44px] mb-[38px] lg:mb-4">
             {title}
           </h2>
-          <p className="text-[15px] sm:text-[16px] leading-[28px] sm:leading-[30px] text-[#121926] mb-[38px] lg:mb-[50px]  container">
+          <p className="text-[15px] sm:text-[16px] leading-[28px] sm:leading-[30px] text-[#121926] mb-[38px] lg:mb-[50px] max-w-[900px]">
             {description}
           </p>
           {/* CTA Button (Reused from UI library) */}
