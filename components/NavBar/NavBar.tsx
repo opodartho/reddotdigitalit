@@ -99,7 +99,7 @@ export function NavBar() {
               ? isScrolled
                 ? "bg-transparent backdrop-blur-2xl border-gray-200/50"  // White background when scrolled past hero
                 : "bg-transparent border-white/20"  // Transparent on hero section
-              : "bg-transparent backdrop-blur-2xl border-gray-200/50"  // Other pages: always have the scrolled style
+                : "bg-transparent backdrop-blur-2xl border-gray-200/50"  // Other pages: always have the scrolled style
           )}>
             <div className="flex h-full items-center justify-between px-4 md:px-10 lg:px-[70px]">
               <Link href="/" onClick={scrollToTop} className="flex-shrink-0 relative lg:right-16">
@@ -161,12 +161,12 @@ export function NavBar() {
                 <div className="relative left-16">
 
                   {/* Gradient Border Wrapper */}
-                  <div className="p-[1px] rounded-[25px] ">
+                  <div className="p-[1px] rounded-4xl ">
 
                     <Link
                       href="/contact-us"
                       className={cn(
-                        " flex justify-center items-center rounded-[25px] w-[144px] h-[44px] text-lg transition-all duration-300",
+                        " flex justify-center items-center rounded-4xl w-[144px] h-[44px] text-lg transition-all duration-300",
                         "bg-gradient-to-r from-[#E52445] via-[#BD1E39] to-[#7F1426] text-white hover:opacity-90 "
                       )}
                     >

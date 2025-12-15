@@ -58,7 +58,7 @@ export default function FirstHeroSection({ heroSlidesData }: HeroSlidesProps) {
           transition-all duration-300
           border border-transparent
           hover:border-white
-          hover:shadow-[0_0_20px_rgba(229,36,69,0.25)]
+          
         "
               >
                 <img

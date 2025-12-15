@@ -9,7 +9,7 @@ const Footer = async () => {
   const { logoUrl, columns, brochure, legalLinks, copyright } = footerData;
 
   return (
-    <footer className="bg-gradient-to-b from-slate-100 via-violet-100 to-violet-100 font-poppins mt-20 pl-10">
+    <footer className="bg-gradient-to-b from-slate-100 via-violet-100 to-violet-100 font-poppins mt-20 px-6 sm:px-10">
       {/* Top Section of Footer */}
       <div className="container mx-auto px-6 py-12">
         <div className="flex justify-center mb-12">

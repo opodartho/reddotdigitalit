@@ -6,7 +6,7 @@ export default function KeyBenefitsSection({
   sectionDesc: string;
 }) {
   return (
-    <section className="w-full bg-white pt-[74px] lg:pt-[90px]">
+    <section className="w-full bg-white pt-[74px] lg:pt-[90px] max-w-[1440px] mx-auto">
       <div className="px-[16px] sm:px-[80px]">
         {/* 🟣 Section Title */}
         <h2 className="font-poppins font-semibold md:font-bold text-[#060414] text-[25px] md:text-[32px] leading-[40px] tracking-[0.032px] text-left mb-[10px] md:mb-[14px]">
