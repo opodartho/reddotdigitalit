@@ -1,19 +1,19 @@
 "use client"
+
 import React from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { AboutData } from "@/lib/data/whoWeAreData";
 import WhiteButton from "@/components/buttons/WhiteHoverButton";
 import { useRouter } from "next/navigation";
-
 type AboutProps = {
   data: AboutData;
 };
 
 const About = ({ data }: AboutProps) => {
-     const router = useRouter();
+   const router = useRouter();
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-[84px] gap-y-8 px-10 mt-[81px]">
+    <div className="container grid grid-cols-1 md:grid-cols-2 gap-x-[84px] gap-y-8 px-10 mt-[81px]">
       <div className="flex flex-col justify-start space-y-4">
         <h2 className="--font-poppins font-normal text-[25px] leading-[40px] tracking-[0.03px]">
           {data.title}
@@ -37,7 +37,7 @@ const About = ({ data }: AboutProps) => {
             alt="Group"
             width={539}
             height={230}
-            className="w-full h-[230px] rounded-[18px] object-cover transition-transform duration-300 hover:scale-104"
+            className="w-full h-[230px] rounded-[18px] object-cover transition-transform duration-300 hover:scale-104  "
           />
         </div>
         <div className="grid grid-cols-2 gap-4">
@@ -46,14 +46,14 @@ const About = ({ data }: AboutProps) => {
             alt="Speaker"
             width={263}
             height={232}
-            className="w-full h-[232px] rounded-[18px] object-cover transition-transform duration-300 hover:scale-104 "
+            className="w-full h-[232px] rounded-[18px] object-cover transition-transform duration-300 hover:scale-104  "
           />
           <Image
             src={data.images[2]}
             alt="Event"
             width={263}
             height={232}
-            className="w-full h-[232px] rounded-[18px] object-cover transition-transform duration-300 hover:scale-104"
+            className="w-full h-[232px] rounded-[18px] object-cover transition-transform duration-300 hover:scale-104 "
           />
         </div>
       </div>
