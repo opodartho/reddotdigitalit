@@ -90,7 +90,7 @@ export function NavBar() {
       <div className="lg:flex lg:justify-center sticky lg:top-[22px] z-1000">
         <div className="absolute bg-transparent top-0 lg:flex lg:justify-center lg:items-center z-100 pt-[22px] w-full">
           <nav className={cn(
-            " px-4 z-1000 top-0 lg:w-[1280px] h-[76px] rounded-4xl backdrop-blur-2xl opacity-100 border-b shadow-[0_4px_29px_rgba(0,0,0,0.05)] transition-all duration-100",
+            " px-4 z-1000 top-0 lg:w-[1280px] h-[66px] lg:h-[76px] rounded-4xl backdrop-blur-2xl opacity-100 border-b shadow-[0_4px_29px_rgba(0,0,0,0.05)] transition-all duration-100",
             isHomePage
               ? isScrolled
                 ? "bg-transparent backdrop-blur-2xl border-gray-200/50"  // White background when scrolled past hero
@@ -190,7 +190,7 @@ export function NavBar() {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="fixed top-0 left-0 z-40 flex h-screen w-full flex-col items-center space-y-6 overflow-y-auto bg-white p-8 pt-24 md:hidden">
+        <div className="fixed top-0 left-0 z-40 flex h-screen w-full flex-col items-center space-y-6 overflow-y-auto bg-white p-8 pt-32 md:hidden">
           {navLinks.map((link) => (
             <div key={link.title} className="text-center">
               {link.items && link.items.length > 0 ? (
