@@ -37,7 +37,7 @@ export const directorsData: Directors = {
         },
         {
             id: 4,
-            imageUrl: '/images/manage4.svg',
+            imageUrl: '/images/manage4.png',
             name: 'Ruhul Amin',
             role: 'Director',
             description: 'Ruhul Amin serves as a Director, bringing extensive hands-on experience in business leadership to the role'
@@ -51,7 +51,7 @@ export const directorsData: Directors = {
         },
         {
             id: 6,
-            imageUrl: '/images/manage6.svg',
+            imageUrl: '/images/manage6.png',
             name: 'Md. Adil Hossain Noble',
             role: 'Director',
             description: 'Md. Adil Hossain Noble was appointed as the Chief Enterprise Business Officer in June 2019'

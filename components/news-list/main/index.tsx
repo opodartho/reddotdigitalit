@@ -26,17 +26,40 @@ export default function Grids({ newsListData }: NewsListProps) {
 
                     <div key={slide.id}>
                         <Card
-                            className={`w-[308px] border-1 bg-white h-[494px] transition shadow-sm hover:shadow-lg`}
+                            className="w-[308px] h-[494px] bg-white border-1 transition shadow-sm hover:shadow-lg flex flex-col"
                         >
-                            <CardHeader className="-m-4 space-y-0">
-                                <img src={slide.imageUrl} className="" />
-                                <CardTitle className="text-[14px] text-gray-400 pt-[13px] pl-[10px]">{slide.date}</CardTitle>
-                                <CardTitle className="text-[18px] pt-[22px] pl-[10px] tracking-wider">{slide.title}</CardTitle>
-                                <CardDescription className="text-[14px] pl-[10px] pr-[43px] pt-[20px]">
-                                    {slide.description}
-                                </CardDescription>
-                                <Button variant={"link"} className="text-start w-[96.2px] pl-[3px]" onClick={() => router.push("/news-details")}>Read More »</Button>
+
+                            <CardHeader className="-m-4 space-y-0 flex flex-col h-full">
+                                <img
+                                    src={slide.imageUrl}
+                                    alt={slide.title}
+                                    className="w-full h-[200px] object-cover"
+                                />
+
+                                <div className="flex flex-col flex-1">
+                                    <CardTitle className="text-[14px] text-gray-400 pt-[13px] pl-[10px]">
+                                        {slide.date}
+                                    </CardTitle>
+
+                                    <CardTitle className="text-[18px] pt-[22px] pl-[10px] tracking-wider">
+                                        {slide.title}
+                                    </CardTitle>
+
+                                    <CardDescription className="text-[14px] pl-[10px] pr-[43px] pt-[20px]">
+                                        {slide.description}
+                                    </CardDescription>
+
+                                    {/* 👇 always aligned */}
+                                    <Button
+                                        variant="link"
+                                        className="mt-auto pl-[10px] text-start w-fit"
+                                        onClick={() => router.push("/news-details")}
+                                    >
+                                        Read More »
+                                    </Button>
+                                </div>
                             </CardHeader>
+
                         </Card>
                     </div>
 

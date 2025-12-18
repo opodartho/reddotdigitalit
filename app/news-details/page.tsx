@@ -17,7 +17,7 @@ export default async function Blogs() {
                 <div className="max-w-[1440px] w-full mx-auto">
                     <Header newsDetailsData={NewsDetailsData} />
 
-                    <div className="flex lg:gap-[104px] gap-0">
+                    <div className="flex flex-col lg:flex-row lg:gap-[104px] gap-0">
                         {/* MetaData - Fixed width */}
                         <div className="shrink-0">
                             <MetaData newsDetailsData={NewsDetailsData} />
@@ -26,7 +26,7 @@ export default async function Blogs() {
                         {/* Body - Takes remaining space */}
                         <div className="flex-1 min-w-0">
                             <Body newsDetailsData={NewsDetailsData} />
-                            <WorkWithUs />
+                          
                         </div>
                     </div>
                 </div>

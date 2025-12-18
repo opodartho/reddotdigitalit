@@ -6,21 +6,18 @@ type NewsDetailsProps = {
 export default function Body({ newsDetailsData }: NewsDetailsProps) {
     return (
         <>
-            <div className="lg:pt-[64px] w-full lg:w-auto pt-[185px]">
+            <div className="pt-[64px] w-full lg:w-auto">
                 {/*Subtitle 0 */}
-                <p className="text-[24px] font-bold text-title">{newsDetailsData.subtitle0}</p>
+                <p className="text-[24px] leading-[30px] font-bold text-title">{newsDetailsData.subtitle0}</p>
 
                 {/* Description */}
-                <p className="text-[14px] pt-[14px] text-subtitle">{newsDetailsData.description}</p>
+                <p className="text-[14px] leading-[26px] pt-[14px] text-subtitle">{newsDetailsData.description}</p>
 
-                {/* SubImage 1 */}
-                <div className="lg:pt-[24px] lg:pb-[50px] pt-[32px]">
-                    <img src={newsDetailsData.imageUrls[1]} className="w-full" />
-                </div>
+
 
                 {/* Key Points */}
                 <div className="pt-[45px]">
-                    <div className="border border-[#ffd6d6] bg-[#fffafa] rounded-xl lg:pb-[50px] lg:pr-[32px] lg:pt-[0px] pt-[34px] pl-[16px] pr-[16px]">
+                    <div className="border border-[#FFB8B8] bg-[#fffafa] rounded-xl pb-[50px] lg:pr-[32px] lg:pt-[0px] pt-[34px] pl-[16px] pr-[16px] ">
                         <p className="lg:pt-[44.65px] lg:pl-[36px] lg:pb-[34.91px] font-bold text-[24px] text-title">{newsDetailsData.keyPointsHeading}</p>
 
                         {newsDetailsData.keyPoints.map((p, index) => (
@@ -32,10 +29,6 @@ export default function Body({ newsDetailsData }: NewsDetailsProps) {
                     </div>
                 </div>
 
-                {/*SubImage 2*/}
-                <div className="lg:pt-[49px] pt-[49px]">
-                    <img src={newsDetailsData.imageUrls[2]} className="w-full" />
-                </div>
 
                 {/*SubTitle 1*/}
                 <div className="lg:pt-[44px] pt-[42px]">
@@ -46,18 +39,30 @@ export default function Body({ newsDetailsData }: NewsDetailsProps) {
                     <p className="text-[14px] text-subtitle">{newsDetailsData.subText1}</p>
                 </div>
 
-                {/*SubTitle 2*/}
-                {newsDetailsData.subtitle2 && (
-                    <>
-                        <div className="lg:pt-[44px]">
-                            <p className="text-[24px] font-semibold text-title">{newsDetailsData.subtitle2}</p>
-                        </div>
 
-                        <div className="lg:pt-[24.56px]">
-                            <p className="text-[14px] text-subtitle">{newsDetailsData.subText2}</p>
-                        </div>
-                    </>
-                )}
+                {/* SubImage 1 */}
+                <div className="lg:pt-[24px]  pt-[32px]">
+                    <img src={newsDetailsData.imageUrls[1]} className="w-full" />
+                </div>
+
+               {/*SubTitle 1*/}
+                <div className="pt-[14px]">
+                    <p className="text-[14px] text-subtitle">{newsDetailsData.subText1}</p>
+                </div>
+
+                {/*SubImage 2*/}
+                <div className="lg:pt-[49px] pt-[49px]">
+                    <img src={newsDetailsData.imageUrls[2]} className="w-full" />
+                </div>
+ 
+
+               {/*SubTitle 1*/}
+                <div className="pt-[14px]">
+                    <p className="text-[14px] text-subtitle">{newsDetailsData.subText1}</p>
+                </div>
+
+
+
             </div>
         </>
     )
