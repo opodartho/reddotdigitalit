@@ -45,8 +45,8 @@ export default function HeroSection() {
       style={{ backgroundImage: `url('/images/BG.png')` }}>
       <div
         className="
-          max-w-[1440px] mx-auto px-[16px] sm:px-[120px] pt-[100px] md:pt-[168px] pb-20
-          flex flex-col  xl:flex-row items-start justify-between
+          max-w-[1440px] mx-auto px-[16px] sm:px-[80px] pt-[120px] md:pt-[168px] pb-20
+          flex flex-col  2xl:flex-row items-start justify-between 
         "
       >
 
@@ -55,7 +55,7 @@ export default function HeroSection() {
 
         {/* RIGHT SIDE – FIXED FIGMA WIDTH */}
 
-        <div className="mx-auto xl:mx-0 flex flex-col items-center overflow-hidden mt-[48px] xl:mt-0">
+        <div className="mx-auto 2xl:mx-0 flex flex-col items-center overflow-hidden mt-[48px] 2xl:mt-0">
 
           {/* Embla viewport width matches EXACT card width */}
           <div
@@ -105,30 +105,32 @@ function LeftSide() {
 
 
       {/* Heading */}
-      <h1 className="text-[#060414] text-[30px] lg:text-[48px] font-medium leading-[130%] max-w-[600px]">
-        Crafting{" "}
+      <h1 className="text-[#060414] text-[30px] lg:text-[48px] font-medium leading-[130%]">
+        <span className="block">
+          Crafting{" "}
+          <TextType
+            text={["Innovation,"]}
+            typingSpeed={150}
+            deletingSpeed={90}
+            pauseDuration={1000}
+            className="text-[#E52445]"
+            fixedWidth={10}
+          />
+        </span>
 
-        <TextType
-          text={["Innovation,"]}
-          typingSpeed={150}
-          deletingSpeed={90}
-          pauseDuration={1000}
-          className="text-[#E52445]"
-          fixedWidth={12}
-        />
-
-        {" "}
-        <span className="text-[#E52445]">Delivering</span>{" "}
-
-        <TextType
-          text={["Excellence"]}
-          typingSpeed={150}
-          deletingSpeed={90}
-          pauseDuration={1000}
-          className="text-[#060414]"
-          fixedWidth={12}
-        />
+        <span className="block">
+          <span className="text-[#E52445]">Delivering</span>{" "}
+          <TextType
+            text={["Excellence"]}
+            typingSpeed={150}
+            deletingSpeed={90}
+            pauseDuration={1000}
+            className="text-[#060414]"
+            fixedWidth={11}
+          />
+        </span>
       </h1>
+
 
 
 
