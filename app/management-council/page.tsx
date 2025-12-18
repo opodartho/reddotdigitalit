@@ -11,7 +11,7 @@ export default async function ManagementCouncil() {
     return (
         <>
 
-            <div className="lg:pl-[80px] pl-[16px] lg:pr-[80px] pr-[16px] ">
+            <div className="px-[16px] sm:px-[80px] max-w-[1440px] mx-auto">
                 <Header managementData={managementData} />
                 <Grids managementData={managementData} />
             </div>
