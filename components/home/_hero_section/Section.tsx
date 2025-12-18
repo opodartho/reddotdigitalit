@@ -98,9 +98,16 @@ function LeftSide() {
     <div className="max-w-[593px] flex flex-col gap-6 flex-1">
       {/* Badges */}
       <div className="flex flex-col sm:flex-row gap-3 ">
-        <Badge>15+ enterprise solutions</Badge>
-        <Badge>ISO Certified</Badge>
-        <Badge>5+ years of experience</Badge>
+        <Badge >
+          <span className="text-[#121926] font-normal">15+ enterprise solutions</span>
+        </Badge>
+        <Badge >
+          <span className="text-[#121926] font-normal">ISO Certified</span>
+        </Badge>
+        <Badge >
+          <span className="text-[#121926] font-normal">5+ years of experience</span>
+        </Badge>
+
       </div>
 
 

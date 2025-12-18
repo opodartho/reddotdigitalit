@@ -93,13 +93,13 @@ export function NavBar() {
   return (
     <>
       <div className="lg:flex lg:justify-center sticky lg:top-[22px] z-1000" style={{ backgroundImage: `url('/images/bg-hero.svg')` }}>
-         <div className=" absolute bg-transparent top-0 lg:flex lg:justify-center lg:items-center z-100 pt-[22px] w-full" >
+        <div className=" absolute bg-transparent top-0 lg:flex lg:justify-center lg:items-center z-100 pt-[22px] w-full" >
 
           <nav className={cn(
-            " px-4 z-1000 top-0 lg:w-[1140px] h-[66px] rounded-4xl backdrop-blur-2xl opacity-100 border-b shadow-[0_4px_29px_rgba(0,0,0,0.05)] transition-all duration-100",
+            " px-4 z-1000 top-0 lg:w-[1280px] h-[76px] rounded-4xl backdrop-blur-2xl opacity-100 border-b shadow-[0_4px_29px_rgba(0,0,0,0.05)] transition-all duration-100",
             isHomePage
               ? isScrolled
-            ? "bg-transparent backdrop-blur-2xl border-gray-200/50"  // White background when scrolled past hero
+                ? "bg-transparent backdrop-blur-2xl border-gray-200/50"  // White background when scrolled past hero
                 : "bg-transparent border-white/20"  // Transparent on hero section
               : "bg-transparent backdrop-blur-2xl border-gray-200/50"  // Other pages: always have the scrolled style
           )}>
@@ -110,9 +110,9 @@ export function NavBar() {
                   alt="Red Dot Digital Logo"
                   width={120}
                   height={40}
-className={cn(
-  "cursor-pointer transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:scale-[1.04] hover:opacity-90"
-)}
+                  className={cn(
+                    "cursor-pointer transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:scale-[1.04] hover:opacity-90"
+                  )}
 
                 />
               </Link>
@@ -134,7 +134,7 @@ className={cn(
                       ) : (
                         <>
                           <NavigationMenuTrigger className={cn(
-                            "font-poppins h-full px-0 text-[15px] font-normal hover:text-red-500 transition-colors duration-300",
+                            "font-poppins h-full px-0 text-[15px] font-medium hover:text-red-500 transition-colors duration-300",
                             getTextColorClass()
                           )}>
                             {link.title}
@@ -164,16 +164,16 @@ className={cn(
                 <div className="relative left-16">
 
                   {/* Gradient Border Wrapper */}
-                 
-                    <Link
-                      href="/contact-us"
-                      className={cn(
-                        " flex justify-center items-center rounded-4xl w-[144px] h-[44px] text-lg transition-all duration-300",
-                        "bg-gradient-to-r from-[#E52445] via-[#BD1E39] to-[#7F1426] text-white hover:opacity-90 "
-                      )}
-                    >
-                      <SplitTextHover text="Contact Us" />
-                    </Link>
+
+                  <Link
+                    href="/contact-us"
+                    className={cn(
+                      " flex justify-center items-center rounded-4xl w-[144px] h-[44px] text-lg transition-all duration-300",
+                      "bg-gradient-to-r from-[#E52445] via-[#BD1E39] to-[#7F1426] text-white hover:opacity-90 "
+                    )}
+                  >
+                    <SplitTextHover text="Contact Us" />
+                  </Link>
 
 
                 </div>

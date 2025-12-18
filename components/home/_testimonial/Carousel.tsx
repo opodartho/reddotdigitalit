@@ -183,7 +183,7 @@ export const TestimonialCarousel: React.FC<CarouselProps> = ({
       </div>
 
       {/* CAROUSEL */}
-      <div className="embla w-full h-auto px-4 lg:px-0" ref={emblaRef}>
+      <div className="embla w-full h-auto" ref={emblaRef}>
         <div className="embla__container">
           {testimonials.map((testimonial) => (
             <div className="embla__slide px-2" key={testimonial.id}>
