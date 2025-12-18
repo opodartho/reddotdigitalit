@@ -1,35 +1,37 @@
 import { Button } from "@/components/ui/button";
 import { SpeakupData, SpeakupItem } from "@/lib/data/speak-up/speakupData";
+import  WhiteButton  from "@/components/buttons/WhiteHoverButton";
 type SpeakupProps = {
     SpeakupData: SpeakupItem
 }
 export default function Main({ SpeakupData }: SpeakupProps) {
     return (
         <>
-            <div className="lg:pt-[51px]   pt-[51px] lg:flex lg:flex-row lg:pb-[32px] pb-[30px] lg:pl-[80px] lg:pr-[80px] pl-[16px] pr-[16px] flex flex-col ">
-                <div className="lg:w-1/2 w-full flex justify-center items-center">
+            <div className="pt-[51px] flex flex-col xl:flex-row gap-8 xl:gap-12 lg:pb-[32px] pb-[30px]">
+                <div className="w-full xl:w-[490px] shrink-0 flex justify-center items-center">
                     <img
                         src={SpeakupData.imageUrl}
                         alt="Speak up"
-                        className="w-full h-auto object-contain lg:max-h-[456px]"
+                        className="object-contain xl:h-[456px] h-auto"
                     />
                 </div>
 
-                <div>
-                    <div className="flex flex-col lg:pt-[51px] pt-[76px] lg:pl-[62px]">
-                        <p className="text-[35px]  font-semibold">{SpeakupData.name}</p>
-                        <p className="text-[16px] lg:w-[625px] pt-[14px] lg:h-[112px]">{SpeakupData.description}</p>
+                <div className="flex-1">
+                    <div className="flex flex-col">
+                        <p className="text-[32px] leading-[40px] font-bold text-title">{SpeakupData.name}</p>
+                        <p className="text-[16px] leading-[22px] text-subtitle xl:w-[625px] pt-[14px] mb-[24px]">{SpeakupData.description}</p>
                         <div className="lg:grid lg:grid-cols-2 grid grid-cols-1">
                             {SpeakupData.points.map((p, index) => (
-                                <p key={index} className={`lg:flex lg:gap-[8px] lg:pt-[6px] flex gap-[8px] ${index === 0 ? `pt-[54px]` : `pt-[22px]`}`}>
+                                <p key={index} className={`text-subtitle text-[16px] leading-[24px] font-medium lg:flex lg:gap-[8px] lg:pt-[6px] flex gap-[8px] ${index === 0 ? `pt-[54px]` : `pt-[22px]`}`}>
                                     <img src={'/images/checkmark.svg'} />
                                     {p}
                                 </p>
                             ))}
                         </div>
-                        <div className="lg:flex lg:flex-row lg:gap-[14px] lg:pt-[85px] pt-[54px] flex flex-col gap-[23px]">
-                            <Button className=" h-[56px] w-auto rounded-2xl">Whistle-blower Reporting System</Button>
-                            <Button className="h-[56px] w-auto  rounded-2xl">Whistleblowing Policy</Button>
+                        <div className="lg:flex lg:flex-row lg:gap-[14px] lg:pt-[80px] pt-[54px] flex flex-col gap-[23px]">
+                            <WhiteButton className=" h-[56px] px-6 py-3 rounded-2xl">Whistle-blower Reporting System</WhiteButton>
+                            <WhiteButton className="h-[56px] px-6 py-3 rounded-2xl">Whistleblowing Policy</WhiteButton>
+                                    
                         </div>
                     </div>
                 </div>

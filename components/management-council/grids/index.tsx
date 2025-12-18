@@ -12,19 +12,18 @@ export default function Grids({managementData}: ManagementProps) {
 
     return (
         <>
-            <div className="lg:pt-[77px] pt-[68px] flex flex-wrap gap-[40px] justify-center lg:justify-start lg:pb-[144px]">
-
+               <div className="pt-[68px] lg:pt-[77px] flex flex-wrap justify-center xl:justify-start gap-x-4  gap-y-8  sm:gap-y-12 lg:pb-[144px]">
                 {managementData.information.map((slide) => (
 
-                    <div key={slide.id}>
+                    <div key={slide.id} className="w-[304px]">
                         <Card
-                            className={`w-[304px] bg-white h-[392px] transition shadow-md hover:shadow-lg`}
+                            className="w-full h-[421px] bg-white transition shadow-md hover:shadow-xl border-1 "
                         >
                             <CardHeader className="-m-4 space-y-0">
-                                <img src={slide.imageUrl} className="-mt-4"/>
-                                <CardTitle className="text-[16px] pt-[13px] pl-[20px]">{slide.name}</CardTitle>
-                                <CardTitle className="text-[12px] pt-[16px] pl-[20px]">{slide.role}</CardTitle>
-                                <CardDescription className="text-[12px] pl-[20px] pr-[43px]">
+                                <img src={slide.imageUrl} alt={slide.name} className="-mt-[2px] h-[206px] " />
+                                <CardTitle className="text-[16px] pt-[13px] pl-[20px] text-title">{slide.name}</CardTitle>
+                                <CardTitle className="text-[12px] pt-[16px] pl-[20px] text-subtitle">{slide.role}</CardTitle>
+                                <CardDescription className="text-[12px] pl-[20px] pr-[43px] text-subtitle">
                                     {slide.description}
                                 </CardDescription>
                             </CardHeader>

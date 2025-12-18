@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Autoplay from "embla-carousel-autoplay";
 import {
     Carousel,
@@ -14,79 +14,137 @@ import {
     CardTitle,
     CardDescription,
 } from "@/components/ui/card";
-import { NewsListItem, newsListData } from "@/lib/data/news-list/newsListData";
 import { Button } from "@/components/ui/button";
-import RedButton from "@/components/buttons/RedHoverButton";
+import { useRouter } from "next/navigation";
 
-type ProductCarouselProps = {
+import type { NewsListItem } from "@/lib/data/news-list/newsListData";
+
+/**
+ * BlogCarousel
+ * --------------------------------
+ * - Same structure as TeamGallery
+ * - Loop-safe spacing
+ * - No half-stop on wrap
+ * - Normalized dot tracking
+ */
+
+type BlogCarouselProps = {
     newsListData: NewsListItem[];
 };
 
+export function BlogCarousel({ newsListData }: BlogCarouselProps) {
+    const router = useRouter();
 
-export function BlogCarousel({ newsListData }: ProductCarouselProps) {
-    const [api, setApi] = React.useState<CarouselApi>();
-    const [current, setCurrent] = React.useState(0);
+    const [api, setApi] = useState<CarouselApi>();
+    const [current, setCurrent] = useState(0);
 
-
-    const autoplay = React.useRef(
+    const autoplay = useRef(
         Autoplay({ delay: 3000, stopOnInteraction: false })
     );
 
+    const totalSlides = newsListData.length;
 
-
-    React.useEffect(() => {
+    // 🔄 Normalize snap index (same as TeamGallery)
+    useEffect(() => {
         if (!api) return;
 
-        setCurrent(api.selectedScrollSnap() + 1);
+        const onSelect = () => {
+            const raw = api.selectedScrollSnap();
+            const normalized =
+                ((raw % totalSlides) + totalSlides) % totalSlides;
+            setCurrent(normalized);
+        };
 
-        api.on("select", () => {
-            setCurrent(api.selectedScrollSnap() + 1);
-        });
-    }, [api]);
+        onSelect();
+        api.on("select", onSelect);
+
+        return () => {
+            api.off("select", onSelect);
+        };
+    }, [api, totalSlides]);
 
     return (
-        <div className="relative z-10 w-full h-[720px]">
+        <section className="relative w-full ">
+            {/* 🔹 Heading */}
+            <p className="text-[40px] sm:pl-[80px] pl-[16px] pt-[42px] lg:pt-[64px] font-bold">
+                Most Recent News
+            </p>
 
-            <p className="text-[40px] lg:pl-[80px] pl-[41px] pt-[42px] lg:pr-[80px] lg:pt-[64px] font-bold">Related Events</p>
-            <Carousel
-                className="w-full pt-[44px]"
-                setApi={setApi}
-                opts={{ loop: false, align: "start" }}
-                plugins={[autoplay.current]}
-            >
-                <CarouselContent className=" w-full lg:gap-[20px] gap-[140px] lg:ml-0 ml-[16px]">
-                    {newsListData.map((slide, index) => (
-                        <CarouselItem
-                            key={index}
-                            className=" basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/5 px-2"
-                        >
-                            <Card
-                                className={`w-[308px] border-1 bg-white h-[494px] transition shadow-sm hover:shadow-lg`}
+            <div className="pl-[16px] sm:pl-[80px]">
+                <Carousel
+                    className="w-full pt-[44px]"
+                    setApi={setApi}
+                    opts={{ loop: true, align: "start" }}
+                    plugins={[autoplay.current]}
+                >
+                    {/* ✅ TeamGallery-style content wrapper */}
+                    <CarouselContent
+                        className="
+              !flex !flex-row !justify-start !items-start
+              !m-0
+              px-[8px] sm:px-[24px]  
+              [&>*]:!pl-0 [&>*]:!ml-0
+            "
+                    >
+                        {newsListData.map((item, index) => (
+                            <CarouselItem
+                                key={item.id ?? index}
+                                className="
+                  flex-shrink-0
+                  basis-[308px]
+                  mr-[12px] sm:mr-[26px] 
+                  pt-[24px] pb-[12px]
+                "
                             >
-                                <CardHeader className="-m-4 space-y-0">
-                                    <img src={slide.imageUrl} className="" />
-                                    <CardTitle className="text-[14px] text-gray-400 pt-[13px] pl-[10px]">{slide.date}</CardTitle>
-                                    <CardTitle className="text-[18px] pt-[22px] pl-[10px] tracking-wider">{slide.title}</CardTitle>
-                                    <CardDescription className="text-[14px] pl-[10px] pr-[43px] pt-[20px]">
-                                        {slide.description}
-                                    </CardDescription>
-                                    <RedButton  className="text-start w-[96.2px] pl-[3px]">Read More </RedButton>
-                                </CardHeader>
-                            </Card>
-                        </CarouselItem>
-                    ))}
-                </CarouselContent>
+                                <Card className="w-[308px] h-[494px] bg-white shadow-sm hover:shadow-lg border-1 transition flex flex-col">
+                                    <CardHeader className="-m-4 flex flex-col h-full">
+                                        <img
+                                            src={item.imageUrl}
+                                            alt={item.title}
+                                            className="w-full h-[200px] object-cover"
+                                        />
 
-                <div className="absolute bottom-[-40px] left-1/2 -translate-x-1/2 flex gap-2">
-                    {newsListData.map((_, index) => (
-                        <span
-                            key={index}
-                            className={`w-5 h-1 rounded-[2px] transition-colors duration-200 ${index + 1 === current ? "bg-[#E52445]" : "bg-gray-300"
-                                }`}
-                        ></span>
-                    ))}
-                </div>
-            </Carousel>
-        </div>
+                                        <div className="flex flex-col flex-1">
+                                            <CardTitle className="text-[14px] text-gray-400 pt-[13px] pl-[10px]">
+                                                {item.date}
+                                            </CardTitle>
+
+                                            <CardTitle className="text-[18px] pt-[22px] pl-[10px] tracking-wider">
+                                                {item.title}
+                                            </CardTitle>
+
+                                            <CardDescription className="text-[14px] pl-[10px] pr-[43px] pt-[20px]">
+                                                {item.description}
+                                            </CardDescription>
+
+                                            {/* 👇 This is the key */}
+                                            <Button
+                                                variant="link"
+                                                className="mt-auto pt-[12px] pl-[10px] self-start text-left"
+                                                onClick={() => router.push("/news-details")}
+                                            >
+                                                Read More »
+                                            </Button>
+                                        </div>
+                                    </CardHeader>
+
+                                </Card>
+                            </CarouselItem>
+                        ))}
+                    </CarouselContent>
+
+                    {/* 🔘 Dots (TeamGallery logic) */}
+                    <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 flex gap-3">
+                        {newsListData.map((_, index) => (
+                            <span
+                                key={index}
+                                className={`w-[26px] h-[3px] rounded-md transition-colors duration-200 ${index === current ? "bg-[#E52445]" : "bg-[#DDE0E4]"
+                                    }`}
+                            />
+                        ))}
+                    </div>
+                </Carousel>
+            </div>
+        </section>
     );
 }
