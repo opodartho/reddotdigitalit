@@ -67,7 +67,7 @@ export function ProductCarousel({ solutions }: SolutionsProps) {
       <Carousel
         className="w-full"
         setApi={setApi}
-        opts={{ loop: false, align: "start" }}
+        opts={{ loop: true, align: "start" }}
         plugins={[autoplay.current]}
       >
         <CarouselContent className="w-full gap-4 sm:gap-5 lg:gap-6 pl-4 sm:pl-6 lg:pl-0">
