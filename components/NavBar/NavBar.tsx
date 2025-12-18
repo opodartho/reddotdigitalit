@@ -94,12 +94,12 @@ export function NavBar() {
       <div className="lg:flex lg:justify-center sticky lg:top-[22px] z-1000">
         <div className="absolute bg-transparent top-0 lg:flex lg:justify-center lg:items-center z-100 pt-[22px] w-full">
           <nav className={cn(
-            " px-4 z-1000 top-0 lg:w-[1140px] h-[66px] rounded-4xl backdrop-blur-2xl opacity-100 border-b shadow-[0_4px_29px_rgba(0,0,0,0.05)] transition-all duration-100",
+            " px-4 z-1000 top-0 lg:w-[1280px] h-[76px] rounded-4xl backdrop-blur-2xl opacity-100 border-b shadow-[0_4px_29px_rgba(0,0,0,0.05)] transition-all duration-100",
             isHomePage
               ? isScrolled
                 ? "bg-transparent backdrop-blur-2xl border-gray-200/50"  // White background when scrolled past hero
                 : "bg-transparent border-white/20"  // Transparent on hero section
-                : "bg-transparent backdrop-blur-2xl border-gray-200/50"  // Other pages: always have the scrolled style
+              : "bg-transparent backdrop-blur-2xl border-gray-200/50"  // Other pages: always have the scrolled style
           )}>
             <div className="flex h-full items-center justify-between px-4 md:px-10 lg:px-[70px]">
               <Link href="/" onClick={scrollToTop} className="flex-shrink-0 relative lg:right-16">
@@ -131,7 +131,7 @@ export function NavBar() {
                       ) : (
                         <>
                           <NavigationMenuTrigger className={cn(
-                            "font-poppins h-full px-0 text-[15px] font-normal hover:text-red-500 transition-colors duration-300",
+                            "font-poppins h-full px-0 text-[15px] font-medium hover:text-red-500 transition-colors duration-300",
                             getTextColorClass()
                           )}>
                             {link.title}
