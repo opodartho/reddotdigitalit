@@ -19,10 +19,7 @@ export default function Solutions({ solutions }: Props) {
         <h2 className="font-poppins text-[32px] leading-[40px] font-semibold text-[#060414]">
           Our Product Solution
         </h2>
-        <p className="mt-2 text-[#121926] text-[14px] leading-[22px]">
-          Building intelligent, scalable, and secure digital solutions tailored
-          to your business needs.
-        </p>
+
       </div>
 
       {/* GRID */}
