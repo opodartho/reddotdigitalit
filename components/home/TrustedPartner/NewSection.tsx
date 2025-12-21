@@ -110,13 +110,9 @@ export default function TrustedPartners() {
         
         {/* Title */}
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-semibold text-gray-900">
+          <h2 className="text-3xl font-semibold text-gray-900 ">
             Trusted by Partners
           </h2>
-          <p className="mt-4 text-base text-gray-600">
-            Our cutting-edge Modular Data Center solutions enable to <br />
-            protect mission-critical data.
-          </p>
         </div>
 
         {/* Tabs */}

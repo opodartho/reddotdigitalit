@@ -51,15 +51,12 @@ export default function AreaOfOperations({ sections }: AreaOfOperationsProps) {
   return (
     <section className=" bg-[#F7F6FD] pt-[80px] pb-[80px]">
       {/* HEADER */}<div className="max-w-[1440px] mx-auto">
-      <div className="px-[16px] sm:px-[80px] text-center mb-[70px]">
-        <h2 className="text-[#060414] text-poppins font-semibold text-[25px] md:text-[32px]">
+      <div className="px-[16px] sm:px-[80px] text-center mb-[56px]">
+        <h2 className="text-[#060414] text-poppins font-semibold text-[25px] md:text-[32px] mb-2">
           Area of Operations
         </h2>
 
-        <p className="text-[#121926] text-poppins mt-2 mx-auto max-w-xl text-[12px] md:text-[14px] leading-[22px]">
-          Our cutting-edge Modular Data Center solutions enable to <br />
-          protect mission-critical data.
-        </p>
+
       </div>
 
       {/* MAIN WRAPPER — Stripe Style */}

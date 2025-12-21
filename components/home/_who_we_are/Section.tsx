@@ -12,13 +12,10 @@ interface WhoWeAreProps {
 const WhoWeAre = ({ aboutData, achievementData }: WhoWeAreProps) => {
   return (
     <section className="pb-0 sm:pb-[56px]">
-      <h1 className="--font-poppins mt-[56px] font-semibold text-[32px] leading-[40px] tracking-[0.03px] text-center align-middle text-title">
+      <h1 className="--font-poppins mt-[56px] font-semibold text-[32px] leading-[40px] tracking-[0.03px] text-center align-middle text-title mb-4">
         Who We Are
       </h1>
-      <p className="--font-poppins font-normal text-[14px] leading-[22px] tracking-[0] text-center align-middle mt-[16px] text-subtitle">
-       Driving digital transformation with expertise, technology, and a 
-        <br /> passion for building impactful enterprise solutions.
-      </p>
+
       <TabButtons
         about={<About data={aboutData} />}
         achievement={<Achievement data={achievementData} />}

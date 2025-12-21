@@ -16,13 +16,10 @@ export default function Solutions({ solutions }: Props) {
     <section className="max-w-[1440px] mx-auto  pb-[56px] px-[16px] sm:px-[80px] ">
       {/* Header */}
       <div className="text-center max-w-2xl mx-auto mb-[54px]">
-        <h2 className="font-poppins text-[32px] leading-[40px] font-semibold text-[#060414]">
+        <h2 className="font-poppins text-[32px] leading-[40px] font-semibold text-[#060414] mb-2">
           Our Product Solution
         </h2>
-        <p className="mt-2 text-[#121926] text-[14px] leading-[22px]">
-          Building intelligent, scalable, and secure digital solutions tailored
-          to your business needs.
-        </p>
+
       </div>
 
       {/* GRID */}
