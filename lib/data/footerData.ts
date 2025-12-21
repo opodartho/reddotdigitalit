@@ -52,24 +52,29 @@ export const staticFooterData: FooterData = {
       title: "About Us",
       links: [
         { text: "About Company", href: "/about-us" },
-        { text: "News", href: "/news-list" },
-        { text: "Blog", href: "/blogs-list" },
+        { text: "Privacy Notice", href: "/privacy-policy" },
+        {text: "ABAC Policy", href: "/abac-policy"},
+        
+       
+   
       ],
     },
     {
-      title: "Area of operations",
+      title: "Quick Links",
       links: [
-        { text: "Services", href: "#" },
+
         { text: "Contact Us", href: "/contact-us" },
-        { text: "Privacy Notice", href: "/privacy-policy" },
+        { text: "News", href: "/news-list" },
+        { text: "Blog", href: "/blogs-list" },
+        { text: "Career", href: "/career" },        
       ],
     },
     {
       title: "Contact",
       address: "57 & 57/A, Uday Tower (15th Floor),\nGulshan 1, Gulshan Avenue, Dhaka 1212,\nBangladesh",
       socials: [
-        { href: "https://facebook.com", iconUrl: "/footer-icons/facebook.png", alt: "Facebook Icon" },
-        { href: "https://linkedin.com", iconUrl: "/footer-icons/linkedIn.png", alt: "LinkedIn Icon" },
+        { href: "https://www.facebook.com/share/1NbE4adzUM/", iconUrl: "/footer-icons/facebook.png", alt: "Facebook Icon" },
+        { href: "https://www.linkedin.com/company/reddotdigitalit/", iconUrl: "/footer-icons/linkedIn.png", alt: "LinkedIn Icon" },
       ],
     },
   ],
@@ -80,8 +85,7 @@ export const staticFooterData: FooterData = {
     details: "PDF, 10mb",
   },
   legalLinks: [
-    { text: "Terms & Conditions", href: "#" },
-    { text: "Privacy Policy", href: "#" },
+    { text: "Terms & Conditions", href: "/privacy-policy" },
   ],
   copyright: "© 2024 All rights reserved | RedDot Digital Limited",
 };

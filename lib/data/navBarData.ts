@@ -114,7 +114,7 @@ export const staticNavData: NavLink[] = [
         description: "Learn about our Management Council",
       },
       {
-        title: "Our Policy",
+        title: "ABAC Policy",
         href: "/abac-policy",
         description: "Learn about our policy",
       },
@@ -129,8 +129,8 @@ export const staticNavData: NavLink[] = [
         description: "Learn about our Whistleblowing Policy",
       },
       {
-        title: "Careers",
-        href: "/about/careers",
+        title: "Career",
+        href: "/career",
         description: "Join us and grow your career.",
       },
     ],
