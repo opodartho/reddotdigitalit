@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Autoplay from "embla-carousel-autoplay";
-import { ProductSolutionItem } from "@/lib/data/customize-product/staticProductSolutionData";
+import { ProductSolutionItem } from "@/lib/data/customize-product/productSolutionData";
 import {
   Carousel,
   CarouselContent,
@@ -85,13 +85,14 @@ export function ProductCarousel({ solutions }: SolutionsProps) {
                 >
                   <CardHeader>
                     {slide.image ? (
-                      <Image
-                        src={slide.image}
-                        alt={slide.title}
-                        width={48}
-                        height={48}
-                        className="mb-2 object-contain"
-                      />
+                      <div className="mb-3 relative h-[48px] w-[48px]">
+                        <Image
+                          src={slide.image}
+                          alt={slide.title}
+                          fill
+                          className="object-cover"
+                        />
+                      </div>
                     ) : (
                       <div className="mb-2 text-3xl">{slide.image}</div>
                     )}
@@ -110,9 +111,8 @@ export function ProductCarousel({ solutions }: SolutionsProps) {
           {Array.from({ length: snapCount }).map((_, index) => (
             <span
               key={index}
-              className={`w-5 h-1 rounded-[2px] transition-colors duration-200 ${
-                index === current ? "bg-[#E52445]" : "bg-gray-300"
-              }`}
+              className={`w-5 h-1 rounded-[2px] transition-colors duration-200 ${index === current ? "bg-[#E52445]" : "bg-gray-300"
+                }`}
             />
           ))}
         </div>
