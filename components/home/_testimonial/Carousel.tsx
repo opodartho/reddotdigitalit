@@ -122,10 +122,7 @@ export const TestimonialCarousel: React.FC<CarouselProps> = ({
           <h2 className="text-[24px] lg:text-[32px] leading-[30px] lg:leading-[40px] font-semibold tracking-[0.03px] text-[#060414]">
             Hear From Our Clients!
           </h2>
-          <p className="mt-2 text-[13px] lg:text-[14px] leading-[20px] lg:leading-[22px] font-normal text-[#060414]">
-            Our cutting-edge Modular Data Center solutions enable to protect
-            mission-critical data.
-          </p>
+
         </div>
 
         {/* ARROWS */}

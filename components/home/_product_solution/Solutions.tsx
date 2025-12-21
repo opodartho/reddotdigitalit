@@ -27,10 +27,7 @@ export default function Solutions({ solutions }: SolutionsProps) {
         <h2 className="text-4xl font-poppins font-semibold mb-4 lg:mt-20">
           Our Product Solution
         </h2>
-        <p className="font-poppins text-black">
-          Building intelligent, scalable, and secure digital solutions  <br />
-          tailored to your business needs.
-        </p>
+
       </div>
 
       <div className="grid auto-rows-fr grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 pl-[16px] pr-[16px] lg:pl-[0px] lg:pr-[0px]">
