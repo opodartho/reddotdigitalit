@@ -22,10 +22,22 @@ const Footer = async () => {
           />
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-22 gap-y-16">
-          {columns.map((column) => (
-            <FooterColumn key={column.title} column={column} />
-          ))}
+          {columns.map((column) => {
+            const extraPadding =
+              column.title === "About Us"
+                ? "lg:pl-22"
+                : column.title === "Quick Links"
+                  ? "lg:pl-6"
+                  : "";
+
+            return (
+              <div key={column.title} className={extraPadding}>
+                <FooterColumn column={column} />
+              </div>
+            );
+          })}
         </div>
+
       </div>
 
       {/* Bottom Bar of Footer */}
