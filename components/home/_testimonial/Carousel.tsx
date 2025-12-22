@@ -119,7 +119,7 @@ export const TestimonialCarousel: React.FC<CarouselProps> = ({
       {/* HEADER */}
       <div className="mb-10 lg:mb-20 flex items-start justify-between w-full pr-4 lg:pr-[80px]">
         <div>
-          <h2 className="text-[24px] lg:text-[32px] leading-[30px] lg:leading-[40px] font-semibold tracking-[0.03px] text-[#060414]">
+          <h2 className="text-[24px] lg:text-[32px] leading-[30px] lg:leading-[40px] font-semibold tracking-[0.03px] text-[#060414]  pr-[10px]">
             Hear From Our Clients!
           </h2>
         </div>
