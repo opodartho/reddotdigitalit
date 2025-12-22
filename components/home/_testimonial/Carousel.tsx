@@ -119,14 +119,14 @@ export const TestimonialCarousel: React.FC<CarouselProps> = ({
       {/* HEADER */}
       <div className="mb-10 lg:mb-20 flex items-start justify-between w-full pr-4 lg:pr-[80px]">
         <div>
-          <h2 className="text-[24px] lg:text-[32px] leading-[30px] lg:leading-[40px] font-semibold tracking-[0.03px] text-[#060414]">
+          <h2 className="text-[24px] lg:text-[32px] leading-[30px] lg:leading-[40px] font-semibold tracking-[0.03px] text-[#060414] pr-[16px]">
             Hear From Our Clients!
           </h2>
 
         </div>
 
         {/* ARROWS */}
-        <div className="flex mt-2 space-x-3 z-5000">
+        <div className="flex  space-x-3 z-5000">
 
           {/* LEFT ARROW */}
           <button onClick={scrollPrev} className="group">
@@ -140,6 +140,7 @@ export const TestimonialCarousel: React.FC<CarouselProps> = ({
               height={48}
               alt="Prev"
               className="group-hover:hidden"
+
             />
 
             {/* HOVER STATE */}
@@ -149,6 +150,7 @@ export const TestimonialCarousel: React.FC<CarouselProps> = ({
               height={48}
               alt="Prev Hover"
               className="hidden group-hover:block"
+
             />
           </button>
 
@@ -163,6 +165,7 @@ export const TestimonialCarousel: React.FC<CarouselProps> = ({
               height={48}
               alt="Next"
               className="group-hover:hidden"
+
             />
 
             {/* HOVER STATE */}
@@ -172,6 +175,7 @@ export const TestimonialCarousel: React.FC<CarouselProps> = ({
               height={48}
               alt="Next Hover"
               className="hidden group-hover:block"
+
             />
           </button>
 
@@ -216,8 +220,8 @@ export const TestimonialCarousel: React.FC<CarouselProps> = ({
                 <div className="mt-auto flex flex-col items-start gap-2 pt-4">
                   <div
                     className={`relative ${testimonial.id === 2 || testimonial.id === 5
-                        ? "w-[90px] h-[35px] lg:w-[100px] lg:h-[40px]"
-                        : "w-[50px] h-[40px] lg:w-[59px] lg:h-[48px]"
+                      ? "w-[90px] h-[35px] lg:w-[100px] lg:h-[40px]"
+                      : "w-[50px] h-[40px] lg:w-[59px] lg:h-[48px]"
                       }`}
                   >
                     <Image
