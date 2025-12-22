@@ -9,20 +9,15 @@ type FooterColumnProps = {
 const FooterColumn = ({ column }: FooterColumnProps) => {
   return (
     <div>
-      <h3 className="font-medium text-[18px] leading-[28px] tracking-[0px] text-gray-950 mb-4 text-title">
+      <h3 className="font-medium text-[18px] leading-[28px] tracking-[0px] mb-4 text-title">
         {column.title}
       </h3>
 
-      {/* Render simple text content */}
-      {column.content && (
-        <p className="text-gray-950 font-normal text-[14px] leading-[22px] tracking-[0px] text-subtitle">
-          {column.content}
-        </p>
-      )}
+
 
       {/* Render a list of links */}
       {column.links && (
-        <ul className="space-y-3 text-gray-950 font-normal text-[14px] leading-[16px] tracking-[0px]">
+        <ul className="space-y-3 text-subtitle font-normal text-[14px] leading-[16px] tracking-[0px]">
           {column.links.map((link) => (
             <li key={link.text}>
               <a
@@ -39,12 +34,20 @@ const FooterColumn = ({ column }: FooterColumnProps) => {
       {/* Render address and social icons for the contact column */}
       {column.address && (
         <address
-          className="not-italic text-gray-600 leading-relaxed"
+          className="not-italic text-subtitle leading-relaxed"
           dangerouslySetInnerHTML={{
             __html: column.address.replace(/\n/g, "<br />"),
           }}
         />
       )}
+
+      {/* Render simple text content */}
+      {column.content && (
+        <p className="text-gray-950 font-normal text-[14px] leading-[22px] tracking-[0px] text-subtitle">
+          {column.content}
+        </p>
+      )}
+
       {column.socials && (
         <div className="flex space-x-3 mt-4">
           {column.socials.map((social) => (
