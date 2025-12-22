@@ -19,6 +19,7 @@ export type FooterColumn = {
   content?: string;
   // The contact column is special, with an address and social links
   address?: string;
+  
   socials?: SocialLink[];
 };
 
@@ -52,8 +53,13 @@ export const staticFooterData: FooterData = {
       title: "About Us",
       links: [
         { text: "About Company", href: "/about-us" },
-        { text: "Privacy Notice", href: "/privacy-policy" },
-        {text: "ABAC Policy", href: "/abac-policy"},
+         { text: "Management Council", href: "/management-council" },
+         { text: "Board of Directors", href: "/board-of-directors" },
+         { text: "Whistleblowing ", href: "/speak-up" },
+         { text: "Life at RedDot", href: "/Life_At_RedDot" },
+
+    
+       
         
        
    
@@ -66,12 +72,15 @@ export const staticFooterData: FooterData = {
         { text: "Contact Us", href: "/contact-us" },
         { text: "News", href: "/news-list" },
         { text: "Blog", href: "/blogs-list" },
-        { text: "Career", href: "/career" },        
+        { text: "Career", href: "/career" }, 
+         {text: "ABAC Policy", href: "/abac-policy"},       
       ],
     },
     {
       title: "Contact",
+     
       address: "57 & 57/A, Uday Tower (15th Floor),\nGulshan 1, Gulshan Avenue, Dhaka 1212,\nBangladesh",
+      content: "+880 18-86443344\nsupport@reddotdigitalit.com",
       socials: [
         { href: "https://www.facebook.com/share/1NbE4adzUM/", iconUrl: "/footer-icons/facebook.png", alt: "Facebook Icon" },
         { href: "https://www.linkedin.com/company/reddotdigitalit/", iconUrl: "/footer-icons/linkedIn.png", alt: "LinkedIn Icon" },
@@ -86,6 +95,7 @@ export const staticFooterData: FooterData = {
   },
   legalLinks: [
     { text: "Terms & Conditions", href: "/privacy-policy" },
+    { text: "Privacy Policy", href: "/privacy-policy" },
   ],
   copyright: "© 2024 All rights reserved | RedDot Digital Limited",
 };
