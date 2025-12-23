@@ -109,11 +109,11 @@ export function BlogCarousel({ newsListData }: BlogCarouselProps) {
                                                 {item.date}
                                             </CardTitle>
 
-                                            <CardTitle className="text-[18px] pt-[22px] pl-[10px] tracking-wider">
+                                            <CardTitle className="text-[18px] pt-[22px] pl-[10px] tracking-wider line-clamp-2">
                                                 {item.title}
                                             </CardTitle>
 
-                                            <CardDescription className="text-[14px] pl-[10px] pr-[43px] pt-[20px]">
+                                            <CardDescription className="text-[14px] pl-[10px] pr-[43px] pt-[20px] line-clamp-3">
                                                 {item.description}
                                             </CardDescription>
 
@@ -121,7 +121,7 @@ export function BlogCarousel({ newsListData }: BlogCarouselProps) {
                                             <Button
                                                 variant="link"
                                                 className="mt-auto pt-[12px] pl-[10px] self-start text-left"
-                                                onClick={() => router.push("/news-details")}
+                                                onClick={() => router.push(`/news-details/${item.slug}`)}
                                             >
                                                 Read More »
                                             </Button>

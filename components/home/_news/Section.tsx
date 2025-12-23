@@ -20,6 +20,7 @@ const News = ({ newsData }: NewsSectionProps) => {
             {newsData.map((item) => (
               <NewsCard
                 key={item.id}
+                slug={item.slug}
                 title={item.title}
                 description={item.description}
                 imageUrl={item.imageUrl}

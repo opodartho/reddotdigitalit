@@ -1,12 +1,11 @@
-// lib/api/fetchOperations.ts
+import { newsDetailsData } from "@/lib/data/news-details/newsDetailsData";
+import { NewsDetailsItem } from "@/lib/data/news-details/types";
 
-import {
-    NewsDetailsItem, newsDetailsData
-  } from "@/lib/data/news-details/newsDetailsData";
-  
-  // This async function mimics fetching data from a database or CMS.
-  export async function getNewsDetails(): Promise<NewsDetailsItem> {
-    // In a real app, you might fetch from an API. For now, we just return the static data.
-    return Promise.resolve(newsDetailsData);
-  }
-  
+export async function getNewsDetailsBySlug(
+  slug: string
+): Promise<NewsDetailsItem | null> {
+  // Simulate CMS/API delay
+  await new Promise((res) => setTimeout(res, 200));
+
+  return newsDetailsData.find((n) => n.slug === slug) ?? null;
+}
