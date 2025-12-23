@@ -9,7 +9,12 @@ import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
 
 type NewsCardProps = Omit<NewsItem, "id">;
 
-export function NewsCard({ imageUrl, title, description }: NewsCardProps) {
+export function NewsCard({
+  imageUrl,
+  title,
+  description,
+  slug, // ✅ ADD THIS
+}: NewsCardProps) {
   const router = useRouter();
 
   return (
@@ -42,7 +47,7 @@ export function NewsCard({ imageUrl, title, description }: NewsCardProps) {
         <div className="flex flex-col flex-1">
           {/* TITLE */}
           <CardItem translateZ={18}>
-            <h3 className="px-[18px] pt-6 text-[18px] font-medium text-[#060414]">
+            <h3 className="px-[18px] pt-6 text-[18px] font-medium text-[#060414] line-clamp-2">
               {title}
             </h3>
           </CardItem>
@@ -67,7 +72,9 @@ export function NewsCard({ imageUrl, title, description }: NewsCardProps) {
           <CardItem translateZ={20} className="mt-auto">
             <div
               className="px-[18px] pb-5 flex items-center gap-2 text-[#E3001A] text-[14px]"
-              onClick={() => router.push("/news-details")}
+              onClick={() =>
+                router.push(`/news-details/${slug}`) // ✅ SLUG ROUTE
+              }
             >
               <Button variant="link" className="p-0 h-auto">
                 Read More »
