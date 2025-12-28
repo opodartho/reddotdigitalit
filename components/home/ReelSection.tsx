@@ -57,7 +57,7 @@ export default function ReelSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative h-[150vh]  flex items-center justify-center overflow-hidden mt-[56px] sm:mt-[80px] mb-[56px] sm:mb-[80px]"
+      className="relative h-[150vh]  flex items-center justify-center overflow-hidden mt-[56px] sm:mt-[80px] mb-[56px] sm:mb-[80px] cursor-pointer"
       
     >
 <video
