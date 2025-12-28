@@ -9,11 +9,14 @@ export const KeyBenefitsData: KeyBenefitItem[][]=[
     { id:0, title: 'Connect with Customer, third party partner & managing vendors through channel management', description: 'Launch your projects faster with our streamlined and automated setup processes.' },
   ],  
 [
-    { id:1, title: 'Connect with Customer, third party partner & managing vendors through channel management', description: 'Launch your projects faster with our streamlined and automated setup processes.' },
-    { id:2, title: 'Paperless onboarding process to eliminate manual process', description: 'Protect your data with multi-layered security and proactive threat monitoring.' },
-    { id:3, title: 'Integration with Existing SystemsBetter user experience to increase the engagement of customer', description: 'Effortlessly handle traffic spikes and user growth without any manual intervention.' },
-    { id:4, title: 'Productivity and Efficiency to ensure better customer service', description: 'Deliver a lightning-fast experience with our globally distributed, low-latency network.' },
-    { id:5, title: 'Easy to integrate with any utility and bill payment service to provide better life solution to customer', description: 'Save on operational expenses with our efficient, pay-as-you-go infrastructure model.' },
+    { id:1, title: 'Scalable for Millions', description: 'Proven track record of handling 60M+ transactions per day' },
+    { id:2, title: ' Accelerate Time-to-Market ', description: 'White-label ready for rapid rollout.' },
+    { id:3, title: 'Regulatory & AML Compliance', description: 'ISO 27001, eKYC, transaction limits, audit trails.' },
+    { id:4, title: 'Drive Financial Inclusion', description: 'Supports underserved and unbanked segments.' },
+    { id:5, title: 'Operational Efficiency ', description: 'Unified platform with automated reconciliation & reporting.' },
+    { id:6, title: 'Revenue Growth ', description: 'Enables VAS, merchant payments, credit scoring, nano investment.' },
+    { id:7, title: 'Real-Time Intelligence ', description: 'Built-in analytics for business and customer insights.' },
+    { id:8, title: 'Robust Security Framework ', description: 'SDLC-secured development, 99.99% uptime, fraud alerts.' },
 ],
 [
   {
@@ -48,10 +51,10 @@ export const KeyBenefitsData: KeyBenefitItem[][]=[
   },
 ],
 [
-    { id:1, title: 'TALENT MANAGEMENT', description: 'This robust platform efficiently handles the entire talent lifecycle, from recruitment to developing leaders.' },
-    { id:2, title: 'PERFORMANCE MANAGEMENT', description: 'HRMS uses KPIs and Star Awards for data-driven performance management and rewards.' },
+    { id:1, title: 'TALENT MANAGEMENT', description: 'It brings the robust solution in dealing talent management from recruitment to developing talents in the organization. It offers assessment engine, flexible interview scheduling, digital onboarding and intelligent candidate pool creation for efficient talent hiring and developing leader for the organization.' },
+    { id:2, title: 'PERFORMANCE MANAGEMENT', description: 'HRMS has efficient Key Performance Indicator (KPI) management and Star Awards feature that ensures rewards for high performing employees. A data driven performance management analytics & report on overall organization and employee..' },
     { id:3, title: 'DAY TO DAY ADMINSTRATION SOLUTION', description: 'A smooth solution for HR to manage employee time shift, attendance, leave and employee reporting.' },
-    { id:4, title: 'HRBP SOLUTION', description: 'HRMS handles key HR functions: communications, organizational structure, skill development, and disciplinary oversight.' },
+    { id:4, title: 'HRBP SOLUTION', description: 'HRMS allows the HR to generate system email, reassignment & requisition, organogram setup, skill development for employee and oversee disciplinary cases.' },
     
 ],
 
@@ -61,71 +64,60 @@ export const KeyBenefitsData: KeyBenefitItem[][]=[
     id: 1,
     title: "Account Management",
     description:
-      "Manages multiple accounts with role-based access control and detailed customer profiles for secure, policy-driven operations.",
+      "It has the feature to manage multiple account based on user role which controls user accessibility based on defined policy along with detail customer profile.",
   },
   {
     id: 2,
     title: "Product Management",
     description:
-      "Allows admins to configure, design, and compare products, create wish lists, and manage product catalogs with flexibility.",
+      "It consists of product list. It allows admin to configure & design product. User can compare multiple products from the available product list. It has the feature to make product wish list.",
   },
   {
     id: 3,
     title: "Order Management",
     description:
-      "Automates and tracks the entire order journey — from routing to returns — ensuring efficient and transparent fulfillment.",
+      "It offers managing and fulfilling online orders. That is tracking every step from order routing and printing shipping labels to returns and subscription management. Order management systems (OMS) provide automation and integration across every step of the order journey.",
   },
   {
     id: 4,
     title: "Shopping Cart",
     description:
-      "Facilitates purchases by handling payments and coordinating order distribution between customer, merchant, and payment processor.",
+      "It facilitates the purchase of a product or service. It accepts the customer's payment and organizes the distribution of that information to the merchant, payment processor and other parties.",
   },
   {
     id: 5,
     title: "Complain Management",
     description:
-      "Empowers users to raise and track complaints easily, ensuring transparency and accountability in issue resolution.",
+      "It offers complaint management. User can raise complaint as well as check the status.",
   },
 ],
 
 [
   {
     id: 1,
-    title: "INTELLIGENT GAS DETECTOR",
+    title: "Smarter business insights",
     description:
-      "It’s a device that detects the presence of gases in an area, often as part of a safety system. A gas detector can sound an alarm to operators in the area where the leak is occurring, giving them the opportunity to leave.",
+      "Our AI-driven solutions help organizations uncover patterns and trends hidden within data. This enables better understanding of operations, customer behavior, and market dynamics for informed decision-making.",
   },
   {
     id: 2,
-    title: "INTELLIGENT ID CARD",
+    title: "Enhanced operational efficiency",
     description:
-      "Smart-ID is a new convenient personal identification solution. It is simple, easy to use and trackable.",
+      "Automation and predictive models streamline critical processes, reducing resource waste and operational delays. Teams can focus on strategic priorities while AI manages repetitive analytical tasks.",
   },
   {
     id: 3,
-    title: "INTELLIGENT SWITCH",
+    title: "Data-backed strategic planning",
     description:
-      "Smart switches a great way to save energy, money as well as human effort. It can be controlled from smart phone and can adjust the brightness of light, speed of fan, temperature control of AC etc. based on schedule.",
+      "With real-time dashboards and forecasts, leaders gain clarity on performance and market trends. This allows for proactive planning and faster, more confident business decisions.",
   },
   {
     id: 4,
-    title: "INTELLIGENT TRACKER",
+    title: "Improved customer experience",
     description:
-      "Logistics tracking refers to the methods and systems used for tracking resources throughout their movement and storage. With logistics tracking you’ll know where your products, materials, or other resources are physically located at any time, as well as what is scheduled.",
+      "By analyzing user behavior and feedback, organizations can deliver personalized interactions that increase satisfaction. Every engagement becomes more relevant, consistent, and effective.",
   },
-  {
-    id: 5,
-    title: "INTELLIGENT VEHICLE TRACKING SYSTEM",
-    description:
-      "Vehicle tracking system is the system that allows tracking and controlling of vehicles via an online computer, smart phone, tablet, etc. on a 24/7 basis using GPS satellites.",
-  },
-  {
-    id: 6,
-    title: "INTELLIGENT SURVEILLANCE",
-    description:
-      "It offers cutting-edge smart home security that records criminal activity in homes, businesses or any other places based on the preferences of the user.",
-  },
+
 ],
 
 // ===================== 3: Streaming Platform =====================
@@ -134,43 +126,43 @@ export const KeyBenefitsData: KeyBenefitItem[][]=[
     id: 1,
     title: "Operating System",
     description:
-      "Supports both Android and iOS devices for maximum accessibility and reach.",
+      "It supports both Android & IOS devices.",
   },
   {
     id: 2,
     title: "Content",
     description:
-      "Supports 4K video, live TV, and VOD capabilities, delivering a premium entertainment experience.",
+      "It supports 4K videos. It has VOD capability. It also supports live TV.",
   },
   {
     id: 3,
     title: "Voice Search",
     description:
-      "Enables hands-free search and navigation, enhancing user convenience and accessibility.",
+      "Voice search, also called voice-enabled, allows the user to use a voice command to search over Internet, a website, or an app which significantly increase the user experience.",
   },
   {
     id: 4,
     title: "Flexible Subscription Plan",
     description:
-      "Offers flexible package options so users can choose plans that fit their needs.",
+      "It offers flexible subscription plan so that user can choose packages based on necessity.",
   },
   {
     id: 5,
     title: "Adaptive Bit Rate",
     description:
-      "Ensures consistent playback quality with adaptive bit rate technology for varying network speeds.",
+      "It supports adaptive bit rate technology which ensure improved customer experience.",
   },
   {
     id: 6,
     title: "Parental Lock",
     description:
-      "Provides content control and parental safety features, essential in today’s digital environment.",
+      "It supports parental control which is the key feature in this digital era.",
   },
   {
     id: 7,
     title: "Analytics",
     description:
-      "Tracks user behavior to deliver personalized recommendations and improve the overall user experience.",
+      "It captured customers behavior, use analytics and based on that it ensures better customer experience.",
   },
 ],
 
@@ -180,43 +172,49 @@ export const KeyBenefitsData: KeyBenefitItem[][]=[
     id: 1,
     title: "Single Tool for Customer Management",
     description:
-      "Provides a unified platform to manage all customer interactions and data in one place.",
+      "",
   },
   {
     id: 2,
     title: "Centralized Problem Resolving System",
     description:
-      "Enables faster issue resolution through a centralized support framework.",
+      "",
   },
   {
     id: 3,
-    title: "Trend Identification",
+    title: "Identify trends, uncover emerging customer needs & dynamically reallocate development resources",
     description:
-      "Identifies emerging customer needs and helps reallocate resources dynamically for innovation.",
+      "",
   },
   {
     id: 4,
-    title: "Analytics and Reporting",
+    title: "Track all history and analytics report",
     description:
-      "Tracks customer history and provides detailed analytics reports for data-driven insights.",
+      "",
   },
   {
     id: 5,
-    title: "Secure Access Management",
+    title: "Secure access and user rights management",
     description:
-      "Implements strict user access controls to ensure data security and compliance.",
+      "",
   },
   {
     id: 6,
-    title: "Efficient Communication Tools",
+    title: "Manage customer communications quickly and effectively",
     description:
-      "Facilitates effective customer communications across sales, marketing, and support channels.",
+      "",
   },
   {
     id: 7,
-    title: "Inventory Automation",
+    title: "Provide greater visibility into sales, Marketing & customer service processes",
     description:
-      "Automates inventory management to improve efficiency and accuracy in product tracking.",
+      "",
+  },
+    {
+    id: 8,
+    title: "Automated inventory management one module",
+    description:
+      "",
   },
 ],
 
@@ -224,32 +222,32 @@ export const KeyBenefitsData: KeyBenefitItem[][]=[
 [
   {
     id: 1,
-    title: "Better User Experience",
+    title: "Better user experience to increase sales",
     description:
-      "Enhances the digital journey to improve sales performance and customer engagement.",
+      "",
   },
   {
     id: 2,
     title: "Leverage Information to Improve Profits and Performance",
     description:
-      "Transforms business data into actionable insights to boost profitability and productivity.",
+      "",
   },
   {
     id: 3,
     title: "Low Risk for Company Data Breach",
     description:
-      "Implements advanced security protocols to minimize data breach risks and ensure compliance.",
+      "",
   },
   {
     id: 4,
     title: "Maximum Productivity with Minimum Resources",
     description:
-      "Streamlines workflows and processes for greater efficiency and output.",
+      "",
   },
   {
     id: 5,
     title: "	Nurture relationship with customer to provide better value",
     description:
-      "Builds stronger, long-term customer relationships to deliver better value and loyalty.",
+      "",
   },
 ],]

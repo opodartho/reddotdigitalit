@@ -11,7 +11,7 @@ export type SolutionCoverageItem = {
 
 export const SolutionCoverageData: SolutionCoverageForProduct[] = [
     {
-      productId: 3, // corresponds to your product ID 3
+      productId: 2, // corresponds to your product ID 3
       coverage: [
         { id: 1, title: "Omni channel customer engagement & support" },
         { id: 2, title: "Streamlined onboarding account management processes" },
