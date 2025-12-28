@@ -44,14 +44,7 @@ export default function Solutions({ solutions }: Props) {
       </div>
 
       {/* Button */}
-      <div className="flex justify-center mt-12">
 
-
-
-        <RedButton className="w-[195px] h-[56px] text-[16px] border border-[#E52445] ">
-          View More
-        </RedButton>
-      </div>
     </section>
   );
 }

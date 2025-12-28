@@ -33,7 +33,7 @@ export default function Grids({ newsListData }: NewsListProps) {
                                 <img
                                     src={slide.imageUrl}
                                     alt={slide.title}
-                                    className="w-full h-[200px] object-cover"
+                                    className="w-full h-[200px] object-cover rounded-sm"
                                 />
 
                                 <div className="flex flex-col flex-1">

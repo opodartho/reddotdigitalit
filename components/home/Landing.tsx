@@ -31,6 +31,7 @@ import FirstHeroSection from "./_first_hero";
 
 import { getHeroes } from "@/lib/api/home-hero-redesign/fetchHero";
 import FirstHeroRedesignSection from "./_first_hero_redesign/Section";
+import ReelSection from "./ReelSection";
 
 export const Landing = async () => {
   const [
@@ -68,9 +69,11 @@ export const Landing = async () => {
          
          <FirstHeroRedesignSection heroSlidesData={heroSlidesData}/>
          <FeaturedProjectsSection />
+             
         <ServicesCarousel services={servicesData} />
         <BackToTop />
         <Solutions solutions={productSolutionsData} />
+        <ReelSection />
         <AreaOfOperations sections={operationsData} />
         <WhoWeAre aboutData={aboutData} achievementData={achievementData} />
         <CaseStudies caseStudiesData={caseStudiesData} />
