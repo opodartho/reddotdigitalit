@@ -41,7 +41,7 @@ export default function ReelSection() {
       tl.fromTo(
         videoWrapperRef.current!,
         {
-          width: "80%",
+          width: "75%",
           clipPath: "inset(0 round 28px)",
         },
         {
@@ -129,9 +129,9 @@ export default function ReelSection() {
           relative
           w-full
           sm:h-[80vh]
-          xl:h-[130vh]
+          xl:h-[110vh]
           h-auto
-          sm:w-[80%]
+          sm:w-[75%]
           overflow-hidden
           cursor-pointer
           will-change-transform
