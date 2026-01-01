@@ -173,7 +173,12 @@ export default function FirstHeroRedesifnSection({ heroSlidesData }: HeroSlidesP
 
                 {/* BUTTON */}
                 <div className="mt-[40px] sm:mt-[48px]">
-                    <WhiteButton className="w-[240px]">
+                    <WhiteButton className="w-[240px]"
+                        onClick={() => {
+                            document
+                                .getElementById("product_solution")
+                                ?.scrollIntoView({ behavior: "smooth" });
+                        }}>
                         Explore All Services
                     </WhiteButton>
                 </div>

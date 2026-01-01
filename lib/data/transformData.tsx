@@ -14,7 +14,7 @@ export const staticTransformData: TransformItem[] = [
     description:
       "Let’s discuss your project and see how RedDot can help you move faster with better design.",
     buttonText: "Start Your Project",
-    buttonLink: "/",
+    buttonLink: "/contact-us",
     
   },
 ];
