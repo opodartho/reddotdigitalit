@@ -66,13 +66,7 @@ export default function Grids({ newsListData }: NewsListProps) {
       </div>
 
       {/* 🔽 Load More */}
-      <div className="flex justify-center">
-        <Link href="/news-details">
-          <RedButton className="mt-[64px] w-[195px] h-[56px] text-[16px] border border-[#E52445]">
-            Load More
-          </RedButton>
-        </Link>
-      </div>
+
     </>
   );
 }
