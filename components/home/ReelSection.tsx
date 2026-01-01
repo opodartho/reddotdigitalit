@@ -145,7 +145,7 @@ export default function ReelSection() {
           onMouseLeave={() =>
             gsap.to("#play-cursor", { opacity: 0, scale: 0.8 })
           }
-          className="w-full h-auto sm:h-full object-cover"
+          className="w-full h-auto min-h-[220px]  sm:h-full object-cover"
           src="/images/ofspace.mp4"
           muted
           autoPlay
