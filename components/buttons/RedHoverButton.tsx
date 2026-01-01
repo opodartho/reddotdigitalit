@@ -57,14 +57,19 @@ export function RedHoverButton({
   );
 }
 
-type ButtonProps = {
-  children: React.ReactNode;
+type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   className?: string;
 };
 
-export default function WhiteButton({ children, className }: ButtonProps) {
+
+export default function WhiteButton({
+  children,
+  className,
+  ...props
+}: ButtonProps) {
   return (
     <RedHoverButton
+      {...props}
       className={cn(
         "text-[#E52445] bg-white flex items-center justify-center h-[56px] rounded-md py-3 md:py-6 md:px-10",
         className || ""

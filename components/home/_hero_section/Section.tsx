@@ -7,6 +7,8 @@ import Image from "next/image";
 import RedButton from "@/components/buttons/RedHoverButton";
 import WhiteButton from "@/components/buttons/WhiteHoverButton";
 import TextType from "@/components/animation/TextType";
+import Link from "next/link";
+
 
 
 import { getHeroSlides } from "@/lib/api/fetchHeroSlides";
@@ -149,13 +151,24 @@ function LeftSide() {
 
       {/* Buttons */}
       <div className="flex flex-col sm:flex-row gap-4 mt-4">
-        <RedButton className="h-[56px] w-full sm:w-[233px]  font-medium">
+        <RedButton
+          className="h-[56px] w-full sm:w-[233px] font-medium"
+          onClick={() => {
+            document
+              .getElementById("product_solution")
+              ?.scrollIntoView({ behavior: "smooth" });
+          }}
+        >
           Explore All Services
         </RedButton>
 
-        <WhiteButton className="h-[56px] w-full sm:w-[233px] font-medium">
-          Let’s work with us
-        </WhiteButton>
+
+        <Link href="/contact-us">
+          <WhiteButton className="h-[56px] w-full sm:w-[233px] font-medium">
+            Let’s work with us
+          </WhiteButton>
+        </Link>
+
       </div>
     </div>
   );

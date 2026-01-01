@@ -14,7 +14,7 @@ export const staticTransformData: TransformItem[] = [
     description:
       "We are committed to excellence in delivering software solutions. Our talented team brings years of experience across various technology domains, ensuring we meet and exceed client expectations.",
     buttonText: "Get Started",
-    buttonLink: "/get-started",
+    buttonLink: "/contact-us",
     imageUrl: "/images/phone2.svg",
   },
 ];

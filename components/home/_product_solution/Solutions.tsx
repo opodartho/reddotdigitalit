@@ -22,7 +22,7 @@ export default function Solutions({ solutions }: SolutionsProps) {
   const router = useRouter();
 
   return (
-    <section className=" pb-10 max-w-[1440px] mx-auto px-[16px] sm:px-[80px]">
+    <section  className=" pb-10 max-w-[1440px] mx-auto px-[16px] sm:px-[80px]">
       <div className="mx-auto mb-10 container 2xl text-center">
         <h2 className="text-4xl font-poppins font-semibold mb-4 lg:mt-20">
           Our Product Solution

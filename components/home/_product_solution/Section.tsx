@@ -12,7 +12,7 @@ type ProductSolutionSectionProps = {
 const ProductSolution = ({ solutions }: ProductSolutionSectionProps) => {
   // ... and passes it down to the <Solutions /> component.
   return (
-    <main className="">
+    <main className="" id="product_solution">
       <Solutions solutions={solutions} />
 
     </main>
