@@ -132,7 +132,7 @@ export const ExtraSectionsData: ExtraSectionForProduct[] = [
                     },
                 ],
             },
-              {
+            {
                 sectionTitle: "INTELLIGENT VEHICLE TRACKING SYSTEM",
                 items: [
                     {
@@ -154,29 +154,29 @@ export const ExtraSectionsData: ExtraSectionForProduct[] = [
                         description:
                             "It shows last 20 location history.",
                     },
-                                        {
+                    {
                         id: 4,
                         title: "SPEED LIMIT",
                         description:
                             "It shows analytical data and maximum speed of the date based on selection. User can set speed limit for his/her vehicle. If the vehicle crosses this speed limit, user will get a notification through mobile application.",
-                    },                    {
+                    }, {
                         id: 5,
                         title: "DISTANCE",
                         description:
                             "It shows the analytical data of the month & year based on selection.",
-                    },                    {
+                    }, {
                         id: 6,
                         title: "EXPENSE MANAGEMENT",
                         description:
                             "Through expense management one can see his all added expense list. He can add expense and search expense between two dates.",
                     },
-                                        {
+                    {
                         id: 7,
                         title: "ROUTE",
                         description:
                             "It shows the route of the selected route from the current location on map. By selecting date & time it plots all location on map with animation of moving cars.",
                     },
-                                        {
+                    {
                         id: 8,
                         title: "TRACKER INFO",
                         description:
@@ -206,30 +206,30 @@ export const ExtraSectionsData: ExtraSectionForProduct[] = [
                         description:
                             "Automatic brightness adjustment to avoid over exposure.",
                     },
-                                        {
+                    {
                         id: 4,
                         title: "TWO-WAY AUDIO",
                         description:
                             "Communicate with people easily or just listen to the sound from camera.",
-                    },                    {
+                    }, {
                         id: 5,
                         title: "355⁰ PAN, 90⁰ TILT",
                         description:
                             "All around coverage leaves no blind spots.",
-                    },                    {
+                    }, {
                         id: 6,
                         title: "ALARM NOTIFICATIONS",
                         description:
                             "Get instant alert while you are on the go.",
-                    },                    {
+                    }, {
                         id: 7,
                         title: "LOCAL STORAGE",
                         description:
                             "Store the video clips on local storage. It also offers store an incident on personal phone.",
-                    },                   
+                    },
                 ],
             },
-            
+
 
         ],
     },
