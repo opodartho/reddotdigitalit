@@ -13,7 +13,7 @@ const AchievementCard = ({
 }: AchievementCardProps) => {
   return (
     <div
-      className={`w-[303px] h-[345px] flex flex-col mx-auto rounded-xl p-6  text-left shadow-md ${bgGradient} transition-all duration-300 ease-in-out hover:scale-[1.25] hover:shadow-lg`}
+      className={`w-[303px] h-[345px] flex flex-col mx-auto rounded-xl p-8  text-left shadow-md ${bgGradient} transition-all duration-300 ease-in-out hover:scale-[1.05] hover:shadow-lg`}
     >
       <div className="mb-4">
         <Image
@@ -27,7 +27,7 @@ const AchievementCard = ({
 
       <h3 className="mb-2 text-2xl font-semibold">{title}</h3>
       <p className="mb-4 text-3xl font-bold">{value}</p>
-      <p className="text-gray-600">{description}</p>
+      <p className="text-gray-600 mt-auto mb-[46px]">{description}</p>
     </div>
   );
 };

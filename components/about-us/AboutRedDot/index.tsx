@@ -10,7 +10,7 @@ export default function AboutRedDot({ aboutUs }: AboutUsProps) {
     return (
         <>
        
-            <div className="pl-[16px] lg:pl-[0px] pr-[16px] lg:pr-[0px] lg:flex lg:flex-row flex flex-col lg:gap-[73px] gap-[60px] h-[316.05] justify-center lg:items-center  ">
+            <div className="lg:flex lg:flex-row flex flex-col lg:gap-[73px] gap-[60px] h-[316.05] justify-center lg:items-center  ">
                 <div>
                     <p className="font-semibold  text-[32px] text-title  lg:pb-[14px] pb-[14px] w-[400px]">{aboutUs.title}</p>
                     <p className="lg:container [625px] text-left  text-subtitle  max-h-[179px] text-[16px]">{aboutUs.description}</p>
