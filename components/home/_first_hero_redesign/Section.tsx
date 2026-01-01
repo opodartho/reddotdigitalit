@@ -98,12 +98,12 @@ export default function FirstHeroRedesifnSection({ heroSlidesData }: HeroSlidesP
 
                 {/* DESKTOP ICON ROW */}
                 {/* DESKTOP ICON ROW */}
-                <div className="hidden lg:flex max-w-[1138px] gap-[24px] mt-[40px] backdrop-blur-md p-4 rounded-xl">
+                <div className="hidden lg:flex max-w-[1138px] gap-[24px] mt-[40px]  p-4 rounded-xl">
                     {heroSlidesData.map((item, index) => (
                         <button
                             key={index}
                             onClick={() => navigate.push(item.route)}
-                            className="
+                            className="z-5
         cursor-pointer 
         transition-transform duration-300 ease-in-out 
         hover:scale-110 hover:z-10
