@@ -15,9 +15,9 @@ export default function Empowerment({ empowermentData }: EmpowermentProps) {
         <>
             <div className="w-full">
                 <div className=" lg:w-full w-full lg:ml-[0px] lg:h-[869px] h-auto lg:relative mt-[114px]" style={{ backgroundImage: "url('/images/Background.png')" }}>
-                    <p className="lg:pb-[68px]  lg:pt-[75px] pt-[15px] lg:text-[32px] text-[25px] font-medium [1276px] lg:pl-[80px] pl-[15px]">{empowermentData.title}</p>
+                    <p className="lg:pb-[36px]  lg:pt-[75px] pt-[15px] lg:text-[32px] text-[25px] font-medium [1276px] ">{empowermentData.title}</p>
 
-                    <div className="lg:flex lg:pl-[80px]  pl-[15px] pr-[15px] gap-[88px] lg:pt-[58px] pt-[111px]">
+                    <div className="lg:flex  gap-[88px] lg:pt-[58px] pt-[56px]">
                         <div className="flex flex-col gap-[12px] flex-shrink-0">
                             <div className="flex gap-[12px]">
                                 <Image src={empowermentData.image1} alt="" height={236} width={212} className="rounded-lg" />

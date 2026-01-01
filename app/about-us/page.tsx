@@ -19,25 +19,26 @@ export default async function AboutUs() {
     return (
         <>
 
-            <div className="overflow-hidden lg:pl-[80px] lg:pr-[80px] max-w-[1440px] mx-auto">
-                <div className="lg:pr-80px">
+            <div className="overflow-x-hidden px-[16px] sm:px-[80px]  max-w-[1440px] mx-auto">
+                <div >
                     <Header headerData={HeaderData} />
                 </div>
-                <div className="lg:pr-80px">
+                <div >
                     <AboutRedDot aboutUs={AboutData} />
                 </div>
-                <div className="lg:pr-80px">
+                <div >
                     <OurRoots rootsData={RootsData} />
                 </div>
-                <div className="lg:pr-80px">
+                <div >
                     <OurJourney journeyData={JourneyData} />
                 </div>
-                <div className="lg:pr-80px">
+                <div >
                     <Empowerment empowermentData={EmpowermentData} />
                 </div>
-                <div>
-                    <Achievements achievements={AchievementsData} />
-                </div>
+
+            </div>
+            <div>
+                <Achievements achievements={AchievementsData} />
             </div>
         </>
     )

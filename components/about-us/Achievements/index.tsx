@@ -10,7 +10,7 @@ export default function Achievements({ achievements }: AchievementsProps) {
 
     return (
         <>
-            <div className="lg:block lg:w-full pt-[109px] pb-[38px] flex flex-col text-center">
+            <div className="lg:block lg:w-full pt-[24px]  flex flex-col text-center">
                 <p className="font-semibold text-[32px] text-title">{achievements.title}</p>
                 <p className="text-[14px] text-subtitle line-clamp-2 pt-[17px] lg:w-[444px] w-[300px] mx-auto"> {/* Added mx-auto */}
                     {achievements.description}
