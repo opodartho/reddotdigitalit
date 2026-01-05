@@ -16,9 +16,9 @@ export function CaseStudyCard({
         <Image
           src={imageUrl}
           alt={title}
-          layout="fill"
-          objectFit="cover"
-          className="transition-transform duration-300 ease-in-out hover:scale-105"
+          fill
+          
+          className="object-cover transition-transform duration-300 ease-in-out hover:scale-105"
         />
       </div>
       <div className="flex flex-grow flex-col pt-6">
