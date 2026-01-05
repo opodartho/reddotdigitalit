@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import WhiteButton from "@/components/buttons/WhiteHoverButton";
 
 type AreaOfOperationsProps = {
+  
   sections: OperationSection[];
 };
 
