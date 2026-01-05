@@ -1,59 +1,61 @@
 "use client";
 
 import React, { useEffect } from "react";
-import { Button } from "@/components/ui/button";
-import { ContactForm } from "@/components/ui/contactForm";
 import { motion, useAnimationControls } from "framer-motion";
+import { ContactForm } from "@/components/ui/contactForm";
 
 export const ContactSection = () => {
   const title = ["Leave", "Your", "Query", "To", "Us"];
   const controls = useAnimationControls();
 
-  // ✨ Custom loop animation logic
   useEffect(() => {
+    let isMounted = true;
+
     const sequence = async () => {
-      while (true) {
-        // Step 1: Reset visibility
+      while (isMounted) {
+        // Step 1: reset
         await controls.start({
           opacity: 0,
           transition: { duration: 0 },
         });
 
-        // Step 2: Animate words one by one
+        // Step 2: animate words
         for (let i = 0; i < title.length; i++) {
-          await controls.start((index) => {
-            if (index <= i) {
-              return {
-                opacity: 1,
-                y: 0,
-                transition: { duration: 0.5, ease: "easeOut" },
-              };
-            }
-            return {};
-          });
+          if (!isMounted) return;
+
+          await controls.start((index) =>
+            index <= i
+              ? {
+                  opacity: 1,
+                  y: 0,
+                  transition: { duration: 0.5, ease: "easeOut" },
+                }
+              : {}
+          );
         }
 
-        // Step 3: Pause
+        // Step 3: pause
         await new Promise((r) => setTimeout(r, 1000));
+        if (!isMounted) return;
 
-        // Step 4: Fade out entire line
+        // Step 4: fade out
         await controls.start({
           opacity: 0,
           y: -10,
           transition: { duration: 0.8, ease: "easeInOut" },
         });
 
-        // Step 5: Wait before restart
+        // Step 5: wait before restart
         await new Promise((r) => setTimeout(r, 300));
       }
     };
 
-    // 🔥 KEY FIX: Run AFTER mount
-    setTimeout(() => {
-      sequence();
-    }, 0);
-  }, [controls]);
+    sequence();
 
+    return () => {
+      isMounted = false; // 🔥 THIS is the key
+    };
+  }, [controls, title.length]);
   return (
     <section className="relative w-full bg-white">
       <div className="px-[16px] sm:px-[80px] flex flex-col lg:flex-row justify-between items-start gap-12 max-w-[1440px] mx-auto">
