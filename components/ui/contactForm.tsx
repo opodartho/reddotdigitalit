@@ -39,7 +39,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({
     );
 
     if (confirmSubmit) {
-      console.log("✅ Form Submitted:", data);
+      
       alert("✅ Your message has been sent successfully!");
       reset();
     } else {
