@@ -27,7 +27,7 @@ export default function Header({ headerData }: HeaderProps) {
                 <p className=" text-title ">{headerData.title}</p>
             </div>
 
-            <div className="lg:w-full h-[700px] w-full  lg:h-[318px] lg:mb-[98px] mb-[30px] relative lg:ml-[0px] bg-repeat lg:bg-no-repeat" style={{ backgroundImage: "url('/images/Our Roots.png')", }}>
+            <div className="lg:w-full px-[20px] sm:px-[38px] h-[700px] w-full  lg:h-[318px] lg:mb-[98px] mb-[30px] relative lg:ml-[0px] bg-repeat lg:bg-no-repeat" style={{ backgroundImage: "url('/images/Our Roots.png')", }}>
                 <p className="z-10  lg:pt-[30px] pt-[32px]   lg:text-[25px] text-[20px] font-semibold lg:container text-subtitle">{headerData.description}</p>
                 <div className="  pt-[34px]  z-10 lg:grid lg:grid-cols-8 grid grid-cols-2 lg:gap-[16px] gap-[21px] items-center pb-2">
                     {headerData.images.map((image, index) => (
