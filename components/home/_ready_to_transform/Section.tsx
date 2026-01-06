@@ -16,7 +16,7 @@ const ReadyToTransform = ({ transformData }: TransformSectionProps) => {
           description={item.description}
           buttonText={item.buttonText}
           buttonLink={item.buttonLink}
-          imageUrl={item.imageUrl}
+         
         />
       ))}
     </>

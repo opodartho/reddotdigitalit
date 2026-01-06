@@ -15,7 +15,7 @@ export function TransformCard({
   return (
     <section className="mt-[80px] mx-auto  px-[16px] sm:px-[80px]">
       <div className="relative rounded-3xl bg-[#1D1B26] ">
-        <div className=" flex flex-col xl:flex-row justify-between gap-[48px] p-4 ">
+        <div className=" flex flex-col xl:flex-row justify-between sm:gap-[48px] p-4 ">
           {/* Left Content */}
           <div className="text-center xl:text-left py-[56px] xl:py-[80px]  xl:pl-[56px] xl:w-1/2 ">
             <h2 className="--font-inter text-white font-semibold text-[40px] leading-[141%] tracking-[0] ">
