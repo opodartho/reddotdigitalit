@@ -8,7 +8,7 @@ export default function MetaData({ meta }: MetaDataProps) {
   return (
     <>
       <div className="block flex-col lg:sticky lg:top-[120px] pt-[36px] sm:pt-[64px] lg:pl-[24px] lg:w-[197px]">
-        
+
         {/* Date */}
         <div className="lg:flex lg:flex-col">
           <p className="font-semibold text-[16px]">Date</p>

@@ -14,10 +14,10 @@ export default function Header({ title, heroImage }: Props) {
         {title}
       </p>
 
-<img
-  src={heroImage}
-  alt={title}
-  className="
+      <img
+        src={heroImage}
+        alt={title}
+        className="
     block
     mx-auto
     h-[246px] sm:h-[360px] lg:h-[540px]
@@ -26,7 +26,7 @@ export default function Header({ title, heroImage }: Props) {
     object-cover
     overflow-hidden
   "
-/>
+      />
 
     </div>
   );
