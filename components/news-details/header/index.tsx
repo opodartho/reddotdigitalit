@@ -14,11 +14,20 @@ export default function Header({ title, heroImage }: Props) {
         {title}
       </p>
 
-      <img
-        src={heroImage}
-        alt={title}
-        className="w-full h-[246px] sm:h-[360px] lg:h-[540px] rounded-[16px] object-contain"
-      />
+<img
+  src={heroImage}
+  alt={title}
+  className="
+    block
+    mx-auto
+    h-[246px] sm:h-[360px] lg:h-[540px]
+    rounded-[16px]
+    sm:object-contain
+    object-cover
+    overflow-hidden
+  "
+/>
+
     </div>
   );
 }
