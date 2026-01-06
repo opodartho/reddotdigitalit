@@ -1,6 +1,7 @@
+"use client";
 import { Button } from "@/components/ui/button";
 import { SpeakupData, SpeakupItem } from "@/lib/data/speak-up/speakupData";
-import  WhiteButton  from "@/components/buttons/WhiteHoverButton";
+import WhiteButton from "@/components/buttons/WhiteHoverButton";
 type SpeakupProps = {
     SpeakupData: SpeakupItem
 }
@@ -29,9 +30,20 @@ export default function Main({ SpeakupData }: SpeakupProps) {
                             ))}
                         </div>
                         <div className="lg:flex lg:flex-row lg:gap-[14px] lg:pt-[80px] pt-[54px] flex flex-col gap-[23px]">
-                            <WhiteButton className=" h-[56px] px-6 py-3 rounded-2xl">Whistle-blower Reporting System</WhiteButton>
+                            <WhiteButton
+                                onClick={() => {
+                                    window.open(
+                                        "https://axiatagroup.integrityline.com/",
+                                        "_blank",
+                                        "noopener,noreferrer"
+                                    );
+                                }}
+                                className="h-[56px] px-6 py-3 rounded-2xl"
+                            >
+                                Whistle-blower Reporting System
+                            </WhiteButton>
                             <WhiteButton className="h-[56px] px-6 py-3 rounded-2xl">Whistleblowing Policy</WhiteButton>
-                                    
+
                         </div>
                     </div>
                 </div>
