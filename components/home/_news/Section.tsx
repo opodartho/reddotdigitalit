@@ -12,11 +12,14 @@ const News = ({ newsData }: NewsSectionProps) => {
   return (
     <section className=" pt-16 pb-[94px] ">
       <div className="mx-auto">
-        <h2 className="mb-[32px] sm:mb-[48px] text-center font-poppins text-[32px] font-semibold leading-[40px] tracking-[0.03px] text-title">
+        <h2 className="mb-[48px] text-center font-poppins text-[32px] font-semibold leading-[40px] tracking-[0.03px] text-title">
           Latest Events
         </h2>
         <div className="max-w-[1440px] px-[38px] sm:px-[80px] mx-auto">
-          <div className="grid grid-cols-1 xl:gap-6 gap-0 sm:grid-cols-2 xl:grid-cols-4 space-y-[32px]">
+          <div className=" grid
+                           gap-x-[16px] gap-y-[30px]
+                           justify-center
+                           grid-cols-[repeat(auto-fit,308px)]">
             {newsData.map((item) => (
               <NewsCard
                 key={item.id}
