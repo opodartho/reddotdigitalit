@@ -22,7 +22,15 @@ export default function Grids({ newsListData }: NewsListProps) {
   return (
     <>
       {/* 📰 News Cards */}
-      <div className="lg:pt-[77px] pt-[68px] flex flex-wrap gap-x-[16px] gap-y-[30px] justify-center lg:justify-start">
+            <div
+        className="
+    lg:pt-[77px] pt-[68px]
+    grid
+    gap-x-[16px] gap-y-[30px]
+    justify-center
+    grid-cols-[repeat(auto-fit,308px)]
+  "
+      >
         {newsListData.map((slide) => (
           <div key={slide.id}>
             <Card className="w-[308px] h-[494px] bg-white transition shadow-sm hover:shadow-lg flex flex-col">
