@@ -35,7 +35,7 @@ export const achievementData: AchievementData[] = [
     title: "Professionals",
     value: "200+",
     description:
-      "Our cutting-edge Modular Data Center solutions enable to protect mission-critical data.",
+      "A strong team of skilled experts delivering excellence across every project.",
     bgGradient: "bg-gradient-to-r from-cyan-300 to-blue-500 to-cyan-100",
   },
   {
@@ -43,7 +43,7 @@ export const achievementData: AchievementData[] = [
     title: "Tech Stack",
     value: "80+",
     description:
-      "Our cutting-edge Modular Data Center solutions enable to protect mission-critical data.",
+      "Harnessing diverse and modern technologies to craft scalable, future-ready solutions.",
     bgGradient: "bg-gradient-to-r from-pink-200 to-pink-100",
   },
   {
@@ -51,7 +51,7 @@ export const achievementData: AchievementData[] = [
     title: "Projects",
     value: "30+",
     description:
-      "Our cutting-edge Modular Data Center solutions enable to protect mission-critical data.",
+      "Successfully delivering high-impact digital platforms across industries.",
     bgGradient: "bg-gradient-to-r from-violet-300 to-indigo-200",
   },
   {
@@ -59,7 +59,7 @@ export const achievementData: AchievementData[] = [
     title: "Experience",
     value: "7 Years",
     description:
-      "Our cutting-edge Modular Data Center solutions enable to protect mission-critical data.",
+      "Building trust and transforming businesses through years of proven digital excellence.",
     bgGradient: "bg-gradient-to-r from-emerald-200 to-yellow-100",
   },
 ];
