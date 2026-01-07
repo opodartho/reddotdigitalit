@@ -13,6 +13,7 @@ export default function Header({ headerData }: HeaderProps) {
           max-w-[1440px] mx-auto
           pt-[100px] lg:pt-[150px]
           pb-[40px] lg:pb-[72px]
+          px-[16px] sm:px-[80px]
         "
       >
         <div
