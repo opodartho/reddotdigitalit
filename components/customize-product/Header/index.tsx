@@ -1,6 +1,10 @@
+"use client";
+
+import { useState } from "react";
 import WhiteButton from "@/components/buttons/WhiteHoverButton";
 import { HeaderItem } from "@/lib/data/header";
 import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
+import ScheduleCallModal from "@/components/ui/ScheduleCallModal";
 
 type HeaderProps = {
   headerData: HeaderItem[];
@@ -8,6 +12,7 @@ type HeaderProps = {
 };
 
 export default function Header({ headerData, Id }: HeaderProps) {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const indexNumber = Number(Id);
 
   return (
@@ -69,7 +74,10 @@ export default function Header({ headerData, Id }: HeaderProps) {
           </p>
 
           {/* 🔹 CTA */}
-          <WhiteButton className="w-full sm:w-[195px] h-[56px] text-[16px] leading-[24px] mb-[80px] lg:mb-0">
+          <WhiteButton
+            className="w-full sm:w-[195px] h-[56px] text-[16px] leading-[24px] mb-[80px] lg:mb-0"
+            onClick={() => setIsModalOpen(true)}
+          >
             Schedule a Call
           </WhiteButton>
         </div>
@@ -96,6 +104,12 @@ export default function Header({ headerData, Id }: HeaderProps) {
         </div>
 
       </div>
+
+      {/* Schedule Call Modal */}
+      <ScheduleCallModal
+        open={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
     </section>
   );
 }

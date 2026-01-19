@@ -20,7 +20,7 @@ export default function Section({ customizeData }: CustomizeProps) {
         </p>
       </div>
 
-      <div className="w-full pt-[64px]">
+      <div className="w-full pt-[56px]">
         <ProductCarousel solutions={productSolutions} />
       </div>
     </>

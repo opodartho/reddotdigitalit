@@ -1,182 +1,102 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import Image from "next/image";
 
-type TabData = {
-  title: string;
-  images: string[];
-};
-
-const tabData: TabData[] = [
-  {
-    title: "All",
-    images: [
-      "/images/robi.svg",
-      "/images/scb.svg",
-      "/images/tap.svg",
-      "/images/bat.svg",
-      "/images/ada.svg",
-      "/images/bida.svg",
-      "/images/unicef.svg",
-      "/images/smart.svg",
-      "/images/jamuna.svg",
-      "/images/fsib.svg",
-      "/images/lpgas.svg",
-      "/images/rVentures.svg",
-      "/images/idcol.svg",
-      "/images/undp.svg",
-      "/images/citizens.svg",
-      "/images/ucb.svg",
-      "/images/telecash.svg",
-      "/images/bashundhara.svg",
-      "/images/akash.svg",
-      "/images/egcb.svg",
-      "/images/wateraid.svg",
-      "/images/sebl.svg",
-      "/images/pbl.svg",
-      "/images/mbl.svg",
-    ],
-  },
-
-  {
-    title: "Bank & Fintech",
-    images: [
-      "/images/scb.svg",
-      "/images/tap.svg",
-      "/images/fsib.svg",
-      "/images/ucb.svg",
-      "/images/telecash.svg",
-      "/images/sebl.svg",
-      "/images/pbl.svg",
-      "/images/mbl.svg",
-      "/images/jamuna.svg",
-      "/images/citizens.svg",
-    ],
-  },
-  {
-    title: "Telecom",
-    images: ["/images/robi.svg", "/images/smart.svg"],
-  },
-  {
-    title: "FMCG",
-    images: [
-      "/images/bat.svg",
-      "/images/lpgas.svg",
-      "/images/akash.svg",
-      "/images/wateraid.svg",
-    ],
-  },
-  {
-    title: "Government",
-    images: ["/images/bida.svg", "/images/idcol.svg", "/images/egcb.svg"],
-  },
-  {
-    title: "Media & Advertising",
-    images: ["/images/bashundhara.svg"],
-  },
-  {
-    title: "iNgo",
-    images: ["/images/ada.svg", "/images/unicef.svg", "/images/undp.svg"],
-  },
+/* ---------------- DATA ---------------- */
+const logos = [
+  "/images/robi.svg",
+  "/images/scb.svg",
+  "/images/tap.svg",
+  "/images/bat.svg",
+  "/images/ada.svg",
+  "/images/bida.svg",
+  "/images/unicef.svg",
+  "/images/smart.svg",
+  "/images/jamuna.svg",
+  "/images/fsib.svg",
+  "/images/lpgas.svg",
+  "/images/rVentures.svg",
+  "/images/idcol.svg",
+  "/images/undp.svg",
+  "/images/citizens.svg",
+  "/images/ucb.svg",
+  "/images/telecash.svg",
+  "/images/bashundhara.svg",
+  "/images/akash.svg",
+  "/images/egcb.svg",
+  "/images/wateraid.svg",
+  "/images/sebl.svg",
+  "/images/pbl.svg",
+  "/images/mbl.svg",
 ];
 
+/* ---------------- COMPONENT ---------------- */
 export default function TrustedPartners() {
-  const [activeTab, setActiveTab] = useState<string>("All");
-  const [isMobile, setIsMobile] = useState(false);
-  const [showAll, setShowAll] = useState(false);
+  const sectionRef = useRef<HTMLDivElement | null>(null);
 
-  // Detect mobile screen
-  useEffect(() => {
-    const checkScreen = () => setIsMobile(window.innerWidth < 640);
-    checkScreen();
-    window.addEventListener("resize", checkScreen);
-    return () => window.removeEventListener("resize", checkScreen);
-  }, []);
+  // 🔑 SAME BEHAVIOR AS ABOUT SECTION
 
-  const currentTab = tabData.find((tab) => tab.title === activeTab);
-  const imagesToShow =
-    activeTab === "All"
-      ? Array.from(new Set(tabData.flatMap((tab) => tab.images))) // remove duplicates
-      : currentTab?.images || [];
 
-  // Limit images on mobile unless "showAll"
-  const visibleImages =
-    isMobile && !showAll ? imagesToShow.slice(0, 6) : imagesToShow;
 
+
+  /* ---------------- SPLIT INTO TWO ROWS ---------------- */
+  const mid = Math.ceil(logos.length / 2);
+  const row1 = logos.slice(0, mid);
+  const row2 = logos.slice(mid);
+
+  /* ---------------- RENDER ---------------- */
   return (
-    <section className="pb-[80px] pt-[80px] bg-[#F7F6FD] mt-[32px] sm:mt-[56px]">
+    <section
+      ref={sectionRef}
+      className="py-[80px] bg-[#F7F6FD] overflow-hidden"
+    >
       <div className="mx-auto max-w-[1440px] px-[16px] sm:px-[80px]">
-
-        {/* Title */}
+        {/* TITLE */}
         <div className="text-center mb-12">
           <h2 className="text-3xl font-semibold text-gray-900">
             Trusted by Partners
           </h2>
-
         </div>
-
-        {/* Tabs */}
-        <div className="flex justify-center mb-8">
-          <div className="flex flex-wrap gap-2">
-            {tabData.map((tab) => (
-              <button
-                key={tab.title}
-                onClick={() => {
-                  setActiveTab(tab.title);
-                  setShowAll(false);
-                }}
-                className={`px-6 py-2 font-semibold rounded-xl border transition-colors ${activeTab === tab.title
-                    ? "border-red-500 bg-red-50 text-red-600  "
-                    : "border-gray-300 bg-white text-gray-500  hover:text-red-600  hover:bg-gray-50   "
-                  }`}
-              >
-                {tab.title}
-              </button>
-            ))}
-          </div>
         </div>
+        <div>
 
-        {/* Logo Grid */}
+        {/* LOGOS */}
         <div
-          className="
-            flex flex-wrap justify-center
-            gap-x-[24px] gap-y-[24px]
-          "
+          className={`
+            transition-all duration-[800ms]
+            ease-[cubic-bezier(0.22,1,0.36,1)]
+            "opacity-0 translate-y-6"}
+          `}
         >
-          {visibleImages.map((imgSrc, idx) => (
-            <div
-              key={idx}
-              className="
-                relative
-                flex items-center justify-center
-                bg-white border border-gray-200 hover:shadow-md
-                h-[72px] w-[147px]
-                rounded-md overflow-hidden
-              "
-            >
-              <Image
-                src={imgSrc}
-                alt={`Partner ${idx + 1}`}
-                fill
-                className="object-contain p-3"
-              />
+          {/* ROW 1 */}
+          <div className="relative overflow-hidden mb-6">
+            <div className="flex w-max gap-6 animate-marquee-left">
+              {[...row1, ...row1].map((src, i) => (
+                <LogoCard key={`r1-${i}`} src={src} />
+              ))}
             </div>
-          ))}
-        </div>
-
-        {/* See More / See Less */}
-        {isMobile && imagesToShow.length > 6 && (
-          <div className="flex justify-center mt-8">
-            <button
-              onClick={() => setShowAll(!showAll)}
-              className="text-red-600 font-semibold py-3 px-7 border border-red-400 rounded-lg"
-            >
-              {showAll ? "See Less" : "See More"}
-            </button>
           </div>
-        )}
+
+          {/* ROW 2 */}
+          <div className="relative overflow-hidden">
+            <div className="flex w-max gap-6 animate-marquee-right">
+              {[...row2, ...row2].map((src, i) => (
+                <LogoCard key={`r2-${i}`} src={src} />
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
     </section>
+  );
+}
+
+/* ---------------- LOGO CARD ---------------- */
+function LogoCard({ src }: { src: string }) {
+  return (
+    <div className="relative flex items-center justify-center bg-white border border-gray-200 h-[72px] w-[147px] rounded-md hover:shadow-md transition">
+      <Image src={src} alt="Partner logo" fill className="object-contain p-3" />
+    </div>
   );
 }

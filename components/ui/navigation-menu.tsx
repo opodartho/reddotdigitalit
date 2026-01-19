@@ -111,11 +111,11 @@ function NavigationMenuViewport({
   ...props
 }: React.ComponentProps<typeof NavigationMenuPrimitive.Viewport>) {
   return (
-    <div className="absolute top-full left-0 isolate z-50 flex justify-center">
+    <div className="absolute top-full left-1/2 -translate-x-1/2 isolate z-50 flex justify-center">
       <NavigationMenuPrimitive.Viewport
         data-slot="navigation-menu-viewport"
         className={cn(
-          "relative mt-1.5 h-[var(--radix-navigation-menu-viewport-height)] w-full overflow-hidden rounded-md border shadow md:w-[var(--radix-navigation-menu-viewport-width)] bg-white",
+          "relative mt-1.5 h-[var(--radix-navigation-menu-viewport-height)] w-full overflow-hidden rounded-[20px] border-none shadow-lg md:w-[var(--radix-navigation-menu-viewport-width)] bg-white",
           className
         )}
         {...props}

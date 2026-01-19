@@ -8,10 +8,12 @@ export default function ServiceHero({
   title,
   description,
   image,
+  onScheduleClick,
 }: {
   title: string;
   description: string;
   image: string;
+  onScheduleClick?: () => void;
 }) {
   return (
     <section className="relative w-full bg-[#F6F5FA] pt-[68px] lg:pt-[160px] ">
@@ -56,6 +58,7 @@ export default function ServiceHero({
 
           <WhiteButton
             className="w-full sm:w-[195px] h-[56px] text-[16px] leading-[24px]  mb-[80px] lg:mb-0"
+            onClick={onScheduleClick}
           >
             Schedule a Call
           </WhiteButton>

@@ -1,189 +1,305 @@
 "use client";
 
-
-import React, { useState, useEffect, useRef } from "react";
+import React, { useEffect, useState, useRef } from "react";
+import { motion, Variants } from "framer-motion";
+import Image from "next/image";
 import {
-    Carousel,
-    CarouselContent,
-    CarouselItem,
-    type CarouselApi,
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  type CarouselApi,
 } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
 import { HeroSlides } from "@/lib/data/home-hero-redesign/hero";
 import { useRouter } from "next/navigation";
 import WhiteButton from "@/components/buttons/WhiteHoverButton";
 
+/* ----------------------------------
+   TYPES
+----------------------------------- */
 export type HeroSlidesProps = {
-    heroSlidesData: HeroSlides[];
+  heroSlidesData: HeroSlides[];
 };
-export default function FirstHeroRedesifnSection({ heroSlidesData }: HeroSlidesProps) {
-    const autoplay = useRef(Autoplay({ delay: 2500, stopOnInteraction: false }));
-    const [api, setApi] = useState<CarouselApi>();
-    const navigate = useRouter();
 
+/* ----------------------------------
+   MOTION VARIANTS
+----------------------------------- */
 
+/* Cinematic hero rhythm */
+const heroStagger: Variants = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.16,
+      delayChildren: 0.05,
+    },
+  },
+};
 
-    return (
-        <>
-            <section
-                id="hero-section"
-                className="relative flex flex-col items-center w-full pb-[50px] lg:pb-[80px]
-        h-auto lg:h-[830px] bg-[#F7F6FD] overflow-hidden"
-            >
-                {/* VIDEO BACKGROUND */}
-                <video
-                    src="/images/bg_video.mp4"
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    className="absolute inset-0 w-full h-full object-cover object-center"
-                />
+/* Faster cascade for cards */
+const cardsStagger: Variants = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.08,
+      delayChildren: 0.05,
+    },
+  },
+};
 
-                {/* WHITE OVERLAY */}
-                <div className="absolute inset-0 bg-white/80 backdrop-blur-[2px]" />
+/* Badges + button */
+const fadeUp: Variants = {
+  hidden: {
+    opacity: 0,
+    y: 10,
+    filter: "blur(4px)",
+  },
+  show: {
+    opacity: 1,
+    y: 0,
+    filter: "blur(0px)",
+    transition: {
+      duration: 0.45,
+      ease: [0.33, 1, 0.68, 1],
+    },
+  },
+};
 
-                {/* BADGES */}
-                <div className="relative flex flex-wrap justify-center gap-3 
-   mt-[140px] sm:mt-[200px]">
+/* ⭐ TITLE — SOFT GRADUAL EMERGENCE */
+const titleFade: Variants = {
+  hidden: {
+    opacity: 0,
+    y: 10,
+    filter: "blur(8px)",
+  },
+  show: {
+    opacity: 1,
+    y: 0,
+    filter: "blur(0px)",
+    transition: {
+      duration: 1.05,
+      ease: [0.25, 1, 0.35, 1],
+    },
+  },
+};
 
-                    {[
-                        "15+ enterprise solutions",
-                        "ISO Certified",
-                        "5+ years of experience",
-                    ].map((text, i) => (
-                        <div
-                            key={i}
-                            className="
-        bg-gradient-to-r from-[#E52445] via-[#7A5CFA] to-[#E52445]
-        p-[1px]
-        rounded-[17px]
-        shadow-[0px_12px_48px_rgba(49,1,139,0.05)]
+/* Cards */
+const cardFade: Variants = {
+  hidden: {
+    opacity: 0,
+    y: 12,
+    filter: "blur(6px)",
+  },
+  show: {
+    opacity: 1,
+    y: 0,
+    filter: "blur(0px)",
+    transition: {
+      duration: 0.35,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+};
+
+/* ----------------------------------
+   COMPONENT
+----------------------------------- */
+export default function FirstHeroRedesignSection({
+  heroSlidesData,
+}: HeroSlidesProps) {
+  const animateOnceKey = "hero-animate-once";
+  const router = useRouter();
+  const autoplay = useRef(
+    Autoplay({ delay: 2600, stopOnInteraction: false })
+  );
+  const [, setApi] = useState<CarouselApi>();
+
+  // Use ref to check sessionStorage synchronously (avoids re-render)
+  const shouldAnimateRef = useRef<boolean | null>(null);
+  if (shouldAnimateRef.current === null && typeof window !== "undefined") {
+    const hasAnimated = sessionStorage.getItem(animateOnceKey);
+    shouldAnimateRef.current = !hasAnimated;
+    if (!hasAnimated) {
+      sessionStorage.setItem(animateOnceKey, "1");
+    }
+  }
+  const shouldAnimate = shouldAnimateRef.current ?? true;
+
+  useEffect(() => {
+    // Clear on tab/window close so animation plays on next visit
+    const handleUnload = () => {
+      sessionStorage.removeItem(animateOnceKey);
+    };
+
+    window.addEventListener("beforeunload", handleUnload);
+    return () => {
+      window.removeEventListener("beforeunload", handleUnload);
+    };
+  }, []);
+
+  return (
+    <section
+      id="hero-section"
+      className="
+        relative flex flex-col items-center w-full
+        pb-[56px] lg:pb-[90px]
+        h-auto lg:h-[860px]
+        bg-[#F7F6FD] overflow-hidden
       "
-                        >
-                            {/* INNER WHITE LAYER (THIS WAS MISSING) */}
-                            <div
-                                className="
-          bg-white
-          rounded-[17px]
-          px-4 py-[2px] 
-          flex items-center justify-center
-          text-[14px] leading-[21px] text-[#121926] font-poppins font-normal
-        "
-                            >
-                                {text}
-                            </div>
-                        </div>
-                    ))}
-                </div>
+    >
+      {/* ---------------- VIDEO BACKGROUND ---------------- */}
+      <video
+        src="/images/bg_video.mp4"
+        autoPlay
+        loop
+        muted
+        playsInline
+        preload="metadata"
+        className="absolute inset-0 w-full h-full object-cover"
+      />
 
+      {/* ---------------- OVERLAY ---------------- */}
+      <div className="absolute inset-0 bg-white/85 backdrop-blur-[3px]" />
 
-                {/* TITLE */}
-                <h1
-                    className="
-          relative text-[#060414] font-bold text-center font-poppins
-          text-[22px] sm:text-[28px] lg:text-[48px]
-          leading-tight mt-6
-        "
+      {/* ---------------- HERO CONTENT ---------------- */}
+      <motion.div
+        variants={heroStagger}
+        initial={shouldAnimate ? "hidden" : "show"}
+        animate="show"
+        className="relative flex flex-col items-center"
+      >
+        {/* ---------------- BADGES ---------------- */}
+        <motion.div
+          variants={fadeUp}
+          className="flex flex-wrap justify-center gap-3
+          mt-[150px] sm:mt-[210px]"
+        >
+          {[
+            "15+ enterprise solutions",
+            "ISO Certified",
+            "5+ years of experience",
+          ].map((text, i) => (
+            <div
+              key={i}
+              className="
+                bg-gradient-to-r from-[#E52445] via-[#7A5CFA] to-[#E52445]
+                p-[1px] rounded-[18px]
+              "
+            >
+              <div
+                className="
+                  bg-white rounded-[18px]
+                  px-4 py-[3px]
+                  text-[14px]
+                  text-[#121926]
+                "
+              >
+                {text}
+              </div>
+            </div>
+          ))}
+        </motion.div>
+
+        {/* ---------------- TITLE (SOFT GRADUATION) ---------------- */}
+        <motion.h1
+          variants={titleFade}
+          className="
+            text-[#060414] font-bold text-center
+            text-[22px] sm:text-[30px] lg:text-[50px]
+            leading-[1.15] mt-7
+          "
+        >
+          Crafting Innovation, Delivering Excellence
+        </motion.h1>
+
+        {/* ---------------- DESKTOP ICONS ---------------- */}
+        <motion.div
+          variants={cardsStagger}
+          className="
+            hidden lg:flex max-w-[1138px]
+            gap-[28px] mt-[46px] p-4
+          "
+        >
+          {heroSlidesData.map((item, index) => (
+            <motion.button
+              key={item.id}
+              variants={cardFade}
+              transition={{
+                delay: index === 0 ? 0 : 0.08,
+              }}
+              whileHover={{ scale: 1.08 }}
+              onClick={() => router.push(item.route)}
+              className="cursor-pointer"
+            >
+              <div className="
+                rounded-[14px]
+                border border-transparent
+                hover:border-[#E52445]
+                transition-all
+              ">
+                <Image
+                  src={item.imageUrl}
+                  alt=""
+                  width={160}
+                  height={160}
+                  loading="lazy"
+                  className="rounded-[14px] object-contain"
+                />
+              </div>
+            </motion.button>
+          ))}
+        </motion.div>
+
+        {/* ---------------- MOBILE CAROUSEL ---------------- */}
+        <div className="lg:hidden w-full mt-[40px]">
+          <Carousel
+            setApi={setApi}
+            plugins={[autoplay.current]}
+            opts={{ loop: true, align: "start" }}
+            className="w-full"
+          >
+            <CarouselContent className="gap-3">
+              {heroSlidesData.map((slide) => (
+                <CarouselItem
+                  key={slide.id}
+                  className="
+                    basis-1/3
+                    sm:basis-1/4
+                    flex justify-center
+                  "
                 >
-                    Crafting Innovation, Delivering Excellence
-                </h1>
-
-                {/* SUBTEXT */}
-                <p className="relative max-w-[680px] mt-4 text-center text-[16px] sm:text-[18px] leading-[22px] text-[#121926A6] px-4">
-                    We turn ideas into innovative tech solutions with custom software that <br />
-                    boosts efficiency and growth.
-                </p>
-
-
-                {/* DESKTOP ICON ROW */}
-                {/* DESKTOP ICON ROW */}
-                <div className="hidden lg:flex max-w-[1138px] gap-[24px] mt-[40px]  p-4 rounded-xl">
-                    {heroSlidesData.map((item, index) => (
-                        <button
-                            key={index}
-                            onClick={() => navigate.push(item.route)}
-                            className="z-5
-        cursor-pointer 
-        transition-transform duration-300 ease-in-out 
-        hover:scale-110 hover:z-10
-        "
-                        >
-                            <div
-                                className="
-          rounded-[12px]
-          transition-all duration-300
-          border border-transparent
-          hover:border-[#E52445]
-          
-        "
-                            >
-                                <img
-                                    src={item.imageUrl}
-                                    alt=""
-                                    className="rounded-[12px] w-full h-full object-contain"
-                                />
-                            </div>
-                        </button>
-                    ))}
-                </div>
+                  <img
+                    src={slide.imageUrl}
+                    alt=""
+                    className="w-[60%] h-[60%] sm:w-full sm:h-full object-contain cursor-pointer"
+                    onClick={() => router.push(slide.route)}
+                  />
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+          </Carousel>
+        </div>
 
 
-
-                {/* MOBILE CAROUSEL – FULL SIZE ICONS */}
-                <div className="lg:hidden w-full mt-[40px] xl:mt-[20px]">
-                    <Carousel
-                        setApi={setApi}
-                        plugins={[autoplay.current]}
-                        opts={{
-                            loop: true,
-                            align: "start",
-                        }}
-                        className="w-full"
-                    >
-                        <CarouselContent className="gap-3">
-                            {heroSlidesData.map((slide) => (
-                                <CarouselItem
-                                    key={slide.id}
-                                    className="
-  basis-1/3       /* mobile: 3 per slide */
-  sm:basis-1/4    /* tablet: 4 per slide */
-  flex justify-center
-"
-                                >
-                                    <div
-                                        className="
-    flex items-center justify-center
-    cursor-pointer "
-                                        onClick={() => navigate.push(slide.route)}
-                                    >
-                                        <img
-                                            src={slide.imageUrl}
-                                            alt=""
-                                            className="w-60% h-60% sm:w-100% sm:h-100% object-contain"
-                                        />
-                                    </div>
-
-
-                                </CarouselItem>
-                            ))}
-                        </CarouselContent>
-                    </Carousel>
-                </div>
-
-                {/* BUTTON */}
-                <div className="mt-[40px] sm:mt-[48px]">
-                    <WhiteButton className="w-[240px]"
-                        onClick={() => {
-                            document
-                                .getElementById("product_solution")
-                                ?.scrollIntoView({ behavior: "smooth" });
-                        }}>
-                        Explore All Services
-                    </WhiteButton>
-                </div>
-            </section>
-        </>
-    );
+        {/* ---------------- CTA BUTTON ---------------- */}
+        <motion.div
+          variants={fadeUp}
+          whileHover={{ scale: 1.04 }}
+          whileTap={{ scale: 0.98 }}
+          className="mt-[46px] sm:mt-[54px]"
+        >
+          <WhiteButton
+            className="w-[248px]"
+            onClick={() =>
+              document
+                .getElementById("product_solution")
+                ?.scrollIntoView({ behavior: "smooth" })
+            }
+          >
+            Explore All Services
+          </WhiteButton>
+        </motion.div>
+      </motion.div>
+    </section>
+  );
 }
-

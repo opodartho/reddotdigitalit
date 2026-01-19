@@ -56,7 +56,7 @@ const SeeMoreText = ({ text }: { text: string }) => {
       {shouldShow && (
         <button
           onClick={() => setExpanded(!expanded)}
-          className="text-red-600 font-medium mt-1"
+          className="text-red-600 font-medium mt-1 cursor-pointer"
         >
           {expanded ? "See less" : "See more"}
         </button>
@@ -117,9 +117,9 @@ export const TestimonialCarousel: React.FC<CarouselProps> = ({
   return (
     <>
       {/* HEADER */}
-      <div className="mb-10 lg:mb-20 flex items-start justify-between w-full pr-4 lg:pr-[80px]">
+      <div className="mb-10 flex items-start justify-between w-full pr-4 lg:pr-[80px]">
         <div>
-          <h2 className="text-[24px] lg:text-[32px] leading-[30px] lg:leading-[40px] font-semibold tracking-[0.03px] text-[#060414]  pr-[10px]">
+          <h2 className="pl-[8px] text-[24px] lg:text-[32px] leading-[30px] lg:leading-[40px] font-semibold tracking-[0.03px] text-[#060414]  pr-[10px]">
             Hear From Our Clients!
           </h2>
         </div>
@@ -192,7 +192,7 @@ export const TestimonialCarousel: React.FC<CarouselProps> = ({
                   w-[270px] px-5 py-6 min-h-[360px]
 
                   h-auto flex flex-col
-                  transition-all duration-300 hover:border-[2px] hover:border-[#E52445] 
+                  transition-all duration-300  cursor-pointer
                 "
               >
                 {/* AVATAR */}

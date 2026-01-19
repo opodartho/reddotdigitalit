@@ -56,7 +56,7 @@ export default function ProductCarousel({ solutions }: ProductCarouselProps) {
                 router.push(`/customize-product/${index + 1}`)
               }
             >
-              <SolutionCard item={item} variant="carousel" />
+             <SolutionCard item={item} variant="carousel" />
             </CarouselItem>
           ))}
         </CarouselContent>

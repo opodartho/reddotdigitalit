@@ -1,43 +1,108 @@
-"use client"
+"use client";
 
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { Button } from "@/components/ui/button";
 import { AboutData } from "@/lib/data/whoWeAreData";
 import WhiteButton from "@/components/buttons/WhiteHoverButton";
 import { useRouter } from "next/navigation";
+import { cn } from "@/lib/utils";
+import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
+
 type AboutProps = {
   data: AboutData;
 };
 
 const About = ({ data }: AboutProps) => {
-   const router = useRouter();
+  const router = useRouter();
+  const sectionRef = useRef<HTMLDivElement | null>(null);
+
+  const initialShouldAnimate =
+    typeof window !== "undefined"
+      ? !(window as any).__whoAboutSectionAnimated
+      : true;
+
+  const [shouldAnimate, setShouldAnimate] = useState(initialShouldAnimate);
+  const [hasAnimated, setHasAnimated] = useState(!initialShouldAnimate);
+  const [triggerTextEffect, setTriggerTextEffect] = useState(false);
+
+  useEffect(() => {
+    if (!shouldAnimate || !sectionRef.current) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setHasAnimated(true);
+          setTriggerTextEffect(true);
+          setShouldAnimate(false);
+
+          (window as any).__whoAboutSectionAnimated = true;
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.25 }
+    );
+
+    observer.observe(sectionRef.current);
+    return () => observer.disconnect();
+  }, [shouldAnimate]);
+
   return (
-    <div className="container grid grid-cols-1 md:grid-cols-2 gap-x-[84px] gap-y-8 px-10 mt-[81px]">
-      <div className="flex flex-col justify-start space-y-4">
+    <div
+      ref={sectionRef}
+      className="container grid grid-cols-1 md:grid-cols-2 gap-x-[84px] gap-y-12 px-10 mt-[64px] md:mt-[81px]"
+    >
+      {/* LEFT: TEXT */}
+      <div
+        className={cn(
+          "order-2 md:order-1  flex flex-col justify-start space-y-4 who-about-top-text",
+          hasAnimated && "who-about-top-text-visible"
+        )}
+      >
         <h2 className="--font-poppins font-normal text-[25px] leading-[40px] tracking-[0.03px]">
           {data.title}
         </h2>
-        <h3 className="--font-poppins font-normal text-[32px] leading-[40px] tracking-[0.03px] mt-[27px]">
-          {data.subtitle}
-        </h3>
-        <p className="--font-poppins font-normal text-[16px] leading-[30px] tracking-[0] mt-[36px]">
+
+        <div className="--font-poppins mt-[12px]">
+          {triggerTextEffect ? (
+            <TextGenerateEffect
+              words={data.subtitle}
+              className="font-normal"
+              textClassName="text-[32px] leading-[40px] tracking-[0.03px]"
+            />
+          ) : (
+            <p className="font-normal text-[32px] leading-[40px] tracking-[0.03px]">
+              {data.subtitle}
+            </p>
+          )}
+        </div>
+
+        <p className="--font-poppins font-normal text-[16px] leading-[30px] mt-[14px]">
           {data.description}
         </p>
-        <WhiteButton  onClick={() =>
-                  router.push(`/about-us`)
-                } className="--font-poppins font-medium text-[16px] leading-[100%] tracking-[0] w-[207px] h-[56px] mt-[49px]">
+
+        <WhiteButton
+          onClick={() => router.push("/about-us")}
+          className="--font-poppins font-medium text-[16px] w-[207px] h-[56px] mt-[36px]"
+        >
           Read More
         </WhiteButton>
       </div>
-      <div className="grid gap-4">
+
+      {/* RIGHT: IMAGES */}
+      <div
+        className={cn(
+          "order-1 md:order-2 grid gap-4 sm:mb-14 who-about-bottom-images",
+          hasAnimated && "who-about-bottom-images-visible"
+        )}
+      >
+
         <div className="relative">
           <Image
             src={data.images[0]}
             alt="Group"
             width={539}
             height={230}
-            className="w-full h-[230px] rounded-[18px] object-cover transition-transform duration-300 hover:scale-104  "
+            className="w-full h-[230px] rounded-[18px] object-cover transition-transform duration-300 hover:scale-104"
           />
         </div>
         <div className="grid grid-cols-2 gap-4">
@@ -46,14 +111,14 @@ const About = ({ data }: AboutProps) => {
             alt="Speaker"
             width={263}
             height={232}
-            className="w-full h-[232px] rounded-[18px] object-cover transition-transform duration-300 hover:scale-104  "
+            className="w-full h-[232px] rounded-[18px] object-cover transition-transform duration-300 hover:scale-104"
           />
           <Image
             src={data.images[2]}
             alt="Event"
             width={263}
             height={232}
-            className="w-full h-[232px] rounded-[18px] object-cover transition-transform duration-300 hover:scale-104 "
+            className="w-full h-[232px] rounded-[18px] object-cover transition-transform duration-300 hover:scale-104"
           />
         </div>
       </div>

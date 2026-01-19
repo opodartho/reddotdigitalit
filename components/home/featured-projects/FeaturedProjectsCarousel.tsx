@@ -1,12 +1,30 @@
 "use client";
 
-import React, { useCallback, useState, useEffect } from "react";
+import React, {
+  useCallback,
+  useState,
+  useEffect,
+  useRef,
+} from "react";
 import Image from "next/image";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
 import "./embla.css";
 import { FeaturedProject } from "@/lib/data/featuredProjectsData";
 import RedButton from "@/components/buttons/RedHoverButton";
+
+gsap.registerPlugin(ScrollTrigger);
+
+const STORAGE_KEY = "fp-carousel-animated";
+
+declare global {
+  interface Window {
+    __fp_carousel_animated?: boolean;
+  }
+}
 
 type CarouselProps = {
   projects: FeaturedProject[];
@@ -15,6 +33,14 @@ type CarouselProps = {
 export const FeaturedProjectsCarousel: React.FC<CarouselProps> = ({
   projects,
 }) => {
+  /* ----------------------------------
+     ROOT REF (CRITICAL)
+  ----------------------------------- */
+  const rootRef = useRef<HTMLDivElement | null>(null);
+
+  /* ----------------------------------
+     EMBLA
+  ----------------------------------- */
   const autoplayOptions = Autoplay({
     delay: 4000,
     stopOnInteraction: false,
@@ -29,20 +55,20 @@ export const FeaturedProjectsCarousel: React.FC<CarouselProps> = ({
     [autoplayOptions]
   );
 
-  /**********************************************
-   * ARROW CLICK (temporary red flash)
-   **********************************************/
-  const [activeArrow, setActiveArrow] = useState<"prev" | "next" | null>(null);
+  /* ----------------------------------
+     ARROWS
+  ----------------------------------- */
+  const [activeArrow, setActiveArrow] = useState<
+    "prev" | "next" | null
+  >(null);
 
   const flashArrow = (arrow: "prev" | "next") => {
     setActiveArrow(arrow);
     setTimeout(() => setActiveArrow(null), 200);
   };
 
-  const getAutoplay = () => emblaApi?.plugins()?.autoplay;
-
   const pauseAutoplay = () => {
-    const ap = getAutoplay();
+    const ap = emblaApi?.plugins()?.autoplay;
     if (!ap) return;
     ap.stop();
     setTimeout(() => ap.play(), 4000);
@@ -60,34 +86,112 @@ export const FeaturedProjectsCarousel: React.FC<CarouselProps> = ({
     pauseAutoplay();
   }, [emblaApi]);
 
-  /**********************************************
-   * PAGINATION DOTS — LAG-FREE VERSION
-   **********************************************/
-  const scrollSnaps = projects.map((_, i) => i); // instant rendering
+  /* ----------------------------------
+     DOTS
+  ----------------------------------- */
   const [selectedIndex, setSelectedIndex] = useState(0);
-
-  const onSelect = useCallback(() => {
-    if (!emblaApi) return;
-    setSelectedIndex(emblaApi.selectedScrollSnap());
-  }, [emblaApi]);
 
   useEffect(() => {
     if (!emblaApi) return;
-    emblaApi.on("select", onSelect);
-    onSelect(); // set initial dot
-  }, [emblaApi, onSelect]);
 
+    const onSelect = () =>
+      setSelectedIndex(emblaApi.selectedScrollSnap());
+
+    emblaApi.on("select", onSelect);
+    onSelect();
+  }, [emblaApi]);
+
+  const [shouldAnimate] = useState(() => {
+    if (typeof window === "undefined") return true;
+    const alreadyAnimated =
+      Boolean(window.__fp_carousel_animated) ||
+      Boolean(sessionStorage.getItem(STORAGE_KEY));
+    return !alreadyAnimated;
+  });
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const handleUnload = () => {
+      if (typeof window !== "undefined") {
+        window.__fp_carousel_animated = undefined;
+      }
+      sessionStorage.removeItem(STORAGE_KEY);
+    };
+
+    window.addEventListener("beforeunload", handleUnload);
+    return () => window.removeEventListener("beforeunload", handleUnload);
+  }, []);
+
+  /* ----------------------------------
+     GSAP SCROLL ANIMATION (WORKING)
+  ----------------------------------- */
+  useEffect(() => {
+    if (!rootRef.current) return;
+
+    const ctx = gsap.context(() => {
+      if (!shouldAnimate) {
+        gsap.set(".fp-header", { y: 0, opacity: 1 });
+        gsap.set(".embla", {
+          y: 0,
+          opacity: 1,
+          filter: "blur(0px)",
+        });
+        return;
+      }
+
+      gsap
+        .timeline({
+          scrollTrigger: {
+            trigger: rootRef.current,
+            start: "top 70%",
+            once: true,
+            markers: false, // change to true if debugging
+            onEnter: () => {
+              if (typeof window === "undefined") return;
+              sessionStorage.setItem(STORAGE_KEY, "true");
+              window.__fp_carousel_animated = true;
+            },
+          },
+        })
+        .from(".fp-header", {
+            y: 60,
+            opacity: 0,
+            stagger: 0.12,
+            duration: 0.85,
+            ease: "power2.out",
+        },
+      )
+        .from(
+          ".embla",
+          {
+      y: 120,
+      scale: 0.92,
+      opacity: 0,
+      filter: "blur(18px)",
+      duration: 1.5,
+      ease: "expo.out",
+    },
+    "-=0.25"
+        );
+    }, rootRef);
+
+    return () => ctx.revert();
+  }, [shouldAnimate]);
+
+  /* ----------------------------------
+     RENDER
+  ----------------------------------- */
   return (
-    <>
-      {/* Header */}
-      <div className="mb-8 flex items-center justify-between w-full">
+    <div ref={rootRef}>
+      {/* HEADER */}
+      <div className="mb-8 flex items-center justify-between w-full fp-header">
         <h2 className="text-[32px] font-semibold text-[#060414]">
           Featured Projects
         </h2>
 
-        <div className="mt-2 flex space-x-3 z-0 lg:z-5000">
+        <div className="mt-2 flex space-x-3 ">
           <button onClick={scrollPrev} className="group">
-            {/* Default (grey) icon */}
             <Image
               src={
                 activeArrow === "prev"
@@ -99,8 +203,6 @@ export const FeaturedProjectsCarousel: React.FC<CarouselProps> = ({
               height={48}
               className="group-hover:hidden"
             />
-
-            {/* Hover state → red */}
             <Image
               src="/icons/arrow-left-red.png"
               alt="Prev Hover"
@@ -111,7 +213,6 @@ export const FeaturedProjectsCarousel: React.FC<CarouselProps> = ({
           </button>
 
           <button onClick={scrollNext} className="group">
-            {/* Default (grey) icon */}
             <Image
               src={
                 activeArrow === "next"
@@ -123,8 +224,6 @@ export const FeaturedProjectsCarousel: React.FC<CarouselProps> = ({
               height={48}
               className="group-hover:hidden"
             />
-
-            {/* Hover state → red */}
             <Image
               src="/icons/arrow-right-red.png"
               alt="Next Hover"
@@ -136,23 +235,15 @@ export const FeaturedProjectsCarousel: React.FC<CarouselProps> = ({
         </div>
       </div>
 
-      {/* Carousel */}
+      {/* CAROUSEL */}
       <div className="embla relative" ref={emblaRef}>
         <div className="embla__container">
-          {projects.map((project) => (
+          {projects.map((project, index) => (
             <div
               key={project.id}
               className="embla__slide_project px-2 rounded-[24px] overflow-hidden"
             >
-              {/* Banner Image */}
-              <div
-                className="
-                  relative w-full 
-                  h-[240px] sm:h-[320px] md:h-[400px] 
-                  lg:h-[480px] xl:h-[550px]
-                  rounded-[24px] overflow-hidden
-                "
-              >
+              <div className="relative w-full h-[240px] sm:h-[320px] md:h-[400px] lg:h-[480px] xl:h-[550px] rounded-[24px] overflow-hidden">
                 <Image
                   src={project.imageSrc}
                   alt={project.title}
@@ -162,13 +253,12 @@ export const FeaturedProjectsCarousel: React.FC<CarouselProps> = ({
                 />
               </div>
 
-              {/* CTA Section */}
-              <div className="mt-6 flex flex-col lg:flex-row w-full lg:items-center lg:justify-between bg-white py-6">
+              {/* CTA */}
+              <div className="flex flex-col lg:flex-row w-full lg:items-center lg:justify-between bg-white py-6">
                 <div className="max-w-[650px]">
                   <h3 className="text-[22px] font-semibold text-[#060414] leading-[40px]">
                     {project.title}
                   </h3>
-
                   <p className="text-[14px] text-[#121926] leading-[22px]">
                     {project.description}
                   </p>
@@ -183,29 +273,7 @@ export const FeaturedProjectsCarousel: React.FC<CarouselProps> = ({
             </div>
           ))}
         </div>
-
-        {/* ⭐ FIXED DOTS (no lag, inside carousel visually) */}
-        <div
-          className="
-          absolute 
-          left-0 right-0 
-          top-[260px] sm:top-[340px] md:top-[420px] lg:top-[494px] xl:top-[570px]
-          flex justify-center space-x-2 
-          z-20
-        "
-        >
-          {scrollSnaps.map((i) => (
-            <button
-              key={i}
-              onClick={() => emblaApi?.scrollTo(i)}
-              className={`
-                h-[8px] w-[8px] rounded-full transition-all
-                ${selectedIndex === i ? "bg-[#E52445]" : "bg-[#DCE6F9]"}
-              `}
-            />
-          ))}
-        </div>
       </div>
-    </>
+    </div>
   );
 };

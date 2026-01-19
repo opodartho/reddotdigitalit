@@ -17,57 +17,64 @@ export default function SolutionCard({
   return (
     <div
       className={`
-    group
-    bg-[#F7F7FD]
-    transition-all duration-300 cursor-pointer
-    ${isCarousel
-          ? "w-[272px] h-[309px] rounded-[13.2px] p-1 hover:border-2"
-          : "rounded-[15px] p-1 hover:scale-105 hover:shadow-xl"}
-  `}
+        ${isCarousel ? "w-[305px] h-[172px]" : "w-full sm:w-[305px] h-[200px]"}
+        bg-white
+        rounded-[8px]
+        shadow-[0px_0px_49px_#F0EEFB]
+        cursor-pointer
+        ${!isCarousel ? "group" : ""}
+      `}
     >
-
-      {/* IMAGE */}
       <div
         className={`
-          overflow-hidden
-          ${isCarousel
-            ? "w-[262px] h-[192px] rounded-[8.8px]"
-            : "w-full h-[220px] rounded-[15px]"}
+          flex flex-col h-full
+          ${isCarousel ? "p-4" : "px-[20px] py-[24px]"}
         `}
       >
-        <Image
-          src={item.image}
-          alt={item.title}
-          width={262}
-          height={192}
-          className="w-full h-full object-cover"
-        />
-      </div>
+        {/* ICON */}
+        {item.image && (
+          <div className="mb-[16px]">
+            <Image
+              src={item.image}
+              alt={item.title}
+              width={48}
+              height={48}
+              className="object-contain"
+            />
+          </div>
+        )}
 
-      {/* TEXT */}
-      <div className={isCarousel ? "pt-[12px] px-[6px]" : "p-5"}>
+        {/* TITLE */}
         <h3
           className={`
-    font-poppins font-semibold
-    text-[#121926]
-    group-hover:text-[#E52445]
-    transition-colors duration-300
-    ${isCarousel
-              ? "text-[19.35px] leading-[23px] mb-[6px]"
-              : "text-[22px] leading-[26px] mb-2"}
-  `}
-        >
+            font-poppins font-semibold
+            text-[18px] leading-[27px]
+            text-[#121926]
+            mb-[8px]
 
+            ${
+              !isCarousel
+                ? `
+                  transition-colors
+                  duration-[240ms]
+                  ease-[cubic-bezier(0.4,0,0.2,1)]
+                  group-hover:text-[#E52445]
+                `
+                : ""
+            }
+          `}
+        >
           {item.title}
         </h3>
 
+        {/* DESCRIPTION */}
         <p
-          className={`
-            font-poppins text-[#121926] line-clamp-2
-            ${isCarousel
-              ? "text-[12.3px] leading-[19px]"
-              : "text-[14px] leading-[22px]"}
-          `}
+          className="
+            font-poppins font-normal
+            text-[14px] leading-[22px]
+            text-[#697586]
+            line-clamp-2
+          "
         >
           {item.description}
         </p>

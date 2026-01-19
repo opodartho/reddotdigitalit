@@ -12,27 +12,28 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
-import { getNavLinks, NavLink } from "@/lib/api/fetchNavData";
+import { NavLink } from "@/lib/api/fetchNavData";
+import { staticNavData } from "@/lib/data/navBarData";
 import { cn } from "@/lib/utils";
 import { Menu, X } from "lucide-react";
 import SplitTextHover from "../animation/SplitTextHover";
+import ScheduleCallModal from "@/components/ui/ScheduleCallModal";
 
 export function NavBar() {
-  const [navLinks, setNavLinks] = useState<NavLink[]>([]);
+  const navLinks: NavLink[] = staticNavData;
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [navValue, setNavValue] = useState("");
   const pathname = usePathname();
+
+  // Close navigation menu when route changes
+  useEffect(() => {
+    setNavValue("");
+  }, [pathname]);
 
   // Check if current page is home page
   const isHomePage = pathname === "/";
-
-  useEffect(() => {
-    async function fetchData() {
-      const data = await getNavLinks();
-      setNavLinks(data);
-    }
-    fetchData();
-  }, []);
 
   useEffect(() => {
     const handleResize = () => {
@@ -111,7 +112,7 @@ export function NavBar() {
               </Link>
 
               {/* Desktop Navigation */}
-              <NavigationMenu className="hidden h-full justify-center md:flex">
+              <NavigationMenu className="hidden h-full justify-center md:flex" value={navValue} onValueChange={setNavValue}>
                 <NavigationMenuList className="h-full space-x-8">
                   {navLinks.map((link) => (
                     <NavigationMenuItem key={link.title}>
@@ -133,17 +134,82 @@ export function NavBar() {
                             {link.title}
                           </NavigationMenuTrigger>
                           <NavigationMenuContent>
-                            <ul className="grid w-[400px] gap-1 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-                              {link.items?.map((item) => (
-                                <ListItem
-                                  key={item.title}
-                                  title={item.title}
-                                  href={item.href}
-                                >
-                                  {item.description}
-                                </ListItem>
-                              ))}
-                            </ul>
+                            {/* Figma: 1075px x 377px at 1920px viewport */}
+                            <div
+                              className="
+                                flex flex-col
+                                bg-white
+                                rounded-[16px] lg:rounded-[20px]
+                                w-[600px] lg:w-[800px] xl:w-[900px] 2xl:w-[1075px]
+                                px-[24px] lg:px-[32px] xl:px-[38px]
+                                pt-[20px] lg:pt-[22px] xl:pt-[25px]
+                                pb-[28px] lg:pb-[36px] xl:pb-[44px]
+                              "
+                            >
+                              {/* Dropdown Title */}
+                              <h3
+                                className="
+                                  font-poppins
+                                  font-medium
+                                  text-black
+                                  text-[22px] lg:text-[26px] xl:text-[28px] 2xl:text-[32px]
+                                  leading-[1.5]
+                                  mb-[20px] lg:mb-[28px] xl:mb-[35px]
+                                "
+                              >
+                                {link.title}
+                              </h3>
+
+                              {/* 3-column grid for items */}
+                              <ul
+                                className="
+                                  grid grid-cols-3
+                                  gap-x-[60px] lg:gap-x-[100px] xl:gap-x-[150px] 2xl:gap-x-[200px]
+                                  gap-y-[16px] lg:gap-y-[20px] xl:gap-y-[24px]
+                                  mb-[28px] lg:mb-[36px] xl:mb-[48px]
+                                "
+                              >
+                                {link.items?.map((item) => (
+                                  <li key={item.title}>
+                                    <Link
+                                      href={item.href}
+                                      className="
+                                        font-poppins
+                                        font-medium
+                                        text-[14px] lg:text-[15px] xl:text-[16px]
+                                        leading-[24px]
+                                        text-black
+                                        hover:text-[#E52445]
+                                        transition-colors duration-200
+                                        whitespace-nowrap
+                                      "
+                                    >
+                                      {item.title}
+                                    </Link>
+                                  </li>
+                                ))}
+                              </ul>
+
+                              {/* Schedule a Call button */}
+                              <button
+                                onClick={() => setIsModalOpen(true)}
+                                className="
+                                  w-[160px] lg:w-[180px] xl:w-[204px]
+                                  h-[44px] lg:h-[50px] xl:h-[56px]
+                                  bg-[#E52445]
+                                  hover:bg-[#c91f3b]
+                                  rounded-[10px]
+                                  font-poppins
+                                  font-medium
+                                  text-[14px] lg:text-[15px] xl:text-[16px]
+                                  leading-[24px]
+                                  text-white
+                                  transition-colors duration-200
+                                "
+                              >
+                                Schedule a Call
+                              </button>
+                            </div>
                           </NavigationMenuContent>
                         </>
                       )}
@@ -232,31 +298,13 @@ export function NavBar() {
           </Link>
         </div>
       )}
+
+      {/* Schedule Call Modal */}
+      <ScheduleCallModal
+        open={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
     </>
   );
 }
 
-// ListItem component remains the same
-const ListItem = ({ className, title, children, href, ...props }: any) => {
-  return (
-    <li>
-      <NavigationMenuLink asChild>
-        <a
-          href={href}
-          className={cn(
-            "block rounded-2xl p-4 border border-transparent transition-colors duration-200 hover:text-red-500 text-gray-900",
-            className
-          )}
-          {...props}
-        >
-          <div className="text-sm font-medium transition-colors duration-200">
-            {title}
-          </div>
-          <p className="text-sm line-clamp-2 text-gray-600">
-            {children}
-          </p>
-        </a>
-      </NavigationMenuLink>
-    </li>
-  );
-};

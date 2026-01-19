@@ -1,5 +1,5 @@
 import React from "react";
-import Image from "next/image";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { TransformItem } from "@/lib/data/transformData";
 
@@ -39,12 +39,12 @@ export function TransformCard({
     
   "
             >
-              <a href={buttonLink} className="flex items-center gap-2 text-white">
+              <Link href={buttonLink} className="flex items-center gap-2 text-white">
                 {buttonText}
                 <span className="--font-poppins font-medium text-[16px] leading-[100%] transition-transform duration-300 group-hover:translate-x-1">
                   →
                 </span>
-              </a>
+              </Link>
             </Button>
 
           </div>

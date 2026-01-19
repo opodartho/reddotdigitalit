@@ -10,48 +10,48 @@ export const productSolutions: ProductSolutionItem[] = [
     title: "MFS",
     description:
       "Empowering financial institutions with secure, scalable, and fully regulated solutions.",
-    image: "/images/productsolution/mfs.jpg",
+    image: "/images/product_icons/mfs.png",
   },
   {
     title: "DFS",
     description:
       "Transforming digital payments with seamless, flexible, and future-ready financial systems.",
-    image: "/images/productsolution/dfs.jpg",
+    image: "/images/product_icons/dfs.png",
   },
   {
     title: "Human Resources",
     description:
       "Simplifying workforce management through intelligent automation and digital workflows.",
-    image: "/images/productsolution/hr.jpg",
+    image: "/images/product_icons/hmrs.png",
   },
   {
     title: "ERP & eCommerce",
     description:
       "Driving business growth with customizable, user-centric digital commerce solutions.",
-    image: "/images/productsolution/erp.jpg",
+    image: "/images/product_icons/ecom.png",
   },
   {
     title: "IOT Backend",
     description:
       "Connecting devices and data with robust backend infrastructure for seamless operations.",
-    image: "/images/productsolution/iot.jpg",
+    image: "/images/product_icons/iot.png",
   },
   {
     title: "Streaming Solution App",
     description:
       "Delivering uninterrupted, high-quality digital entertainment experiences across devices.",
-    image: "/images/productsolution/stream.jpg",
+    image: "/images/product_icons/stream.png",
   },
   {
     title: "Customer Experience",
     description:
       "Enhancing engagement through personalized, omnichannel digital experiences.",
-    image: "/images/productsolution/cust.jpg",
+    image: "/images/product_icons/cust.png",
   },
   {
     title: "Sales & Distribution",
     description:
       "Optimizing field operations with data-powered tools for smarter sales and distribution.",
-    image: "/images/productsolution/sale.jpg",
+    image: "/images/product_icons/sales.png",
   },
 ];

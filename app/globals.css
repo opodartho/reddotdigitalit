@@ -147,6 +147,37 @@
   box-shadow: 0 12px 48px 0 rgb(49 1 139 / 0.07);
 }
 
+/* Initial hidden state */
+.who-about-top-text,
+.who-about-bottom-images {
+  opacity: 0;
+  transition:
+    transform 1.05s cubic-bezier(0.3, 0, 0.2, 1),
+    opacity 1.05s cubic-bezier(0.3, 0, 0.2, 1);
+}
+
+/* Slide directions */
+.who-about-top-text {
+  transform: translateX(-40px);
+}
+
+.who-about-bottom-images {
+  transform: translateX(40px);
+}
+
+/* Visible state */
+.who-about-top-text-visible,
+.who-about-bottom-images-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Optional stagger */
+.who-about-bottom-images-visible {
+  transition-delay: 0.25s;
+}
+
+
 .leaflet-control-attribution {
   display: none !important;
 }
@@ -197,3 +228,81 @@
 #play-cursor::after {
   content: "PLAY REEL";
 }
+
+.coverage-point {
+  opacity: 0;
+  transform: translateY(6px);
+  animation: coverageFadeUp 0.38s ease forwards;
+}
+
+@keyframes coverageFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.ao-images-enter {
+  opacity: 0;
+  transform: translateX(32px);
+  animation: aoImagesEnter 0.9s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes aoImagesEnter {
+  from {
+    opacity: 0;
+    transform: translateX(32px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.ao-text-enter {
+  opacity: 0;
+  transform: translateX(-32px);
+  animation: aoTextEnter 0.9s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes aoTextEnter {
+  from {
+    opacity: 0;
+    transform: translateX(-32px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes marquee-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marquee-right {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.animate-marquee-left {
+  animation: marquee-left 35s linear infinite;
+}
+
+.animate-marquee-right {
+  animation: marquee-right 35s linear infinite;
+}
+

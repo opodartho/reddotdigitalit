@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import { FeaturedProjectsCarousel } from "./FeaturedProjectsCarousel";
 import { featuredProjects } from "@/lib/data/featuredProjectsData";

@@ -12,7 +12,7 @@ export const featuredProjects: FeaturedProject[] = [
     title: "Human Resource Management Solution",
     description:
       "HRMS is committed to providing end-to-end HR solutions for leaders through the times of growth and transformation (and uncertainty).",
-    imageSrc: "/images/projects/hrms.png",
+    imageSrc: "/images/projects/hrms.jpg",
     href: "/projects/hrms",
   },
     {
@@ -20,7 +20,7 @@ export const featuredProjects: FeaturedProject[] = [
     title: "TeleCash App",
     description:
       "Unlock secure, fast, and convenient mobile transactions. Unlock secure, fast, and convenient mobile transactions",
-    imageSrc: "/images/projects/telecash.png",
+    imageSrc: "/images/projects/telecash.jpg",
     href: "/projects/telecash",
   },
   {
@@ -28,7 +28,7 @@ export const featuredProjects: FeaturedProject[] = [
     title: "Mobile Financial Service",
     description:
       "Transferring Banking Experience",
-    imageSrc: "/images/projects/mfs.png",
+    imageSrc: "/images/projects/mfs.jpg",
     href: "/projects/mfs",
   },
 
@@ -37,7 +37,7 @@ export const featuredProjects: FeaturedProject[] = [
     title: "Digital Financial Service",
     description:
       "Transforming Banking for the Digital Age",
-    imageSrc: "/images/projects/dfs.png",
+    imageSrc: "/images/projects/dfs.jpg",
     href: "/projects/agent-locator",
   },
 ];

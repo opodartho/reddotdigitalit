@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import { gsap } from "gsap";
 
 type Props = {
@@ -9,27 +9,21 @@ type Props = {
 };
 
 export default function SplitTextHover({ text, className }: Props) {
-  const wrapperRef = useRef<HTMLDivElement | null>(null);
+  const wrapperRef = useRef<HTMLSpanElement | null>(null);
+  const chars = useMemo(
+    () => text.split("").map((c) => (c === " " ? "\u00A0" : c)),
+    [text]
+  );
 
   useEffect(() => {
     const wrapper = wrapperRef.current;
     if (!wrapper) return;
 
-    // Handle spacing: convert normal space → &nbsp;
-    const safeText = text.replace(/\s/g, "\u00A0");
+    const charEls = wrapper.querySelectorAll(".char");
 
-    // Split into spans
-    wrapper.innerHTML = safeText
-      .split("")
-      .map((c) => `<span class="char inline-block">${c}</span>`)
-      .join("");
-
-    const chars = wrapper.querySelectorAll(".char");
-
-    // Hover animation
     const handleEnter = () => {
       gsap.fromTo(
-        chars,
+        charEls,
         { y: 0, opacity: 1 },
         {
           y: -12,
@@ -41,7 +35,7 @@ export default function SplitTextHover({ text, className }: Props) {
       );
 
       gsap.fromTo(
-        chars,
+        charEls,
         { y: 16, opacity: 0 },
         {
           y: 0,
@@ -65,6 +59,12 @@ export default function SplitTextHover({ text, className }: Props) {
     <span
       ref={wrapperRef}
       className={`split-text relative inline-block cursor-pointer ${className}`}
-    />
+    >
+      {chars.map((c, i) => (
+        <span key={`${c}-${i}`} className="char inline-block">
+          {c}
+        </span>
+      ))}
+    </span>
   );
 }
