@@ -38,10 +38,12 @@ export default function TeamGallery({
   );
 
   const totalSlides = data.length;
+  const loopData =
+    totalSlides > 0 && totalSlides < 6 ? [...data, ...data] : data;
 
   // 🔥 Track snaps
   useEffect(() => {
-    if (!api) return;
+    if (!api || totalSlides === 0) return;
 
     const handleSelect = () => {
       const raw = api.selectedScrollSnap(); // includes clones
@@ -86,14 +88,15 @@ export default function TeamGallery({
               !m-0 !p-0 [&>*]:!pl-0 [&>*]:!ml-0
             "
           >
-            {data.map((item, index) => (
+            {loopData.map((item, index) => (
               <CarouselItem
-                key={item.id}
+                key={`${item.id}-${index}`}
                 className={`
                   flex-shrink-0
                   basis-[288px] sm:basis-[350px]
                   ${
-                    index === totalSlides - 1
+                    totalSlides > 0 &&
+                    index % totalSlides === totalSlides - 1
                       ? "mr-[24px]"
                       : "mr-[12px] sm:mr-[24px]"
                   }

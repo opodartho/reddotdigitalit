@@ -166,6 +166,7 @@ export default function FirstHeroRedesignSection({
         variants={heroStagger}
         initial={shouldAnimate ? "hidden" : "show"}
         animate="show"
+        suppressHydrationWarning
         className="relative flex flex-col items-center"
       >
         {/* ---------------- BADGES ---------------- */}
@@ -211,6 +212,14 @@ export default function FirstHeroRedesignSection({
         >
           Crafting Innovation, Delivering Excellence
         </motion.h1>
+        <motion.p
+          variants={fadeUp}
+          className="relative max-w-[680px] mt-4 text-center text-[16px] sm:text-[18px] leading-[22px] text-[#121926A6] px-4"
+        >
+          We turn ideas into innovative tech solutions with custom software that{" "}
+          <br />
+          boosts efficiency and growth.
+        </motion.p>
 
         {/* ---------------- DESKTOP ICONS ---------------- */}
         <motion.div
@@ -271,7 +280,7 @@ export default function FirstHeroRedesignSection({
                   <img
                     src={slide.imageUrl}
                     alt=""
-                    className="w-[60%] h-[60%] sm:w-full sm:h-full object-contain cursor-pointer"
+                    className="w-60% h-60% sm:w-100% sm:h-100% object-contain cursor-pointer"
                     onClick={() => router.push(slide.route)}
                   />
                 </CarouselItem>
@@ -286,7 +295,7 @@ export default function FirstHeroRedesignSection({
           variants={fadeUp}
           whileHover={{ scale: 1.04 }}
           whileTap={{ scale: 0.98 }}
-          className="mt-[46px] sm:mt-[54px]"
+          className="mt-[46px] sm:mt-[54px] mb-[56px] lg:mb-0"
         >
           <WhiteButton
             className="w-[248px]"

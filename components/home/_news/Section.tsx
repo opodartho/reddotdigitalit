@@ -76,14 +76,15 @@ const News = ({ newsData }: NewsSectionProps) => {
                   transitionDelay: hasAnimated ? `${index * 200}ms` : "0ms",
                 }}
                 className={`
-                  will-change-[opacity,transform,filter]
-                  transition-[opacity,transform,filter]
-                  duration-[900ms]
+                  will-change-[opacity,transform]
+                  transition-[opacity,transform]
+                  duration-[1200ms]
                   ease-[cubic-bezier(0.22,1,0.36,1)]
+                  transform-gpu
                   ${
                     hasAnimated
-                      ? "opacity-100 translate-y-0 blur-0"
-                      : "opacity-0 translate-y-6 blur-[4px]"
+                      ? "opacity-100 translate-y-0"
+                      : "opacity-0 translate-y-6"
                   }
                 `}
               >

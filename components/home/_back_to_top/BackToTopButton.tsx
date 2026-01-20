@@ -50,7 +50,7 @@ const BackToTop = () => {
               <path d="M12 19V5M5 12l7-7 7 7" />
             </svg>
           </div>
-          <span className="lg:ml-1 lg:pl-0.25 text-base font-semibold text-gray-800 lg:block hidden">
+          <span className=" lg:pl-0.25 text-base font-semibold text-gray-800 lg:block hidden">
             Back to Top
           </span>
         </button>

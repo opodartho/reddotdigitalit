@@ -169,7 +169,7 @@ export const FeaturedProjectsCarousel: React.FC<CarouselProps> = ({
       scale: 0.92,
       opacity: 0,
       filter: "blur(18px)",
-      duration: 1.5,
+      duration: 1.2,
       ease: "expo.out",
     },
     "-=0.25"
@@ -186,11 +186,11 @@ export const FeaturedProjectsCarousel: React.FC<CarouselProps> = ({
     <div ref={rootRef}>
       {/* HEADER */}
       <div className="mb-8 flex items-center justify-between w-full fp-header">
-        <h2 className="text-[32px] font-semibold text-[#060414]">
+        <h2 className="sm:text-[32px] font-semibold text-[#060414]">
           Featured Projects
         </h2>
 
-        <div className="mt-2 flex space-x-3 ">
+        <div className="mt-2 flex space-x-3 relative lg:z-10">
           <button onClick={scrollPrev} className="group">
             <Image
               src={

@@ -5,9 +5,7 @@ import News from "@/components/home/_news/Section";
 import Blogs from "@/components/home/_blogs/Section";
 import { getLatestNews } from "@/lib/api/fetchNews";
 import { getLatestBlogs } from "@/lib/api/fetchBlogs";
-import ProductSolution from "@/components/home/_product_solution/Section";
 import ReadyToTransform from "@/components/home/_ready_to_transform/Section";
-import HeroSection from "@/components/home/_hero_section/Section";
 import AreaOfOperations from "@/components/home/AreaOfOperations/Section";
 import BackToTop from "@/components/home/_back_to_top/BackToTopButton";
 import { getTestimonials } from "@/lib/api/fetchTestimonials";
@@ -20,15 +18,10 @@ import { getProductSolutions } from "@/lib/api/fetchProductSolutions";
 import { getTransformData } from "@/lib/api/fetchTransform";
 import { ServiceWeServeTabs } from "@/components/home/_service_we_serve/ServiceWeServe";
 import { getPartners } from "@/lib/api/fetchPartners";
-// import PartnersSection from "@/components/home/_trusted_by_partners/Section";
 import TestimonialSection from "@/components/home/_testimonial/Section";
-import { NavBar } from "@/components/NavBar/NavBar";
-import TrustedPartners from "./TrustedPartner/NewSection";
-
+import TrustedPartners from "./TrustedPartner/TrustedPartners";
 import FeaturedProjectsSection from "./featured-projects/FeaturedProjectsSection";
 import Solutions from "@/components/home/_product_solution/Section";
-import FirstHeroSection from "./_first_hero";
-
 import { getHeroes } from "@/lib/api/home-hero-redesign/fetchHero";
 import FirstHeroRedesignSection from "./_first_hero_redesign/Section";
 import ReelSection from "./ReelSection";
@@ -68,8 +61,7 @@ export const Landing = async () => {
       <div >
          
          <FirstHeroRedesignSection heroSlidesData={heroSlidesData}/>
-         <FeaturedProjectsSection />
-             
+         <FeaturedProjectsSection />     
         <ServicesCarousel services={servicesData} />
         <BackToTop />
         <Solutions solutions={productSolutionsData} />

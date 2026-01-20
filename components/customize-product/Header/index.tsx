@@ -21,10 +21,10 @@ export default function Header({ headerData, Id }: HeaderProps) {
 
     >
       {/* 🔹 Content Wrapper */}
-   <div className=" px-[16px] sm:px-[80px] flex flex-col lg:flex-row lg:justify-between lg:items-start pb:[64px] lg:pb-[60px] max-w-[1440px] mx-auto">
+   <div className=" px-[16px] sm:px-[80px] flex flex-col lg:flex-row lg:justify-between lg:items-stretch pb:[64px] lg:pb-[60px] max-w-[1440px] mx-auto">
         
         {/* ================= LEFT CONTENT ================= */}
-         <div className="order-2 lg:order-1 lg:max-w-[630px] flex flex-col justify-start ">
+         <div className="order-2 lg:order-1 lg:max-w-[630px] flex flex-col justify-start lg:justify-center lg:min-h-full">
           
           {/* 🔹 Breadcrumbs */}
           {headerData[indexNumber]?.breadcrumbs && (
@@ -69,7 +69,7 @@ export default function Header({ headerData, Id }: HeaderProps) {
           </h1>
 
           {/* 🔹 Description */}
-        <p className="font-poppins font-normal text-[#121926] text-[14px] md:text-[16px] lg:text-[18px] leading-[22px] md:leading-[26px] lg:leading-[30px] lg:max-w-[630px] xl:min-h-[90px] mb-[40px] lg:mb-[48px]">
+        <p className="font-poppins font-normal text-[#121926] text-[14px] md:text-[16px] lg:text-[18px] leading-[22px] md:leading-[26px] lg:leading-[30px] lg:max-w-[630px]  mb-[40px] lg:mb-[48px]">
             {headerData[indexNumber]?.description || ""}
           </p>
 
@@ -94,7 +94,7 @@ export default function Header({ headerData, Id }: HeaderProps) {
                   <img
                     src={headerData[indexNumber]?.imageUrl || "/images/default.svg"}
                     alt={headerData[indexNumber]?.title || ""}
-                    className="lg:w-[385px] w-full object-contain"
+                    className="lg:w-[385px] w-full object-contain cursor-pointer"
                     style={{ transformStyle: "preserve-3d" }}
                   />
                 </CardItem>

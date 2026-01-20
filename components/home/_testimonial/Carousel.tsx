@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useCallback, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import Image from "next/image";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
@@ -71,14 +71,62 @@ const SeeMoreText = ({ text }: { text: string }) => {
 export const TestimonialCarousel: React.FC<CarouselProps> = ({
   testimonials,
 }) => {
-  const autoplayOptions = Autoplay({ delay: 4000, stopOnInteraction: false });
+  const sectionRef = useRef<HTMLElement | null>(null);
 
-  const [emblaRef, emblaApi] = useEmblaCarousel(
-    {
+  const initialShouldAnimate =
+    typeof window !== "undefined"
+      ? !(window as typeof globalThis & {
+          __testimonialSectionAnimated?: boolean;
+        }).__testimonialSectionAnimated
+      : true;
+
+  const [shouldAnimate, setShouldAnimate] = useState(initialShouldAnimate);
+  const [hasAnimated, setHasAnimated] = useState(!initialShouldAnimate);
+
+  useEffect(() => {
+    if (!shouldAnimate || !sectionRef.current) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setHasAnimated(true);
+          setShouldAnimate(false);
+
+          (
+            window as typeof globalThis & {
+              __testimonialSectionAnimated?: boolean;
+            }
+          ).__testimonialSectionAnimated = true;
+
+          observer.disconnect();
+        }
+      },
+      {
+        threshold: 0.35,
+        rootMargin: "0px 0px -10% 0px",
+      }
+    );
+
+    observer.observe(sectionRef.current);
+    return () => observer.disconnect();
+  }, [shouldAnimate]);
+
+  const autoplayOptions = useMemo(
+    () => Autoplay({ delay: 4000, stopOnInteraction: false }),
+    []
+  );
+
+  const emblaOptions = useMemo<Parameters<typeof useEmblaCarousel>[0]>(
+    () => ({
       loop: true,
       align: "start",
       slidesToScroll: 1,
-    },
+    }),
+    []
+  );
+
+  const [emblaRef, emblaApi] = useEmblaCarousel(
+    emblaOptions,
     [autoplayOptions]
   );
 
@@ -115,9 +163,22 @@ export const TestimonialCarousel: React.FC<CarouselProps> = ({
   };
 
   return (
-    <>
+    <section ref={sectionRef}>
       {/* HEADER */}
-      <div className="mb-10 flex items-start justify-between w-full pr-4 lg:pr-[80px]">
+      <div
+        style={{
+          opacity: hasAnimated ? 1 : 0,
+          transform: hasAnimated
+            ? "translateY(0) rotateX(0deg)"
+            : "translateY(28px) rotateX(8deg)",
+          filter: hasAnimated ? "blur(0px)" : "blur(8px)",
+          transitionProperty: "opacity, transform, filter",
+          transitionDuration: "800ms",
+          transitionTimingFunction: "cubic-bezier(0.16,1,0.3,1)",
+          willChange: "opacity, transform, filter",
+        }}
+        className="mb-10 flex items-start justify-between w-full pr-4 lg:pr-[80px]"
+      >
         <div>
           <h2 className="pl-[8px] text-[24px] lg:text-[32px] leading-[30px] lg:leading-[40px] font-semibold tracking-[0.03px] text-[#060414]  pr-[10px]">
             Hear From Our Clients!
@@ -125,7 +186,21 @@ export const TestimonialCarousel: React.FC<CarouselProps> = ({
         </div>
 
         {/* ARROWS */}
-        <div className="flex mt-2 space-x-3 z-5000">
+        <div
+          style={{
+            opacity: hasAnimated ? 1 : 0,
+            transform: hasAnimated
+              ? "translateX(0) scale(1)"
+              : "translateX(24px) scale(0.96)",
+            filter: hasAnimated ? "blur(0px)" : "blur(8px)",
+            transitionProperty: "opacity, transform, filter",
+            transitionDuration: "800ms",
+            transitionTimingFunction: "cubic-bezier(0.16,1,0.3,1)",
+            transitionDelay: hasAnimated ? "120ms" : "0ms",
+            willChange: "opacity, transform, filter",
+          }}
+          className="flex mt-2 space-x-3 z-5000"
+        >
 
           {/* LEFT ARROW */}
           <button onClick={scrollPrev} className="group">
@@ -179,7 +254,22 @@ export const TestimonialCarousel: React.FC<CarouselProps> = ({
       </div>
 
       {/* CAROUSEL */}
-      <div className="embla w-full h-auto" ref={emblaRef}>
+      <div
+        className="embla w-full h-auto"
+        ref={emblaRef}
+        style={{
+          opacity: hasAnimated ? 1 : 0,
+          transform: hasAnimated
+            ? "translateY(0) scale(1)"
+            : "translateY(36px) scale(0.98)",
+          filter: hasAnimated ? "blur(0px)" : "blur(10px)",
+          transitionProperty: "opacity, transform, filter",
+          transitionDuration: "900ms",
+          transitionTimingFunction: "cubic-bezier(0.16,1,0.3,1)",
+          transitionDelay: hasAnimated ? "160ms" : "0ms",
+          willChange: "opacity, transform, filter",
+        }}
+      >
         <div className="embla__container">
           {testimonials.map((testimonial) => (
             <div className="embla__slide px-2" key={testimonial.id}>
@@ -246,6 +336,6 @@ export const TestimonialCarousel: React.FC<CarouselProps> = ({
           ))}
         </div>
       </div>
-    </>
+    </section>
   );
 };

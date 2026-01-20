@@ -42,7 +42,7 @@ export type FooterData = {
 // --- STATIC DATA ---
 
 export const staticFooterData: FooterData = {
-  logoUrl: "/redDot-logo.png",
+  logoUrl: "/images/RedDotLogoNew.png",
   columns: [
     {
       title: "Who we are",

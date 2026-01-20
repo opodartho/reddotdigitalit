@@ -10,7 +10,7 @@ export const LocationSection = ({ data }: { data: LocationData }) => {
   });
 
   return (
-    <section className="w-full bg-white py-[71px] md:py-[110px]">
+    <section className="w-full bg-white py-[71px] md:py-[80px]">
       <div className="px-[16px] sm:px-[80px] flex flex-col lg:flex-row justify-between items-start lg:gap-[80px]">
         {/* 🗺️ LEFT — Map */}
         <div className="w-full lg:container [634px]">

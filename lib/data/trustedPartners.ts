@@ -1,0 +1,28 @@
+// lib/data/trustedPartners.ts
+
+export const trustedPartnerLogos: string[] = [
+  "/images/robi.svg",
+  "/images/scb.svg",
+  "/images/tap.svg",
+  "/images/bat.svg",
+  "/images/ada.svg",
+  "/images/bida.svg",
+  "/images/unicef.svg",
+  "/images/smart.svg",
+  "/images/jamuna.svg",
+  "/images/fsib.svg",
+  "/images/lpgas.svg",
+  "/images/rVentures.svg",
+  "/images/idcol.svg",
+  "/images/undp.svg",
+  "/images/citizens.svg",
+  "/images/ucb.svg",
+  "/images/telecash.svg",
+  "/images/bashundhara.svg",
+  "/images/akash.svg",
+  "/images/egcb.svg",
+  "/images/wateraid.svg",
+  "/images/sebl.svg",
+  "/images/pbl.svg",
+  "/images/mbl.svg",
+];

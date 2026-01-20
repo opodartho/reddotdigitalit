@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -18,6 +18,7 @@ import { cn } from "@/lib/utils";
 import { Menu, X } from "lucide-react";
 import SplitTextHover from "../animation/SplitTextHover";
 import ScheduleCallModal from "@/components/ui/ScheduleCallModal";
+import WhiteButton from "../buttons/WhiteHoverButton";
 
 export function NavBar() {
   const navLinks: NavLink[] = staticNavData;
@@ -26,10 +27,13 @@ export function NavBar() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [navValue, setNavValue] = useState("");
   const pathname = usePathname();
+  const bodyOverflowRef = useRef<string | null>(null);
+  const mobileMenuId = "mobile-nav-menu";
 
   // Close navigation menu when route changes
   useEffect(() => {
     setNavValue("");
+    setIsMobileMenuOpen(false);
   }, [pathname]);
 
   // Check if current page is home page
@@ -71,6 +75,38 @@ export function NavBar() {
     };
   }, [isHomePage]); // Add isHomePage as dependency
 
+  useEffect(() => {
+    if (typeof document === "undefined") return;
+
+    if (!isMobileMenuOpen) {
+      if (bodyOverflowRef.current !== null) {
+        document.body.style.overflow = bodyOverflowRef.current;
+        bodyOverflowRef.current = null;
+      }
+      return;
+    }
+
+    if (bodyOverflowRef.current === null) {
+      bodyOverflowRef.current = document.body.style.overflow;
+    }
+    document.body.style.overflow = "hidden";
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setIsMobileMenuOpen(false);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+      if (bodyOverflowRef.current !== null) {
+        document.body.style.overflow = bodyOverflowRef.current;
+        bodyOverflowRef.current = null;
+      }
+    };
+  }, [isMobileMenuOpen]);
+
   // Determine text color based on page and scroll state
   const getTextColorClass = () => {
 
@@ -88,10 +124,10 @@ export function NavBar() {
 
   return (
     <>
-      <div className="lg:flex lg:justify-center sticky lg:top-[22px] z-1000">
+      <div className="lg:flex lg:justify-center sticky lg:top-[22px] z-1000 pointer-events-none">
         <div className="absolute bg-transparent top-0 lg:flex lg:justify-center lg:items-center z-100 pt-[22px] w-full">
           <nav className={cn(
-            " px-4 z-1000 top-0 lg:w-[1280px] h-[66px] lg:h-[76px] rounded-4xl backdrop-blur-2xl opacity-100 border-b shadow-[0_4px_29px_rgba(0,0,0,0.05)] transition-all duration-100",
+            "pointer-events-auto px-4 z-1000 top-0 lg:w-[1280px] h-[66px] lg:h-[76px] rounded-4xl backdrop-blur-2xl opacity-100 border-b shadow-[0_4px_29px_rgba(0,0,0,0.05)] transition-all duration-100",
             isHomePage
               ? isScrolled
                 ? "bg-transparent backdrop-blur-2xl border-gray-200/50"  // White background when scrolled past hero
@@ -101,10 +137,10 @@ export function NavBar() {
             <div className="flex h-full items-center justify-between px-4 md:px-10 lg:px-[70px]">
               <Link href="/" onClick={scrollToTop} className="flex-shrink-0 relative lg:right-16">
                 <Image
-                  src="/images/RedDotLogo.png"
+                  src="/images/RedDotLogoNew.png"
                   alt="Red Dot Digital Logo"
-                  width={120}
-                  height={40}
+                  width={140}
+                  height={60}
                   className={cn(
                     "cursor-pointer transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:scale-[1.04] hover:opacity-90",
                   )}
@@ -128,7 +164,7 @@ export function NavBar() {
                       ) : (
                         <>
                           <NavigationMenuTrigger className={cn(
-                            "font-poppins h-full px-0 text-[15px] font-medium hover:text-red-500 transition-colors duration-300",
+                            "cursor-pointer .font-poppins h-full px-0 text-[15px] font-medium hover:text-red-500 transition-colors duration-300",
                             getTextColorClass()
                           )}>
                             {link.title}
@@ -144,6 +180,7 @@ export function NavBar() {
                                 px-[24px] lg:px-[32px] xl:px-[38px]
                                 pt-[20px] lg:pt-[22px] xl:pt-[25px]
                                 pb-[28px] lg:pb-[36px] xl:pb-[44px]
+                          
                               "
                             >
                               {/* Dropdown Title */}
@@ -191,7 +228,7 @@ export function NavBar() {
                               </ul>
 
                               {/* Schedule a Call button */}
-                              <button
+                              <WhiteButton
                                 onClick={() => setIsModalOpen(true)}
                                 className="
                                   w-[160px] lg:w-[180px] xl:w-[204px]
@@ -208,7 +245,7 @@ export function NavBar() {
                                 "
                               >
                                 Schedule a Call
-                              </button>
+                              </WhiteButton>
                             </div>
                           </NavigationMenuContent>
                         </>
@@ -245,6 +282,9 @@ export function NavBar() {
                 <button
                   onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                   className={getTextColorClass()}
+                  aria-expanded={isMobileMenuOpen}
+                  aria-controls={mobileMenuId}
+                  aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
                 >
                   {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
                 </button>
@@ -256,7 +296,12 @@ export function NavBar() {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="fixed top-0 left-0 z-40 flex h-screen w-full flex-col items-center space-y-6 overflow-y-auto bg-white p-8 pt-32 md:hidden">
+        <div
+          id={mobileMenuId}
+          role="dialog"
+          aria-modal="true"
+          className="fixed top-0 left-0 z-40 flex h-screen w-full flex-col items-center space-y-6 overflow-y-auto bg-white p-8 pt-32 md:hidden"
+        >
           {navLinks.map((link) => (
             <div key={link.title} className="text-center">
               {link.items && link.items.length > 0 ? (
