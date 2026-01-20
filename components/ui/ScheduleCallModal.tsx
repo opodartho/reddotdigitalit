@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { X } from "lucide-react";
+import { useEffect, useRef } from "react";
 import { ContactForm } from "@/components/ui/contactForm";
 
 interface ScheduleCallModalProps {
@@ -13,6 +14,24 @@ export default function ScheduleCallModal({
   open,
   onClose,
 }: ScheduleCallModalProps) {
+  const bodyOverflowRef = useRef<string | null>(null);
+
+  useEffect(() => {
+    if (!open || typeof document === "undefined") return;
+
+    if (bodyOverflowRef.current === null) {
+      bodyOverflowRef.current = document.body.style.overflow;
+    }
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      if (bodyOverflowRef.current !== null) {
+        document.body.style.overflow = bodyOverflowRef.current;
+        bodyOverflowRef.current = null;
+      }
+    };
+  }, [open]);
+
   if (!open) return null;
 
   return (
