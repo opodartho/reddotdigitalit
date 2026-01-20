@@ -17,7 +17,7 @@ export function TransformCard({
       <div className="relative rounded-3xl bg-[#1D1B26] ">
         <div className=" flex flex-col xl:flex-row justify-between sm:gap-[48px] p-4 ">
           {/* Left Content */}
-          <div className="text-center xl:text-left py-[56px] xl:py-[80px]  xl:pl-[56px] xl:w-1/2 ">
+          <div className="order-2 xl:order-1 text-center xl:text-left py-[56px] xl:py-[80px]  xl:pl-[56px] xl:w-1/2 ">
             <h2 className="--font-inter text-white font-semibold text-[40px] leading-[141%] tracking-[0] ">
               {heading}
             </h2>
@@ -52,7 +52,7 @@ export function TransformCard({
           {/* RIGHT SIDE — 50% */}
           {/* RIGHT SIDE */}
           {/* RIGHT SIDE */}
-          <div className="xl:w-1/2 flex items-center">
+          <div className="order-1 xl:order-2 xl:w-1/2 flex items-center">
             <div
               className="
       relative

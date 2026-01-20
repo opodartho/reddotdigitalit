@@ -9,6 +9,78 @@ type Props = {
   solutions: ProductSolutionItem[];
 };
 
+/* ---------------- ANIMATED CARD WRAPPER ---------------- */
+const AnimatedCard = ({
+  item,
+  index,
+  onClick,
+  isMobile,
+  sectionAnimated,
+}: {
+  item: ProductSolutionItem;
+  index: number;
+  onClick: () => void;
+  isMobile: boolean;
+  sectionAnimated: boolean;
+}) => {
+  const cardRef = useRef<HTMLDivElement | null>(null);
+  const [cardVisible, setCardVisible] = useState(false);
+
+  useEffect(() => {
+    if (!isMobile || !cardRef.current) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setCardVisible(true);
+          observer.disconnect();
+        }
+      },
+      {
+        threshold: 0.15,
+        rootMargin: "0px 0px -5% 0px",
+      }
+    );
+
+    observer.observe(cardRef.current);
+    return () => observer.disconnect();
+  }, [isMobile]);
+
+  const isVisible = isMobile ? cardVisible : sectionAnimated;
+  const delay = isMobile ? 0 : index * 200;
+
+  return (
+    <div ref={cardRef} onClick={onClick} className="cursor-pointer">
+      {/* REVEAL LAYER (SLIDE UP + STAGGER) */}
+      <div
+        style={{
+          opacity: isVisible ? 1 : 0,
+          transform: isVisible
+            ? "translateY(0px) scale(1)"
+            : "translateY(56px) scale(0.94)",
+          transitionProperty: "opacity, transform",
+          transitionDuration: "900ms",
+          transitionTimingFunction: "cubic-bezier(0.16,1,0.3,1)",
+          transitionDelay: isVisible ? `${delay}ms` : "0ms",
+        }}
+        className="will-change-[opacity,transform] transform-gpu"
+      >
+        {/* HOVER LAYER (FAST & SMOOTH, NO TRANSLATE CONFLICT) */}
+        <div
+          className="
+            transition-transform
+            duration-[220ms]
+            ease-[cubic-bezier(0.4,0,0.2,1)]
+            hover:scale-[1.02]
+          "
+        >
+          <SolutionCard item={item} />
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const Solutions = ({ solutions }: Props) => {
   const router = useRouter();
   const sectionRef = useRef<HTMLElement | null>(null);
@@ -23,10 +95,22 @@ const Solutions = ({ solutions }: Props) => {
 
   const [shouldAnimate, setShouldAnimate] = useState(initialShouldAnimate);
   const [hasAnimated, setHasAnimated] = useState(!initialShouldAnimate);
+  const [isMobile, setIsMobile] = useState(false);
 
-  /* ---------------- INTERSECTION OBSERVER ---------------- */
+  /* ---------------- CHECK SCREEN SIZE ---------------- */
   useEffect(() => {
-    if (!shouldAnimate || !sectionRef.current) return;
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 640);
+    };
+
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
+  /* ---------------- INTERSECTION OBSERVER (DESKTOP) ---------------- */
+  useEffect(() => {
+    if (!shouldAnimate || !sectionRef.current || isMobile) return;
 
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -51,7 +135,7 @@ const Solutions = ({ solutions }: Props) => {
 
     observer.observe(sectionRef.current);
     return () => observer.disconnect();
-  }, [shouldAnimate]);
+  }, [shouldAnimate, isMobile]);
 
   return (
     <section
@@ -69,38 +153,14 @@ const Solutions = ({ solutions }: Props) => {
       {/* Cards */}
       <div className="flex flex-wrap justify-center gap-4 mx-auto">
         {solutions.map((item, index) => (
-          <div
+          <AnimatedCard
             key={index}
+            item={item}
+            index={index}
             onClick={() => router.push(`/customize-product/${index + 1}`)}
-            className="cursor-pointer"
-          >
-            {/* REVEAL LAYER (SLIDE UP + STAGGER) */}
-            <div
-              style={{
-                opacity: hasAnimated ? 1 : 0,
-                transform: hasAnimated
-                  ? "translateY(0px) scale(1)"
-                  : "translateY(56px) scale(0.94)",
-                transitionProperty: "opacity, transform",
-                transitionDuration: "900ms",
-                transitionTimingFunction: "cubic-bezier(0.16,1,0.3,1)",
-                transitionDelay: hasAnimated ? `${index * 200}ms` : "0ms",
-              }}
-              className="will-change-[opacity,transform] transform-gpu"
-            >
-              {/* HOVER LAYER (FAST & SMOOTH, NO TRANSLATE CONFLICT) */}
-              <div
-                className="
-                  transition-transform
-                  duration-[220ms]
-                  ease-[cubic-bezier(0.4,0,0.2,1)]
-                  hover:scale-[1.02]
-                "
-              >
-                <SolutionCard item={item} />
-              </div>
-            </div>
-          </div>
+            isMobile={isMobile}
+            sectionAnimated={hasAnimated}
+          />
         ))}
       </div>
     </section>

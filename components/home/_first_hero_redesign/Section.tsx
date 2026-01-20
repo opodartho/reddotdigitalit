@@ -104,23 +104,27 @@ const cardFade: Variants = {
 /* ----------------------------------
    COMPONENT
 ----------------------------------- */
+declare global {
+  interface Window {
+    __hero_animated?: boolean;
+  }
+}
+
 export default function FirstHeroRedesignSection({
   heroSlidesData,
 }: HeroSlidesProps) {
-  const animateOnceKey = "hero-animate-once";
   const router = useRouter();
   const autoplay = useRef(
     Autoplay({ delay: 2600, stopOnInteraction: false })
   );
   const [, setApi] = useState<CarouselApi>();
 
-  // Use ref to check sessionStorage synchronously (avoids re-render)
+  // Use ref to track animation state in memory (avoids re-render)
   const shouldAnimateRef = useRef<boolean | null>(null);
   if (shouldAnimateRef.current === null && typeof window !== "undefined") {
-    const hasAnimated = sessionStorage.getItem(animateOnceKey);
-    shouldAnimateRef.current = !hasAnimated;
-    if (!hasAnimated) {
-      sessionStorage.setItem(animateOnceKey, "1");
+    shouldAnimateRef.current = !window.__hero_animated;
+    if (!window.__hero_animated) {
+      window.__hero_animated = true;
     }
   }
   const shouldAnimate = shouldAnimateRef.current ?? true;
@@ -128,7 +132,9 @@ export default function FirstHeroRedesignSection({
   useEffect(() => {
     // Clear on tab/window close so animation plays on next visit
     const handleUnload = () => {
-      sessionStorage.removeItem(animateOnceKey);
+      if (typeof window !== "undefined") {
+        window.__hero_animated = undefined;
+      }
     };
 
     window.addEventListener("beforeunload", handleUnload);
@@ -260,7 +266,10 @@ export default function FirstHeroRedesignSection({
         </motion.div>
 
         {/* ---------------- MOBILE CAROUSEL ---------------- */}
-        <div className="lg:hidden w-full mt-[40px]">
+        <motion.div
+          variants={fadeUp}
+          className="lg:hidden w-full mt-[40px]"
+        >
           <Carousel
             setApi={setApi}
             plugins={[autoplay.current]}
@@ -287,7 +296,7 @@ export default function FirstHeroRedesignSection({
               ))}
             </CarouselContent>
           </Carousel>
-        </div>
+        </motion.div>
 
 
         {/* ---------------- CTA BUTTON ---------------- */}

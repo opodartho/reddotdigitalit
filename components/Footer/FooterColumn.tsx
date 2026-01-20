@@ -33,12 +33,14 @@ const FooterColumn = ({ column }: FooterColumnProps) => {
 
       {/* Render address and social icons for the contact column */}
       {column.address && (
-        <address
-          className="not-italic text-subtitle leading-relaxed"
-          dangerouslySetInnerHTML={{
-            __html: column.address.replace(/\n/g, "<br />"),
-          }}
-        />
+        <address className="not-italic text-subtitle leading-relaxed">
+          {column.address.split('\n').map((line, index, array) => (
+            <React.Fragment key={index}>
+              {line}
+              {index < array.length - 1 && <br />}
+            </React.Fragment>
+          ))}
+        </address>
       )}
 
       {/* Render simple text content */}

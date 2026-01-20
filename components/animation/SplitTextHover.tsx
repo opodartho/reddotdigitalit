@@ -22,28 +22,23 @@ export default function SplitTextHover({ text, className }: Props) {
     const charEls = wrapper.querySelectorAll(".char");
 
     const handleEnter = () => {
-      gsap.fromTo(
-        charEls,
-        { y: 0, opacity: 1 },
-        {
-          y: -12,
-          opacity: 0,
-          stagger: 0.02,
-          duration: 0.3,
-          ease: "power2.out",
-        }
-      );
+      // Kill any running animations first
+      gsap.killTweensOf(charEls);
 
+      // Smooth wave animation - characters bounce up and settle back
       gsap.fromTo(
         charEls,
-        { y: 16, opacity: 0 },
+        { y: 0 },
         {
-          y: 0,
-          opacity: 1,
-          stagger: 0.03,
-          duration: 0.55,
-          ease: "power3.out",
-          delay: 0.1,
+          y: -6,
+          stagger: {
+            each: 0.03,
+            from: "start",
+          },
+          duration: 0.18,
+          ease: "power2.out",
+          yoyo: true,
+          repeat: 1,
         }
       );
     };

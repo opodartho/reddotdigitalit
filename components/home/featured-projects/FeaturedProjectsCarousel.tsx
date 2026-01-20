@@ -18,8 +18,6 @@ import RedButton from "@/components/buttons/RedHoverButton";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const STORAGE_KEY = "fp-carousel-animated";
-
 declare global {
   interface Window {
     __fp_carousel_animated?: boolean;
@@ -103,20 +101,14 @@ export const FeaturedProjectsCarousel: React.FC<CarouselProps> = ({
 
   const [shouldAnimate] = useState(() => {
     if (typeof window === "undefined") return true;
-    const alreadyAnimated =
-      Boolean(window.__fp_carousel_animated) ||
-      Boolean(sessionStorage.getItem(STORAGE_KEY));
-    return !alreadyAnimated;
+    return !window.__fp_carousel_animated;
   });
 
   useEffect(() => {
     if (typeof window === "undefined") return;
 
     const handleUnload = () => {
-      if (typeof window !== "undefined") {
-        window.__fp_carousel_animated = undefined;
-      }
-      sessionStorage.removeItem(STORAGE_KEY);
+      window.__fp_carousel_animated = undefined;
     };
 
     window.addEventListener("beforeunload", handleUnload);
@@ -146,11 +138,11 @@ export const FeaturedProjectsCarousel: React.FC<CarouselProps> = ({
             trigger: rootRef.current,
             start: "top 70%",
             once: true,
-            markers: false, // change to true if debugging
+            markers: false,
             onEnter: () => {
-              if (typeof window === "undefined") return;
-              sessionStorage.setItem(STORAGE_KEY, "true");
-              window.__fp_carousel_animated = true;
+              if (typeof window !== "undefined") {
+                window.__fp_carousel_animated = true;
+              }
             },
           },
         })
@@ -241,7 +233,7 @@ export const FeaturedProjectsCarousel: React.FC<CarouselProps> = ({
           {projects.map((project, index) => (
             <div
               key={project.id}
-              className="embla__slide_project px-2 rounded-[24px] overflow-hidden"
+              className="embla__slide_project px-2 rounded-[24px] overflow-hidden cursor-pointer"
             >
               <div className="relative w-full h-[240px] sm:h-[320px] md:h-[400px] lg:h-[480px] xl:h-[550px] rounded-[24px] overflow-hidden">
                 <Image

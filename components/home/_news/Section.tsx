@@ -10,6 +10,86 @@ type NewsSectionProps = {
   newsData: NewsItem[];
 };
 
+/* ---------------- ANIMATED CARD WRAPPER ---------------- */
+const AnimatedNewsCard = ({
+  item,
+  index,
+  isMobile,
+  sectionAnimated,
+}: {
+  item: NewsItem;
+  index: number;
+  isMobile: boolean;
+  sectionAnimated: boolean;
+}) => {
+  const cardRef = useRef<HTMLDivElement | null>(null);
+  const [cardVisible, setCardVisible] = useState(false);
+
+  useEffect(() => {
+    if (!isMobile || !cardRef.current) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          // Add small delay before triggering animation on mobile
+          setTimeout(() => {
+            setCardVisible(true);
+          }, 150);
+          observer.disconnect();
+        }
+      },
+      {
+        threshold: 0.3, // Higher threshold - card must be 30% visible
+        rootMargin: "0px 0px -15% 0px", // Trigger later (when card is higher in viewport)
+      }
+    );
+
+    observer.observe(cardRef.current);
+    return () => observer.disconnect();
+  }, [isMobile]);
+
+  const isVisible = isMobile ? cardVisible : sectionAnimated;
+  const delay = isMobile ? 0 : index * 150;
+
+  return (
+    <div ref={cardRef} className="perspective-[1200px]">
+      {/* REVEAL LAYER - Advanced animation with scale, rotation */}
+      <div
+        style={{
+          opacity: isVisible ? 1 : 0,
+          transform: isVisible
+            ? "translateY(0px) scale(1) rotateX(0deg)"
+            : "translateY(48px) scale(0.92) rotateX(8deg)",
+          transitionProperty: "opacity, transform",
+          transitionDuration: "1000ms",
+          transitionTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)",
+          transitionDelay: isVisible ? `${delay}ms` : "0ms",
+          transformOrigin: "center bottom",
+        }}
+        className="will-change-[opacity,transform] transform-gpu"
+      >
+        {/* HOVER LAYER - Smooth lift effect */}
+        <div
+          className="
+            transition-all
+            duration-300
+            ease-[cubic-bezier(0.25,0.1,0.25,1)]
+            hover:-translate-y-2
+            hover:shadow-[0px_20px_60px_rgba(49,1,139,0.12)]
+          "
+        >
+          <NewsCard
+            slug={item.slug}
+            title={item.title}
+            description={item.description}
+            imageUrl={item.imageUrl}
+          />
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const News = ({ newsData }: NewsSectionProps) => {
   const sectionRef = useRef<HTMLElement | null>(null);
 
@@ -23,10 +103,22 @@ const News = ({ newsData }: NewsSectionProps) => {
 
   const [shouldAnimate, setShouldAnimate] = useState(initialShouldAnimate);
   const [hasAnimated, setHasAnimated] = useState(!initialShouldAnimate);
+  const [isMobile, setIsMobile] = useState(false);
 
-  /* ---------------- INTERSECTION OBSERVER ---------------- */
+  /* ---------------- CHECK SCREEN SIZE ---------------- */
   useEffect(() => {
-    if (!shouldAnimate || !sectionRef.current) return;
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 640);
+    };
+
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
+  /* ---------------- INTERSECTION OBSERVER (DESKTOP) ---------------- */
+  useEffect(() => {
+    if (!shouldAnimate || !sectionRef.current || isMobile) return;
 
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -51,7 +143,7 @@ const News = ({ newsData }: NewsSectionProps) => {
 
     observer.observe(sectionRef.current);
     return () => observer.disconnect();
-  }, [shouldAnimate]);
+  }, [shouldAnimate, isMobile]);
 
   return (
     <section ref={sectionRef} className="pt-16 pb-[94px]">
@@ -70,31 +162,13 @@ const News = ({ newsData }: NewsSectionProps) => {
             "
           >
             {newsData.map((item, index) => (
-              <div
+              <AnimatedNewsCard
                 key={item.id}
-                style={{
-                  transitionDelay: hasAnimated ? `${index * 200}ms` : "0ms",
-                }}
-                className={`
-                  will-change-[opacity,transform]
-                  transition-[opacity,transform]
-                  duration-[1200ms]
-                  ease-[cubic-bezier(0.22,1,0.36,1)]
-                  transform-gpu
-                  ${
-                    hasAnimated
-                      ? "opacity-100 translate-y-0"
-                      : "opacity-0 translate-y-6"
-                  }
-                `}
-              >
-                <NewsCard
-                  slug={item.slug}
-                  title={item.title}
-                  description={item.description}
-                  imageUrl={item.imageUrl}
-                />
-              </div>
+                item={item}
+                index={index}
+                isMobile={isMobile}
+                sectionAnimated={hasAnimated}
+              />
             ))}
           </div>
         </div>
