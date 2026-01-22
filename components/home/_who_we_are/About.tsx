@@ -69,8 +69,20 @@ const About = ({ data }: AboutProps) => {
 
   /* ---------------- MOBILE: IMAGES OBSERVER ---------------- */
   useEffect(() => {
-    // Skip if not mobile or already animated from context
-    if (!isMobile || !imagesRef.current || contextHasAnimated) return;
+    // Skip if not mobile or already animated/visible
+    if (!isMobile || !imagesRef.current || contextHasAnimated || imagesVisible) return;
+
+    // Helper to check if element is in viewport
+    const isInViewport = (el: HTMLElement) => {
+      const rect = el.getBoundingClientRect();
+      return rect.top < window.innerHeight && rect.bottom > 0;
+    };
+
+    // Check immediately if already in viewport
+    if (isInViewport(imagesRef.current)) {
+      setImagesVisible(true);
+      return;
+    }
 
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -84,12 +96,25 @@ const About = ({ data }: AboutProps) => {
 
     observer.observe(imagesRef.current);
     return () => observer.disconnect();
-  }, [isMobile, contextHasAnimated]);
+  }, [isMobile, contextHasAnimated, imagesVisible]);
 
   /* ---------------- MOBILE: TEXT OBSERVER ---------------- */
   useEffect(() => {
-    // Skip if not mobile or already animated from context
-    if (!isMobile || !textRef.current || contextHasAnimated) return;
+    // Skip if not mobile or already animated/visible
+    if (!isMobile || !textRef.current || contextHasAnimated || textVisible) return;
+
+    // Helper to check if element is in viewport
+    const isInViewport = (el: HTMLElement) => {
+      const rect = el.getBoundingClientRect();
+      return rect.top < window.innerHeight && rect.bottom > 0;
+    };
+
+    // Check immediately if already in viewport
+    if (isInViewport(textRef.current)) {
+      setTextVisible(true);
+      setTriggerTextEffect(true);
+      return;
+    }
 
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -104,7 +129,7 @@ const About = ({ data }: AboutProps) => {
 
     observer.observe(textRef.current);
     return () => observer.disconnect();
-  }, [isMobile, contextHasAnimated]);
+  }, [isMobile, contextHasAnimated, textVisible]);
 
   /* ---------------- MOBILE: MARK AS ANIMATED ---------------- */
   useEffect(() => {

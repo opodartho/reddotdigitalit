@@ -31,8 +31,20 @@ const AnimatedCard = ({
   const [cardVisible, setCardVisible] = useState(alreadyAnimatedFromContext);
 
   useEffect(() => {
-    // Skip observer if already animated or not mobile
-    if (!isMobile || !cardRef.current || alreadyAnimatedFromContext) return;
+    // Skip observer if already animated/visible or not mobile
+    if (!isMobile || !cardRef.current || alreadyAnimatedFromContext || cardVisible) return;
+
+    // Helper to check if element is in viewport
+    const isInViewport = (el: HTMLElement) => {
+      const rect = el.getBoundingClientRect();
+      return rect.top < window.innerHeight && rect.bottom > 0;
+    };
+
+    // Check immediately if already in viewport
+    if (isInViewport(cardRef.current)) {
+      setCardVisible(true);
+      return;
+    }
 
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -49,7 +61,7 @@ const AnimatedCard = ({
 
     observer.observe(cardRef.current);
     return () => observer.disconnect();
-  }, [isMobile, alreadyAnimatedFromContext]);
+  }, [isMobile, alreadyAnimatedFromContext, cardVisible]);
 
   // Use OR logic to prevent flip-flop when isMobile changes after hydration
   const isVisible = cardVisible || sectionAnimated;
