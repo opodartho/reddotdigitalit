@@ -1,6 +1,7 @@
 // lib/data/trustedPartners.ts
+export type TrustedPartnerLogo = string;
 
-export const trustedPartnerLogos: string[] = [
+export const trustedPartnerLogos: TrustedPartnerLogo[] = [
   "/images/robi.svg",
   "/images/scb.svg",
   "/images/tap.svg",

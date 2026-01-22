@@ -5,6 +5,7 @@ import { NewsCard } from "./NewsCard";
 import { NewsItem } from "@/lib/data/newsData";
 import RedButton from "@/components/buttons/RedHoverButton";
 import Link from "next/link";
+import { useAnimateOnce } from "@/contexts/AnimationContext";
 
 type NewsSectionProps = {
   newsData: NewsItem[];
@@ -93,16 +94,15 @@ const AnimatedNewsCard = ({
 const News = ({ newsData }: NewsSectionProps) => {
   const sectionRef = useRef<HTMLElement | null>(null);
 
-  // 🔑 SAME PATTERN AS ABOUT
-  const initialShouldAnimate =
-    typeof window !== "undefined"
-      ? !(window as typeof globalThis & {
-          __newsSectionAnimated?: boolean;
-        }).__newsSectionAnimated
-      : true;
+  // Use context to track animation state (replaces global window pattern)
+  const {
+    shouldAnimate: contextShouldAnimate,
+    markAnimated,
+    hasAnimated: contextHasAnimated,
+  } = useAnimateOnce("news");
 
-  const [shouldAnimate, setShouldAnimate] = useState(initialShouldAnimate);
-  const [hasAnimated, setHasAnimated] = useState(!initialShouldAnimate);
+  const [shouldAnimate, setShouldAnimate] = useState(contextShouldAnimate);
+  const [hasAnimated, setHasAnimated] = useState(contextHasAnimated);
   const [isMobile, setIsMobile] = useState(false);
 
   /* ---------------- CHECK SCREEN SIZE ---------------- */
@@ -125,13 +125,7 @@ const News = ({ newsData }: NewsSectionProps) => {
         if (entry.isIntersecting) {
           setHasAnimated(true);
           setShouldAnimate(false);
-
-          (
-            window as typeof globalThis & {
-              __newsSectionAnimated?: boolean;
-            }
-          ).__newsSectionAnimated = true;
-
+          markAnimated();
           observer.disconnect();
         }
       },

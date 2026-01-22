@@ -15,14 +15,9 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "./embla.css";
 import { FeaturedProject } from "@/lib/data/featuredProjectsData";
 import RedButton from "@/components/buttons/RedHoverButton";
+import { useAnimateOnce } from "@/contexts/AnimationContext";
 
 gsap.registerPlugin(ScrollTrigger);
-
-declare global {
-  interface Window {
-    __fp_carousel_animated?: boolean;
-  }
-}
 
 type CarouselProps = {
   projects: FeaturedProject[];
@@ -99,21 +94,11 @@ export const FeaturedProjectsCarousel: React.FC<CarouselProps> = ({
     onSelect();
   }, [emblaApi]);
 
-  const [shouldAnimate] = useState(() => {
-    if (typeof window === "undefined") return true;
-    return !window.__fp_carousel_animated;
-  });
+  // Use context to track animation state (replaces global window pattern)
+  const { shouldAnimate: contextShouldAnimate, markAnimated } = useAnimateOnce("featuredProjects");
 
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-
-    const handleUnload = () => {
-      window.__fp_carousel_animated = undefined;
-    };
-
-    window.addEventListener("beforeunload", handleUnload);
-    return () => window.removeEventListener("beforeunload", handleUnload);
-  }, []);
+  // Use local state initialized from context to ensure proper first-render behavior
+  const [shouldAnimate] = useState(() => contextShouldAnimate);
 
   /* ----------------------------------
      GSAP SCROLL ANIMATION (WORKING)
@@ -140,9 +125,7 @@ export const FeaturedProjectsCarousel: React.FC<CarouselProps> = ({
             once: true,
             markers: false,
             onEnter: () => {
-              if (typeof window !== "undefined") {
-                window.__fp_carousel_animated = true;
-              }
+              markAnimated();
             },
           },
         })

@@ -9,6 +9,7 @@ import {
   Variants,
 } from "framer-motion";
 import { AchievementData } from "@/lib/data/whoWeAreData";
+import { useAnimateOnce } from "@/contexts/AnimationContext";
 
 /* ----------------------------------------
    MOTION VARIANTS (JUMP EFFECT)
@@ -41,7 +42,8 @@ const AchievementCard = ({
   description,
   icon,
   bgGradient,
-}: AchievementData) => {
+  sectionHasAnimated,
+}: AchievementData & { sectionHasAnimated: boolean }) => {
   const cardRef = useRef<HTMLDivElement | null>(null);
 
   const isInView = useInView(cardRef, {
@@ -89,19 +91,11 @@ const AchievementCard = ({
 
   /* ✅ If section already animated before, show final value */
   useEffect(() => {
-    const alreadyAnimated =
-      typeof window !== "undefined" &&
-      (
-        window as typeof globalThis & {
-          __whoAchievementSectionAnimated?: boolean;
-        }
-      ).__whoAchievementSectionAnimated;
-
-    if (alreadyAnimated) {
+    if (sectionHasAnimated) {
       setDisplayValue(numericValue);
       hasCounted.current = true;
     }
-  }, [numericValue]);
+  }, [numericValue, sectionHasAnimated]);
 
   return (
     <motion.div
@@ -143,26 +137,22 @@ const Achievement = ({ data }: { data: AchievementData[] }) => {
 
   const isInView = useInView(sectionRef, { amount: 0.3 });
 
-  const hasAnimatedBefore =
-    typeof window !== "undefined" &&
-    (
-      window as typeof globalThis & {
-        __whoAchievementSectionAnimated?: boolean;
-      }
-    ).__whoAchievementSectionAnimated;
+  // Use context to track animation state (replaces global window pattern)
+  const {
+    markAnimated,
+    hasAnimated: contextHasAnimated,
+  } = useAnimateOnce("whoAchievement");
+
+  const [hasAnimatedBefore, setHasAnimatedBefore] = useState(contextHasAnimated);
 
   /* First visit → animate */
   useEffect(() => {
     if (!isInView || hasAnimatedBefore) return;
 
     controls.start("visible");
-
-    (
-      window as typeof globalThis & {
-        __whoAchievementSectionAnimated?: boolean;
-      }
-    ).__whoAchievementSectionAnimated = true;
-  }, [isInView, hasAnimatedBefore, controls]);
+    markAnimated();
+    setHasAnimatedBefore(true);
+  }, [isInView, hasAnimatedBefore, controls, markAnimated]);
 
   /* Revisit → force visible */
   useEffect(() => {
@@ -190,7 +180,7 @@ const Achievement = ({ data }: { data: AchievementData[] }) => {
       "
     >
       {data.map((item, index) => (
-        <AchievementCard key={index} {...item} />
+        <AchievementCard key={index} {...item} sectionHasAnimated={hasAnimatedBefore} />
       ))}
     </motion.section>
   );

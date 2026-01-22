@@ -1,8 +1,8 @@
 // lib/api/getTrustedPartners.ts
 
-import { trustedPartnerLogos } from "@/lib/data/trustedPartners";
+import { trustedPartnerLogos,  TrustedPartnerLogo, } from "@/lib/data/trustedPartners";
 
-export async function getTrustedPartners(): Promise<string[]> {
+export async function getTrustedPartners(): Promise<TrustedPartnerLogo[]> {
   // future: replace with fetch() call
   return trustedPartnerLogos;
 }

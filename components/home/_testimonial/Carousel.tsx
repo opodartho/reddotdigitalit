@@ -6,6 +6,7 @@ import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import "./embla.css";
 import { Testimonial } from "@/lib/data/testimonialData";
+import { useAnimateOnce } from "@/contexts/AnimationContext";
 
 type CarouselProps = {
   testimonials: Testimonial[];
@@ -73,15 +74,15 @@ export const TestimonialCarousel: React.FC<CarouselProps> = ({
 }) => {
   const sectionRef = useRef<HTMLElement | null>(null);
 
-  const initialShouldAnimate =
-    typeof window !== "undefined"
-      ? !(window as typeof globalThis & {
-          __testimonialSectionAnimated?: boolean;
-        }).__testimonialSectionAnimated
-      : true;
+  // Use context to track animation state (replaces global window pattern)
+  const {
+    shouldAnimate: contextShouldAnimate,
+    markAnimated,
+    hasAnimated: contextHasAnimated,
+  } = useAnimateOnce("testimonial");
 
-  const [shouldAnimate, setShouldAnimate] = useState(initialShouldAnimate);
-  const [hasAnimated, setHasAnimated] = useState(!initialShouldAnimate);
+  const [shouldAnimate, setShouldAnimate] = useState(contextShouldAnimate);
+  const [hasAnimated, setHasAnimated] = useState(contextHasAnimated);
 
   useEffect(() => {
     if (!shouldAnimate || !sectionRef.current) return;
@@ -91,13 +92,7 @@ export const TestimonialCarousel: React.FC<CarouselProps> = ({
         if (entry.isIntersecting) {
           setHasAnimated(true);
           setShouldAnimate(false);
-
-          (
-            window as typeof globalThis & {
-              __testimonialSectionAnimated?: boolean;
-            }
-          ).__testimonialSectionAnimated = true;
-
+          markAnimated();
           observer.disconnect();
         }
       },

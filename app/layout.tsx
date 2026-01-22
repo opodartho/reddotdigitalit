@@ -4,6 +4,7 @@ import "./globals.css";
 import BackToTop from "@/components/home/_back_to_top/BackToTopButton";
 import { NavBar } from "@/components/NavBar/NavBar";
 import Footer from "@/components/Footer/Footer";
+import { AnimationProvider } from "@/contexts/AnimationContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -44,10 +45,12 @@ export default async function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} ${poppins.variable} ${inter.variable} antialiased text-title text-subtitle`}
         suppressHydrationWarning
       >
-        <NavBar />
-        <main className="lg:overflow-x-visible overflow-x-hidden">{children}</main>
-        <Footer />
-        <BackToTop />
+        <AnimationProvider>
+          <NavBar />
+          <main className="lg:overflow-x-visible overflow-x-hidden">{children}</main>
+          <Footer />
+          <BackToTop />
+        </AnimationProvider>
       </body>
     </html>
   );

@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import SolutionCard from "./SolutionCard";
 import { ProductSolutionItem } from "@/lib/data/customize-product/productSolutionData";
+import { useAnimateOnce } from "@/contexts/AnimationContext";
 
 type Props = {
   solutions: ProductSolutionItem[];
@@ -85,16 +86,15 @@ const Solutions = ({ solutions }: Props) => {
   const router = useRouter();
   const sectionRef = useRef<HTMLElement | null>(null);
 
-  /* 🔑 SAME PATTERN AS NEWS */
-  const initialShouldAnimate =
-    typeof window !== "undefined"
-      ? !(window as typeof globalThis & {
-          __productSolutionsAnimated?: boolean;
-        }).__productSolutionsAnimated
-      : true;
+  // Use context to track animation state (replaces global window pattern)
+  const {
+    shouldAnimate: contextShouldAnimate,
+    markAnimated,
+    hasAnimated: contextHasAnimated,
+  } = useAnimateOnce("productSolutions");
 
-  const [shouldAnimate, setShouldAnimate] = useState(initialShouldAnimate);
-  const [hasAnimated, setHasAnimated] = useState(!initialShouldAnimate);
+  const [shouldAnimate, setShouldAnimate] = useState(contextShouldAnimate);
+  const [hasAnimated, setHasAnimated] = useState(contextHasAnimated);
   const [isMobile, setIsMobile] = useState(false);
 
   /* ---------------- CHECK SCREEN SIZE ---------------- */
@@ -117,13 +117,7 @@ const Solutions = ({ solutions }: Props) => {
         if (entry.isIntersecting) {
           setHasAnimated(true);
           setShouldAnimate(false);
-
-          (
-            window as typeof globalThis & {
-              __productSolutionsAnimated?: boolean;
-            }
-          ).__productSolutionsAnimated = true;
-
+          markAnimated();
           observer.disconnect();
         }
       },

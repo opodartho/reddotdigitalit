@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState, useRef } from "react";
+import React, { useState, useRef } from "react";
 import { motion, Variants } from "framer-motion";
 import Image from "next/image";
 import {
@@ -13,6 +13,7 @@ import Autoplay from "embla-carousel-autoplay";
 import { HeroSlides } from "@/lib/data/home-hero-redesign/hero";
 import { useRouter } from "next/navigation";
 import WhiteButton from "@/components/buttons/WhiteHoverButton";
+import { useAnimateOnce } from "@/contexts/AnimationContext";
 
 /* ----------------------------------
    TYPES
@@ -104,12 +105,6 @@ const cardFade: Variants = {
 /* ----------------------------------
    COMPONENT
 ----------------------------------- */
-declare global {
-  interface Window {
-    __hero_animated?: boolean;
-  }
-}
-
 export default function FirstHeroRedesignSection({
   heroSlidesData,
 }: HeroSlidesProps) {
@@ -119,29 +114,18 @@ export default function FirstHeroRedesignSection({
   );
   const [, setApi] = useState<CarouselApi>();
 
-  // Use ref to track animation state in memory (avoids re-render)
-  const shouldAnimateRef = useRef<boolean | null>(null);
-  if (shouldAnimateRef.current === null && typeof window !== "undefined") {
-    shouldAnimateRef.current = !window.__hero_animated;
-    if (!window.__hero_animated) {
-      window.__hero_animated = true;
-    }
+  // Use context to track animation state (replaces global window pattern)
+  const { shouldAnimate: contextShouldAnimate, markAnimated } = useAnimateOnce("hero");
+
+  // Use local state initialized from context to ensure proper first-render behavior
+  const [shouldAnimate] = useState(() => contextShouldAnimate);
+
+  // Mark as animated after first render
+  const hasMarkedRef = useRef(false);
+  if (!hasMarkedRef.current && shouldAnimate) {
+    hasMarkedRef.current = true;
+    markAnimated();
   }
-  const shouldAnimate = shouldAnimateRef.current ?? true;
-
-  useEffect(() => {
-    // Clear on tab/window close so animation plays on next visit
-    const handleUnload = () => {
-      if (typeof window !== "undefined") {
-        window.__hero_animated = undefined;
-      }
-    };
-
-    window.addEventListener("beforeunload", handleUnload);
-    return () => {
-      window.removeEventListener("beforeunload", handleUnload);
-    };
-  }, []);
 
   return (
     <section

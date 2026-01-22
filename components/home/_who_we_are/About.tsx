@@ -7,6 +7,7 @@ import WhiteButton from "@/components/buttons/WhiteHoverButton";
 import { useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
+import { useAnimateOnce } from "@/contexts/AnimationContext";
 
 type AboutProps = {
   data: AboutData;
@@ -18,13 +19,15 @@ const About = ({ data }: AboutProps) => {
   const textRef = useRef<HTMLDivElement | null>(null);
   const imagesRef = useRef<HTMLDivElement | null>(null);
 
-  const initialShouldAnimate =
-    typeof window !== "undefined"
-      ? !(window as any).__whoAboutSectionAnimated
-      : true;
+  // Use context to track animation state (replaces global window pattern)
+  const {
+    shouldAnimate: contextShouldAnimate,
+    markAnimated,
+    hasAnimated: contextHasAnimated,
+  } = useAnimateOnce("whoAbout");
 
-  const [shouldAnimate, setShouldAnimate] = useState(initialShouldAnimate);
-  const [hasAnimated, setHasAnimated] = useState(!initialShouldAnimate);
+  const [shouldAnimate, setShouldAnimate] = useState(contextShouldAnimate);
+  const [hasAnimated, setHasAnimated] = useState(contextHasAnimated);
   const [triggerTextEffect, setTriggerTextEffect] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
@@ -53,8 +56,7 @@ const About = ({ data }: AboutProps) => {
           setHasAnimated(true);
           setTriggerTextEffect(true);
           setShouldAnimate(false);
-
-          (window as any).__whoAboutSectionAnimated = true;
+          markAnimated();
           observer.disconnect();
         }
       },
