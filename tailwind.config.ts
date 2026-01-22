@@ -45,11 +45,44 @@ const config: Config = {
 
       animation: {
         "scrolling-logos": "scroll 60s linear infinite",
+        "nav-menu-in": "navMenuIn 0.25s ease-out forwards",
+        "nav-menu-out": "navMenuOut 0.2s ease-in forwards",
+        "nav-item-in": "navItemIn 0.3s ease-out forwards",
       },
       keyframes: {
         scroll: {
           "0%": { transform: "translateX(0)" },
           "100%": { transform: "translateX(-50%)" },
+        },
+        navMenuIn: {
+          "0%": {
+            opacity: "0",
+            transform: "translateY(-8px) scale(0.96)",
+          },
+          "100%": {
+            opacity: "1",
+            transform: "translateY(0) scale(1)",
+          },
+        },
+        navMenuOut: {
+          "0%": {
+            opacity: "1",
+            transform: "translateY(0) scale(1)",
+          },
+          "100%": {
+            opacity: "0",
+            transform: "translateY(-8px) scale(0.96)",
+          },
+        },
+        navItemIn: {
+          "0%": {
+            opacity: "0",
+            transform: "translateY(8px)",
+          },
+          "100%": {
+            opacity: "1",
+            transform: "translateY(0)",
+          },
         },
       },
     },

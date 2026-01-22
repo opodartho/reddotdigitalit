@@ -180,7 +180,6 @@ export function NavBar() {
                                 px-[24px] lg:px-[32px] xl:px-[38px]
                                 pt-[20px] lg:pt-[22px] xl:pt-[25px]
                                 pb-[28px] lg:pb-[36px] xl:pb-[44px]
-                          
                               "
                             >
                               {/* Dropdown Title */}
@@ -211,17 +210,24 @@ export function NavBar() {
                                     <Link
                                       href={item.href}
                                       className="
+                                        group/link
+                                        relative
+                                        inline-flex
                                         font-poppins
                                         font-medium
                                         text-[14px] lg:text-[15px] xl:text-[16px]
                                         leading-[24px]
                                         text-black
-                                        hover:text-[#E52445]
-                                        transition-colors duration-200
                                         whitespace-nowrap
+                                        transition-all duration-300
+                                        hover:text-[#E52445]
+                                        hover:translate-x-1
                                       "
                                     >
-                                      {item.title}
+                                      <span className="relative">
+                                        {item.title}
+                                        <span className="absolute left-0 -bottom-0.5 w-0 h-[2px] bg-[#E52445] transition-all duration-300 group-hover/link:w-full" />
+                                      </span>
                                     </Link>
                                   </li>
                                 ))}
@@ -241,7 +247,9 @@ export function NavBar() {
                                   text-[14px] lg:text-[15px] xl:text-[16px]
                                   leading-[24px]
                                   text-white
-                                  transition-colors duration-200
+                                  transition-all duration-300
+                                  hover:shadow-[0_4px_20px_rgba(229,36,69,0.4)]
+                                  hover:scale-[1.02]
                                 "
                               >
                                 Schedule a Call
