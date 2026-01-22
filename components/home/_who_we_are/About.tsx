@@ -28,12 +28,12 @@ const About = ({ data }: AboutProps) => {
 
   const [shouldAnimate, setShouldAnimate] = useState(contextShouldAnimate);
   const [hasAnimated, setHasAnimated] = useState(contextHasAnimated);
-  const [triggerTextEffect, setTriggerTextEffect] = useState(false);
+  const [triggerTextEffect, setTriggerTextEffect] = useState(contextHasAnimated);
   const [isMobile, setIsMobile] = useState(false);
 
-  // Mobile-specific animation states
-  const [textVisible, setTextVisible] = useState(false);
-  const [imagesVisible, setImagesVisible] = useState(false);
+  // Mobile-specific animation states - start visible if already animated from context
+  const [textVisible, setTextVisible] = useState(contextHasAnimated);
+  const [imagesVisible, setImagesVisible] = useState(contextHasAnimated);
 
   /* ---------------- CHECK SCREEN SIZE ---------------- */
   useEffect(() => {
@@ -65,11 +65,12 @@ const About = ({ data }: AboutProps) => {
 
     observer.observe(sectionRef.current);
     return () => observer.disconnect();
-  }, [shouldAnimate, isMobile]);
+  }, [shouldAnimate, isMobile, markAnimated]);
 
   /* ---------------- MOBILE: IMAGES OBSERVER ---------------- */
   useEffect(() => {
-    if (!isMobile || !imagesRef.current) return;
+    // Skip if not mobile or already animated from context
+    if (!isMobile || !imagesRef.current || contextHasAnimated) return;
 
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -83,11 +84,12 @@ const About = ({ data }: AboutProps) => {
 
     observer.observe(imagesRef.current);
     return () => observer.disconnect();
-  }, [isMobile]);
+  }, [isMobile, contextHasAnimated]);
 
   /* ---------------- MOBILE: TEXT OBSERVER ---------------- */
   useEffect(() => {
-    if (!isMobile || !textRef.current) return;
+    // Skip if not mobile or already animated from context
+    if (!isMobile || !textRef.current || contextHasAnimated) return;
 
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -102,11 +104,29 @@ const About = ({ data }: AboutProps) => {
 
     observer.observe(textRef.current);
     return () => observer.disconnect();
-  }, [isMobile]);
+  }, [isMobile, contextHasAnimated]);
 
-  // Determine visibility based on screen size
-  const isTextAnimated = isMobile ? textVisible : hasAnimated;
-  const isImagesAnimated = isMobile ? imagesVisible : hasAnimated;
+  /* ---------------- MOBILE: MARK AS ANIMATED ---------------- */
+  useEffect(() => {
+    if (!isMobile || !sectionRef.current || contextHasAnimated) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          markAnimated();
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1, rootMargin: "0px 0px -5% 0px" }
+    );
+
+    observer.observe(sectionRef.current);
+    return () => observer.disconnect();
+  }, [isMobile, contextHasAnimated, markAnimated]);
+
+  // Determine visibility - use OR logic to prevent flip-flop when isMobile changes
+  const isTextAnimated = textVisible || hasAnimated;
+  const isImagesAnimated = imagesVisible || hasAnimated;
 
   return (
     <div

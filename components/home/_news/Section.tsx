@@ -17,17 +17,21 @@ const AnimatedNewsCard = ({
   index,
   isMobile,
   sectionAnimated,
+  alreadyAnimatedFromContext,
 }: {
   item: NewsItem;
   index: number;
   isMobile: boolean;
   sectionAnimated: boolean;
+  alreadyAnimatedFromContext: boolean;
 }) => {
   const cardRef = useRef<HTMLDivElement | null>(null);
-  const [cardVisible, setCardVisible] = useState(false);
+  // If section already animated (from context), start visible to skip re-animation
+  const [cardVisible, setCardVisible] = useState(alreadyAnimatedFromContext);
 
   useEffect(() => {
-    if (!isMobile || !cardRef.current) return;
+    // Skip observer if already animated or not mobile
+    if (!isMobile || !cardRef.current || alreadyAnimatedFromContext) return;
 
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -47,9 +51,10 @@ const AnimatedNewsCard = ({
 
     observer.observe(cardRef.current);
     return () => observer.disconnect();
-  }, [isMobile]);
+  }, [isMobile, alreadyAnimatedFromContext]);
 
-  const isVisible = isMobile ? cardVisible : sectionAnimated;
+  // Use OR logic to prevent flip-flop when isMobile changes after hydration
+  const isVisible = cardVisible || sectionAnimated;
   const delay = isMobile ? 0 : index * 150;
 
   return (
@@ -137,7 +142,28 @@ const News = ({ newsData }: NewsSectionProps) => {
 
     observer.observe(sectionRef.current);
     return () => observer.disconnect();
-  }, [shouldAnimate, isMobile]);
+  }, [shouldAnimate, isMobile, markAnimated]);
+
+  /* ---------------- INTERSECTION OBSERVER (MOBILE) ---------------- */
+  useEffect(() => {
+    if (!isMobile || !sectionRef.current || contextHasAnimated) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          markAnimated();
+          observer.disconnect();
+        }
+      },
+      {
+        threshold: 0.1,
+        rootMargin: "0px 0px -5% 0px",
+      }
+    );
+
+    observer.observe(sectionRef.current);
+    return () => observer.disconnect();
+  }, [isMobile, contextHasAnimated, markAnimated]);
 
   return (
     <section ref={sectionRef} className="pt-16 pb-[94px]">
@@ -146,7 +172,7 @@ const News = ({ newsData }: NewsSectionProps) => {
           Latest Events
         </h2>
 
-        <div className="max-w-[1440px] px-[38px] sm:px-[80px] mx-auto">
+        <div className="max-w-[1440px] px-[16px] sm:px-[80px] mx-auto">
           <div
             className="
               grid
@@ -162,6 +188,7 @@ const News = ({ newsData }: NewsSectionProps) => {
                 index={index}
                 isMobile={isMobile}
                 sectionAnimated={hasAnimated}
+                alreadyAnimatedFromContext={contextHasAnimated}
               />
             ))}
           </div>
