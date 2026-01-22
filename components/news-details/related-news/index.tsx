@@ -28,11 +28,11 @@ import type { NewsListItem } from "@/lib/data/news-list/newsListData";
  * - Normalized dot tracking
  */
 
-type BlogCarouselProps = {
+type NewsCarouselProps = {
     newsListData: NewsListItem[];
 };
 
-export function BlogCarousel({ newsListData }: BlogCarouselProps) {
+export function NewsCarousel({ newsListData }: NewsCarouselProps) {
     const router = useRouter();
 
     const [api, setApi] = useState<CarouselApi>();

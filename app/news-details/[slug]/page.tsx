@@ -2,7 +2,7 @@ import { getNewsDetailsBySlug } from "@/lib/api/news-details/fetchNewsDetails";
 import BlockRenderer from "@/components/news-details/BlockRenderer";
 import MetaData from "@/components/news-details/metadata";
 import Header from "@/components/news-details/header";
-import { BlogCarousel } from "@/components/news-details/related-blogs";
+import { NewsCarousel } from "@/components/news-details/related-news";
 import { newsListData } from "@/lib/data/news-list/newsListData";
 import { notFound } from "next/navigation";
 
@@ -41,7 +41,7 @@ export default async function NewsDetailsPage({ params }: Props) {
       </div>
 
       {/* 🔹 Related News */}
-      <BlogCarousel newsListData={newsListData} />
+      <NewsCarousel newsListData={newsListData} />
     </>
   );
 }

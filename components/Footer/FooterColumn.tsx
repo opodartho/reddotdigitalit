@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import type { FooterColumn as FooterColumnType } from "@/lib/data/footerData";
 
 type FooterColumnProps = {
@@ -13,19 +14,17 @@ const FooterColumn = ({ column }: FooterColumnProps) => {
         {column.title}
       </h3>
 
-
-
       {/* Render a list of links */}
       {column.links && (
         <ul className="space-y-3 text-subtitle font-normal text-[14px] leading-[16px] tracking-[0px]">
           {column.links.map((link) => (
             <li key={link.text}>
-              <a
+              <Link
                 href={link.href}
                 className="hover:text-red-600 transition-colors"
               >
                 {link.text}
-              </a>
+              </Link>
             </li>
           ))}
         </ul>
@@ -34,7 +33,7 @@ const FooterColumn = ({ column }: FooterColumnProps) => {
       {/* Render address and social icons for the contact column */}
       {column.address && (
         <address className="not-italic text-subtitle leading-relaxed">
-          {column.address.split('\n').map((line, index, array) => (
+          {column.address.split("\n").map((line, index, array) => (
             <React.Fragment key={index}>
               {line}
               {index < array.length - 1 && <br />}
@@ -53,7 +52,7 @@ const FooterColumn = ({ column }: FooterColumnProps) => {
       {column.socials && (
         <div className="flex space-x-3 mt-4">
           {column.socials.map((social) => (
-            <a
+            <Link
               key={social.alt}
               href={social.href}
               target="_blank"
@@ -67,7 +66,7 @@ const FooterColumn = ({ column }: FooterColumnProps) => {
                 width={36}
                 height={36}
               />
-            </a>
+            </Link>
           ))}
         </div>
       )}
