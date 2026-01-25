@@ -9,7 +9,8 @@ type AnimationKey =
   | "news"
   | "testimonial"
   | "whoAbout"
-  | "whoAchievement";
+  | "whoAchievement"
+  | "footer";
 
 type AnimationContextValue = {
   hasAnimated: (key: AnimationKey) => boolean;
