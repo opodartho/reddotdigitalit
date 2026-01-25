@@ -161,7 +161,7 @@ export const FeaturedProjectsCarousel: React.FC<CarouselProps> = ({
     <div ref={rootRef}>
       {/* HEADER */}
       <div className="mb-8 flex items-center justify-between w-full fp-header">
-        <h2 className="sm:text-[32px] font-semibold text-[#060414]">
+        <h2 className="text-[32px] font-semibold text-[#060414]">
           Featured Projects
         </h2>
 
