@@ -239,17 +239,6 @@ export function NavBar() {
                                 className="
                                   w-[160px] lg:w-[180px] xl:w-[204px]
                                   h-[44px] lg:h-[50px] xl:h-[56px]
-                                  bg-[#E52445]
-                                  hover:bg-[#c91f3b]
-                                  rounded-[10px]
-                                  font-poppins
-                                  font-medium
-                                  text-[14px] lg:text-[15px] xl:text-[16px]
-                                  leading-[24px]
-                                  text-white
-                                  transition-all duration-300
-                                  hover:shadow-[0_4px_20px_rgba(229,36,69,0.4)]
-                                  hover:scale-[1.02]
                                 "
                               >
                                 Schedule a Call
