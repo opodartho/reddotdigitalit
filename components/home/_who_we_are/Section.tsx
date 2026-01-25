@@ -11,7 +11,7 @@ interface WhoWeAreProps {
 
 const WhoWeAre = ({ aboutData, achievementData }: WhoWeAreProps) => {
   return (
-    <section className="pb-0 sm:pb-[56px]">
+    <section className="pb-[48px] sm:pb-[56px]">
       <h1 className="--font-poppins mt-[56px] font-semibold text-[32px] leading-[40px] tracking-[0.03px] text-center align-middle text-title">
         Who We Are
       </h1>
