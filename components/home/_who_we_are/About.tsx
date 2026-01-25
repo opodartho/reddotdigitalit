@@ -91,11 +91,22 @@ const About = ({ data }: AboutProps) => {
           observer.disconnect();
         }
       },
-      { threshold: 0.15, rootMargin: "0px 0px -5% 0px" }
+      { threshold: 0.1, rootMargin: "0px 0px 0px 0px" } // Lower threshold for better mobile detection
     );
 
     observer.observe(imagesRef.current);
-    return () => observer.disconnect();
+
+    // Fallback: Re-check after a short delay to catch race conditions
+    const fallbackTimeout = setTimeout(() => {
+      if (imagesRef.current && isInViewport(imagesRef.current)) {
+        setImagesVisible(true);
+      }
+    }, 100);
+
+    return () => {
+      observer.disconnect();
+      clearTimeout(fallbackTimeout);
+    };
   }, [isMobile, contextHasAnimated, imagesVisible]);
 
   /* ---------------- MOBILE: TEXT OBSERVER ---------------- */
@@ -124,11 +135,23 @@ const About = ({ data }: AboutProps) => {
           observer.disconnect();
         }
       },
-      { threshold: 0.15, rootMargin: "0px 0px -5% 0px" }
+      { threshold: 0.1, rootMargin: "0px 0px 0px 0px" } // Lower threshold for better mobile detection
     );
 
     observer.observe(textRef.current);
-    return () => observer.disconnect();
+
+    // Fallback: Re-check after a short delay to catch race conditions
+    const fallbackTimeout = setTimeout(() => {
+      if (textRef.current && isInViewport(textRef.current)) {
+        setTextVisible(true);
+        setTriggerTextEffect(true);
+      }
+    }, 100);
+
+    return () => {
+      observer.disconnect();
+      clearTimeout(fallbackTimeout);
+    };
   }, [isMobile, contextHasAnimated, textVisible]);
 
   /* ---------------- MOBILE: MARK AS ANIMATED ---------------- */
