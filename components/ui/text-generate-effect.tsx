@@ -1,9 +1,9 @@
 "use client";
-import { useEffect } from "react";
-import { motion, stagger, useAnimate } from "motion/react";
+import { memo, useMemo } from "react";
+import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
 
-export const TextGenerateEffect = ({
+const TextGenerateEffect = memo(function TextGenerateEffect({
   words,
   className,
   filter = true,
@@ -15,35 +15,29 @@ export const TextGenerateEffect = ({
   filter?: boolean;
   duration?: number;
   textClassName?: string;
-}) => {
-  const [scope, animate] = useAnimate();
-  let wordsArray = words.split(" ");
-  useEffect(() => {
-    animate(
-      "span",
-      {
-        opacity: 1,
-        filter: filter ? "blur(0px)" : "none",
-      },
-      {
-        duration: duration ? duration : 1,
-        delay: stagger(0.2),
-      }
-    );
-  }, [scope.current]);
+}) {
+  const wordsArray = useMemo(() => words.split(" "), [words]);
 
   const textClass = textClassName ?? "dark:text-white text-black text-2xl leading-snug tracking-wide";
 
   const renderWords = () => {
     return (
-      <motion.div ref={scope}>
+      <motion.div>
         {wordsArray.map((word, idx) => {
           return (
             <motion.span
               key={word + idx}
-              className="opacity-0"
-              style={{
-                filter: filter ? "none" : "none",
+              initial={{
+                opacity: 0,
+                filter: filter ? "blur(0px)" : "none",
+              }}
+              animate={{
+                opacity: 1,
+                filter: filter ? "blur(0px)" : "none",
+              }}
+              transition={{
+                duration: duration ? duration : 1,
+                delay: idx * 0.2,
               }}
             >
               {word}{" "}
@@ -63,4 +57,6 @@ export const TextGenerateEffect = ({
       </div>
     </div>
   );
-};
+});
+
+export { TextGenerateEffect };

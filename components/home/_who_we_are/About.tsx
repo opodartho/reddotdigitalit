@@ -28,7 +28,7 @@ const About = ({ data }: AboutProps) => {
 
   const [shouldAnimate, setShouldAnimate] = useState(contextShouldAnimate);
   const [hasAnimated, setHasAnimated] = useState(contextHasAnimated);
-  const [triggerTextEffect, setTriggerTextEffect] = useState(contextHasAnimated);
+  const [triggerTextEffect, setTriggerTextEffect] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
   // Mobile-specific animation states - start visible if already animated from context
