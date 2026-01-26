@@ -2,39 +2,11 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import {
-  motion,
-  useAnimation,
-  useInView,
-  Variants,
-} from "framer-motion";
 import { AchievementData } from "@/lib/data/whoWeAreData";
 import { useAnimateOnce } from "@/contexts/AnimationContext";
 
 /* ----------------------------------------
-   MOTION VARIANTS (JUMP EFFECT)
----------------------------------------- */
-const fadeUp: Variants = {
-  hidden: {
-    opacity: 0,
-    y: 40,
-    scale: 0.96,
-  },
-  visible: {
-    opacity: 1,
-    y: 0,
-    scale: 1,
-    transition: {
-      type: "spring",
-      stiffness: 180,
-      damping: 14,
-      mass: 0.8,
-    },
-  },
-};
-
-/* ----------------------------------------
-   CARD
+   CARD (handles count-up animation)
 ---------------------------------------- */
 const AchievementCard = ({
   title,
@@ -42,15 +14,9 @@ const AchievementCard = ({
   description,
   icon,
   bgGradient,
-  sectionHasAnimated,
-}: AchievementData & { sectionHasAnimated: boolean }) => {
-  const cardRef = useRef<HTMLDivElement | null>(null);
-
-  const isInView = useInView(cardRef, {
-    once: true,
-    margin: "-20% 0px",
-  });
-
+  isVisible,
+  alreadyAnimatedFromContext,
+}: AchievementData & { isVisible: boolean; alreadyAnimatedFromContext: boolean }) => {
   /* Parse number */
   const match = value.match(/\d+/);
   const numericValue = match ? parseInt(match[0], 10) : 0;
@@ -59,14 +25,14 @@ const AchievementCard = ({
     (match?.index ?? 0) + (match?.[0]?.length ?? 0)
   );
 
-  const [displayValue, setDisplayValue] = useState(0);
-  const hasCounted = useRef(false);
+  const [displayValue, setDisplayValue] = useState(alreadyAnimatedFromContext ? numericValue : 0);
+  const hasCounted = useRef(alreadyAnimatedFromContext);
   const rafRef = useRef<number | null>(null);
   const duration = 1200;
 
-  /* ✅ COUNT-UP STARTS WHEN CARD IS VISIBLE */
+  /* COUNT-UP STARTS WHEN CARD IS VISIBLE */
   useEffect(() => {
-    if (!isInView || hasCounted.current) return;
+    if (!isVisible || hasCounted.current) return;
 
     hasCounted.current = true;
     const startTime = performance.now();
@@ -87,20 +53,10 @@ const AchievementCard = ({
     return () => {
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
     };
-  }, [isInView, numericValue]);
-
-  /* ✅ If section already animated before, show final value */
-  useEffect(() => {
-    if (sectionHasAnimated) {
-      setDisplayValue(numericValue);
-      hasCounted.current = true;
-    }
-  }, [numericValue, sectionHasAnimated]);
+  }, [isVisible, numericValue]);
 
   return (
-    <motion.div
-      ref={cardRef}
-      variants={fadeUp}
+    <div
       className={`
         w-[303px] h-[345px]
         flex flex-col mx-auto rounded-xl p-8
@@ -124,54 +80,185 @@ const AchievementCard = ({
       <p className="text-black font-normal font-poppins mt-auto mb-[46px]">
         {description}
       </p>
-    </motion.div>
+    </div>
   );
 };
 
 /* ----------------------------------------
-   SECTION (VISIT ONCE)
+   ANIMATED CARD WRAPPER
+---------------------------------------- */
+const AnimatedAchievementCard = ({
+  item,
+  index,
+  isMobile,
+  mounted,
+  sectionAnimated,
+  alreadyAnimatedFromContext,
+}: {
+  item: AchievementData;
+  index: number;
+  isMobile: boolean;
+  mounted: boolean;
+  sectionAnimated: boolean;
+  alreadyAnimatedFromContext: boolean;
+}) => {
+  const cardRef = useRef<HTMLDivElement | null>(null);
+  // If section already animated (from context), start visible to skip re-animation
+  const [cardVisible, setCardVisible] = useState(alreadyAnimatedFromContext);
+
+  useEffect(() => {
+    // Skip observer if not mounted, already animated/visible, or not mobile
+    if (!mounted || !isMobile || !cardRef.current || alreadyAnimatedFromContext || cardVisible) return;
+
+    // Helper to check if element is in viewport
+    const isInViewport = (el: HTMLElement) => {
+      const rect = el.getBoundingClientRect();
+      return rect.top < window.innerHeight && rect.bottom > 0;
+    };
+
+    // Check immediately if already in viewport
+    if (isInViewport(cardRef.current)) {
+      setTimeout(() => {
+        setCardVisible(true);
+      }, 150);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          // Add small delay before triggering animation on mobile
+          setTimeout(() => {
+            setCardVisible(true);
+          }, 150);
+          observer.disconnect();
+        }
+      },
+      {
+        threshold: 0.3,
+        rootMargin: "0px 0px -15% 0px",
+      }
+    );
+
+    observer.observe(cardRef.current);
+    return () => observer.disconnect();
+  }, [mounted, isMobile, alreadyAnimatedFromContext, cardVisible]);
+
+  // On mobile: only use cardVisible (individual triggers)
+  // On desktop: use sectionAnimated (staggered group animation)
+  const isVisible = isMobile ? cardVisible : (cardVisible || sectionAnimated);
+  const delay = isMobile ? 0 : index * 150;
+
+  return (
+    <div ref={cardRef}>
+      {/* REVEAL LAYER - slide up + scale animation */}
+      <div
+        style={{
+          opacity: isVisible ? 1 : 0,
+          transform: isVisible
+            ? "translateY(0px) scale(1)"
+            : "translateY(48px) scale(0.94)",
+          transitionProperty: "opacity, transform",
+          transitionDuration: "900ms",
+          transitionTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)",
+          transitionDelay: isVisible ? `${delay}ms` : "0ms",
+        }}
+        className="will-change-[opacity,transform] transform-gpu"
+      >
+        <AchievementCard
+          {...item}
+          isVisible={isVisible}
+          alreadyAnimatedFromContext={alreadyAnimatedFromContext}
+        />
+      </div>
+    </div>
+  );
+};
+
+/* ----------------------------------------
+   SECTION
 ---------------------------------------- */
 const Achievement = ({ data }: { data: AchievementData[] }) => {
-  const sectionRef = useRef<HTMLDivElement | null>(null);
-  const controls = useAnimation();
+  const sectionRef = useRef<HTMLElement | null>(null);
 
-  const isInView = useInView(sectionRef, { amount: 0.3 });
-
-  // Use context to track animation state (replaces global window pattern)
+  // Use context to track animation state
   const {
+    shouldAnimate: contextShouldAnimate,
     markAnimated,
     hasAnimated: contextHasAnimated,
   } = useAnimateOnce("whoAchievement");
 
-  const [hasAnimatedBefore, setHasAnimatedBefore] = useState(contextHasAnimated);
+  const [shouldAnimate, setShouldAnimate] = useState(contextShouldAnimate);
+  const [hasAnimated, setHasAnimated] = useState(contextHasAnimated);
+  const [isMobile, setIsMobile] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
-  /* First visit → animate */
+  /* ---------------- HYDRATION SAFE: Wait for mount ---------------- */
   useEffect(() => {
-    if (!isInView || hasAnimatedBefore) return;
+    setMounted(true);
+  }, []);
 
-    controls.start("visible");
-    markAnimated();
-    setHasAnimatedBefore(true);
-  }, [isInView, hasAnimatedBefore, controls, markAnimated]);
-
-  /* Revisit → force visible */
+  /* ---------------- CHECK SCREEN SIZE ---------------- */
   useEffect(() => {
-    if (hasAnimatedBefore) {
-      controls.set("visible");
-    }
-  }, [hasAnimatedBefore, controls]);
+    if (!mounted) return;
+
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 640);
+    };
+
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, [mounted]);
+
+  /* ---------------- INTERSECTION OBSERVER (DESKTOP) ---------------- */
+  useEffect(() => {
+    if (!mounted || !shouldAnimate || !sectionRef.current || isMobile) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        // Double-check we're on desktop when callback fires (prevents race condition)
+        if (entry.isIntersecting && window.innerWidth >= 640) {
+          setHasAnimated(true);
+          setShouldAnimate(false);
+          markAnimated();
+          observer.disconnect();
+        }
+      },
+      {
+        threshold: 0.25,
+        rootMargin: "0px 0px -10% 0px",
+      }
+    );
+
+    observer.observe(sectionRef.current);
+    return () => observer.disconnect();
+  }, [mounted, shouldAnimate, isMobile, markAnimated]);
+
+  /* ---------------- INTERSECTION OBSERVER (MOBILE) ---------------- */
+  useEffect(() => {
+    if (!mounted || !isMobile || !sectionRef.current || contextHasAnimated) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          markAnimated();
+          observer.disconnect();
+        }
+      },
+      {
+        threshold: 0.1,
+        rootMargin: "0px 0px -5% 0px",
+      }
+    );
+
+    observer.observe(sectionRef.current);
+    return () => observer.disconnect();
+  }, [mounted, isMobile, contextHasAnimated, markAnimated]);
 
   return (
-    <motion.section
+    <section
       ref={sectionRef}
-      initial="hidden"
-      animate={controls}
-      variants={{
-        hidden: {},
-        visible: {
-          transition: { staggerChildren: 0.2 },
-        },
-      }}
       className="
         max-w-[1440px] mx-auto px-[16px] sm:px-[80px]
         mt-[48px]
@@ -180,9 +267,17 @@ const Achievement = ({ data }: { data: AchievementData[] }) => {
       "
     >
       {data.map((item, index) => (
-        <AchievementCard key={index} {...item} sectionHasAnimated={hasAnimatedBefore} />
+        <AnimatedAchievementCard
+          key={index}
+          item={item}
+          index={index}
+          isMobile={isMobile}
+          mounted={mounted}
+          sectionAnimated={hasAnimated}
+          alreadyAnimatedFromContext={contextHasAnimated}
+        />
       ))}
-    </motion.section>
+    </section>
   );
 };
 
