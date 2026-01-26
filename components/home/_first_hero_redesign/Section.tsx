@@ -288,7 +288,7 @@ export default function FirstHeroRedesignSection({
           variants={fadeUp}
           whileHover={{ scale: 1.04 }}
           whileTap={{ scale: 0.98 }}
-          className="mt-[46px] sm:mt-[54px] mb-[56px] lg:mb-0"
+          className="mt-[54px] mb-[64px] lg:mb-0"
         >
           <WhiteButton
             className="w-[248px]"
