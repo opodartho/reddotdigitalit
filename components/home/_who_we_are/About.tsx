@@ -135,7 +135,7 @@ const About = ({ data }: AboutProps) => {
           observer.disconnect();
         }
       },
-      { threshold: 0.1, rootMargin: "0px 0px 0px 0px" } // Lower threshold for better mobile detection
+      { threshold: 0.1, rootMargin: "0px 0px -15% 0px" } // Trigger earlier so animation is visible
     );
 
     observer.observe(textRef.current);
